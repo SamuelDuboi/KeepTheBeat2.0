@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
         SoundDisplay.Instance.AddEnnemy(_ennemy);
-        ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
+        _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
     }
 
     public void Spwan(bool isSPecial)
@@ -47,7 +47,7 @@ public class Spawner : MonoBehaviour
         if(isSPecial)
         {
             SoundDisplay.Instance.specialEnnemy = _ennemy;
-            ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
+            _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
 
         }
     }

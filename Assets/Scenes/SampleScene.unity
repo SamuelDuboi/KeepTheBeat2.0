@@ -2406,7 +2406,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 0fa6f444cac63a5418690b2aa7a9d47c, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a2c528633ec4d9945a6066efec87d40c, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
@@ -2996,7 +2996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff784700e69a1047926694c0193ea0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  music: {fileID: 0}
+  music: {fileID: 1495326035}
   clap: {fileID: 1708296843}
   bpm: 84
   positionEnd:
@@ -3007,6 +3007,7 @@ MonoBehaviour:
   - {fileID: 2116977704}
   - {fileID: 2053859683}
   patterns:
+  - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
   - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
   rowOn:
   - {fileID: 1079697517}
@@ -3569,7 +3570,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeText: {fileID: 1984724975}
-  lifes: 2
+  lifes: 15
   gameOver: {fileID: 675916539}
   fade: {fileID: 2055123379}
 --- !u!114 &1984724975

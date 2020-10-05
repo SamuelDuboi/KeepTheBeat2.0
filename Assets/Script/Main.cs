@@ -183,7 +183,10 @@ public class Main : Singleton<Main>
 
 		if ( previousEnnemyList.Count == 0 )
         {
-			if (currentPattern != patterns.Length)
+			int _patternNumber = patterns.Length;
+			if (currentPattern > 0)
+				_patternNumber--;
+			if (currentPattern != _patternNumber)
 			{
 				currentPattern++;
 				foreach (var vecor in patterns[currentPattern].ennemiesPosition)

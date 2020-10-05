@@ -13,8 +13,8 @@ public class EnnemyBehavior : MonoBehaviour
     {
         if (cpt < 6)
         {
-            transform.position = positions[cpt];
             cpt++;
+            transform.position = positions[cpt];
         }
         else
         {

@@ -1,27 +1,40 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Main : Singleton<Main>
 {
+	[Header("Sound")]
 	public AudioSource music;
 	public AudioSource clap;
-
     public double bpm;
+	[Range(0, 100)]
+	public float pourcentageAllow;
+
+	[Header("Spawn")]
 	public GameObject[] positionEnd = new GameObject[6];
 	public  Patterns[] patterns = new Patterns[1];
+	public  List<Patterns>  patterns1 = new  List< Patterns>();
+	public  List<Patterns>  patterns2 = new  List< Patterns>();
+	public  List<Patterns>  patterns3 = new  List< Patterns>();
+	private List<int> previousNumberPattern = new List<int>();
+	public int numberOfPatternPerDifficulty = 5;
+
 	private Vector2 previousEnnemy;
 	private List< Vector2> previousEnnemyList;
 	private int currentPattern;
 	private int emptyNode;
 	public GameObject[] rowOn = new GameObject[6];
-	[Range(0,100)]
-    public float pourcentageAllow;
-	 public bool canShoot;
+	private int patternNumber;
+
+
+	public bool canShoot;
 	private LineRenderer lineRenderer;
 	[HideInInspector] public SpriteRenderer sprite;
 
+	[Header("Special")]
 	//for special
 	[HideInInspector] public int specialCount;
 	public Slider specialBar;
@@ -30,8 +43,12 @@ public class Main : Singleton<Main>
 	public bool isBulletTime;
 	public float maxBulletTime;
 	private float bulletTimeTimer;
+
+
+	
     private void Start()
     {
+		
 		sprite = GetComponent<SpriteRenderer>();
 		bpm = SoundDisplay.Instance.Getbmp();
 		lineRenderer = GetComponent<LineRenderer>();
@@ -40,14 +57,39 @@ public class Main : Singleton<Main>
 		specialBar.maxValue = specialMaxValue;
 
 		previousEnnemyList = new List<Vector2>();
+		SetPatternsArray();
 
-        foreach (Vector2 vector in patterns[0].ennemiesPosition)
+		foreach (Vector2 vector in patterns1[0].ennemiesPosition)
         {
 			previousEnnemyList.Add(vector);
         }
 		previousEnnemy = Vector2.one * 12;
     }
 
+
+
+	private void SetPatternsArray()
+    {
+        foreach (var pattern in patterns)
+        {
+			int _difficulty = pattern.difficulty;
+            switch (_difficulty)
+            {
+				case 1:
+					patterns1.Add(pattern);
+					break;
+				case 2:
+					patterns2.Add(pattern);
+					break;
+
+				case 3:
+					patterns3.Add(pattern);
+					break;
+                default:
+                    break;
+            }
+        }
+    }
 	private void Update()
 	{
         if (isBulletTime)
@@ -107,8 +149,8 @@ public class Main : Singleton<Main>
 		}
 	}
 
-  
-	void Shoot(Vector2 position, GameObject rowOn)
+    #region shoots
+    void Shoot(Vector2 position, GameObject rowOn)
     {
 		//canShoot = false;
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(position.x - transform.position.x, position.y - transform.position.y));
@@ -169,6 +211,11 @@ public class Main : Singleton<Main>
 		yield return new WaitForSeconds(0.3f);
 		rowSprite.SetActive(false);
 	}
+	/// <summary>
+	/// row fade for special
+	/// </summary>
+	/// <param name="isSpecial"></param>
+	/// <returns></returns>
 	IEnumerator RowFade( bool isSpecial)
 	{
         foreach (var row in rowOn)
@@ -181,28 +228,55 @@ public class Main : Singleton<Main>
 			row.SetActive(false);
 		}
 	}
-	public void Spawn()
+    #endregion
+    public void Spawn()
     {
 		float biggest = 0;
 		List<int> numberForEnnemy = new List<int>();
 
+		//go to the next pattern if not already done
+
 		if ( previousEnnemyList.Count == 0 )
         {
-			
-			if (currentPattern != patterns.Length-1)
-			{
-				currentPattern++;
-				foreach (var vecor in patterns[currentPattern].ennemiesPosition)
-				{
-					previousEnnemyList.Add(vecor);
-				}
-			}
-			else
+            #region patternDifficulty
+            var _currentPattern = new List<Patterns>();
+			if (patternNumber >= patterns.Length - 1)
 				return;
-			
-			for (int i = 0; i < previousEnnemyList.Count; i++)
+			else if (patternNumber < numberOfPatternPerDifficulty-1)
+				_currentPattern = patterns1;
+			else if (patternNumber >= numberOfPatternPerDifficulty-1 && patternNumber < (numberOfPatternPerDifficulty-1) * 2)
 			{
-				if (previousEnnemyList[i].y > biggest)
+				_currentPattern = patterns2;
+			}
+			else if (patternNumber < patterns.Length - 1)
+				_currentPattern = patterns3;
+			
+
+			#endregion
+
+			previousNumberPattern.Add(currentPattern);
+			currentPattern = Random.Range(0, _currentPattern.Count);
+            foreach (var number in previousNumberPattern)
+            {
+                while (currentPattern == number)
+                    currentPattern = Random.Range(0, _currentPattern.Count);
+
+            }
+
+            patternNumber++;
+            if (patternNumber == numberOfPatternPerDifficulty-1 || patternNumber == (numberOfPatternPerDifficulty-1) * 2)
+            {
+                previousNumberPattern.Clear();
+            }
+            foreach (var vecor in _currentPattern[currentPattern].ennemiesPosition)
+            {
+                previousEnnemyList.Add(vecor);
+            }
+
+
+            for (int i = 0; i < previousEnnemyList.Count; i++)
+            {
+                if (previousEnnemyList[i].y > biggest)
 				{
 					biggest = previousEnnemyList[i].y;
 				}

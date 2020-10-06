@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-1593224118371995133
+--- !u!114 &-4944616951993933166
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,8 +20,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: FractionSquare
-  m_Shader: {fileID: -6465566751694194690, guid: f08fdc8619169824299df4cb9379932d, type: 3}
+  m_Name: FractionRectangle
+  m_Shader: {fileID: -6465566751694194690, guid: 8656c4c188535e647a03ae3b6ab67afc, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -32,10 +32,6 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
-    - Texture2D_39D7A635:
-        m_Texture: {fileID: 2800000, guid: 126d82140b2d97f4e8f92eb00d2c74f8, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
     - _BaseMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -89,10 +85,7 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_4033CD14: {r: 4, g: 4, b: 4, a: 0}
     - Color_8EA3D331: {r: 1, g: 1, b: 1, a: 0}
-    - Vector2_2AF8AD74: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_A23226E5: {r: 0, g: 1, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

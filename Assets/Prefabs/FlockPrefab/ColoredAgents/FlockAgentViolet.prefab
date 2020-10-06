@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3576607139158467284}
   - component: {fileID: 3576607139158467287}
   - component: {fileID: 3576607139158467286}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Visual
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa0eee71cf2f8ab4899b16a0ac5c3a60, type: 2}
+  - {fileID: 2100000, guid: 86a6dbdcd20490a47afbedac8a04a8dc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -92,8 +92,8 @@ GameObject:
   - component: {fileID: 2323485970752920708}
   - component: {fileID: 8039231371730796357}
   - component: {fileID: 1633178097554258046}
-  m_Layer: 8
-  m_Name: FlockAgent
+  m_Layer: 13
+  m_Name: FlockAgentViolet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

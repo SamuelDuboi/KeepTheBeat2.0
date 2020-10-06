@@ -26,6 +26,7 @@ public class Flock : MonoBehaviour
     float squareNeighborRadius;
     float squareAvoidanceRadius;
     public float SquareAvoidanceRadius { get { return squareAvoidanceRadius; } }
+    public Vector3 offset;
 
     void Start()
     {
@@ -37,7 +38,7 @@ public class Flock : MonoBehaviour
         {
             FlockAgent newAgent = Instantiate(
                 agentPrefab,
-                Random.insideUnitSphere * startingCount * AgentDensity,
+                Random.insideUnitSphere * startingCount * AgentDensity + offset,
                 Quaternion.Euler(Vector3.forward* Random.Range(0f, 360f)),
                 transform
                 );

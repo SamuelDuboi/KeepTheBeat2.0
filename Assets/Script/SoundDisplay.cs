@@ -5,7 +5,6 @@ using UnityEngine;
 public class SoundDisplay : Singleton<SoundDisplay>
 {
     public float beat;
-    private float beatForBigAttack;
     double displayTime;
     double timePreviousBeat;
     [Range(0,100)]
@@ -22,8 +21,10 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
     public bool cantAct;
     [HideInInspector] public List<GameObject> ennemys = new List<GameObject>();
-    [HideInInspector] public GameObject specialEnnemy;
     private AudioSource mainBeat;
+
+    private bool doOnce;
+    private int doOnceCPT;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,36 +65,18 @@ public class SoundDisplay : Singleton<SoundDisplay>
         if (displayTime >= timePreviousBeat + bpm)
         {
             beat ++;
-            
-            if(beat == 2 && !cantAct)
+
+            if (beat == 2 && !cantAct)
             {
-            beatForBigAttack++;
-               if (beatForBigAttack == 8)
+
+                for (int i = 0; i < ennemys.Count; i++)
                 {
-                    beatForBigAttack = 0;
-                    Main.Instance.SpecialSpawn();
+                    ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
                 }
-                else
-                {
-                    if(specialEnnemy != null)
-                    {
-                         specialEnnemy.GetComponent<SpecialEnnemyBehavior>().Move();
-                    // tu t'es arrete ici, faut faire le graph de l'onde, son anim a chaque beat, special attaakc a faire et deplacement du truc
-                     }
-                    for (int i = 0; i < ennemys.Count; i++)
-                    {
-                        ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
-                    }
+                Main.Instance.Spawn();
 
-                    Main.Instance.Spawn();
-
-                }
-                
-                
-
-                
                 beat = 0;
             }
             else if(cantAct && beat >=3)
@@ -116,13 +99,25 @@ public class SoundDisplay : Singleton<SoundDisplay>
             && timer <= bpm-pourcentageCalculated
             //||timer <=bpm- pourcentageAllow / 100 * bpm && timer >= bpm / 2 + pourcentageAllow / 100 * bpm
             )
+        {
+            doOnce = true;
 			Main.Instance.canShoot = false;
+            doOnceCPT = 0;
+        }
 
 		if (timer >= bpm - pourcentageCalculated
             //|| timer >= bpm / 2 - pourcentageAllow / 100 * bpm && timer <= bpm / 2 + pourcentageAllow / 100 * bpm
             )
 		{
-            Main.Instance.canShoot = true;
+            if (doOnce)
+            {
+                Main.Instance.canShoot = true;
+                if(doOnceCPT < 2)
+                {
+                doOnce = false;
+                    doOnceCPT++;
+                }
+            }
 
 		}
     }

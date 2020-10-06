@@ -10,20 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e7025eef1b2d4640a206ea945122e55, type: 3}
-  m_Name: NewPattern
+  m_Name: NewPattern 1
   m_EditorClassIdentifier: 
   ennemiesPositionForEditor:
-  - {x: 100, y: 600}
   - {x: 200, y: 600}
-  - {x: 300, y: 600}
-  - {x: 400, y: 600}
-  - {x: 500, y: 600}
-  - {x: 600, y: 600}
   ennemiesPosition:
-  - {x: 0, y: 11}
   - {x: 1, y: 11}
-  - {x: 2, y: 11}
-  - {x: 3, y: 11}
-  - {x: 4, y: 11}
-  - {x: 5, y: 11}
-  difficulty: 1
+  difficulty: 2

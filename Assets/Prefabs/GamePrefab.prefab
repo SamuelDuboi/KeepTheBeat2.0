@@ -1760,7 +1760,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   beat: 0
-  pourcentageAllow: 20
+  pourcentageAllow: 25
   bpm: 100
   speedModifier: 1
   loops:
@@ -1769,7 +1769,6 @@ MonoBehaviour:
   fail: {fileID: 1734886885830321394}
   cantAct: 0
   ennemys: []
-  specialEnnemy: {fileID: 0}
 --- !u!82 &1734886885779963013
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3391,6 +3390,7 @@ MonoBehaviour:
   music: {fileID: 1734886885779963013}
   clap: {fileID: 1734886886521416541}
   bpm: 84
+  pourcentageAllow: 10
   positionEnd:
   - {fileID: 1734886885302510993}
   - {fileID: 1734886884828908432}
@@ -3400,7 +3400,22 @@ MonoBehaviour:
   - {fileID: 1734886886363515061}
   patterns:
   - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
+  - {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
+  - {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
+  - {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
+  - {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
+  - {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
+  - {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
+  - {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
+  - {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
   - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
+  - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
+  - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
+  - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
+  patterns1: []
+  patterns2: []
+  patterns3: []
+  numberOfPatternPerDifficulty: 3
   rowOn:
   - {fileID: 1734886885926355387}
   - {fileID: 1734886886067262882}
@@ -3408,12 +3423,11 @@ MonoBehaviour:
   - {fileID: 1734886885333438012}
   - {fileID: 1734886885617156911}
   - {fileID: 1734886886388766219}
-  pourcentageAllow: 10
   canShoot: 0
   sprite: {fileID: 0}
-  specialCount: 0
   specialBar: {fileID: 1734886884938743797}
-  specialMaxValue: 1
+  specialCount: 0
+  specialMaxValue: 5
   specialSpawner: {fileID: 1734886885103237552}
   isBulletTime: 0
   maxBulletTime: 1000

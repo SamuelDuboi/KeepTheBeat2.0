@@ -305,14 +305,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1734886885779963012, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: bpm
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 1734886885779963012, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: pourcentageAllow
-      value: 25
-      objectReference: {fileID: 0}
     - target: {fileID: 1734886885863337595, guid: 561371e428a53dd439f89d625f487951, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -365,62 +357,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: GamePrefab
       objectReference: {fileID: 0}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.size
-      value: 13
-      objectReference: {fileID: 0}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: numberOfPatternPerDifficulty
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[2]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[4]
-      value: 
-      objectReference: {fileID: 11400000, guid: 7a25a2cb5bcc81f41906564c5f3d6a7e, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[5]
-      value: 
-      objectReference: {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[6]
-      value: 
-      objectReference: {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[7]
-      value: 
-      objectReference: {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[8]
-      value: 
-      objectReference: {fileID: 11400000, guid: e67300b8e0156194eab059971f75e7c0, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[9]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[10]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[11]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
-    - target: {fileID: 1734886886521416542, guid: 561371e428a53dd439f89d625f487951, type: 3}
-      propertyPath: patterns.Array.data[12]
-      value: 
-      objectReference: {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
     - target: {fileID: 1734886886525853894, guid: 561371e428a53dd439f89d625f487951, type: 3}
       propertyPath: m_Camera
       value: 

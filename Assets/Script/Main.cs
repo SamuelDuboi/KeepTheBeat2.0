@@ -110,7 +110,7 @@ public class Main : Singleton<Main>
   
 	void Shoot(Vector2 position, GameObject rowOn)
     {
-		canShoot = false;
+		//canShoot = false;
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(position.x - transform.position.x, position.y - transform.position.y));
 		StartCoroutine(RowFade(rowOn));
 		if(hit.collider != null && hit.collider.gameObject.tag == "Ennemy")
@@ -123,6 +123,11 @@ public class Main : Singleton<Main>
 			Destroy(hit.collider.gameObject);
         }
     }
+	/// <summary>
+	/// shoot the special
+	/// </summary>
+	/// <param name="position"></param>
+	/// <param name="isSpecial"></param>
 	void Shoot(Vector2 position, bool isSpecial)
 	{
 		canShoot = false;

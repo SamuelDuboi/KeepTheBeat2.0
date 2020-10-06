@@ -24,6 +24,9 @@ public class SoundDisplay : Singleton<SoundDisplay>
     [HideInInspector] public List<GameObject> ennemys = new List<GameObject>();
     [HideInInspector] public GameObject specialEnnemy;
     private AudioSource mainBeat;
+
+    private bool doOnce;
+    private int doOnceCPT;
     // Start is called before the first frame update
     void Start()
     {
@@ -116,13 +119,25 @@ public class SoundDisplay : Singleton<SoundDisplay>
             && timer <= bpm-pourcentageCalculated
             //||timer <=bpm- pourcentageAllow / 100 * bpm && timer >= bpm / 2 + pourcentageAllow / 100 * bpm
             )
+        {
+            doOnce = true;
 			Main.Instance.canShoot = false;
+            doOnceCPT = 0;
+        }
 
 		if (timer >= bpm - pourcentageCalculated
             //|| timer >= bpm / 2 - pourcentageAllow / 100 * bpm && timer <= bpm / 2 + pourcentageAllow / 100 * bpm
             )
 		{
-            Main.Instance.canShoot = true;
+            if (doOnce)
+            {
+                Main.Instance.canShoot = true;
+                if(doOnceCPT < 2)
+                {
+                doOnce = false;
+                    doOnceCPT++;
+                }
+            }
 
 		}
     }

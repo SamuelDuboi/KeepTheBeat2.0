@@ -11,7 +11,7 @@ public class EnnemyBehavior : MonoBehaviour
 
    public virtual void Move()
     {
-        if (cpt < 6)
+        if (cpt < 5)
         {
             cpt++;
             transform.position = positions[cpt];

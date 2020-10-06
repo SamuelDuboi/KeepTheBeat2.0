@@ -305,6 +305,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1734886885779963012, guid: 561371e428a53dd439f89d625f487951, type: 3}
+      propertyPath: bpm
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1734886885779963012, guid: 561371e428a53dd439f89d625f487951, type: 3}
+      propertyPath: pourcentageAllow
+      value: 25
+      objectReference: {fileID: 0}
     - target: {fileID: 1734886885863337595, guid: 561371e428a53dd439f89d625f487951, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

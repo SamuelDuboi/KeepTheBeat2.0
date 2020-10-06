@@ -9,7 +9,6 @@ public class URPManager : MonoBehaviour
     public static URPManager urpM;
     Camera MainCam;
     UniversalAdditionalCameraData cam;
-    bool locker;
 
     void Start()
     {
@@ -17,7 +16,7 @@ public class URPManager : MonoBehaviour
         MainCam = Camera.main;
     }
 
-    void Update()
+    /*void Update()
     {
         if (Input.GetKey("a"))
         {
@@ -50,16 +49,13 @@ public class URPManager : MonoBehaviour
                 StartCoroutine(ColorOnBeat(6, 1));
         }
 
-    }
+    }*/
 
     public IEnumerator ColorOnBeat(int index, float time)
     {
-        locker = true;
         cam = MainCam.GetUniversalAdditionalCameraData();
         cam.SetRenderer(index);
         yield return new WaitForSeconds(time);
-        locker = false;
-        cam.SetRenderer(0);
-        
+        cam.SetRenderer(0); 
     }
 }

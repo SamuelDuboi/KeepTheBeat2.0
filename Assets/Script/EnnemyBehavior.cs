@@ -8,6 +8,7 @@ public class EnnemyBehavior : MonoBehaviour
     public Vector2[] positions;
   [HideInInspector]  public int cpt;
     public int scoreValue;
+    public int enemyIndex;
 
    public virtual void Move()
     {
@@ -20,6 +21,7 @@ public class EnnemyBehavior : MonoBehaviour
         {
             SoundDisplay.Instance.RemoveEnnemy(gameObject);
             Score.Instance.ModifierDown();
+            StartCoroutine(URPManager.urpM.ColorOnBeat(enemyIndex, 1f));
             Destroy(gameObject);
         }
     }

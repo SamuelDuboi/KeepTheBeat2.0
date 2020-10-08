@@ -224,6 +224,7 @@ public class Main : Singleton<Main>
     {
         foreach (var row in rowOn)
         {
+            row.GetComponent<AudioSource>().Play();
             row.SetActive(true);
         }
         yield return new WaitForSeconds(0.3f);

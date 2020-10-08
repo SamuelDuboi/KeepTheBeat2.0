@@ -56,7 +56,7 @@ public class TEstArduino : MonoBehaviour
   
    void TestBeat() //triggered when Timer2 counts to 124
     {
-        Signal = UduinoManager.Instance.analogRead(AnalogPin.A0);              // read the Pulse Sensor 
+        Signal = UduinoManager.Instance.analogRead(AnalogPin.A0);// read the Pulse Sensor 
         sampleCounter += 2;                         // c'est genre un time.deltatime +2 car tout les 2 miliseconde
         int N = sampleCounter - lastBeatTime;       // monitor the time since the last beat to avoid noise
 

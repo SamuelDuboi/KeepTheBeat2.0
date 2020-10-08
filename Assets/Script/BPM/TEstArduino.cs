@@ -22,7 +22,6 @@ public class TEstArduino : MonoBehaviour
     private float timer;
 
     volatile int[] rate = new int[10];                      // array to hold last ten IBI values
-    volatile int sampleCounter = 0;          // used to determine pulse timing
     volatile int lastBeatTime = 0;           // used to find IBI
     volatile int P = 512;                      // used to find peak in pulse wave, seeded
     volatile int T = 512;                     // used to find trough in pulse wave, seeded
@@ -50,6 +49,7 @@ public class TEstArduino : MonoBehaviour
         }
        
 
+
        
     }
 
@@ -57,8 +57,8 @@ public class TEstArduino : MonoBehaviour
    void TestBeat() //triggered when Timer2 counts to 124
     {
         Signal = UduinoManager.Instance.analogRead(AnalogPin.A0);// read the Pulse Sensor 
-        sampleCounter += 2;                         // c'est genre un time.deltatime +2 car tout les 2 miliseconde
-        int N = sampleCounter - lastBeatTime;       // monitor the time since the last beat to avoid noise
+                                 // c'est genre un time.deltatime +2 car tout les 2 miliseconde
+        int N = (int)Time.time*1000 - lastBeatTime;       // monitor the time since the last beat to avoid noise
 
         #region regarde les reponse les plus basse et les plus haute
         //  find the peak and trough of the pulse wave
@@ -79,7 +79,8 @@ public class TEstArduino : MonoBehaviour
         //  NOW IT'S TIME TO LOOK FOR THE HEART BEAT
         // signal surges up in value every time there is a pulse
         if (N > 250)
-        {                                   // avoid high frequency noise
+        {
+
             if ((Signal > thresh) && (Pulse == false) && (N > (IBI / 5) * 3))
             {
                 Pulse = true;                               // set the Pulse flag when we think there is a pulse
@@ -88,8 +89,8 @@ public class TEstArduino : MonoBehaviour
                 UduinoManager.Instance.digitalWrite(blinkPin, State.HIGH);                // turn on pin 13 LED
 
 
-                IBI = sampleCounter - lastBeatTime;         // measure time between beats in mS
-                lastBeatTime = sampleCounter;               // keep track of time for next pulse
+                IBI = (int)Time.time*1000 - lastBeatTime;         // measure time between beats in mS
+                lastBeatTime = (int)Time.time*1000;               // keep track of time for next pulse
 
                 if (secondBeat)
                 {                        // if this is the second beat, if secondBeat == TRUE
@@ -119,10 +120,32 @@ public class TEstArduino : MonoBehaviour
                 runningTotal += rate[9];                // add the latest IBI to runningTotal
                 runningTotal /= 10;                     // average the last 10 IBI values 
                 BPM = 60000 / runningTotal;
-                Debug.Log(BPM);// how many beats can fit into a minute? that's BPM!
+                Debug.Log(BPM);
+
+                // how many beats can fit into a minute? that's BPM!
                 QS = true;                              // set Quantified Self flag 
                                                         // QS FLAG IS NOT CLEARED INSIDE THIS ISR
             }
+
         }
-    } 
+        if (Signal < thresh && Pulse == true)
+        {   // when the values are going down, the beat is over
+            Pulse = false;                         // reset the Pulse flag so we can do it again
+            amp = P - T;                           // get amplitude of the pulse wave
+            thresh = amp / 2 + T;                    // set thresh at 50% of the amplitude
+            P = thresh;                            // reset these for next time
+            T = thresh;
+        }
+
+        if (N > 2500)
+        {                           // if 2.5 seconds go by without a beat
+            thresh = 512;                          // set thresh default
+            P = 512;                               // set P default
+            T = 512;                               // set T default
+            lastBeatTime = (int)Time.time*1000;          // bring the lastBeatTime up to date        
+            firstBeat = true;                      // set these to avoid noise
+            secondBeat = false;                    // when we get the heartbeat back
+        }
+
+    }
 }

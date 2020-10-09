@@ -71,7 +71,8 @@ public class SoundDisplay : Singleton<SoundDisplay>
             loopNumber += mainBeat.clip.length;
             mainBeat.Play();
         }*/
-            displayTime = loopNumber +  pcmInSeconds; 
+
+        displayTime = loopNumber +  pcmInSeconds; 
 
         timer = displayTime - timePreviousBeat;
 
@@ -83,14 +84,14 @@ public class SoundDisplay : Singleton<SoundDisplay>
             if (beat == 2 && !cantAct)
             {
 
-              /*  for (int i = 0; i < ennemys.Count; i++)
+                for (int i = 0; i < ennemys.Count; i++)
                 {
                     ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
                 }
 
                 Main.Instance.Spawn();
-                */
+                
                 beat = 0;
             }
             else if(cantAct && beat >=3)

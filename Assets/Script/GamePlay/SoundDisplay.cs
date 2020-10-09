@@ -1,16 +1,19 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class SoundDisplay : Singleton<SoundDisplay>
 {
     public float beat;
-    double displayTime;
-    double timePreviousBeat;
+    private double displayTime;
+    private float pcmInSeconds;
+    private double timePreviousBeat;
+    private double loopNumber;
     [Range(0,100)]
     public double pourcentageAllow;
-    double pourcentageCalculated;
-    double timer;
+    private  double pourcentageCalculated;
+    private  double timer;
     public double bpm;
     [Range(1,3)]
     public int speedModifier = 1;
@@ -35,7 +38,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         switch (speedModifier)
         {
@@ -57,26 +60,37 @@ public class SoundDisplay : Singleton<SoundDisplay>
                 break;
         }
         mainBeat.pitch = speed;
-        displayTime = mainBeat.time ;
+        pcmInSeconds = mainBeat.timeSamples / (mainBeat.pitch * 1000000) * 22;//frequence of 22 khz per pitch, convert PCM to sec
+
+        /*if (Time.time >= mainBeat.clip.length+ loopNumber)
+        {
+            loopNumber += mainBeat.clip.length;
+        }
+        if (!mainBeat.isPlaying)
+        {
+            loopNumber += mainBeat.clip.length;
+            mainBeat.Play();
+        }*/
+            displayTime = loopNumber +  pcmInSeconds; 
+
         timer = displayTime - timePreviousBeat;
-        Main.Instance.sprite.color = new Color(255, 0, 0, (float)( timer / bpm));
 
         
         if (displayTime >= timePreviousBeat + bpm)
         {
             beat ++;
-
+            
             if (beat == 2 && !cantAct)
             {
 
-                for (int i = 0; i < ennemys.Count; i++)
+              /*  for (int i = 0; i < ennemys.Count; i++)
                 {
                     ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
                 }
 
                 Main.Instance.Spawn();
-
+                */
                 beat = 0;
             }
             else if(cantAct && beat >=3)
@@ -118,16 +132,17 @@ public class SoundDisplay : Singleton<SoundDisplay>
                     doOnceCPT++;
                 }
             }
-
+            
 		}
     }
     public double Getbmp()
     {
         if (bpm > 10)
-            return  60/bpm;
+            return  60/(bpm+7);
         else
             return bpm;
     }
+
 
     public void AddEnnemy(GameObject ennemy)
     {

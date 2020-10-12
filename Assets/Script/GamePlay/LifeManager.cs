@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class LifeManager : Singleton<LifeManager>
@@ -16,34 +17,25 @@ public class LifeManager : Singleton<LifeManager>
         life = lifes;
         lifeText.text = "Life: " + life.ToString();
     }
-    public void TakeDamage(AudioSource[] audioSource, AudioSource mainSource)
+    public void TakeDamage( AudioMixer mixer)
     {
         life--;
-        mainSource.volume = mainSource.volume / 2;
+        mixer.SetFloat("MainVolume", -5);
         if(life <= 0)
         {
             gameOver.SetActive(true);
             Time.timeScale = 0;
-            foreach (AudioSource sound in audioSource)
-            {
-                sound.volume = sound.volume / 2;
-            }
+
         }
         else
         {
-            float[] _volume = new float[audioSource.Length];
-            for (int i = 0; i < _volume.Length-1; i++)
-            {
-                _volume[i] = audioSource[i].volume;
-                audioSource[i].volume = audioSource[i].volume / 2;
-            }
             lifeText.text = "Life: " + life.ToString();
-            StartCoroutine(Fade(_volume,audioSource, mainSource));
+            StartCoroutine(Fade(mixer));
         }
 
     }
 
-    IEnumerator Fade(float[] _volume, AudioSource[] audioSource, AudioSource mainSource)
+    IEnumerator Fade(AudioMixer mixer)
     {
         for (int i = 0; i < 100; i++)
         {
@@ -55,11 +47,7 @@ public class LifeManager : Singleton<LifeManager>
             fade.color -= new Color(0, 0, 0, 0.01f);
             yield return new WaitForSeconds(0.002f);
         }
-        for (int i = 0; i < _volume.Length - 1; i++)
-        {
-            audioSource[i].volume = _volume[i];
-        }
-        mainSource.volume = mainSource.volume* 2;
+        mixer.SetFloat("MainVolume", 0);
 
     }
 }

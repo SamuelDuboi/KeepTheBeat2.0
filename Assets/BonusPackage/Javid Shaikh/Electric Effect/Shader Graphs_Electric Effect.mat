@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shader Graphs_Electric Effect
+  m_Shader: {fileID: -6465566751694194690, guid: a1388e42fb7fd8a4d8d689c819862441,
+    type: 3}
+  m_ShaderKeywords: 
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Texture2DAsset_3F84FC56_Out_0:
+        m_Texture: {fileID: 2800000, guid: 9d046e572e91e564d94765aede4b33c2, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - Vector1_A6C083BC: 1
+    - Vector1_CDC0FAD: 0.27
+    - Vector1_EAD605A: 1
+    m_Colors:
+    - Color_8AF8821D: {r: 0, g: 3.0069265, b: 3.2107859, a: 1}
+    - Vector2_4B2A09A3: {r: 1.5, g: 0.001, b: 0, a: 0}

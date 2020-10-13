@@ -34,7 +34,6 @@ public class SoundDisplay : Singleton<SoundDisplay>
     // Update is called once per frame
     void FixedUpdate()
     {
-       
 
         /*if (Time.time >= mainBeat.clip.length+ loopNumber)
         {

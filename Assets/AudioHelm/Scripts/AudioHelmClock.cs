@@ -89,7 +89,7 @@ namespace AudioHelm
             Native.Pause(false);
         }
 
-        void SetGlobalBpm()
+     public   void SetGlobalBpm()
         {
             if (bpm_ > 0.0f)
             {

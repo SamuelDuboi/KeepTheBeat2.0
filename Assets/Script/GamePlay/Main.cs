@@ -374,7 +374,7 @@ public class Main : Singleton<Main>
 
     public void CantShoot()
     {
-       canShoot = false;
+        canShoot = false;
         doOnceCPT = 0;
         SoundDisplay.Instance.doOnce = true;
     }

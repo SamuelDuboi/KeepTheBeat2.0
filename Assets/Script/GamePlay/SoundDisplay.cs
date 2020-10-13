@@ -28,6 +28,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     // Start is called before the first frame update
     void Start()
     {
+        
         pourcentageCalculated = pourcentageAllow / 100 * (60/clock.bpm);
     }
 
@@ -45,7 +46,9 @@ public class SoundDisplay : Singleton<SoundDisplay>
             mainBeat.Play();
         }*/
 
-
+        pourcentageCalculated = pourcentageAllow / 100 * (60 / clock.bpm);
+        Debug.Log( AudioHelmClock.GetGlobalBeatTime());
+        
         timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
         CanAttack();
     }

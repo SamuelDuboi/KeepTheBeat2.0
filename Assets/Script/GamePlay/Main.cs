@@ -1,6 +1,6 @@
-﻿using System.Collections;
+﻿using AudioHelm;
+using System.Collections;
 using System.Collections.Generic;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,7 +9,6 @@ public class Main : Singleton<Main>
     [Header("Sound")]
     public AudioSource music;
     public AudioSource clap;
-    public double bpm;
     [Range(0, 100)]
     public float pourcentageAllow;
 
@@ -46,12 +45,14 @@ public class Main : Singleton<Main>
     private float bulletTimeTimer;
 
 
+    private int doOnceCPT;
+
 
     private void Start()
     {
-
+        
         sprite = GetComponent<SpriteRenderer>();
-        bpm = SoundDisplay.Instance.Getbmp();
+
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, transform.position);
@@ -156,7 +157,12 @@ public class Main : Singleton<Main>
     #region shoots
     void Shoot(Vector2 position, GameObject rowOn)
     {
-        //canShoot = false;
+        doOnceCPT++;
+        if(doOnceCPT ==2)
+        {
+            doOnceCPT = 0;
+            canShoot = false;
+        }
         RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(position.x - transform.position.x, position.y - transform.position.y));
         StartCoroutine(RowFade(rowOn));
         if (hit.collider != null && hit.collider.gameObject.tag == "Ennemy")
@@ -357,7 +363,21 @@ public class Main : Singleton<Main>
 
     }
 
+    public void CanShoot()
+    {
+        if (SoundDisplay.Instance.doOnce)
+        {
+            canShoot = true;
+        }
+      
+    }
 
+    public void CantShoot()
+    {
+       canShoot = false;
+        doOnceCPT = 0;
+        SoundDisplay.Instance.doOnce = true;
+    }
 }
 
 

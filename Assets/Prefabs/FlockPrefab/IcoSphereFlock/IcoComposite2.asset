@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ec78abfbdd661c4fa51b282927212fd, type: 3}
+  m_Name: IcoComposite2
+  m_EditorClassIdentifier: 
+  behaviors:
+  - {fileID: 11400000, guid: f8073154960698c4ba64fcb9223c506c, type: 2}
+  - {fileID: 11400000, guid: 6b162cee72a89304890dbe283ace0ae9, type: 2}
+  - {fileID: 11400000, guid: a5a1662166213184eb96433973a12aac, type: 2}
+  - {fileID: 11400000, guid: 3393dbc18adee8e4388a81e726d4209c, type: 2}
+  weights:
+  - 1
+  - 20
+  - 1
+  - 1

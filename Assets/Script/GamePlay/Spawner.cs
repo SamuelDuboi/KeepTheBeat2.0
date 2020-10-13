@@ -9,8 +9,8 @@ public class Spawner : MonoBehaviour
     public GameObject ennemy;
     public int timeForSpawn;
     private double waitForSpawn;
-    private Vector2 distanceToMove;
-    [HideInInspector] public Vector2[] positions = new Vector2[6];
+    private Vector3 distanceToMove;
+    public Vector3[] positions = new Vector3[6];
     private Color currentColor;
     // Start is called before the first frame update
     void Start()
@@ -24,9 +24,11 @@ public class Spawner : MonoBehaviour
     {
         distanceToMove.x = (main.transform.position.x - transform.position.x) / 6;
         distanceToMove.y = (main.transform.position.y - transform.position.y) / 6;
+        distanceToMove.z = (main.transform.position.z - transform.position.z) / 6;
+
         for (int i = 0; i < 6; i++)
         {
-            positions[i] = new Vector2(transform.position.x + distanceToMove.x * i, transform.position.y + distanceToMove.y * i);
+            positions[i] = new Vector3(transform.position.x + distanceToMove.x * i, transform.position.y + distanceToMove.y * i,transform.position.z + distanceToMove.z*i);
             GameObject _pawn = Instantiate(pawn, positions[i], Quaternion.identity, transform);
             _pawn.GetComponent<SpriteRenderer>().color = currentColor;
 

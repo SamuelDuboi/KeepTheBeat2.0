@@ -5,7 +5,7 @@ using UnityEngine;
 public class EnnemyBehavior : MonoBehaviour
 {
     private double bpm;
-    public Vector2[] positions;
+    public Vector3[] positions;
   [HideInInspector]  public int cpt;
     public int scoreValue;
 

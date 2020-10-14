@@ -18,17 +18,18 @@ public class SoundDisplay : Singleton<SoundDisplay>
     [Range(1,3)]
     public int speedModifier = 1;
 
+    private bool doOnceBeat;
     public AudioSource[] loops = new AudioSource[2];
     public AudioSource fail;
 
     public bool cantAct;
     [HideInInspector] public List<GameObject> ennemys = new List<GameObject>();
 
+    private int cptForMovement;
    [HideInInspector] public bool doOnce;
     // Start is called before the first frame update
     void Start()
     {
-        
         pourcentageCalculated = pourcentageAllow / 100 * (60/clock.bpm);
     }
 
@@ -39,45 +40,49 @@ public class SoundDisplay : Singleton<SoundDisplay>
         
         timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
 
-        Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
+        //Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
     }
 
     public void BeatEvent()
     {
+        if (AudioHelmClock.GetGlobalBeatTime() < 0)
+            return;
         beat++;
-        if (beat >= 6 && beat <= 10)
-        {
-            if (beat == 8)
+
+            if (beat == 0)
+            {
+                /* if (beat == 8)
+                 {
+                     timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
+                 }*/
+                
+            }
+            else if (beat == 8)
+            {
+                Main.Instance.CantShoot();
+            }
+            else if (beat == 12)
+            {
+                cptForMovement++;
+
+            beat = 0;
+            Main.Instance.CanShoot();
+        }
+            if (cptForMovement == 1 && beat == 4)
             {
                 timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
-            }
-            Main.Instance.CanShoot();
-        }
-        else if (beat >= 14 && beat <= 18)
-        {
-            Main.Instance.CanShoot();
-        }
-        else
-            Main.Instance.CantShoot();
-        if (beat == 16 && !cantAct)
-        {
-            timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
+                cptForMovement = 0;
+                for (int i = 0; i < ennemys.Count; i++)
+                {
+                    ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
-            for (int i = 0; i < ennemys.Count; i++)
-            {
-                ennemys[i].GetComponent<EnnemyBehavior>().Move();
+                }
+
+                Main.Instance.Spawn();
 
             }
-
-            Main.Instance.Spawn();
-
-            beat = 0;
-        }
-        else if (cantAct && beat >= 18)
-        {
-            cantAct = false;
-            beat = 0;
-        }
+        
+        
         
         
     }

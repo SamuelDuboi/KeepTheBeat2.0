@@ -28,13 +28,23 @@ public class Score : Singleton<Score>
         score += upNumber*scorMultiplier;
         cptStreak++;
         scorText.text = "Score : " + score.ToString();
-        if(cptStreak >= 2)
+        if(cptStreak >= 10)
         {
             SoundDisplay.Instance.Unmute(scorMultiplier-1);
             scorMultiplier++;
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
             cptStreak = 0;
         }
+    }
+
+    public void ScoreDown(int upNumber)
+    {
+        score -= upNumber ;
+        if(cptStreak!=0)
+            cptStreak--;
+        
+        scorText.text = "Score : " + score.ToString();
+        
     }
 
     public void ModifierDown()

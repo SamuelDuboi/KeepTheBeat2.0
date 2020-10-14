@@ -10,7 +10,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public float beat;
     private double timePreviousBeat;
     [Range(0,100)]
-    public double pourcentageAllow;
+    public float pourcentageAllow;
     private  double pourcentageCalculated;
     private  double timer;
     public AudioHelmClock clock;
@@ -35,31 +35,31 @@ public class SoundDisplay : Singleton<SoundDisplay>
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        /*if (Time.time >= mainBeat.clip.length+ loopNumber)
-        {
-            loopNumber += mainBeat.clip.length;
-        }
-        if (!mainBeat.isPlaying)
-        {
-            loopNumber += mainBeat.clip.length;
-            mainBeat.Play();
-        }*/
-
-        pourcentageCalculated = pourcentageAllow / 100 * (60 / clock.bpm);
-        Debug.Log( AudioHelmClock.GetGlobalBeatTime());
+        pourcentageCalculated = pourcentageAllow / 100f * (60f / clock.bpm);
         
         timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
-        CanAttack();
+
+        Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
     }
 
     public void BeatEvent()
     {
         beat++;
-        if(beat == 4 )
-        timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
-
-        if (beat == 8 && !cantAct)
+        if (beat >= 6 && beat <= 10)
+        {
+            if (beat == 8)
+            {
+                timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
+            }
+            Main.Instance.CanShoot();
+        }
+        else if (beat >= 14 && beat <= 18)
+        {
+            Main.Instance.CanShoot();
+        }
+        else
+            Main.Instance.CantShoot();
+        if (beat == 16 && !cantAct)
         {
             timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
 
@@ -73,7 +73,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
             beat = 0;
         }
-        else if (cantAct && beat >= 9)
+        else if (cantAct && beat >= 18)
         {
             cantAct = false;
             beat = 0;
@@ -82,26 +82,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
         
     }
    
-    void CanAttack()
-    {
-        Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer/(60/clock.bpm )));
 
-        if (timer >= pourcentageCalculated
-            && timer <= 60/clock.bpm-pourcentageCalculated
-            //||timer <=bpm- pourcentageAllow / 100 * bpm && timer >= bpm / 2 + pourcentageAllow / 100 * bpm
-            )
-        {
-            Main.Instance.CantShoot();
-        }
-
-		if (timer >= 60/clock.bpm - pourcentageCalculated
-            //|| timer >= bpm / 2 - pourcentageAllow / 100 * bpm && timer <= bpm / 2 + pourcentageAllow / 100 * bpm
-            )
-		{
-            Main.Instance.CanShoot();
-            
-		}
-    }
  
 
     public void AddEnnemy(GameObject ennemy)

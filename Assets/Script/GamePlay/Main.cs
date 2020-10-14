@@ -7,10 +7,7 @@ using UnityEngine.UI;
 public class Main : Singleton<Main>
 {
     [Header("Sound")]
-    public AudioSource music;
     public AudioSource clap;
-    [Range(0, 100)]
-    public float pourcentageAllow;
 
     [Header("Spawn")]
     public GameObject[] positionEnd = new GameObject[6];

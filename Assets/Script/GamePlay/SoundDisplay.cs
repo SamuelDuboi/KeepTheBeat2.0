@@ -10,7 +10,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public float beat;
     private double timePreviousBeat;
     [Range(0,100)]
-    public double pourcentageAllow;
+    public float pourcentageAllow;
     private  double pourcentageCalculated;
     private  double timer;
     public AudioHelmClock clock;
@@ -18,90 +18,76 @@ public class SoundDisplay : Singleton<SoundDisplay>
     [Range(1,3)]
     public int speedModifier = 1;
 
+    private bool doOnceBeat;
     public AudioSource[] loops = new AudioSource[2];
     public AudioSource fail;
 
     public bool cantAct;
     [HideInInspector] public List<GameObject> ennemys = new List<GameObject>();
 
+    private int cptForMovement;
    [HideInInspector] public bool doOnce;
     // Start is called before the first frame update
     void Start()
     {
-        
         pourcentageCalculated = pourcentageAllow / 100 * (60/clock.bpm);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-
-        /*if (Time.time >= mainBeat.clip.length+ loopNumber)
-        {
-            loopNumber += mainBeat.clip.length;
-        }
-        if (!mainBeat.isPlaying)
-        {
-            loopNumber += mainBeat.clip.length;
-            mainBeat.Play();
-        }*/
-
-        pourcentageCalculated = pourcentageAllow / 100 * (60 / clock.bpm);
-        Debug.Log( AudioHelmClock.GetGlobalBeatTime());
+        pourcentageCalculated = pourcentageAllow / 100f * (60f / clock.bpm);
         
         timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
-        CanAttack();
+
+        //Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
     }
 
     public void BeatEvent()
     {
+        if (AudioHelmClock.GetGlobalBeatTime() < 0)
+            return;
         beat++;
-        if(beat == 4 )
-        timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
 
-        if (beat == 8 && !cantAct)
-        {
-            timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
-
-            for (int i = 0; i < ennemys.Count; i++)
+            if (beat == 0)
             {
-                ennemys[i].GetComponent<EnnemyBehavior>().Move();
+                /* if (beat == 8)
+                 {
+                     timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
+                 }*/
+                
+            }
+            else if (beat == 8)
+            {
+                Main.Instance.CantShoot();
+            }
+            else if (beat == 12)
+            {
+                cptForMovement++;
+
+            beat = 0;
+            Main.Instance.CanShoot();
+        }
+            if (cptForMovement == 1 && beat == 4)
+            {
+                timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
+                cptForMovement = 0;
+                for (int i = 0; i < ennemys.Count; i++)
+                {
+                    ennemys[i].GetComponent<EnnemyBehavior>().Move();
+
+                }
+
+                Main.Instance.Spawn();
 
             }
-
-            Main.Instance.Spawn();
-
-            beat = 0;
-        }
-        else if (cantAct && beat >= 9)
-        {
-            cantAct = false;
-            beat = 0;
-        }
+        
+        
         
         
     }
    
-    void CanAttack()
-    {
-        Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer/(60/clock.bpm )));
 
-        if (timer >= pourcentageCalculated
-            && timer <= 60/clock.bpm-pourcentageCalculated
-            //||timer <=bpm- pourcentageAllow / 100 * bpm && timer >= bpm / 2 + pourcentageAllow / 100 * bpm
-            )
-        {
-            Main.Instance.CantShoot();
-        }
-
-		if (timer >= 60/clock.bpm - pourcentageCalculated
-            //|| timer >= bpm / 2 - pourcentageAllow / 100 * bpm && timer <= bpm / 2 + pourcentageAllow / 100 * bpm
-            )
-		{
-            Main.Instance.CanShoot();
-            
-		}
-    }
  
 
     public void AddEnnemy(GameObject ennemy)

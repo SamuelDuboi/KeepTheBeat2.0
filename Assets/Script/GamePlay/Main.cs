@@ -7,10 +7,7 @@ using UnityEngine.UI;
 public class Main : Singleton<Main>
 {
     [Header("Sound")]
-    public AudioSource music;
     public AudioSource clap;
-    [Range(0, 100)]
-    public float pourcentageAllow;
 
     [Header("Spawn")]
     public GameObject[] positionEnd = new GameObject[6];
@@ -150,7 +147,7 @@ public class Main : Singleton<Main>
                     Shoot(specialSpawner.transform.position, true);
             }
             else
-                Debug.Log("t'es pas en rythme connard");
+                Score.Instance.ScoreDown(1000);
         }
     }
 
@@ -431,10 +428,11 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
         {
             instance = this as T;
         }
-        else
+     /*   else
         {
+            Debug.Log("yo");
             Destroy(gameObject);
-        }
+        }*/
     }
 
     #endregion

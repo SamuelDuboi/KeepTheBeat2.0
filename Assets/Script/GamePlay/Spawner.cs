@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public GameObject pawn;
-    public GameObject main;
+    public GameObject direction;
     public GameObject ennemy;
     public int timeForSpawn;
     private double waitForSpawn;
@@ -22,9 +22,9 @@ public class Spawner : MonoBehaviour
 
     void StartSpawn()
     {
-        distanceToMove.x = (main.transform.position.x - transform.position.x) / 6;
-        distanceToMove.y = (main.transform.position.y - transform.position.y) / 6;
-        distanceToMove.z = (main.transform.position.z - transform.position.z) / 6;
+        distanceToMove.x = (direction.transform.position.x - transform.position.x) / 6;
+        distanceToMove.y = (direction.transform.position.y - transform.position.y) / 6;
+        distanceToMove.z = (direction.transform.position.z - transform.position.z) / 6;
 
         for (int i = 0; i < 6; i++)
         {

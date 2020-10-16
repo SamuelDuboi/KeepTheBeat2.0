@@ -98,6 +98,8 @@ public class SoundDisplay : Singleton<SoundDisplay>
     }
     public void RemoveEnnemy(GameObject ennemy)
     {
+        if (ennemy.GetComponent<EnnemyBehavior>().tile != null)
+            ennemy.GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();        
         ennemys.Remove(ennemy);
     }
 
@@ -113,6 +115,8 @@ public class SoundDisplay : Singleton<SoundDisplay>
         fail.Play();
         for (int i = 0; i < _ennemyNumber; i++)
         {
+            if (ennemys[0].GetComponent<EnnemyBehavior>().tile != null)
+                ennemys[0].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
             Destroy(ennemys[0]);
             ennemys.RemoveAt(0);
         }

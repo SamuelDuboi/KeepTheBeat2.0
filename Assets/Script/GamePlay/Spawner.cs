@@ -30,7 +30,7 @@ public class Spawner : MonoBehaviour
         {
             positions[i] = new Vector3(transform.position.x + distanceToMove.x * i, transform.position.y + distanceToMove.y * i,transform.position.z + distanceToMove.z*i);
             GameObject _pawn = Instantiate(pawn, positions[i], Quaternion.identity, transform);
-            _pawn.GetComponent<SpriteRenderer>().color = currentColor;
+
 
         }
 
@@ -40,6 +40,8 @@ public class Spawner : MonoBehaviour
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
         SoundDisplay.Instance.AddEnnemy(_ennemy);
+
+        _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
     }
     /// <summary>

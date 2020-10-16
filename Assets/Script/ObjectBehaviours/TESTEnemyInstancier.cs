@@ -12,13 +12,13 @@ public class TESTEnemyInstancier : MonoBehaviour
 
     void Start()
     {
-       newEn = Instantiate(enemy, transform);
+        newEn = Instantiate(enemy, transform);
     }
 
 
     private void FixedUpdate()
     {
-        newEn.transform.Translate(new Vector3(destination.position.x - newEn.transform.position.x, destination.position.y - newEn.transform.position.y, destination.position.z - newEn.transform.position.z) * Time.deltaTime);
+        newEn.transform.Translate(new Vector3(destination.position.x - newEn.transform.position.x, destination.position.y - newEn.transform.position.y, destination.position.z - newEn.transform.position.z) * Time.deltaTime * 5);
     }
 
     void Travel()

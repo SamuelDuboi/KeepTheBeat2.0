@@ -42,6 +42,9 @@ public class Main : Singleton<Main>
     private float bulletTimeTimer;
 
 
+    [Header("Explosion")]
+    public GameObject explosion;
+
     private int doOnceCPT;
 
 
@@ -167,6 +170,7 @@ public class Main : Singleton<Main>
         {
             lineRenderer.SetPosition(1, hit.transform.position);
             clap.Play();
+            Instantiate(explosion, hit.collider.transform.position, Quaternion.identity);
             StartCoroutine(LaserFade());
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);

@@ -97,10 +97,12 @@ public class PaternEditorWIndow : EditorWindow
                 {
                     foreach (var enemy in pattern.ennemiesPositionForEditor)
                     {
-                        if (enemy == squarePosition[i, x])
+                        if (enemy.x == squarePosition[i, x].x && enemy.y == squarePosition[i,x].y)
                         {
                             _cpt++;
+                            squarePosition[i, x].z = enemy.z;
                             ennemies[i, x] = squarePosition[i, x];
+                            Debug.Log(squarePosition[i, x]);
                         }
                         if (_cpt == 5)
                         {
@@ -216,17 +218,18 @@ public class PaternEditorWIndow : EditorWindow
                                 {
                                     if (ennemies[z, x] != squarePosition[z, x])
                                     {
-                                        pattern.AddEnnemy(squarePosition[z, x], z, x);
                                         squarePosition[z, x].z++;
+                                        pattern.AddEnnemy(squarePosition[z, x], z, x);
                                         ennemies[z, x] = squarePosition[z, x];
 
                                     }
                                 }
+                                squarePosition[i, x].z++;
                                 ennemies[i, x] = squarePosition[i, x];
                             }
                             else if(ennemies[i,x].z < 3)
                             {
-                                for (int z = 0; z < 6; z++)
+                                /*for (int z = 0; z < 6; z++)
                                 {
                                     if (ennemies[z, x] != squarePosition[z, x])
                                     {
@@ -236,7 +239,7 @@ public class PaternEditorWIndow : EditorWindow
 
                                     }
                                 }
-                                ennemies[i, x] = squarePosition[i, x];
+                                ennemies[i, x] = squarePosition[i, x];*/
                             }
                             else
                             {

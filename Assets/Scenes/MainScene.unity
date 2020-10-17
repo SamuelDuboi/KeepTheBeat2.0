@@ -37942,6 +37942,7 @@ MonoBehaviour:
   specialSpawner: {fileID: 6306001013107137649}
   isBulletTime: 0
   maxBulletTime: 1000
+  explosion: {fileID: 9077710739462499855, guid: 4ad6c22e18d6f1748ae1afde887a33d6, type: 3}
 --- !u!224 &6306001012366083334
 RectTransform:
   m_ObjectHideFlags: 0

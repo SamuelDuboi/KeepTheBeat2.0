@@ -27,6 +27,9 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
     private int cptForMovement;
    [HideInInspector] public bool doOnce;
+
+    public GameObject heart;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +44,8 @@ public class SoundDisplay : Singleton<SoundDisplay>
         timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
 
         //Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
+
+        ScaleHeart();
     }
 
     public void BeatEvent()
@@ -123,5 +128,11 @@ public class SoundDisplay : Singleton<SoundDisplay>
         cantAct = true;
         if (loopNUmber >= 0 && loopNUmber < loops.Length)
             loops[loopNUmber].mute = true;
+    }
+
+    public void ScaleHeart()
+    {
+        float scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) * 20;
+        heart.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
     }
 }

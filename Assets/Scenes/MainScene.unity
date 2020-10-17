@@ -36549,7 +36549,7 @@ MonoBehaviour:
   - notes: []
   - notes: []
   - notes: []
-  scrollPosition: {x: 0, y: 660}
+  scrollPosition: {x: 0, y: 420}
   autoScroll: 0
   division: 1
   zoom: 0.163
@@ -37815,8 +37815,8 @@ LineRenderer:
       serializedVersion: 2
       m_Curve:
       - serializedVersion: 3
-        time: 0
-        value: 0.24285734
+        time: 0.03533554
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -37824,8 +37824,8 @@ LineRenderer:
         inWeight: 0.33333334
         outWeight: 0.33333334
       - serializedVersion: 3
-        time: 1
-        value: 0.24285507
+        time: 0.9911804
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -37837,8 +37837,8 @@ LineRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 0.5943396, g: 0.5943396, b: 0.5943396, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 1, b: 1, a: 1}
+      key1: {r: 0.49056602, g: 0.49056602, b: 0.49056602, a: 1}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -37866,7 +37866,7 @@ LineRenderer:
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
-    alignment: 0
+    alignment: 1
     textureMode: 0
     shadowBias: 0.5
     generateLightingData: 0
@@ -38363,6 +38363,7 @@ MonoBehaviour:
   cantAct: 0
   ennemys: []
   doOnce: 0
+  heart: {fileID: 8790651030324516901}
 --- !u!1 &6306001012711430470
 GameObject:
   m_ObjectHideFlags: 0
@@ -42101,7 +42102,6 @@ GameObject:
   - component: {fileID: 4979470116813360442}
   - component: {fileID: 7133234490205649392}
   - component: {fileID: 8790651030324516900}
-  - component: {fileID: 8790651030324516902}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -42109,25 +42109,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!95 &8790651030324516902
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8790651030324516901}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1861bffbcac34af4f9209bf050457c6b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!23 &8832904785426495470
 MeshRenderer:
   m_ObjectHideFlags: 0

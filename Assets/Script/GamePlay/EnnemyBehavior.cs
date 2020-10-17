@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using AudioHelm;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,10 +10,24 @@ public class EnnemyBehavior : MonoBehaviour
   [HideInInspector]  public int cpt;
     public int scoreValue;
     [HideInInspector] public GameObject tile;
-
-
-   public virtual void Move()
+    [Range(0, 100)]
+    public float speed;
+    public GameObject child;
+    private bool cantMove;
+    private void Update()
     {
+        if(!cantMove)
+        transform.position = Vector3.MoveTowards(transform.position, positions[0], speed*AudioHelmClock.GetGlobalBpm());
+    }
+
+
+    public virtual void Move()
+    {
+        if (!cantMove)
+        {
+            cantMove = true;
+            child.SetActive(false);
+        }
         if (cpt < 5)
         {
             cpt++;

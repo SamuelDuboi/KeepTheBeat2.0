@@ -152,7 +152,7 @@ public class Main : Singleton<Main>
     }
 
     #region shoots
-    void Shoot(Vector2 position, GameObject rowOn)
+    void Shoot(Vector3 position, GameObject rowOn)
     {
         doOnceCPT++;
         if(doOnceCPT ==2)
@@ -160,7 +160,8 @@ public class Main : Singleton<Main>
             doOnceCPT = 0;
             canShoot = false;
         }
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(position.x - transform.position.x, position.y - transform.position.y));
+        RaycastHit hit;
+        Physics.Raycast(new Vector3(position.x, position.y-2, position.z-13), new Vector3(0,2,15),out hit );
         StartCoroutine(RowFade(rowOn));
         if (hit.collider != null && hit.collider.gameObject.tag == "Ennemy")
         {

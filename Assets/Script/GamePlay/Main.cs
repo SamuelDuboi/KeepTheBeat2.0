@@ -206,7 +206,7 @@ public class Main : Singleton<Main>
 
     IEnumerator LaserFade()
     {
-        for (int i = 0; i < 100; i++)
+        for (int i = 0; i < 100 * 60/AudioHelmClock.GetGlobalBpm(); i++)
         {
             lineRenderer.startColor -= new Color(0, 0, 0, 0.01f);
             lineRenderer.endColor -= new Color(0, 0, 0, 0.01f);

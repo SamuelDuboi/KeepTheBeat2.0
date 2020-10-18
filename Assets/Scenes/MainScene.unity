@@ -38602,7 +38602,7 @@ MonoBehaviour:
   - {fileID: 6306001012190953535}
   - {fileID: 6306001012119350644}
   patterns:
-  - {fileID: 11400000, guid: d2527f4a676d7ca4382db34a84d4dff7, type: 2}
+  - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
   - {fileID: 11400000, guid: 072e1229965b12d4cb5f6c7a9297cc3b, type: 2}
   - {fileID: 11400000, guid: 8b77cf9ecac0c8140871b4c15121d035, type: 2}
   - {fileID: 11400000, guid: 71a41471277e67c48af2d2333ea33982, type: 2}
@@ -38636,8 +38636,8 @@ MonoBehaviour:
   patterns2: []
   patterns3: []
   ennemysArray:
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1604807694688777876, guid: 0710a1263bce801449ee02ae23ca1b7f, type: 3}
+  - {fileID: 1604807694688777876, guid: 8ac850aeee120e44dafe4933c9353d87, type: 3}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

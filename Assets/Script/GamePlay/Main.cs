@@ -315,6 +315,7 @@ public class Main : Singleton<Main>
             if (previousEnnemyList[i].y == biggest)
             {
                 numberForEnnemy.Add(i);
+                Debug.Log(numberForEnnemy.Count);
             }
 
         }

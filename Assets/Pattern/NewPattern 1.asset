@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e7025eef1b2d4640a206ea945122e55, type: 3}
-  m_Name: NewPattern
+  m_Name: NewPattern 1
   m_EditorClassIdentifier: 
   ennemiesPositionForEditor:
   - {x: 100, y: 600, z: 1}
@@ -26,4 +26,4 @@ MonoBehaviour:
   - {x: 3, y: 11, z: 1}
   - {x: 4, y: 11, z: 1}
   - {x: 5, y: 11, z: 1}
-  difficulty: 1
+  difficulty: 0

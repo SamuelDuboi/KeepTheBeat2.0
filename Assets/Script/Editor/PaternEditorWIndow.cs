@@ -33,6 +33,9 @@ public class PaternEditorWIndow : EditorWindow
                     {new Vector3(1000,50),new Vector3(1000,100),new Vector3(1000,150),new Vector3(1000,200),new Vector3(1000,250),new Vector3(1000,300),new Vector3(1000,350),new Vector3(1000,400),new Vector3(1000,450),new Vector3(1000,500),new Vector3(1000,550),new Vector3(1000,600)},
     };
     Vector3[,] ennemies = new Vector3[7, 12];
+
+    Vector3 positionCliked;
+    private Vector2Int xClicked;
     private Rect ViewRect
     {
         get
@@ -45,7 +48,7 @@ public class PaternEditorWIndow : EditorWindow
 
 
     private Vector2 mousePosition;
-    static Texture2D background, inspectorColor, normalColor,teleportColor,tankColor,bossColor;
+    static Texture2D background, inspectorColor, normalColor,teleportColor,tankColor,bossColor,groupedColor;
     static Texture2D[] rowColor = new Texture2D[7];
    
     private bool doOnce;
@@ -70,6 +73,7 @@ public class PaternEditorWIndow : EditorWindow
         normalColor = UsualFunction.MakeTex(100, 100, Color.cyan);
         teleportColor = UsualFunction.MakeTex(100, 100, new Color(0.2f,0.5f,0.8f));
         tankColor = UsualFunction.MakeTex(100, 100, new Color(0.8f, 0.2f, 0.5f));
+        groupedColor = UsualFunction.MakeTex(100, 100, new Color(0.8f, 0.5f, 0.2f));
         bossColor = UsualFunction.MakeTex(100, 100, new Color(0.2f, 0.8f, 0.5f));
 
 
@@ -102,11 +106,15 @@ public class PaternEditorWIndow : EditorWindow
                             _cpt++;
                             squarePosition[i, x].z = enemy.z;
                             ennemies[i, x] = squarePosition[i, x];
-                            Debug.Log(squarePosition[i, x]);
+
                         }
                         if (_cpt == 5)
                         {
-                            ennemies[6, x] = ennemies[i, x] + Vector3.right * 400;
+                            ennemies[6, x] = ennemies[i, x] + Vector3.right * 500;
+                            ennemies[6, x].z = 1;
+                            squarePosition[6, x].z = 1;
+                            Debug.Log(ennemies[6, x]);
+                            Debug.Log(squarePosition[6, x]);
                             _cpt = 0;
                         }
 
@@ -152,7 +160,7 @@ public class PaternEditorWIndow : EditorWindow
         EditorGUILayout.Space(20);
         UsualEditorFunction.DrawButtonWithActionLayout("Tester", EditorStyles.miniButton, () => Play());
         pattern.difficulty = EditorGUILayout.IntField("Niveau de difficulté", pattern.difficulty); ;
-
+        EditorGUILayout.HelpBox("Espèce d'abrutie de link pas plus de deux notes sur la meme ligne", MessageType.Warning);
         EditorGUILayout.EndScrollView();
         EditorGUILayout.EndVertical();
         GUI.EndGroup();
@@ -180,7 +188,9 @@ public class PaternEditorWIndow : EditorWindow
                         case 3:
                             GUI.Box(_rectEnnemy, tankColor);
                             break;
-                       
+                        case 4:
+                            GUI.Box(_rectEnnemy, groupedColor);
+                            break;
                         default:
                             GUI.Box(_rectEnnemy, inspectorColor);
                             break;
@@ -227,9 +237,9 @@ public class PaternEditorWIndow : EditorWindow
                                 squarePosition[i, x].z++;
                                 ennemies[i, x] = squarePosition[i, x];
                             }
-                            else if(ennemies[i,x].z < 3)
+                            /*else if(ennemies[i,x].z < 3)
                             {
-                                /*for (int z = 0; z < 6; z++)
+                                for (int z = 0; z < 6; z++)
                                 {
                                     if (ennemies[z, x] != squarePosition[z, x])
                                     {
@@ -239,28 +249,30 @@ public class PaternEditorWIndow : EditorWindow
 
                                     }
                                 }
-                                ennemies[i, x] = squarePosition[i, x];*/
-                            }
+                                ennemies[i, x] = squarePosition[i, x];
+                            }*/
                             else
                             {
                                 for (int z = 0; z < 6; z++)
                                 {
                                     pattern.RemoveEnnemy(squarePosition[z, x], z, x);
-                                    ennemies[z, x] = Vector2.zero;
+                                    ennemies[z, x] = Vector3.zero;
                                     squarePosition[z, x].z = 0;
                                 }
-                                ennemies[i, x] = Vector2.zero;
-
+                                ennemies[i, x] = Vector3.zero;
+                                squarePosition[i, x].z = 0;
                             }
                         }
                         else
                         {
-
+                            
                             if (ennemies[i, x] != squarePosition[i, x])
                             {
                                 squarePosition[i, x].z++;
                                 pattern.AddEnnemy(squarePosition[i, x], i, x);
                                 ennemies[i, x] = squarePosition[i, x];
+                                positionCliked = ennemies[i, x];
+                                xClicked = new Vector2Int(i, x);
                             }
                             else if(ennemies[i, x].z <3)
                             {
@@ -268,24 +280,53 @@ public class PaternEditorWIndow : EditorWindow
                                 squarePosition[i, x].z++;
                                 pattern.AddEnnemy(squarePosition[i, x], i, x);
                                 ennemies[i, x] = squarePosition[i, x];
-
+                                positionCliked = ennemies[i, x];
+                                xClicked = new Vector2Int(i, x);
                             }
-                            else
+                            else if (ennemies[i, x].z == 4)
+                            {
+                                for (int z = 0; z < 6; z++)
+                                {
+                                    if(ennemies[z,x].z == 4)
+                                    {
+                                        squarePosition[z, x].z = 4;
+                                        pattern.RemoveEnnemy(squarePosition[z, x], z, x);
+                                        squarePosition[z, x].z = 0;
+                                    }
+                                }
+
+                                    
+                            }
+                            else 
                             {
                                 pattern.RemoveEnnemy(squarePosition[i, x], i, x);
                                 squarePosition[i, x].z = 0;
                             }
-
+                           
+                            
                         }
                         break;
+                    }
+                    else if(Event.current.type == EventType.MouseUp)
+                    {
+                        if(positionCliked != Vector3.zero &&squarePosition[i,x].y == positionCliked.y && positionCliked.x != squarePosition[i,x].x)
+                        {
+                            pattern.RemoveEnnemy(squarePosition[xClicked.x, xClicked.y], xClicked.x, xClicked.y);
+                            squarePosition[i, x].z = 4;
+                            squarePosition[xClicked.x, xClicked.y].z = 4;
+                            ennemies[i, x] = squarePosition[i, x];
+                            ennemies[xClicked.x, xClicked.y].z = squarePosition[i, x].z;
+                            pattern.AddEnnemy(squarePosition[i, x], i, x);
+                            pattern.AddEnnemy(squarePosition[xClicked.x, xClicked.y], xClicked.x, xClicked.y);
+                        }
+                        else
+                        {
+                            positionCliked = Vector3.zero;
+                        }
                     }
                 }
             }
 
-
         }
-
-
-
     }
 }

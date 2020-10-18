@@ -12,26 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7025eef1b2d4640a206ea945122e55, type: 3}
   m_Name: NewPattern
   m_EditorClassIdentifier: 
-  ennemiesPositionForEditor:
-  - {x: 100, y: 200, z: 0}
-  - {x: 200, y: 200, z: 0}
-  - {x: 300, y: 200, z: 0}
-  - {x: 400, y: 200, z: 0}
-  - {x: 500, y: 200, z: 0}
-  - {x: 600, y: 200, z: 0}
-  - {x: 400, y: 200, z: 0}
-  - {x: 200, y: 300, z: 1}
-  - {x: 200, y: 300, z: 1}
-  - {x: 200, y: 400, z: 1}
-  ennemiesPosition:
-  - {x: 0, y: 3, z: 0}
-  - {x: 1, y: 3, z: 0}
-  - {x: 2, y: 3, z: 0}
-  - {x: 3, y: 3, z: 0}
-  - {x: 4, y: 3, z: 0}
-  - {x: 5, y: 3, z: 0}
-  - {x: 3, y: 3, z: 0}
-  - {x: 1, y: 5, z: 1}
-  - {x: 1, y: 5, z: 1}
-  - {x: 1, y: 7, z: 1}
+  ennemiesPositionForEditor: []
+  ennemiesPosition: []
   difficulty: 0

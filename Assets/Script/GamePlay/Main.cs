@@ -270,9 +270,15 @@ public class Main : Singleton<Main>
             }
             else if (patternNumber < patterns.Length - 1)
                 _currentPattern = patterns3;
+            else
+            {
+                Debug.Log("c'est fini");
+                return;
+            }
 
             if (_currentPattern.Count == 0)
                 return;
+            
             #endregion
 
             previousNumberPattern.Add(currentPattern);

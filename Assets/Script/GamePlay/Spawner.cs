@@ -36,7 +36,7 @@ public class Spawner : MonoBehaviour
 
     }
 
-    public void Spwan()
+    public void Spwan(GameObject ennemy)
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
         _ennemy.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z * 100);
@@ -44,6 +44,23 @@ public class Spawner : MonoBehaviour
 
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
+    }
+    public void Spwan(GameObject ennemy, Vector3[] positions)
+    {
+        GameObject _ennemy = Instantiate(ennemy, transform);
+        _ennemy.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * 100);
+        SoundDisplay.Instance.AddEnnemy(_ennemy);
+
+        _ennemy.GetComponentInChildren<Light>().color = currentColor;
+        for (int i = 0; i < positions.Length; i++)
+        {
+            if(i%2 == 0)
+            _ennemy.GetComponent<EnnemyBehavior>().positions[i] = this.positions[i];
+            else
+                _ennemy.GetComponent<EnnemyBehavior>().positions[i] = positions[i];
+
+
+        }
     }
     /// <summary>
     /// Special spawner

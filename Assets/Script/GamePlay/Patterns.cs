@@ -43,4 +43,10 @@ public class Patterns : ScriptableObject
         else
             Debug.Log(position);
     }
+
+    public void RemoveAll()
+    {
+        ennemiesPosition = new List<Vector3>();
+        ennemiesPositionForEditor =new List<Vector3>();
+    }
 }

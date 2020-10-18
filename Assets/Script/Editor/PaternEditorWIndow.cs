@@ -48,18 +48,19 @@ public class PaternEditorWIndow : EditorWindow
 
 
     private Vector2 mousePosition;
-    static Texture2D background, inspectorColor, normalColor,teleportColor,tankColor,bossColor,groupedColor;
+    static Texture2D background, inspectorColor, normalColor,teleportColorLeft,tankColor,bossColor,groupedColor, teleportColorRight, redTexture;
     static Texture2D[] rowColor = new Texture2D[7];
    
     private bool doOnce;
 
+    private GUIStyle grosBoutonRouge;
     public void Init(in Patterns pattern)
     {
 
         this.pattern = pattern;
         var win = EditorWindow.GetWindow(typeof(PaternEditorWIndow));
         background = UsualFunction.MakeTex(2, 2, Color.black);
-        inspectorColor = UsualFunction.MakeTex(10000, 10000, Color.gray);
+        inspectorColor = UsualFunction.MakeTex(500, 1000, Color.gray);
 
         //attention c'est dégeu mais j'ai la flemme
         rowColor[0] = UsualFunction.MakeTex(100, 100, Color.green);
@@ -70,11 +71,13 @@ public class PaternEditorWIndow : EditorWindow
         rowColor[5] = UsualFunction.MakeTex(100, 100, new Color(0.35f, 0.25f, 0.5f));
         rowColor[6] = UsualFunction.MakeTex(100, 100, Color.white);
        
-        normalColor = UsualFunction.MakeTex(100, 100, Color.cyan);
-        teleportColor = UsualFunction.MakeTex(100, 100, new Color(0.2f,0.5f,0.8f));
-        tankColor = UsualFunction.MakeTex(100, 100, new Color(0.8f, 0.2f, 0.5f));
-        groupedColor = UsualFunction.MakeTex(100, 100, new Color(0.8f, 0.5f, 0.2f));
-        bossColor = UsualFunction.MakeTex(100, 100, new Color(0.2f, 0.8f, 0.5f));
+        normalColor = UsualFunction.MakeTex(50, 50, Color.cyan);
+        teleportColorLeft = UsualFunction.MakeTex(50, 50, new Color(0.2f,0.5f,0.8f));
+        teleportColorRight = UsualFunction.MakeTex(50, 50, new Color(0.1f,0.4f,0.9f));
+        tankColor = UsualFunction.MakeTex(50, 50, new Color(0.8f, 0.2f, 0.5f));
+        groupedColor = UsualFunction.MakeTex(50, 50, new Color(0.8f, 0.5f, 0.2f));
+        bossColor = UsualFunction.MakeTex(50, 50, new Color(0.2f, 0.8f, 0.5f));
+        redTexture = UsualFunction.MakeTex(50, 50, new Color(0.8f,0f,0f,1f));
 
 
         win.Show();
@@ -85,6 +88,11 @@ public class PaternEditorWIndow : EditorWindow
     private void OnEnable()
     {
         doOnce = false;
+        grosBoutonRouge = EditorStyles.miniButtonMid;
+        grosBoutonRouge.normal.background = redTexture;
+        grosBoutonRouge.active.background = redTexture;
+        grosBoutonRouge.onActive.background = redTexture;
+        grosBoutonRouge.onNormal.background = redTexture;
     }
 
 
@@ -151,7 +159,7 @@ public class PaternEditorWIndow : EditorWindow
     {
         inspectorRect = new Rect(position.width - inspectorWidth, 0, inspectorWidth, position.height - 20/*for better scrolling navigation*/);
         GUI.BeginGroup(inspectorRect);
-        var _rectangle = EditorGUILayout.BeginVertical(GUILayout.MaxWidth(inspectorWidth - 10/*for lisibility*/), GUILayout.MinHeight(500));
+        var _rectangle = EditorGUILayout.BeginVertical(GUILayout.MaxWidth(inspectorWidth/*for lisibility*/), GUILayout.MinHeight(500));
         GUI.Box(_rectangle, inspectorColor);
 
         scrollInspectorBar = EditorGUILayout.BeginScrollView(scrollInspectorBar);
@@ -160,7 +168,40 @@ public class PaternEditorWIndow : EditorWindow
         EditorGUILayout.Space(20);
         UsualEditorFunction.DrawButtonWithActionLayout("Tester", EditorStyles.miniButton, () => Play());
         pattern.difficulty = EditorGUILayout.IntField("Niveau de difficulté", pattern.difficulty); ;
-        EditorGUILayout.HelpBox("Espèce d'abrutie de link pas plus de deux notes sur la meme ligne", MessageType.Warning);
+        EditorGUILayout.HelpBox("Espèce d'abrutie de link pas plus de deux \n notes sur la meme ligne", MessageType.Warning);
+
+        #region colorDecription
+        EditorGUILayout.BeginHorizontal();
+            GUILayout.Box(normalColor);
+            EditorGUILayout.LabelField(": normal");
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Box(teleportColorLeft);
+        EditorGUILayout.LabelField(": teleporte à gauche");
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Box(teleportColorRight);
+        EditorGUILayout.LabelField(": teleporte à droite");
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Box(tankColor);
+        EditorGUILayout.LabelField(": tank");
+        EditorGUILayout.EndHorizontal();
+
+        EditorGUILayout.BeginHorizontal();
+        GUILayout.Box(groupedColor);
+        EditorGUILayout.Space();
+        GUILayout.Box(groupedColor);
+        EditorGUILayout.LabelField(": co-lié");
+        EditorGUILayout.EndHorizontal();
+        #endregion
+
+        EditorGUILayout.Space();
+
+        if(GUILayout.Button("Gros bouton rouge", grosBoutonRouge)) { GrosBoutonRouge(); }
         EditorGUILayout.EndScrollView();
         EditorGUILayout.EndVertical();
         GUI.EndGroup();
@@ -183,12 +224,15 @@ public class PaternEditorWIndow : EditorWindow
                              GUI.Box(_rectEnnemy,normalColor);
                             break;
                         case 2:
-                            GUI.Box(_rectEnnemy, teleportColor);
+                            GUI.Box(_rectEnnemy, teleportColorLeft);
                             break;
                         case 3:
-                            GUI.Box(_rectEnnemy, tankColor);
+                            GUI.Box(_rectEnnemy, teleportColorRight);
                             break;
                         case 4:
+                            GUI.Box(_rectEnnemy, tankColor);
+                            break;
+                        case 5:
                             GUI.Box(_rectEnnemy, groupedColor);
                             break;
                         default:
@@ -274,7 +318,7 @@ public class PaternEditorWIndow : EditorWindow
                                 positionCliked = ennemies[i, x];
                                 xClicked = new Vector2Int(i, x);
                             }
-                            else if(ennemies[i, x].z <3)
+                            else if(ennemies[i, x].z <4)
                             {
                                 pattern.RemoveEnnemy(squarePosition[i, x], i, x);
                                 squarePosition[i, x].z++;
@@ -283,13 +327,13 @@ public class PaternEditorWIndow : EditorWindow
                                 positionCliked = ennemies[i, x];
                                 xClicked = new Vector2Int(i, x);
                             }
-                            else if (ennemies[i, x].z == 4)
+                            else if (ennemies[i, x].z == 5)
                             {
                                 for (int z = 0; z < 6; z++)
                                 {
-                                    if(ennemies[z,x].z == 4)
+                                    if(ennemies[z,x].z == 5)
                                     {
-                                        squarePosition[z, x].z = 4;
+                                        squarePosition[z, x].z = 5;
                                         pattern.RemoveEnnemy(squarePosition[z, x], z, x);
                                         squarePosition[z, x].z = 0;
                                     }
@@ -312,8 +356,8 @@ public class PaternEditorWIndow : EditorWindow
                         if(positionCliked != Vector3.zero &&squarePosition[i,x].y == positionCliked.y && positionCliked.x != squarePosition[i,x].x)
                         {
                             pattern.RemoveEnnemy(squarePosition[xClicked.x, xClicked.y], xClicked.x, xClicked.y);
-                            squarePosition[i, x].z = 4;
-                            squarePosition[xClicked.x, xClicked.y].z = 4;
+                            squarePosition[i, x].z = 5;
+                            squarePosition[xClicked.x, xClicked.y].z = 5;
                             ennemies[i, x] = squarePosition[i, x];
                             ennemies[xClicked.x, xClicked.y].z = squarePosition[i, x].z;
                             pattern.AddEnnemy(squarePosition[i, x], i, x);
@@ -327,6 +371,19 @@ public class PaternEditorWIndow : EditorWindow
                 }
             }
 
+        }
+    }
+
+    private void GrosBoutonRouge()
+    {
+        for (int i = 0; i < 7; i++)
+        {
+            for (int x = 0; x < 12; x++)
+            {
+                squarePosition[i, x].z = 0;
+                ennemies[i, x] = Vector3.zero;
+                pattern.RemoveAll();
+            }
         }
     }
 }

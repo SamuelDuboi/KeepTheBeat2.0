@@ -7,7 +7,7 @@ public class EnnemyBehavior : MonoBehaviour
 {
     private double bpm;
     public Vector3[] positions;
-  [HideInInspector]  public int cpt;
+    [HideInInspector]  public int cpt;
     public int scoreValue;
     [HideInInspector] public GameObject tile;
     [Range(0, 100)]

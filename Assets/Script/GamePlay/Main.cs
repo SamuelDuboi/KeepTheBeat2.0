@@ -12,14 +12,16 @@ public class Main : Singleton<Main>
     [Header("Spawn")]
     public GameObject[] positionEnd = new GameObject[6];
     public Patterns[] patterns = new Patterns[1];
-    public List<Patterns> patterns1 = new List<Patterns>();
-    public List<Patterns> patterns2 = new List<Patterns>();
-    public List<Patterns> patterns3 = new List<Patterns>();
-    private List<int> previousNumberPattern = new List<int>();
+    [HideInInspector] public List<Patterns> patterns1 = new List<Patterns>();
+    [HideInInspector] public List<Patterns> patterns2 = new List<Patterns>();
+    [HideInInspector] public List<Patterns> patterns3 = new List<Patterns>();
+    [HideInInspector] private List<int> previousNumberPattern = new List<int>();
+
+    public GameObject[] ennemysArray = new GameObject[5];
     public int numberOfPatternPerDifficulty = 5;
 
-    private Vector2 previousEnnemy;
-    private List<Vector2> previousEnnemyList;
+    private Vector3 previousEnnemy;
+    private List<Vector3> previousEnnemyList;
     private int currentPattern;
     private int nodeNumber;
     private int emptyNode;
@@ -58,10 +60,10 @@ public class Main : Singleton<Main>
         lineRenderer.SetPosition(1, transform.position);
         specialBar.maxValue = specialMaxValue;
 
-        previousEnnemyList = new List<Vector2>();
+        previousEnnemyList = new List<Vector3>();
         SetPatternsArray();
 
-        foreach (Vector2 vector in patterns1[0].ennemiesPosition)
+        foreach (Vector3 vector in patterns1[0].ennemiesPosition)
         {
             previousEnnemyList.Add(vector);
         }
@@ -324,7 +326,22 @@ public class Main : Singleton<Main>
             {
                 for (int i = 0; i < numberForEnnemy.Count; i++)
                 {
-                    positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan();
+                    var _ennemy = previousEnnemyList[numberForEnnemy[i]].z;
+                    switch (_ennemy)
+                    {
+                        case 1:
+                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                            break;
+                        case 2:
+                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().positions);
+                            break;
+                            //all teleport ennemy has the same color
+                        case 3:
+                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().positions);
+                            break;                        
+                        default:
+                            break;
+                    }
                     previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
                 }
             }

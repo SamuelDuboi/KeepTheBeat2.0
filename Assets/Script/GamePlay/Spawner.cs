@@ -50,7 +50,7 @@ public class Spawner : MonoBehaviour
         GameObject _ennemy = Instantiate(ennemy, transform);
         _ennemy.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * 100);
         SoundDisplay.Instance.AddEnnemy(_ennemy);
-
+        _ennemy.GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
         for (int i = 0; i < positions.Length; i++)
         {

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 9095900275402434898}
   - component: {fileID: 405974685297015353}
   - component: {fileID: 6103158217417983000}
-  - component: {fileID: 561412697793271431}
+  - component: {fileID: 3750230278682561035}
   m_Layer: 15
   m_Name: TeleportEnnemy
   m_TagString: Ennemy
@@ -114,7 +114,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -5495902117074765545, guid: b739521b316baad47bbddeaa3540763f, type: 3}
---- !u!114 &561412697793271431
+--- !u!114 &3750230278682561035
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,10 +123,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1604807694688777876}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 291ecb95577a07a43bde3f5312821291, type: 3}
+  m_Script: {fileID: 11500000, guid: 1b7eaa98fa90ea545b043a0496bb32bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  positions: []
+  positions:
+  - {x: 0, y: 0, z: 6.744102e-10}
+  - {x: 0, y: 0, z: 0.00000016426638}
+  - {x: 0, y: 0, z: -1.7370635e+25}
+  - {x: 0, y: 0, z: 7.3e-43}
+  - {x: 0, y: 0, z: NaN}
+  - {x: 0, y: 0, z: 0}
   cpt: 0
   scoreValue: 10000
   tile: {fileID: 0}

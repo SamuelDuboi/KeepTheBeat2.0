@@ -327,19 +327,18 @@ public class Main : Singleton<Main>
                 for (int i = 0; i < numberForEnnemy.Count; i++)
                 {
                     var _ennemy = previousEnnemyList[numberForEnnemy[i]].z;
+
                     switch (_ennemy)
                     {
                         case 1:
                             positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                             break;
                         case 2:
-                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().positions);
+                            TpSpawn(previousEnnemyList[numberForEnnemy[i]].x ,(int)previousEnnemyList[numberForEnnemy[i]].x);
                             break;
-                            //all teleport ennemy has the same color
-                        case 3:
-                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().positions);
-                            break;                        
+                                           
                         default:
+                            Debug.Log(_ennemy);
                             break;
                     }
                     previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
@@ -369,6 +368,20 @@ public class Main : Singleton<Main>
     {
         specialSpawner.GetComponent<Spawner>().Spwan(true);
 
+    }
+
+    private void TpSpawn(float x, int listEnnemy)
+    {
+        if (x == 0 || x == 3)
+        {
+            positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy + 2].GetComponent<Spawner>().positions);
+        }
+        else if (x == 2 || x == 5)
+        {
+            positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy - 2].GetComponent<Spawner>().positions);
+        }
+        else 
+            Debug.Log(x);
     }
 
     IEnumerator BulletTime()

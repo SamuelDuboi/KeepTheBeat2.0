@@ -14,6 +14,7 @@ public class EnnemyBehavior : MonoBehaviour
     public float speed;
     public GameObject child;
     private bool cantMove;
+    [HideInInspector] public bool turnOnTrail;
     private void Update()
     {
         if(!cantMove)
@@ -26,6 +27,7 @@ public class EnnemyBehavior : MonoBehaviour
         if (!cantMove)
         {
             cantMove = true;
+            if(!turnOnTrail)
             child.SetActive(false);
         }
         if (cpt < 5)

@@ -271,7 +271,8 @@ public class Main : Singleton<Main>
             else if (patternNumber < patterns.Length - 1)
                 _currentPattern = patterns3;
 
-
+            if (_currentPattern.Count == 0)
+                return;
             #endregion
 
             previousNumberPattern.Add(currentPattern);

@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Score : Singleton<Score>
 {
     public static int score;
    
-   [HideInInspector] public int scorMultiplier =1;
+    [HideInInspector] public int scorMultiplier =1;
     [HideInInspector] public int cptStreak;
-    public Text scorText;
-    public Text scorMultiplierText;
+    public TextMeshProUGUI scorText;
+    public TextMeshProUGUI scorMultiplierText;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +44,7 @@ public class Score : Singleton<Score>
         if(cptStreak!=0)
             cptStreak--;
         
-        scorText.text = "Score : " + score.ToString();
+        scorText.text = score.ToString();
         
     }
 

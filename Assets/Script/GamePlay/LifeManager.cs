@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
+using TMPro;
 
 public class LifeManager : Singleton<LifeManager>
 {
-    public Text lifeText;
+    public TextMeshProUGUI lifeText;
     public int lifes;
     public static int life;
     public GameObject gameOver;

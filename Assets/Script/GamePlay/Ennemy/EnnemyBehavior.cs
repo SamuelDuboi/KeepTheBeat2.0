@@ -50,6 +50,7 @@ public class EnnemyBehavior : MonoBehaviour
         }
         else
         {
+            if(tile != null)
             tile.GetComponent<TilesBehavior>().Off();
             SoundDisplay.Instance.RemoveEnnemy(gameObject);    
             Score.Instance.ModifierDown();

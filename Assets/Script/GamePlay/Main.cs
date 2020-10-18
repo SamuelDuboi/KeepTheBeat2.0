@@ -46,6 +46,7 @@ public class Main : Singleton<Main>
 
     [Header("Explosion")]
     public GameObject explosion;
+    public GameObject explosionSpecial;
 
     private int doOnceCPT;
 
@@ -184,10 +185,11 @@ public class Main : Singleton<Main>
     /// </summary>
     /// <param name="position"></param>
     /// <param name="isSpecial"></param>
-    void Shoot(Vector2 position, bool isSpecial)
+    void Shoot(Vector3 position, bool isSpecial)
     {
         canShoot = false;
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, new Vector2(position.x - transform.position.x, position.y - transform.position.y));
+        RaycastHit hit;
+        Physics.Raycast(transform.position, new Vector3(position.x - transform.position.x, position.y - transform.position.y, position.z - transform.position.z), out hit);
         StartCoroutine(RowFade(isSpecial));
         if (specialCount == specialMaxValue)
         {
@@ -197,6 +199,8 @@ public class Main : Singleton<Main>
         {
             lineRenderer.SetPosition(1, hit.transform.position);
             clap.Play();
+            Instantiate(explosionSpecial, hit.collider.transform.position, Quaternion.identity);
+            StartCoroutine(LaserFade());
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
             Destroy(hit.collider.gameObject);
@@ -315,7 +319,6 @@ public class Main : Singleton<Main>
             if (previousEnnemyList[i].y == biggest)
             {
                 numberForEnnemy.Add(i);
-                Debug.Log(numberForEnnemy.Count);
             }
 
         }

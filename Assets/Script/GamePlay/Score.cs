@@ -28,7 +28,7 @@ public class Score : Singleton<Score>
     {
         score += upNumber*scorMultiplier;
         cptStreak++;
-        scorText.text = "Score : " + score.ToString();
+        scorText.text =  score.ToString();
         if(cptStreak >= 10)
         {
             SoundDisplay.Instance.Unmute(scorMultiplier-1);

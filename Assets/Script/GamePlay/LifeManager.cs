@@ -81,5 +81,6 @@ public class LifeManager : Singleton<LifeManager>
     public void GameOver()
     {
         gameOver.SetActive(true);
+        //Application.Quit();
     }
 }

@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class EnnemyBehavior : MonoBehaviour
 {
+    public enum TypeOfEnemy {Basic,Teleporter,Duo,Tank,Wave};
+    public TypeOfEnemy typeOfEnemy = TypeOfEnemy.Basic;
+
     private double bpm;
     public Vector3[] positions;
     [HideInInspector]  public int cpt;
@@ -58,5 +61,7 @@ public class EnnemyBehavior : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    
 
 }

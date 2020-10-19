@@ -54,7 +54,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &9144515822563816935
 Transform:
   m_ObjectHideFlags: 0
@@ -105,6 +105,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &1300631644816681903
 GameObject:
@@ -123,7 +124,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5600747423088890823
 Transform:
   m_ObjectHideFlags: 0
@@ -174,6 +175,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &1541142436154898683
 GameObject:
@@ -384,7 +386,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2439386625824042921
 Transform:
   m_ObjectHideFlags: 0
@@ -435,6 +437,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &3950063560305231377
 GameObject:
@@ -453,7 +456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3650334757048784234
 Transform:
   m_ObjectHideFlags: 0
@@ -504,6 +507,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &4157401090699974784
 GameObject:
@@ -522,7 +526,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7955195988059580100
 Transform:
   m_ObjectHideFlags: 0
@@ -573,6 +577,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &4559973958296236141
 GameObject:
@@ -804,6 +809,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &4950012763141023616
 GameObject:
@@ -903,7 +909,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &869442541484554115
 Transform:
   m_ObjectHideFlags: 0
@@ -954,6 +960,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &5075924172810038203
 GameObject:
@@ -1695,7 +1702,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3851339716609214802
 Transform:
   m_ObjectHideFlags: 0
@@ -1746,6 +1753,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &8043127855198315982
 GameObject:
@@ -1764,7 +1772,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &3092469804681811392
 Transform:
   m_ObjectHideFlags: 0
@@ -1815,6 +1823,7 @@ MonoBehaviour:
   _velocity: {x: 0, y: 0, z: 0}
   minSpeed: 0
   maxSpeed: 0
+  visuel: {fileID: 0}
   isFollowing: 0
 --- !u!1 &8176772893566802032
 GameObject:

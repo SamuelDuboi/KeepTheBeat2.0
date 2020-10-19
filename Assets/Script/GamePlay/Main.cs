@@ -180,6 +180,13 @@ public class Main : Singleton<Main>
             StartCoroutine(LaserFade());
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
+            
+            //Xant Part 
+            if(hit.collider.gameObject.GetComponent<EnnemyBehavior>().typeOfEnemy == EnnemyBehavior.TypeOfEnemy.Wave)
+            {
+                hit.collider.GetComponent<WaveBehaviour>().needToSpawn = true;
+            }
+
             Destroy(hit.collider.gameObject);
         }
     }

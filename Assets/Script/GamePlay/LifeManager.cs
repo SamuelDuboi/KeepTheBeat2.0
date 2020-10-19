@@ -51,4 +51,11 @@ public class LifeManager : Singleton<LifeManager>
         mixer.SetFloat("MainVolume", 0);
 
     }
+
+
+    public void GameOver()
+    {
+        gameOver.SetActive(true);
+        //Application.Quit();
+    }
 }

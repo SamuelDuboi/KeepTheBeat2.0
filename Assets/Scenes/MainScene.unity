@@ -26279,8 +26279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b3c6f01c1deb6458738be3939d96a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animationRender: {fileID: 1765003584}
-  hpAnimator: {fileID: 1765003586}
+  lifeText: {fileID: 0}
   lifes: 5
   gameOver: {fileID: 1712692441}
   fade: {fileID: 486626284}

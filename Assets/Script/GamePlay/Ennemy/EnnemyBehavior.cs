@@ -15,6 +15,7 @@ public class EnnemyBehavior : MonoBehaviour
     public GameObject child;
     private bool cantMove;
     [HideInInspector] public bool turnOnTrail;
+    int type;
     private void Update()
     {
         if(!cantMove)

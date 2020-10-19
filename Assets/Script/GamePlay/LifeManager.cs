@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
 using TMPro;
-using Sanford.Multimedia.Timers;
 
 public class LifeManager : Singleton<LifeManager>
 {
-    public GameObject animationRender;
-    public Animator hpAnimator;
+    public TextMeshProUGUI lifeText;
     public int lifes;
     public static int life;
     public GameObject gameOver;
@@ -18,20 +16,24 @@ public class LifeManager : Singleton<LifeManager>
     private void Start()
     {
         life = lifes;
-        hpAnimator = gameObject.GetComponent<Animator>();
-        hpAnimator.Play("HUD_LIFE_FULL");
-        
+        lifeText.text = "Life: " + life.ToString();
     }
-
     public void TakeDamage( AudioMixer mixer)
     {
-        TriggerAnim();
         life--;
         mixer.SetFloat("MainVolume", -5);
-        
-            
+        if(life <= 0)
+        {
+            gameOver.SetActive(true);
+            Time.timeScale = 0;
+
+        }
+        else
+        {
+            lifeText.text = "Life: " + life.ToString();
             StartCoroutine(Fade(mixer));
-        
+        }
+
     }
 
     IEnumerator Fade(AudioMixer mixer)
@@ -46,40 +48,7 @@ public class LifeManager : Singleton<LifeManager>
             fade.color -= new Color(0, 0, 0, 0.01f);
             yield return new WaitForSeconds(0.002f);
         }
-
-        
-
         mixer.SetFloat("MainVolume", 0);
-        
-    }
 
-    public void TriggerAnim()
-    {
-        if (life == 5)
-        {
-            hpAnimator.SetTrigger("HP5");
-        }else if (life == 4)
-        {
-            hpAnimator.SetTrigger("HP4");
-        }
-        else if (life == 3)
-        {
-            hpAnimator.SetTrigger("HP3");
-        }
-        else if (life == 2)
-        {
-            hpAnimator.SetTrigger("HP2");
-        }
-        else if (life == 1)
-        {
-            hpAnimator.SetTrigger("HP1");
-        }
-        
-    }
-
-
-    public void GameOver()
-    {
-        gameOver.SetActive(true);
     }
 }

@@ -26279,7 +26279,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31b3c6f01c1deb6458738be3939d96a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lifeText: {fileID: 0}
+  animationRender: {fileID: 0}
+  hpAnimator: {fileID: 0}
   lifes: 5
   gameOver: {fileID: 1712692441}
   fade: {fileID: 486626284}
@@ -40210,6 +40211,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff784700e69a1047926694c0193ea0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 8790651030324516901}
   clap: {fileID: 6306001012362137244}
   positionEnd:
   - {fileID: 6306001013190836304}
@@ -40219,7 +40221,7 @@ MonoBehaviour:
   - {fileID: 6306001012190953535}
   - {fileID: 6306001012119350644}
   patterns:
-  - {fileID: 11400000, guid: d2527f4a676d7ca4382db34a84d4dff7, type: 2}
+  - {fileID: 11400000, guid: 8b77cf9ecac0c8140871b4c15121d035, type: 2}
   - {fileID: 11400000, guid: 072e1229965b12d4cb5f6c7a9297cc3b, type: 2}
   - {fileID: 11400000, guid: 8b77cf9ecac0c8140871b4c15121d035, type: 2}
   - {fileID: 11400000, guid: 71a41471277e67c48af2d2333ea33982, type: 2}
@@ -40270,7 +40272,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   specialBar: {fileID: 1122905640}
   specialCount: 0
-  specialMaxValue: 5
+  specialMaxValue: 40
   specialSpawner: {fileID: 6306001013107137649}
   isBulletTime: 0
   maxBulletTime: 1000

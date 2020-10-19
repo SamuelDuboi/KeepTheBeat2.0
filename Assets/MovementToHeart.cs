@@ -20,6 +20,7 @@ public class MovementToHeart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+   
         visuel.SetActive(false);
         target = gameObject.transform;
     }
@@ -39,9 +40,10 @@ public class MovementToHeart : MonoBehaviour
             transform.position = Vector3.SmoothDamp(transform.position, target.position, ref _velocity, Time.deltaTime * Random.Range(minSpeed, maxSpeed));
         }
 
-        if (Vector3.Distance(target.position, transform.position) <= 0.2f)
+        if (Vector3.Distance(target.position, transform.position) <= 0.1f)
         {
-            //Ajouter Score
+            Main.Instance.specialCount++;
+            Main.Instance.specialBar.value = Main.Instance.specialCount;
             Destroy(gameObject);
         }
     }

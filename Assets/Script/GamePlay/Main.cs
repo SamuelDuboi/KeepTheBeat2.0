@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Main : Singleton<Main>
 {
+    [Header("GameObject References")]
+    public GameObject player;
+
     [Header("Sound")]
     public AudioSource clap;
 

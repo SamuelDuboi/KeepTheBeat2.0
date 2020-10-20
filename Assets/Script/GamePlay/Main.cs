@@ -6,6 +6,9 @@ using UnityEngine.UI;
 
 public class Main : Singleton<Main>
 {
+    [Header("GameObject References")]
+    public GameObject player;
+
     [Header("Sound")]
     public AudioSource clap;
 
@@ -47,6 +50,7 @@ public class Main : Singleton<Main>
     [Header("Explosion")]
     public GameObject explosion;
     public GameObject explosionSpecial;
+    public GameObject powerSupplies;
 
     private int doOnceCPT;
 
@@ -177,6 +181,8 @@ public class Main : Singleton<Main>
             StartCoroutine(LaserFade());
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
+            
+
             Destroy(hit.collider.gameObject);
         }
     }
@@ -200,13 +206,11 @@ public class Main : Singleton<Main>
             lineRenderer.SetPosition(1, hit.transform.position);
             clap.Play();
             Instantiate(explosionSpecial, hit.collider.transform.position, Quaternion.identity);
+            Instantiate(powerSupplies, hit.collider.transform.position, Quaternion.identity);
             StartCoroutine(LaserFade());
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
             Destroy(hit.collider.gameObject);
-
-            specialCount++;
-            specialBar.value = specialCount;
         }
     }
 

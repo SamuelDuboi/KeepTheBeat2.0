@@ -275,6 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1b7eaa98fa90ea545b043a0496bb32bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  typeOfEnemy: 0
   positions:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 0}

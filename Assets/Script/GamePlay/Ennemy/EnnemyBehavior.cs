@@ -16,7 +16,7 @@ public class EnnemyBehavior : MonoBehaviour
     [Range(0, 100)]
     public float speed;
     public GameObject child;
-    private bool cantMove;
+    [HideInInspector] public bool cantMove;
     [HideInInspector] public bool turnOnTrail;
     int type;
     private void Update()
@@ -54,11 +54,21 @@ public class EnnemyBehavior : MonoBehaviour
         }
         else
         {
+            if(gameObject.tag != "LinkedEnnemy")
+            {
             if(tile != null)
             tile.GetComponent<TilesBehavior>().Off();
             SoundDisplay.Instance.RemoveEnnemy(gameObject);    
             Score.Instance.ModifierDown();
             Destroy(gameObject);
+
+            }
+            else
+            {
+                Score.Instance.ModifierDown();
+                GetComponentInParent<LinkedEnnemy>().hitCpt =2;
+                GetComponentInParent<LinkedEnnemy>().Hitted();
+            }
         }
     }
 

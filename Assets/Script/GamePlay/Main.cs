@@ -173,17 +173,24 @@ public class Main : Singleton<Main>
         RaycastHit hit;
         Physics.Raycast(new Vector3(position.x, position.y-2, position.z-13), new Vector3(0,2,15),out hit );
         StartCoroutine(RowFade(rowOn));
-        if (hit.collider != null && hit.collider.gameObject.tag == "Ennemy")
+        if (hit.collider != null )
         {
+            if(hit.collider.gameObject.tag == "Ennemy")
+            {
             lineRenderer.SetPosition(1, hit.transform.position);
             clap.Play();
             Instantiate(explosion, hit.collider.transform.position, Quaternion.identity);
             StartCoroutine(LaserFade());
-            Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
-            SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
-            
+            }
+            else if(hit.collider.gameObject.tag == "LinkedEnnemy")
+            {
+                lineRenderer.SetPosition(1, hit.transform.position);
+                clap.Play();
+                StartCoroutine(LaserFade());
 
-            Destroy(hit.collider.gameObject);
+               hit.collider.GetComponentInParent<LinkedEnnemy>().Hitted();
+             
+            }
         }
     }
     /// <summary>
@@ -252,8 +259,11 @@ public class Main : Singleton<Main>
         }
     }
     #endregion
+
+    private bool breakSpawn;
     public void Spawn()
     {
+        breakSpawn = false;
         float biggest = 0;
         List<int> numberForEnnemy = new List<int>();
 
@@ -351,11 +361,16 @@ public class Main : Singleton<Main>
                         case 2:
                             TpSpawn(previousEnnemyList[numberForEnnemy[i]].x ,(int)previousEnnemyList[numberForEnnemy[i]].x);
                             break;
+                        case 4:
+                            LinkedSpawn(previousEnnemyList[numberForEnnemy[i]].x, numberForEnnemy, previousEnnemyList[numberForEnnemy[i]], (int)previousEnnemyList[numberForEnnemy[i]].x);
+                            break;
                                            
                         default:
                             Debug.Log(_ennemy);
                             break;
                     }
+                    if (breakSpawn)
+                        break;
                     previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
                 }
             }
@@ -398,7 +413,23 @@ public class Main : Singleton<Main>
         else 
             Debug.Log(x);
     }
-
+    private void LinkedSpawn(float x, List<int> listEnnemy, Vector3 current, int currentInt)
+    {
+        int secondSpawn =1000;
+        for (int i = 0; i < listEnnemy.Count; i++)
+        {
+            if(previousEnnemyList[ listEnnemy[i]].z == 4 && previousEnnemyList[listEnnemy[i]].y == current.y)
+            {
+                secondSpawn = i;
+            }
+            
+        }
+        if (secondSpawn != 1000)
+        {
+            specialSpawner.GetComponent<Spawner>().Spwan(ennemysArray[2], positionEnd[currentInt].GetComponent<Spawner>(), positionEnd[(int)previousEnnemyList[listEnnemy[secondSpawn]].x].GetComponent<Spawner>());
+            breakSpawn = true;
+        }
+    }
     IEnumerator BulletTime()
     {
         isBulletTime = true;

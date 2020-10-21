@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Audio;
 
 public class SoundDisplay : Singleton<SoundDisplay>
@@ -28,7 +29,9 @@ public class SoundDisplay : Singleton<SoundDisplay>
     private int cptForMovement;
    [HideInInspector] public bool doOnce;
 
+    [Header("ObjectToScale")]
     public GameObject heart;
+    public Image bpmVisuel;
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +49,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
         //Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
 
         ScaleHeart();
+        ScaleUI();
     }
 
     public void BeatEvent()
@@ -132,7 +136,23 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
     public void ScaleHeart()
     {
+        // 80 = base Scale
+        // BPM = [0;1]
+        // MAX = 100
+        // 80=> 100;
         float scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) * 20;
         heart.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    }
+
+    public void ScaleUI()
+    {
+        float scaleFactorVisuel = (float)timer / (60 / AudioHelmClock.GetGlobalBpm());
+        bpmVisuel.fillAmount = 1- scaleFactorVisuel;
+
+        if(bpmVisuel.fillAmount > Main.Instance.specialCount / 100)
+        {
+            bpmVisuel.fillAmount = Main.Instance.specialCount + 0.2f;
+        }
+     
     }
 }

@@ -38,7 +38,8 @@ public class Main : Singleton<Main>
 
 
     [Header("Special")]
-    public Slider specialBar;
+    public Slider specialBarG;
+    public Slider specialBarD;
     [HideInInspector] public int specialCount;
     public int specialMaxValue;
     public GameObject specialSpawner;
@@ -63,7 +64,7 @@ public class Main : Singleton<Main>
         lineRenderer = GetComponent<LineRenderer>();
         lineRenderer.SetPosition(0, transform.position);
         lineRenderer.SetPosition(1, transform.position);
-        specialBar.maxValue = specialMaxValue;
+        specialBarG.maxValue = specialMaxValue;
 
         previousEnnemyList = new List<Vector3>();
         SetPatternsArray();
@@ -101,6 +102,9 @@ public class Main : Singleton<Main>
     }
     private void Update()
     {
+        specialBarD.value = specialBarG.value;
+        specialBarD.maxValue = specialBarG.maxValue;
+
         if (isBulletTime)
         {
             bulletTimeTimer += Time.deltaTime;
@@ -434,7 +438,7 @@ public class Main : Singleton<Main>
     {
         isBulletTime = true;
         specialCount = 0;
-        specialBar.value = 0;
+        specialBarG.value = 0;
         SoundDisplay.Instance.speedModifier = 0;
         yield return new WaitWhile(() => isBulletTime == true);
         SoundDisplay.Instance.speedModifier = 1;

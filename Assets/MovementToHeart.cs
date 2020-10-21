@@ -29,13 +29,12 @@ public class MovementToHeart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         transform.position = Vector3.Lerp(transform.position, target.transform.position,Random.Range(minSpeed, maxSpeed));
 
         if (Vector3.Distance(target.position, transform.position) <= 0.3f)
         {
             Main.Instance.specialCount++;
-            Main.Instance.specialBar.value = Main.Instance.specialCount;
+            Main.Instance.specialBarG.value = Main.Instance.specialCount;
             Destroy(gameObject);
         }
     }

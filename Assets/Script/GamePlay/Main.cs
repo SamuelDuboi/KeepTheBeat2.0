@@ -175,7 +175,7 @@ public class Main : Singleton<Main>
             canShoot = false;
         }
         RaycastHit hit;
-        Physics.Raycast(new Vector3(position.x, position.y-2, position.z-13), new Vector3(0,2,15),out hit );
+        Physics.Raycast(new Vector3(position.x, position.y-2.5f, position.z-13), new Vector3(0,2.5f,15),out hit );
         StartCoroutine(RowFade(rowOn));
         if (hit.collider != null )
         {

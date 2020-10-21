@@ -54,20 +54,19 @@ public class EnnemyBehavior : MonoBehaviour
         }
         else
         {
-            if(gameObject.tag != "LinkedEnnemy")
+            if (gameObject.tag != "LinkedEnnemy")
             {
-            if(tile != null)
-            tile.GetComponent<TilesBehavior>().Off();
-            SoundDisplay.Instance.RemoveEnnemy(gameObject);    
-            Score.Instance.ModifierDown();
-            Destroy(gameObject);
+                if (tile != null)
+                    tile.GetComponent<TilesBehavior>().Off();
+                SoundDisplay.Instance.RemoveEnnemy(gameObject);
+                Score.Instance.ModifierDown();
+                Destroy(gameObject);
 
             }
             else
             {
                 Score.Instance.ModifierDown();
-                GetComponentInParent<LinkedEnnemy>().hitCpt =2;
-                GetComponentInParent<LinkedEnnemy>().Hitted();
+                GetComponentInParent<LinkedEnnemy>().DestroyAll();
             }
         }
     }

@@ -67,8 +67,7 @@ public class Spawner : MonoBehaviour
         GameObject _ennemy = Instantiate(ennemy, transform);
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].transform.position = new Vector3(firstSpawner.transform.position.x, firstSpawner.transform.position.y, firstSpawner.transform.position.z * 100);
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].transform.position = new Vector3(secondSpawner.transform.position.x, secondSpawner.transform.position.y, secondSpawner.transform.position.z * 100);
-        SoundDisplay.Instance.AddEnnemy(_ennemy.GetComponent<LinkedEnnemy>().hitBox[0]);
-        SoundDisplay.Instance.AddEnnemy(_ennemy.GetComponent<LinkedEnnemy>().hitBox[1]);
+        SoundDisplay.Instance.AddEnnemy(_ennemy);
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<Light>().color = firstSpawner.currentColor;

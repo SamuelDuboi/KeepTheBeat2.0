@@ -7,7 +7,6 @@ public class LinkedEnnemy :MonoBehaviour
 {
     public GameObject[] hitBox = new GameObject[2];
     public GameObject explosion;
-    [HideInInspector] public GameObject[] tiles = new GameObject[2];
     [HideInInspector] public int hitCpt;
     private LineRenderer trail;
     private bool cantReset;
@@ -32,7 +31,6 @@ public class LinkedEnnemy :MonoBehaviour
         hitCpt++; 
         if (hitCpt >= 2)
         {
-
             Score.Instance.ScoreUp(hitBox[1].GetComponent<EnnemyBehavior>().scoreValue);
             Score.Instance.ScoreUp(hitBox[0].GetComponent<EnnemyBehavior>().scoreValue);
             DestroyAll();
@@ -43,15 +41,14 @@ public class LinkedEnnemy :MonoBehaviour
 
     public void DestroyAll()
     {
-        if (tiles[0] != null)
+        if (hitBox[0].GetComponent<EnnemyBehavior>().tile != null)
         {
-            tiles[0].GetComponent<TilesBehavior>().Off();
-            tiles[1].GetComponent<TilesBehavior>().Off();
+            hitBox[0].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
+            hitBox[1].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
         }
         Instantiate(explosion, hitBox[0].transform.position, Quaternion.identity);
         Instantiate(explosion, hitBox[1].transform.position, Quaternion.identity);
-        SoundDisplay.Instance.RemoveEnnemy(hitBox[1]);
-        SoundDisplay.Instance.RemoveEnnemy(hitBox[0]);
+        SoundDisplay.Instance.RemoveEnnemy(gameObject);
         Destroy(gameObject);
     }
     private IEnumerator Reset()

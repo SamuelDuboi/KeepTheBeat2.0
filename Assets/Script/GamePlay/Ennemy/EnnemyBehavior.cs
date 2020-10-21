@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class EnnemyBehavior : MonoBehaviour
 {
-    public enum TypeOfEnemy {Basic,Teleporter,Duo,Tank,Wave};
-    public TypeOfEnemy typeOfEnemy = TypeOfEnemy.Basic;
+  
 
     private double bpm;
+     public GameObject explosion;
     public Vector3[] positions;
     [HideInInspector]  public int cpt;
     public int scoreValue;
@@ -71,6 +71,12 @@ public class EnnemyBehavior : MonoBehaviour
         }
     }
 
-    
+    public void Destroyed()
+    {
+        Score.Instance.ScoreUp(scoreValue);
+        SoundDisplay.Instance.RemoveEnnemy(gameObject);
+        Instantiate(explosion, transform.position, Quaternion.identity);
+        Destroy(gameObject);
+    }
 
 }

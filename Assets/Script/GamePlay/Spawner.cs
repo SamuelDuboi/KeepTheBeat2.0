@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject explosion;
     public GameObject pawn;
     public GameObject direction;
     public GameObject ennemy;
@@ -44,6 +45,7 @@ public class Spawner : MonoBehaviour
 
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
+        _ennemy.GetComponent<EnnemyBehavior>().explosion = explosion;
     }
     public void Spwan(GameObject ennemy, Vector3[] positions)
     {
@@ -52,6 +54,8 @@ public class Spawner : MonoBehaviour
         SoundDisplay.Instance.AddEnnemy(_ennemy);
         _ennemy.GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
+        _ennemy.GetComponent<EnnemyBehavior>().explosion = explosion;
+
         for (int i = 0; i < positions.Length; i++)
         {
             if(i%2 == 0)
@@ -70,6 +74,8 @@ public class Spawner : MonoBehaviour
         SoundDisplay.Instance.AddEnnemy(_ennemy);
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().turnOnTrail = true;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().explosion = firstSpawner.explosion;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().explosion = secondSpawner.explosion;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<Light>().color = firstSpawner.currentColor;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponentInChildren<Light>().color = secondSpawner.currentColor;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<EnnemyBehavior>().positions = firstSpawner.positions;

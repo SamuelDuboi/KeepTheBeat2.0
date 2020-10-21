@@ -49,7 +49,7 @@ public class Main : Singleton<Main>
 
 
     [Header("Explosion")]
-    public GameObject explosion;
+    public GameObject[] explosion = new GameObject [6];
     public GameObject explosionSpecial;
     public GameObject powerSupplies;
 
@@ -182,9 +182,9 @@ public class Main : Singleton<Main>
             if(hit.collider.gameObject.tag == "Ennemy")
             {
             lineRenderer.SetPosition(1, hit.transform.position);
-            clap.Play();
-            Instantiate(explosion, hit.collider.transform.position, Quaternion.identity);
-            StartCoroutine(LaserFade());
+                clap.Play();
+                hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed();
+                StartCoroutine(LaserFade());
             }
             else if(hit.collider.gameObject.tag == "LinkedEnnemy")
             {

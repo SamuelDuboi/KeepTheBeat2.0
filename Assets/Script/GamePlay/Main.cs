@@ -365,6 +365,9 @@ public class Main : Singleton<Main>
                         case 2:
                             TpSpawn(previousEnnemyList[numberForEnnemy[i]].x ,(int)previousEnnemyList[numberForEnnemy[i]].x);
                             break;
+                        case 3:
+                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                            break;
                         case 4:
                             LinkedSpawn(previousEnnemyList[numberForEnnemy[i]].x, numberForEnnemy, previousEnnemyList[numberForEnnemy[i]], (int)previousEnnemyList[numberForEnnemy[i]].x);
                             break;

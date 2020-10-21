@@ -46,6 +46,7 @@ public class Spawner : MonoBehaviour
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
         _ennemy.GetComponent<EnnemyBehavior>().explosion = explosion;
+        _ennemy.GetComponentInChildren<TrailRenderer>().startColor =currentColor;
     }
     public void Spwan(GameObject ennemy, Vector3[] positions)
     {
@@ -78,6 +79,8 @@ public class Spawner : MonoBehaviour
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().explosion = secondSpawner.explosion;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<Light>().color = firstSpawner.currentColor;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponentInChildren<Light>().color = secondSpawner.currentColor;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<TrailRenderer>().startColor = firstSpawner.currentColor;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponentInChildren<TrailRenderer>().startColor = secondSpawner.currentColor;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<EnnemyBehavior>().positions = firstSpawner.positions;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponentInChildren<EnnemyBehavior>().positions = secondSpawner.positions;
       

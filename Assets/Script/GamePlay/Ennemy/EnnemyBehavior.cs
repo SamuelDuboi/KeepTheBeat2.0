@@ -71,7 +71,7 @@ public class EnnemyBehavior : MonoBehaviour
         }
     }
 
-    public void Destroyed()
+    public virtual void Destroyed()
     {
         Score.Instance.ScoreUp(scoreValue);
         SoundDisplay.Instance.RemoveEnnemy(gameObject);

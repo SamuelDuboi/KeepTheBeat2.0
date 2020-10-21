@@ -18758,7 +18758,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1040472480812113653, guid: 5e25037441c9041449c6fd6704a02484, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.81
+      value: 19.01
       objectReference: {fileID: 0}
     - target: {fileID: 1040472480812113653, guid: 5e25037441c9041449c6fd6704a02484, type: 3}
       propertyPath: m_LocalPosition.y
@@ -40399,7 +40399,7 @@ MonoBehaviour:
   - {fileID: 1604807694688777876, guid: 0710a1263bce801449ee02ae23ca1b7f, type: 3}
   - {fileID: 1604807694688777876, guid: 8ac850aeee120e44dafe4933c9353d87, type: 3}
   - {fileID: 1914145647590298216, guid: 097b59932c4f40748b873e669461e57e, type: 3}
-  - {fileID: 0}
+  - {fileID: 1604807694688777876, guid: b5bd2ec97f6827641a3f2514390fbe27, type: 3}
   - {fileID: 0}
   numberOfPatternPerDifficulty: 3
   rowOn:

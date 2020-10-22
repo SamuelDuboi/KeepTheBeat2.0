@@ -13,7 +13,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     [Range(0, 100)]
     public float pourcentageAllow;
     private double pourcentageCalculated;
-    private double timer;
+    [SerializeField] private double timer;
     public AudioHelmClock clock;
     public AudioMixer mixer;
     [Range(1, 3)]
@@ -31,7 +31,8 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
     [Header("ObjectToScale")]
     public GameObject heart;
-    public Image bpmVisuel;
+    public Image bpmVisuelG;
+    public Image bpmVisuelD;
 
     // Start is called before the first frame update
     void Start()
@@ -167,13 +168,14 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
     public void ScaleUI()
     {
-        float scaleFactorVisuel = (float)timer / (60 / AudioHelmClock.GetGlobalBpm());
-        bpmVisuel.fillAmount = 1 - scaleFactorVisuel;
+        float intervale = Main.Instance.specialMaxValue - Main.Instance.specialCount;
 
-        if (bpmVisuel.fillAmount > Main.Instance.specialCount / 100)
-        {
-            bpmVisuel.fillAmount = Main.Instance.specialCount + 0.2f;
-        }
+        float scaleFactorVisuel = (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) /2;
+        
+        bpmVisuelG.fillAmount = 1 - scaleFactorVisuel - intervale/100 - 0.1f;
 
+        bpmVisuelD.fillAmount = bpmVisuelG.fillAmount;
+
+        //Debug.Log(scaleFactorVisuel);
     }
 }

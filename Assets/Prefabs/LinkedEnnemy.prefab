@@ -50,9 +50,7 @@ MonoBehaviour:
   - {fileID: 5050722809743891527}
   - {fileID: 5603661425634736665}
   explosion: {fileID: 5172044418460408479, guid: 0b8af257901e08740afc73749c9ce23c, type: 3}
-  tiles:
-  - {fileID: 0}
-  - {fileID: 0}
+  hitCpt: 0
 --- !u!120 &8365060113162614180
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -72,7 +70,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10301, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

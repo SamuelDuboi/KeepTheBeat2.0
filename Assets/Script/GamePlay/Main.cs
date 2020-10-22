@@ -33,14 +33,14 @@ public class Main : Singleton<Main>
 
 
     public bool canShoot;
-    private LineRenderer lineRenderer;
+    public LineRenderer[] lineRenderer = new LineRenderer[2];
     [HideInInspector] public SpriteRenderer sprite;
 
 
     [Header("Special")]
     public Slider specialBarG;
     public Slider specialBarD;
-    [HideInInspector] public int specialCount;
+     public int specialCount;
     public int specialMaxValue;
     public GameObject specialSpawner;
     public bool isBulletTime;
@@ -61,9 +61,10 @@ public class Main : Singleton<Main>
         
         sprite = GetComponent<SpriteRenderer>();
 
-        lineRenderer = GetComponent<LineRenderer>();
-        lineRenderer.SetPosition(0, transform.position);
-        lineRenderer.SetPosition(1, transform.position);
+        lineRenderer[0].SetPosition(0, transform.position);
+        lineRenderer[1].SetPosition(0, transform.position);
+        lineRenderer[0].SetPosition(1, transform.position);
+        lineRenderer[1].SetPosition(1, transform.position);
         specialBarG.maxValue = specialMaxValue;
 
         previousEnnemyList = new List<Vector3>();
@@ -126,9 +127,9 @@ public class Main : Singleton<Main>
                         break;
                     }
                 }
-                lineRenderer.SetPosition(1, _ennemy.transform.position);
+                lineRenderer[0].SetPosition(1, _ennemy.transform.position);
                 clap.Play();
-                StartCoroutine(LaserFade());
+                StartCoroutine(LaserFade(0));
                 SoundDisplay.Instance.RemoveEnnemy(_ennemy);
                 Destroy(_ennemy);
                 Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
@@ -138,7 +139,7 @@ public class Main : Singleton<Main>
                     isBulletTime = false;
                 }
             }
-            else if (SoundDisplay.Instance.ennemys.Count > 0)
+            else if (SoundDisplay.Instance.ennemys.Count == 0)
                 isBulletTime = false;
         }
         else if (Input.anyKeyDown)
@@ -169,6 +170,7 @@ public class Main : Singleton<Main>
     void Shoot(Vector3 position, GameObject rowOn)
     {
         doOnceCPT++;
+        var _cpt = doOnceCPT;
         if(doOnceCPT ==2)
         {
             doOnceCPT = 0;
@@ -181,16 +183,16 @@ public class Main : Singleton<Main>
         {
             if(hit.collider.gameObject.tag == "Ennemy")
             {
-            lineRenderer.SetPosition(1, hit.transform.position);
+            lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();
                 hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed();
-                StartCoroutine(LaserFade());
+                StartCoroutine(LaserFade(_cpt - 1));
             }
             else if(hit.collider.gameObject.tag == "LinkedEnnemy")
             {
-                lineRenderer.SetPosition(1, hit.transform.position);
+                lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();
-                StartCoroutine(LaserFade());
+                StartCoroutine(LaserFade(_cpt - 1));
 
                hit.collider.GetComponentInParent<LinkedEnnemy>().Hitted();
              
@@ -208,35 +210,35 @@ public class Main : Singleton<Main>
         RaycastHit hit;
         Physics.Raycast(transform.position, new Vector3(position.x - transform.position.x, position.y - transform.position.y, position.z - transform.position.z), out hit);
         StartCoroutine(RowFade(isSpecial));
-        if (specialCount == specialMaxValue)
+        if (specialCount >= specialMaxValue)
         {
             StartCoroutine(BulletTime());
         }
         else if (hit.collider != null && hit.collider.gameObject.tag == "SpecialEnnemy")
         {
-            lineRenderer.SetPosition(1, hit.transform.position);
+            lineRenderer[0].SetPosition(1, hit.transform.position);
             clap.Play();
             Instantiate(explosionSpecial, hit.collider.transform.position, Quaternion.identity);
             Instantiate(powerSupplies, hit.collider.transform.position, Quaternion.identity);
-            StartCoroutine(LaserFade());
+            StartCoroutine(LaserFade(0));
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
             Destroy(hit.collider.gameObject);
         }
     }
 
-    IEnumerator LaserFade()
+    IEnumerator LaserFade(int cpt)
     {
         for (int i = 0; i < 100 * 60/AudioHelmClock.GetGlobalBpm(); i++)
         {
-            lineRenderer.startColor -= new Color(0, 0, 0, 0.01f);
-            lineRenderer.endColor -= new Color(0, 0, 0, 0.01f);
+            lineRenderer[cpt].startColor -= new Color(0, 0, 0, 0.01f);
+            lineRenderer[cpt].endColor -= new Color(0, 0, 0, 0.01f);
             yield return new WaitForSeconds(0.005f);
 
         }
-        lineRenderer.startColor += new Color(0, 0, 0, 1);
-        lineRenderer.endColor -= new Color(0, 0, 0, 1);
-        lineRenderer.SetPosition(1, transform.position);
+        lineRenderer[cpt].startColor += new Color(0, 0, 0, 1);
+        lineRenderer[cpt].endColor -= new Color(0, 0, 0, 1);
+        lineRenderer[cpt].SetPosition(1, transform.position);
     }
     IEnumerator RowFade(GameObject rowSprite)
     {
@@ -443,8 +445,10 @@ public class Main : Singleton<Main>
         specialCount = 0;
         specialBarG.value = 0;
         SoundDisplay.Instance.speedModifier = 0;
+        SoundDisplay.Instance.cantMove = true;
         yield return new WaitWhile(() => isBulletTime == true);
         SoundDisplay.Instance.speedModifier = 1;
+        SoundDisplay.Instance.cantMove = true;
 
     }
 

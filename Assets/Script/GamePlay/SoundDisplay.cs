@@ -8,6 +8,7 @@ using UnityEngine.Audio;
 
 public class SoundDisplay : Singleton<SoundDisplay>
 {
+
     public float beat;
     private double timePreviousBeat;
     [Range(0, 100)]
@@ -48,11 +49,13 @@ public class SoundDisplay : Singleton<SoundDisplay>
         timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
 
         //Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
-
-        ScaleHeart();
-        ScaleUI();
+        if (!cantMove)
+        {
+            ScaleHeart();
+            ScaleUI();
+        }
     }
-
+    public bool cantMove;
     public void BeatEvent()
     {
         if (AudioHelmClock.GetGlobalBeatTime() < 0)
@@ -78,7 +81,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
             beat = 0;
             Main.Instance.CanShoot();
         }
-        if (cptForMovement == 1 && beat == 4)
+        if (cptForMovement == 1 && beat == 4  && !cantMove)
         {
             timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
             cptForMovement = 0;

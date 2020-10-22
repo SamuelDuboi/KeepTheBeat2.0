@@ -12,42 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1e7025eef1b2d4640a206ea945122e55, type: 3}
   m_Name: 7
   m_EditorClassIdentifier: 
-  ennemiesPositionForEditor:
-  - {x: 600, y: 50, z: 1}
-  - {x: 500, y: 100, z: 1}
-  - {x: 400, y: 200, z: 1}
-  - {x: 300, y: 150, z: 1}
-  - {x: 200, y: 100, z: 1}
-  - {x: 100, y: 50, z: 1}
-  - {x: 500, y: 250, z: 1}
-  - {x: 600, y: 300, z: 1}
-  - {x: 200, y: 250, z: 1}
-  - {x: 100, y: 300, z: 1}
-  - {x: 300, y: 400, z: 1}
-  - {x: 400, y: 350, z: 1}
-  - {x: 600, y: 450, z: 1}
-  - {x: 500, y: 500, z: 1}
-  - {x: 400, y: 600, z: 1}
-  - {x: 300, y: 550, z: 1}
-  - {x: 200, y: 500, z: 1}
-  - {x: 100, y: 450, z: 1}
-  ennemiesPosition:
-  - {x: 5, y: 0, z: 1}
-  - {x: 4, y: 1, z: 1}
-  - {x: 3, y: 3, z: 1}
-  - {x: 2, y: 2, z: 1}
-  - {x: 1, y: 1, z: 1}
-  - {x: 0, y: 0, z: 1}
-  - {x: 4, y: 4, z: 1}
-  - {x: 5, y: 5, z: 1}
-  - {x: 1, y: 4, z: 1}
-  - {x: 0, y: 5, z: 1}
-  - {x: 2, y: 7, z: 1}
-  - {x: 3, y: 6, z: 1}
-  - {x: 5, y: 8, z: 1}
-  - {x: 4, y: 9, z: 1}
-  - {x: 3, y: 11, z: 1}
-  - {x: 2, y: 10, z: 1}
-  - {x: 1, y: 9, z: 1}
-  - {x: 0, y: 8, z: 1}
+  ennemiesPositionForEditor: []
+  ennemiesPosition: []
   difficulty: 2

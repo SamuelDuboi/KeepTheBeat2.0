@@ -176,6 +176,6 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
         bpmVisuelD.fillAmount = bpmVisuelG.fillAmount;
 
-        Debug.Log(scaleFactorVisuel);
+        //Debug.Log(scaleFactorVisuel);
     }
 }

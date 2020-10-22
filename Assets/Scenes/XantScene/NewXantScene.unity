@@ -39016,7 +39016,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyzones:
-  - audioClip: {fileID: 8300000, guid: 7601d5c9df6c03d43a4f79023d813e8f, type: 3}
+  - audioClip: {fileID: 8300000, guid: 63227fff890a7524187d6131dcc76d40, type: 3}
     mixer: {fileID: 0}
     rootKey: 60
     minKey: 0
@@ -39260,7 +39260,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 7601d5c9df6c03d43a4f79023d813e8f, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 63227fff890a7524187d6131dcc76d40, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1

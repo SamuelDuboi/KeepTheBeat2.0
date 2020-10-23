@@ -11,7 +11,6 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     public Text text;
     public Text title;
     public Image time;
-    public string text1;
     public string text2;
     public float timer;
     private List<int> numbers;

@@ -136,11 +136,14 @@ public class Main : Singleton<Main>
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));
                 if (SoundDisplay.Instance.ennemys.Count == 0)
                 {
+
                     isBulletTime = false;
                 }
             }
             else if (SoundDisplay.Instance.ennemys.Count == 0)
+            {
                 isBulletTime = false;
+            }
         }
         else if (Input.anyKeyDown)
         {
@@ -448,7 +451,7 @@ public class Main : Singleton<Main>
         SoundDisplay.Instance.cantMove = true;
         yield return new WaitWhile(() => isBulletTime == true);
         SoundDisplay.Instance.speedModifier = 1;
-        SoundDisplay.Instance.cantMove = true;
+        SoundDisplay.Instance.cantMove = false;
 
     }
 

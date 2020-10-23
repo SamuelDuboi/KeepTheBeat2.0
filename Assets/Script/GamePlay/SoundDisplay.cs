@@ -25,9 +25,9 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public AudioSource fail;
 
     public bool cantAct;
-    [HideInInspector] public List<GameObject> ennemys = new List<GameObject>();
+     public List<GameObject> ennemys = new List<GameObject>();
 
-    private int cptForMovement;
+    public int cptForMovement;
     [HideInInspector] public bool doOnce;
 
     [Header("ObjectToScale")]
@@ -58,8 +58,14 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public bool cantMove;
     public void BeatEvent()
     {
-        if (AudioHelmClock.GetGlobalBeatTime() < 0)
+        if (AudioHelmClock.GetGlobalBeatTime() < 0 )
             return;
+
+        if(cantMove)
+        {
+            beat = 0;
+            return;
+        }
         beat++;
 
         if (beat == 0)
@@ -81,7 +87,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
             beat = 0;
             Main.Instance.CanShoot();
         }
-        if (cptForMovement == 1 && beat == 4  && !cantMove)
+        if (cptForMovement == 1 && beat == 4 )
         {
             timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
             cptForMovement = 0;

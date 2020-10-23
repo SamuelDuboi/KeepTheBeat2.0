@@ -5,14 +5,20 @@ using Uduino;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
+using System.Linq.Expressions;
 
 public class ArduinoManagers : Singleton<ArduinoManagers>
 {
-    public Text text;
-    public Text title;
-    public Image time;
-    public string text2;
-    public float timer;
+    [Header("UI")]
+    public TextMeshProUGUI timerText;
+    public TextMeshProUGUI bpm;
+    public TextMeshProUGUI instructions;
+    public GameObject circleRef;
+    public GameObject heart;
+
+    [Header("Values")]
+    public float timerFloat;
     private List<int> numbers;
     private bool started;
     private bool doOnce;
@@ -21,10 +27,13 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
 
 
+
+
     private void Start()
     {
+        StartCoroutine("CircleSpawning");
 
-        timer = -1;// to enable timer only when started = true
+        timerFloat = 20;// to enable timer only when started = true
         UduinoManager.Instance.OnDataReceived += DataReceived;
         DontDestroyOnLoad(this);
 
@@ -43,19 +52,19 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         {
             if (started)
                 StartCoroutine(WaiForCounting());
-            text.text = cpt.ToString();
+            bpm.text = cpt.ToString();
 
-            if (timer >= 0)
-                timer += Time.deltaTime;
-            time.fillAmount = timer / 20;
-            title.text = text2 + ((int)(20 - timer)).ToString() + " secondes";
+            if (timerFloat >= 0)
+                timerFloat -= Time.deltaTime;
+            //Visuel de la Barre
+            timerText.text = Mathf.Floor(timerFloat).ToString();
+           
         }
     }
 
 
     void DataReceived(string data, UduinoDevice board)
     {
-
         if (!started && !doOnce && data.Length != 19)
         {
             cpt = int.Parse(data);
@@ -105,17 +114,25 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     }
 
-
     private IEnumerator WaiForCounting()
     {
         GetComponent<AudioSource>().Play();
         started = false;
-        timer = 0; // to start timer 
+        timerFloat = 20; // to start timer 
         canCount = true;
         yield return new WaitForSeconds(20);
         canCount = false;
         GetComponent<AudioSource>().Stop();
         SceneManager.LoadScene("TestHelm");
     }
+
+    private IEnumerator CircleSpawning()
+    {
+        Instantiate(circleRef, heart.transform.position, Quaternion.identity);
+        yield return new WaitForSecondsRealtime(1f);
+        StartCoroutine("CircleSpawning");
+    }
+
+    
 
 }

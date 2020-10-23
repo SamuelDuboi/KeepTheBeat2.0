@@ -7,6 +7,14 @@ public class TanksEnnemy : EnnemyBehavior
 {
     private bool canReset;
     private int cptDead;
+    public Light light1, light2;
+    public Light lightParent;
+
+    private void Start()
+    {
+        light1.color = lightParent.color;
+        light2.color = lightParent.color;
+    }
 
     private void Update()
     {

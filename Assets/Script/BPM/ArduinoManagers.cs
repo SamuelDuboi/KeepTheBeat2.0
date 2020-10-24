@@ -42,7 +42,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     private void Update()
     {
       
-        if (SceneManager.GetActiveScene().name == "TestHelm")
+        if (SceneManager.GetActiveScene().name == "MainScene")
         {
             AudioHelmClock.GetInstance().bpm = cpt;
             AudioHelmClock.GetInstance().SetGlobalBpm();
@@ -123,7 +123,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         yield return new WaitForSeconds(20);
         canCount = false;
         GetComponent<AudioSource>().Stop();
-        SceneManager.LoadScene("TestHelm");
+        SceneManager.LoadScene("MainScene");
     }
 
     private IEnumerator CircleSpawning()

@@ -40320,13 +40320,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
-      propertyPath: patterns.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 8790651030324516901}
+    - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
+      propertyPath: currentPatternName
+      value: 
+      objectReference: {fileID: 2008788003}
     - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
       propertyPath: specialBarG
       value: 
@@ -40335,22 +40335,6 @@ PrefabInstance:
       propertyPath: specialBarD
       value: 
       objectReference: {fileID: 1982657890}
-    - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
-      propertyPath: currentPatternName
-      value: 
-      objectReference: {fileID: 2008788003}
-    - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
-      propertyPath: patterns.Array.data[1]
-      value: 
-      objectReference: {fileID: 11400000, guid: 748496590be32f042a3a27045720a2a7, type: 2}
-    - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
-      propertyPath: miniBoss
-      value: 
-      objectReference: {fileID: 1775133215126914222, guid: b8ffe49f9dce6634483f26938f52a246, type: 3}
-    - target: {fileID: 3251313302740951557, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
-      propertyPath: miniBossLife
-      value: 300
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dd0132672598f024e8b9cd6d6be5b055, type: 3}
 --- !u!4 &8857944161362358103

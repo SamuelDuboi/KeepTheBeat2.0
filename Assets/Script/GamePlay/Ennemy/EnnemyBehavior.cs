@@ -2,23 +2,28 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class EnnemyBehavior : MonoBehaviour
 {
-  
+    [Header("GameObject Ref")]
+    public GameObject poptextPosition;
+    public GameObject explosion;
+    public GameObject popTextScore;
+    public GameObject child;
+    [HideInInspector] public GameObject tile;
 
+    [Header("Values")]
     private double bpm;
-     public GameObject explosion;
     public Vector3[] positions;
     [HideInInspector]  public int cpt;
     public int scoreValue;
-    [HideInInspector] public GameObject tile;
     [Range(0, 100)]
     public float speed;
-    public GameObject child;
     [HideInInspector] public bool cantMove;
     [HideInInspector] public bool turnOnTrail;
     int type;
+
     private void Update()
     {
         if(!cantMove)
@@ -76,6 +81,8 @@ public class EnnemyBehavior : MonoBehaviour
         Score.Instance.ScoreUp(scoreValue);
         SoundDisplay.Instance.RemoveEnnemy(gameObject);
         Instantiate(explosion, transform.position, Quaternion.identity);
+        GameObject poptext =  Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
+        poptext.GetComponent<TextMeshPro>().text = scoreValue.ToString();
         Destroy(gameObject);
     }
 

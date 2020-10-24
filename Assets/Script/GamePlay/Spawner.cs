@@ -1,9 +1,11 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
+    public GameObject popScore;
     public GameObject explosion;
     public GameObject pawn;
     public GameObject direction;
@@ -31,10 +33,7 @@ public class Spawner : MonoBehaviour
         {
             positions[i] = new Vector3(transform.position.x + distanceToMove.x * i, transform.position.y + distanceToMove.y * i,transform.position.z + distanceToMove.z*i);
             GameObject _pawn = Instantiate(pawn, positions[i], Quaternion.identity, transform);
-
-
         }
-
     }
 
     public void Spwan(GameObject ennemy)
@@ -46,7 +45,9 @@ public class Spawner : MonoBehaviour
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
         _ennemy.GetComponent<EnnemyBehavior>().explosion = explosion;
-        _ennemy.GetComponentInChildren<TrailRenderer>().startColor =currentColor;
+        _ennemy.GetComponentInChildren<TrailRenderer>().startColor = currentColor;
+        _ennemy.GetComponent<EnnemyBehavior>().popTextScore = popScore;
+        
     }
     public void Spwan(GameObject ennemy, Vector3[] positions)
     {
@@ -56,6 +57,7 @@ public class Spawner : MonoBehaviour
         _ennemy.GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().explosion = explosion;
+        _ennemy.GetComponent<EnnemyBehavior>().popTextScore = popScore;
 
         for (int i = 0; i < positions.Length; i++)
         {
@@ -77,6 +79,8 @@ public class Spawner : MonoBehaviour
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().explosion = firstSpawner.explosion;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().explosion = secondSpawner.explosion;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().popTextScore = firstSpawner.popScore;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().popTextScore = secondSpawner.popScore;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<Light>().color = firstSpawner.currentColor;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponentInChildren<Light>().color = secondSpawner.currentColor;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponentInChildren<TrailRenderer>().startColor = firstSpawner.currentColor;

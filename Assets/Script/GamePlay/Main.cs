@@ -1,4 +1,5 @@
 ﻿using AudioHelm;
+using Microsoft.Win32.SafeHandles;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -56,6 +57,18 @@ public class Main : Singleton<Main>
     public GameObject powerSupplies;
 
     private int doOnceCPT;
+
+
+    [Header("MiniBoss")]
+    private bool isMiniBoss;
+    private bool canShootMiniBoss;
+    private bool destroyed;
+    public GameObject miniBoss;
+    public int miniBossLife;
+    private int miniBossDamage;
+    private float miniBossTimer;
+    public float miniBossMaxScore;
+    public int miniBossMinScore;
 
 
     private void Start()
@@ -135,7 +148,7 @@ public class Main : Singleton<Main>
                 }
                 lineRenderer[0].SetPosition(1, _ennemy.transform.position);
                 clap.Play();
-                StartCoroutine(LaserFade(0));
+                StartCoroutine(LaserFade(0,100));
                 SoundDisplay.Instance.RemoveEnnemy(_ennemy);
                 Destroy(_ennemy);
                 Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
@@ -150,6 +163,26 @@ public class Main : Singleton<Main>
             {
                 isBulletTime = false;
             }
+        }
+        else if (canShootMiniBoss)
+        {
+            miniBossTimer += Time.deltaTime;
+            if(Input.GetKeyDown(KeyCode.E) )
+            {
+                lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
+                StartCoroutine(RowFade(rowOn[2]));
+                StartCoroutine(LaserFade(0,20));
+                miniBossDamage++;
+            }
+            else if (Input.GetKeyDown(KeyCode.R))
+            {
+                lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
+                StartCoroutine(RowFade(rowOn[3]));
+                StartCoroutine(LaserFade(1,20));
+                miniBossDamage++;
+            }
+            if (miniBossDamage >= miniBossLife)
+                destroyed = true;
         }
         else if (Input.anyKeyDown)
         {
@@ -192,16 +225,16 @@ public class Main : Singleton<Main>
         {
             if(hit.collider.gameObject.tag == "Ennemy")
             {
-            lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
+                lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();
                 hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed();
-                StartCoroutine(LaserFade(_cpt - 1));
+                StartCoroutine(LaserFade(_cpt - 1,100));
             }
             else if(hit.collider.gameObject.tag == "LinkedEnnemy")
             {
                 lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();
-                StartCoroutine(LaserFade(_cpt - 1));
+                StartCoroutine(LaserFade(_cpt - 1,100));
 
                hit.collider.GetComponentInParent<LinkedEnnemy>().Hitted();
              
@@ -229,16 +262,16 @@ public class Main : Singleton<Main>
             clap.Play();
             Instantiate(explosionSpecial, hit.collider.transform.position, Quaternion.identity);
             Instantiate(powerSupplies, hit.collider.transform.position, Quaternion.identity);
-            StartCoroutine(LaserFade(0));
+            StartCoroutine(LaserFade(0,100));
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
             Destroy(hit.collider.gameObject);
         }
     }
 
-    IEnumerator LaserFade(int cpt)
+    IEnumerator LaserFade(int cpt, int timer)
     {
-        for (int i = 0; i < 100 * 60/AudioHelmClock.GetGlobalBpm(); i++)
+        for (int i = 0; i < timer * 60/AudioHelmClock.GetGlobalBpm(); i++)
         {
             lineRenderer[cpt].startColor -= new Color(0, 0, 0, 0.01f);
             lineRenderer[cpt].endColor -= new Color(0, 0, 0, 0.01f);
@@ -278,60 +311,80 @@ public class Main : Singleton<Main>
     private bool breakSpawn;
     public void Spawn()
     {
-        breakSpawn = false;
-        float biggest = 0;
-        List<int> numberForEnnemy = new List<int>();
-
-        //go to the next pattern if not already done
-
-        if (nodeNumber == 12)
+        if (!isMiniBoss) 
         {
-            nodeNumber = 0;
-            #region patternDifficulty
-            var _currentPattern = new List<Patterns>();
-            if (patternNumber >= patterns.Length - 1)
-                return;
-            else if (patternNumber < numberOfPatternPerDifficulty - 1)
-                _currentPattern = patterns1;
-            else if (patternNumber >= numberOfPatternPerDifficulty - 1 && patternNumber < (numberOfPatternPerDifficulty - 1) * 2)
+
+            breakSpawn = false;
+            float biggest = 0;
+            List<int> numberForEnnemy = new List<int>();
+
+            //go to the next pattern if not already done
+
+            if (nodeNumber == 12)
             {
-                _currentPattern = patterns2;
+                nodeNumber = 0;
+                #region patternDifficulty
+                var _currentPattern = new List<Patterns>();
+                if (patternNumber >= patterns.Length - 1)
+                    return;
+                else if (patternNumber < numberOfPatternPerDifficulty - 1)
+                    _currentPattern = patterns1;
+                else if (patternNumber >= numberOfPatternPerDifficulty - 1 && patternNumber < (numberOfPatternPerDifficulty - 1) * 2)
+                {
+                    _currentPattern = patterns2;
+                }
+                else if (patternNumber < patterns.Length - 1)
+                    _currentPattern = patterns3;
+                else
+                {
+                    Debug.Log("c'est fini");
+                    return;
+                }
+
+                if (_currentPattern.Count == 0)
+                    return;
+
+                #endregion
+
+                if (patternNumber == 1)
+                {
+                    StartCoroutine(MiniBoss());
+                }
+
+                previousNumberPattern.Add(currentPattern);
+                currentPattern = Random.Range(0, _currentPattern.Count);
+                foreach (var number in previousNumberPattern)
+                {
+                    while (currentPattern == number)
+                        currentPattern = Random.Range(0, _currentPattern.Count);
+
+                }
+
+                patternNumber++;
+                if (patternNumber == numberOfPatternPerDifficulty - 1 || patternNumber == (numberOfPatternPerDifficulty - 1) * 2)
+                {
+                    previousNumberPattern.Clear();
+                }
+                foreach (var vecor in _currentPattern[currentPattern].ennemiesPosition)
+                {
+                    previousEnnemyList.Add(vecor);
+                }
+
+                //debug to know wich pattern is playing
+                currentPatternName.text = "current pattern : " + _currentPattern[currentPattern].name;
+
+
+                for (int i = 0; i < previousEnnemyList.Count; i++)
+                {
+                    if (previousEnnemyList[i].y > biggest)
+                    {
+                        biggest = previousEnnemyList[i].y;
+                    }
+
+                }
+
+                previousEnnemy.y = 12;
             }
-            else if (patternNumber < patterns.Length - 1)
-                _currentPattern = patterns3;
-            else
-            {
-                Debug.Log("c'est fini");
-                return;
-            }
-
-            if (_currentPattern.Count == 0)
-                return;
-            
-            #endregion
-
-            previousNumberPattern.Add(currentPattern);
-            currentPattern = Random.Range(0, _currentPattern.Count);
-            foreach (var number in previousNumberPattern)
-            {
-                while (currentPattern == number)
-                    currentPattern = Random.Range(0, _currentPattern.Count);
-
-            }
-
-            patternNumber++;
-            if (patternNumber == numberOfPatternPerDifficulty - 1 || patternNumber == (numberOfPatternPerDifficulty - 1) * 2)
-            {
-                previousNumberPattern.Clear();
-            }
-            foreach (var vecor in _currentPattern[currentPattern].ennemiesPosition)
-            {
-                previousEnnemyList.Add(vecor);
-            }
-
-            //debug to know wich pattern is playing
-            currentPatternName.text = "current pattern : " +_currentPattern[currentPattern].name;
-
 
             for (int i = 0; i < previousEnnemyList.Count; i++)
             {
@@ -341,78 +394,67 @@ public class Main : Singleton<Main>
                 }
 
             }
-
-            previousEnnemy.y = 12;
-        }
-
-        for (int i = 0; i < previousEnnemyList.Count; i++)
-        {
-            if (previousEnnemyList[i].y > biggest)
+            for (int i = 0; i < previousEnnemyList.Count; i++)
             {
-                biggest = previousEnnemyList[i].y;
+                if (previousEnnemyList[i].y == biggest)
+                {
+                    numberForEnnemy.Add(i);
+                }
+
             }
 
-        }
-        for (int i = 0; i < previousEnnemyList.Count; i++)
-        {
-            if (previousEnnemyList[i].y == biggest)
+            if (biggest + emptyNode == previousEnnemy.y - 1)
             {
-                numberForEnnemy.Add(i);
-            }
+                emptyNode = 0;
+                if (numberForEnnemy.Count < 6)
+                {
+                    for (int i = 0; i < numberForEnnemy.Count; i++)
+                    {
+                        var _ennemy = previousEnnemyList[numberForEnnemy[i]].z;
 
-        }
+                        switch (_ennemy)
+                        {
+                            case 1:
+                                positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                                break;
+                            case 2:
+                                TpSpawn(previousEnnemyList[numberForEnnemy[i]].x, (int)previousEnnemyList[numberForEnnemy[i]].x);
+                                break;
+                            case 3:
+                                positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                                break;
+                            case 4:
+                                LinkedSpawn(previousEnnemyList[numberForEnnemy[i]].x, numberForEnnemy, previousEnnemyList[numberForEnnemy[i]], (int)previousEnnemyList[numberForEnnemy[i]].x);
+                                break;
 
-        if (biggest + emptyNode == previousEnnemy.y - 1)
-        {
-            emptyNode = 0;
-            if (numberForEnnemy.Count < 6)
-            {
+                            default:
+                                Debug.Log(_ennemy);
+                                break;
+                        }
+                        if (breakSpawn)
+                            break;
+                        previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
+                    }
+                }
+                else
+                {
+                    for (int i = 0; i < numberForEnnemy.Count; i++)
+                    {
+                        previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
+                    }
+                    SpecialSpawn();
+                }
                 for (int i = 0; i < numberForEnnemy.Count; i++)
                 {
-                    var _ennemy = previousEnnemyList[numberForEnnemy[i]].z;
 
-                    switch (_ennemy)
-                    {
-                        case 1:
-                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[0]);
-                            break;
-                        case 2:
-                            TpSpawn(previousEnnemyList[numberForEnnemy[i]].x ,(int)previousEnnemyList[numberForEnnemy[i]].x);
-                            break;
-                        case 3:
-                            positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[3]);
-                            break;
-                        case 4:
-                            LinkedSpawn(previousEnnemyList[numberForEnnemy[i]].x, numberForEnnemy, previousEnnemyList[numberForEnnemy[i]], (int)previousEnnemyList[numberForEnnemy[i]].x);
-                            break;
-                                           
-                        default:
-                            Debug.Log(_ennemy);
-                            break;
-                    }
-                    if (breakSpawn)
-                        break;
-                    previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
+                    previousEnnemyList.RemoveAt(numberForEnnemy[i] - i);
                 }
             }
             else
-            {
-                for (int i = 0; i < numberForEnnemy.Count; i++)
-                {
-                    previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
-                }
-                SpecialSpawn();
-            }
-            for (int i = 0; i < numberForEnnemy.Count; i++)
-            {
+                emptyNode++;
 
-                previousEnnemyList.RemoveAt(numberForEnnemy[i] - i);
-            }
+            nodeNumber++;
         }
-        else
-            emptyNode++;
-
-        nodeNumber++;
     }
 
     public void SpecialSpawn()
@@ -478,6 +520,34 @@ public class Main : Singleton<Main>
         canShoot = false;
         doOnceCPT = 0;
         SoundDisplay.Instance.doOnce = true;
+    }
+
+
+    IEnumerator MiniBoss()
+    {
+        isMiniBoss = true;
+        miniBossDamage = 0;
+        yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
+        yield return new WaitForSeconds(2f);
+        miniBossTimer = 0;
+        canShootMiniBoss = true;
+        //instantiate the mini boss in the middle of the scene
+        var _miniBoss = Instantiate(miniBoss, specialSpawner.transform);
+        yield return new WaitUntil(() => destroyed);
+        Destroy(_miniBoss);
+        canShootMiniBoss = false;
+        destroyed = false;
+
+        if(miniBossMaxScore - miniBossTimer * 100>0)
+            Score.Instance.ScoreUp((int)(miniBossMaxScore - miniBossTimer *100));
+        else 
+            Score.Instance.ScoreUp(miniBossMinScore);
+
+        // wait for the player to calm down
+        yield return new WaitForSeconds(5f);
+        isMiniBoss = false;
+
+
     }
 }
 

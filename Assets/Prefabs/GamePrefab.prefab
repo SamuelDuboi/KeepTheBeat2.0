@@ -2113,7 +2113,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3251313302179404552}
-  m_LocalRotation: {x: -0.111295454, y: -0, z: -0, w: 0.99378735}
+  m_LocalRotation: {x: -0.111295454, y: 0, z: 0, w: 0.99378735}
   m_LocalPosition: {x: 0, y: 0.29012275, z: -0.4894154}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -2123,7 +2123,7 @@ Transform:
   - {fileID: 3251313301723434345}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -12.78, y: 0, z: 0}
 --- !u!1 &3251313302228795886
 GameObject:
   m_ObjectHideFlags: 0
@@ -2950,6 +2950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  currentPatternName: {fileID: 0}
   clap: {fileID: 3251313302740951558}
   positionEnd:
   - {fileID: 3251313301141286090}
@@ -2959,7 +2960,10 @@ MonoBehaviour:
   - {fileID: 3251313302291901605}
   - {fileID: 3251313302228795886}
   patterns:
-  - {fileID: 11400000, guid: 5989613ba244d8544bec24a5bd9addad, type: 2}
+  - {fileID: 11400000, guid: dd7c7fce30d3f41459c50081ff17a015, type: 2}
+  - {fileID: 11400000, guid: dd7c7fce30d3f41459c50081ff17a015, type: 2}
+  - {fileID: 11400000, guid: dd7c7fce30d3f41459c50081ff17a015, type: 2}
+  - {fileID: 11400000, guid: dd7c7fce30d3f41459c50081ff17a015, type: 2}
   patterns1: []
   patterns2: []
   patterns3: []
@@ -2992,6 +2996,10 @@ MonoBehaviour:
   explosion: []
   explosionSpecial: {fileID: 5198590128747588515, guid: b6bce65deeadaca4cbe0e4a68210f631, type: 3}
   powerSupplies: {fileID: 6510262769477883943, guid: 73a5fb525a9178e4992e3b9ba694f061, type: 3}
+  miniBoss: {fileID: 1775133215126914222, guid: b8ffe49f9dce6634483f26938f52a246, type: 3}
+  miniBossLife: 20
+  miniBossMaxScore: 100000
+  miniBossMinScore: 1000
 --- !u!120 &3251313302740951559
 LineRenderer:
   m_ObjectHideFlags: 0

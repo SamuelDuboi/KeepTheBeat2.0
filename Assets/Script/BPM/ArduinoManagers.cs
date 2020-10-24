@@ -58,7 +58,8 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                 timerFloat -= Time.deltaTime;
             //Visuel de la Barre
             timerText.text = Mathf.Floor(timerFloat).ToString();
-           
+            gameObject.GetComponent<AudioHelmClock>().bpm = cpt;
+            gameObject.GetComponent<AudioHelmClock>().SetGlobalBpm();
         }
     }
 

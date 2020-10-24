@@ -62,11 +62,9 @@ public class Main : Singleton<Main>
     [Header("MiniBoss")]
     private bool isMiniBoss;
     private bool canShootMiniBoss;
-    private bool destroyed;
     public GameObject miniBoss;
-    public int miniBossLife;
     private int miniBossDamage;
-    private float miniBossTimer;
+    public float miniBossTime;
     public float miniBossMaxScore;
     public int miniBossMinScore;
 
@@ -166,7 +164,6 @@ public class Main : Singleton<Main>
         }
         else if (canShootMiniBoss)
         {
-            miniBossTimer += Time.deltaTime;
             if(Input.GetKeyDown(KeyCode.E) )
             {
                 lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
@@ -181,8 +178,7 @@ public class Main : Singleton<Main>
                 StartCoroutine(LaserFade(1,20));
                 miniBossDamage++;
             }
-            if (miniBossDamage >= miniBossLife)
-                destroyed = true;
+           
         }
         else if (Input.anyKeyDown)
         {
@@ -529,19 +525,14 @@ public class Main : Singleton<Main>
         miniBossDamage = 0;
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
-        miniBossTimer = 0;
         canShootMiniBoss = true;
         //instantiate the mini boss in the middle of the scene
         var _miniBoss = Instantiate(miniBoss, specialSpawner.transform);
-        yield return new WaitUntil(() => destroyed);
+        yield return new WaitForSeconds(miniBossTime);
         Destroy(_miniBoss);
         canShootMiniBoss = false;
-        destroyed = false;
 
-        if(miniBossMaxScore - miniBossTimer * 100>0)
-            Score.Instance.ScoreUp((int)(miniBossMaxScore - miniBossTimer *100));
-        else 
-            Score.Instance.ScoreUp(miniBossMinScore);
+        Score.Instance.ScoreUp(miniBossDamage * 100);
 
         // wait for the player to calm down
         yield return new WaitForSeconds(5f);

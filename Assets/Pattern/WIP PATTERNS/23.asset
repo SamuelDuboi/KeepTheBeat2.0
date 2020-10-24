@@ -46,4 +46,4 @@ MonoBehaviour:
   - {x: 0, y: 9, z: 1}
   - {x: 1, y: 10, z: 1}
   - {x: 0, y: 11, z: 1}
-  difficulty: 2
+  difficulty: 3

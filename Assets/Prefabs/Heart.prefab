@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 3126176926474627320}
   - component: {fileID: 902582567387667506}
   - component: {fileID: 1695150474932895206}
-  - component: {fileID: 1695150474932895204}
   m_Layer: 0
   m_Name: Heart
   m_TagString: Untagged
@@ -98,25 +97,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 10, z: 10}
   vectorSpeed: 5
---- !u!95 &1695150474932895204
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695150474932895207}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 1861bffbcac34af4f9209bf050457c6b, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1965552621008420724
 GameObject:
   m_ObjectHideFlags: 0
@@ -128,7 +108,7 @@ GameObject:
   - component: {fileID: 1965552621008420723}
   - component: {fileID: 1965552621008420722}
   m_Layer: 0
-  m_Name: Icosphere2
+  m_Name: Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

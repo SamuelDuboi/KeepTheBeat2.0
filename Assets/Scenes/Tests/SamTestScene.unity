@@ -433,14 +433,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3300805184124173946, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3300805184627977317, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: leaderBoard
-      value: 
-      objectReference: {fileID: 11400000, guid: 4e0f3aba290e40f40b3fd5e1611af935, type: 2}
     - target: {fileID: 3300805185039586898, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -493,10 +485,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8812904904180467417, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8812904904323742694, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: heart
       value: 
@@ -505,14 +493,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8790651030324516901}
-    - target: {fileID: 8812904904658119740, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: miniBossTime
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8812904904658119740, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: miniBoss
-      value: 
-      objectReference: {fileID: 8098279034364891489, guid: d78011e8f65c70d4490141c4bda85c43, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
 --- !u!1 &244981553

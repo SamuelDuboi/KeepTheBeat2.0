@@ -346,7 +346,7 @@ public class Main : Singleton<Main>
 
                 #endregion
 
-                if (patternNumber == 1)
+                if (patternNumber == 9)
                 {
                     StartCoroutine(MiniBoss());
                 }

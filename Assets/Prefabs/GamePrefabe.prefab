@@ -285,7 +285,6 @@ GameObject:
   - component: {fileID: 3300805184042419178}
   - component: {fileID: 3300805184042419183}
   - component: {fileID: 3300805184042419176}
-  - component: {fileID: 3300805184042419177}
   m_Layer: 5
   m_Name: TEXT_Score
   m_TagString: Untagged
@@ -409,22 +408,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3300805184042419177
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3300805184042419179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6a79e514c1f51478649cd1dd399f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorMultiplier: 1
-  cptStreak: 0
-  scorText: {fileID: 0}
-  scorMultiplierText: {fileID: 0}
 --- !u!1 &3300805184064418635
 GameObject:
   m_ObjectHideFlags: 0
@@ -735,7 +718,6 @@ GameObject:
   - component: {fileID: 3300805184269508711}
   - component: {fileID: 3300805184269508708}
   - component: {fileID: 3300805184269508709}
-  - component: {fileID: 3300805184269508710}
   m_Layer: 5
   m_Name: TEXT_Multiplicateur
   m_TagString: Untagged
@@ -859,22 +841,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3300805184269508710
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3300805184269508704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6a79e514c1f51478649cd1dd399f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorMultiplier: 1
-  cptStreak: 0
-  scorText: {fileID: 0}
-  scorMultiplierText: {fileID: 0}
 --- !u!1 &3300805184360659770
 GameObject:
   m_ObjectHideFlags: 0
@@ -1123,7 +1089,6 @@ GameObject:
   - component: {fileID: 3300805184638575121}
   - component: {fileID: 3300805184638575126}
   - component: {fileID: 3300805184638575127}
-  - component: {fileID: 3300805184638575120}
   m_Layer: 5
   m_Name: Current Patterns
   m_TagString: Untagged
@@ -1247,22 +1212,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!114 &3300805184638575120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3300805184638575122}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6a79e514c1f51478649cd1dd399f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scorMultiplier: 1
-  cptStreak: 0
-  scorText: {fileID: 0}
-  scorMultiplierText: {fileID: 0}
 --- !u!1 &3300805184728763525
 GameObject:
   m_ObjectHideFlags: 0
@@ -4532,7 +4481,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8812904904163480881}
-  m_LocalRotation: {x: -0.111295454, y: -0, z: -0, w: 0.99378735}
+  m_LocalRotation: {x: -0.111295454, y: 0, z: 0, w: 0.99378735}
   m_LocalPosition: {x: 0, y: 0.29012275, z: -0.4894154}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -4543,7 +4492,7 @@ Transform:
   - {fileID: 3300805184614135046}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -12.78, y: 0, z: 0}
 --- !u!1 &8812904904180467417
 GameObject:
   m_ObjectHideFlags: 0
@@ -5235,9 +5184,9 @@ MonoBehaviour:
   explosionSpecial: {fileID: 5198590128747588515, guid: b6bce65deeadaca4cbe0e4a68210f631, type: 3}
   powerSupplies: {fileID: 6510262769477883943, guid: 73a5fb525a9178e4992e3b9ba694f061, type: 3}
   miniBoss: {fileID: 0}
-  miniBossLife: 0
-  miniBossMaxScore: 0
-  miniBossMinScore: 0
+  miniBossLife: 100
+  miniBossMaxScore: 1000
+  miniBossMinScore: 100
 --- !u!120 &8812904904658119742
 LineRenderer:
   m_ObjectHideFlags: 0

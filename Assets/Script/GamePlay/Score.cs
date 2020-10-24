@@ -15,7 +15,6 @@ public class Score : Singleton<Score>
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame
@@ -28,6 +27,7 @@ public class Score : Singleton<Score>
     {
         score += upNumber*scorMultiplier;
         cptStreak++;
+        
         scorText.text =  score.ToString();
         if(cptStreak >= 10)
         {
@@ -43,7 +43,6 @@ public class Score : Singleton<Score>
         score -= upNumber ;
         if(cptStreak!=0)
             cptStreak--;
-        
         scorText.text = score.ToString();
         
     }

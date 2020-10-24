@@ -1,6 +1,7 @@
 ﻿using AudioHelm;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +9,7 @@ public class Main : Singleton<Main>
 {
     [Header("GameObject References")]
     public GameObject player;
+    public TextMeshProUGUI currentPatternName;
 
     [Header("Sound")]
     public AudioSource clap;
@@ -74,6 +76,10 @@ public class Main : Singleton<Main>
         {
             previousEnnemyList.Add(vector);
         }
+
+        //debug to know wich pattern is playing
+        currentPatternName.text = "current pattern : " +  patterns1[0].name;
+
         previousEnnemy = Vector2.one * 12;
     }
 
@@ -322,6 +328,9 @@ public class Main : Singleton<Main>
             {
                 previousEnnemyList.Add(vecor);
             }
+
+            //debug to know wich pattern is playing
+            currentPatternName.text = "current pattern : " +_currentPattern[currentPattern].name;
 
 
             for (int i = 0; i < previousEnnemyList.Count; i++)

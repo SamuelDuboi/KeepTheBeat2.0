@@ -1074,6 +1074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6a79e514c1f51478649cd1dd399f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  leaderBoard: {fileID: 11400000, guid: 4e0f3aba290e40f40b3fd5e1611af935, type: 2}
   scorMultiplier: 1
   cptStreak: 0
   scorText: {fileID: 3300805184042419176}
@@ -5183,8 +5184,8 @@ MonoBehaviour:
   explosion: []
   explosionSpecial: {fileID: 5198590128747588515, guid: b6bce65deeadaca4cbe0e4a68210f631, type: 3}
   powerSupplies: {fileID: 6510262769477883943, guid: 73a5fb525a9178e4992e3b9ba694f061, type: 3}
-  miniBoss: {fileID: 0}
-  miniBossLife: 100
+  miniBoss: {fileID: 8098279034364891489, guid: d78011e8f65c70d4490141c4bda85c43, type: 3}
+  miniBossTime: 10
   miniBossMaxScore: 1000
   miniBossMinScore: 100
 --- !u!120 &8812904904658119742

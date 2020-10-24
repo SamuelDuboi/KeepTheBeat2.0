@@ -1,5 +1,4 @@
 ﻿using AudioHelm;
-using Microsoft.Win32.SafeHandles;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -527,18 +526,33 @@ public class Main : Singleton<Main>
         yield return new WaitForSeconds(2f);
         canShootMiniBoss = true;
         //instantiate the mini boss in the middle of the scene
-        var _miniBoss = Instantiate(miniBoss, specialSpawner.transform);
-        yield return new WaitForSeconds(miniBossTime);
-        Destroy(_miniBoss);
-        canShootMiniBoss = false;
+        var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
 
-        Score.Instance.ScoreUp(miniBossDamage * 100);
+    }
 
+    IEnumerator StartAfterMiniBoss()
+    {
         // wait for the player to calm down
         yield return new WaitForSeconds(5f);
         isMiniBoss = false;
+    }
 
 
+    public void MiniBossOverTest( int life, GameObject miniBoss)
+    {
+        
+        if (miniBossDamage >= life)
+        {
+            canShootMiniBoss = false;
+            Score.Instance.ScoreUp(miniBossDamage * 100);
+            canShootMiniBoss = false;
+            Destroy(miniBoss);
+            StartCoroutine(StartAfterMiniBoss());
+        }
+        else
+        {
+            Score.Instance.EndScene();
+        }
     }
 }
 

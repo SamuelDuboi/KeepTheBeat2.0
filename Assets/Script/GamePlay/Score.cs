@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class Score : Singleton<Score>
 {
     public static int score;
-   
+    public LeaderBoard leaderBoard;
     [HideInInspector] public int scorMultiplier =1;
     [HideInInspector] public int cptStreak;
     public TextMeshProUGUI scorText;
@@ -57,5 +58,11 @@ public class Score : Singleton<Score>
         }
         SoundDisplay.Instance.TakeDamage(scorMultiplier-1);
 
+    }
+
+    public void EndScene()
+    {
+        leaderBoard.CountScore(score);
+        SceneManager.LoadScene("LeaderBoard");
     }
 }

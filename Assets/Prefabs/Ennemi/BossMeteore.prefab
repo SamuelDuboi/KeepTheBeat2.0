@@ -9639,7 +9639,8 @@ GameObject:
   - component: {fileID: 7737784013107998900}
   - component: {fileID: 8098279034364891518}
   - component: {fileID: 2742915195286966095}
-  m_Layer: 0
+  - component: {fileID: 9211487704382218416}
+  m_Layer: 19
   m_Name: BossMeteore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9654,7 +9655,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8098279034364891489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0, z: 45.3}
+  m_LocalPosition: {x: -0, y: -0, z: 0}
   m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_Children:
   - {fileID: 7451091652735893012}
@@ -9741,3 +9742,17 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: -1}
   speed: 200
   smallExplosion: {fileID: 47111484976083092, guid: 53ebb8047daef0641bf8c51cdafe5fb9, type: 3}
+--- !u!64 &9211487704382218416
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098279034364891489}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 289301614986012343, guid: 9740547baffcc0d46ae960402be3a25a, type: 3}

@@ -3182,6 +3182,13 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 1.86e-43}
   - {x: 0, y: 0, z: 1.492e-42}
   - {x: 0, y: 0, z: 1.504e-42}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8812904903342604696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,6 +3300,13 @@ MonoBehaviour:
   - {x: 0, y: 0, z: -3.68935e+19}
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 6.45e-43}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8812904903481984077
 GameObject:
   m_ObjectHideFlags: 0
@@ -3844,6 +3858,13 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1.64e-43}
   - {x: 0, y: 0, z: 14.773793}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8812904903835375776
 GameObject:
   m_ObjectHideFlags: 0
@@ -4118,6 +4139,13 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1.64e-43}
   - {x: 0, y: 0, z: 14.773793}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!212 &8812904903927774941
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4280,6 +4308,13 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   - {x: 0, y: 0, z: 1.64e-43}
   - {x: 0, y: 0, z: 14.773793}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8812904904036422336
 GameObject:
   m_ObjectHideFlags: 0
@@ -5184,10 +5219,20 @@ MonoBehaviour:
   explosion: []
   explosionSpecial: {fileID: 5198590128747588515, guid: b6bce65deeadaca4cbe0e4a68210f631, type: 3}
   powerSupplies: {fileID: 6510262769477883943, guid: 73a5fb525a9178e4992e3b9ba694f061, type: 3}
+  canShootMiniBoss: 0
   miniBoss: {fileID: 8098279034364891489, guid: d78011e8f65c70d4490141c4bda85c43, type: 3}
   miniBossTime: 10
   miniBossMaxScore: 1000
   miniBossMinScore: 100
+  canShootBoss: 0
+  boss: {fileID: 8098279034364891489, guid: 44d26fea5d5aff7468189014f6ad3c2b, type: 3}
+  victory: {fileID: 0}
+  laserBeams:
+  - {fileID: 788940113971350808, guid: 33e1a53b6645f8940befa086ef88c988, type: 3}
+  - {fileID: 3792823342043020707, guid: 57e6acf519e9a2d43be9e814c8717734, type: 3}
+  - {fileID: 5764378462773749137, guid: 784691d517480734fa7c9729667a839f, type: 3}
+  bigExplosion: {fileID: 968063466963690113, guid: 49b01baea9ade09428c62f6eac03a558, type: 3}
+  laserHit: {fileID: 1346007592542670714, guid: ca222818e7404a34296266a31e407e2a, type: 3}
 --- !u!120 &8812904904658119742
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -5763,6 +5808,13 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 6.46e-43}
   - {x: 0, y: 0, z: 1.64e-43}
   - {x: 0, y: 0, z: 14.773793}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8812904904850748825
 GameObject:
   m_ObjectHideFlags: 0
@@ -5956,6 +6008,13 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 6.46e-43}
   - {x: 0, y: 0, z: 1.64e-43}
   - {x: 0, y: 0, z: 14.773793}
+  tiles:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &8812904904906634686
 GameObject:
   m_ObjectHideFlags: 0

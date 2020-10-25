@@ -78,6 +78,8 @@ public class Main : Singleton<Main>
     public GameObject bigExplosion;
     private int bossLife;
     private GameObject currentBeam;
+    public GameObject laserHit;
+    private GameObject laserHitRef;
 
     private void Start()
     {
@@ -174,6 +176,14 @@ public class Main : Singleton<Main>
         }
         else if (canShootMiniBoss)
         {
+            RaycastHit hit;
+            Physics.Raycast(SoundDisplay.Instance.heart.transform.position, Vector3.forward * 1000, out hit ,1000,1 <<19);
+            if (hit.collider != null)
+            {
+                laserHitRef.transform.position = hit.point;
+            }
+            else
+                Debug.Log("yo");
             if(Input.GetKeyDown(KeyCode.E) )
             {                
                 StartCoroutine(RowFade(rowOn[2]));
@@ -197,6 +207,14 @@ public class Main : Singleton<Main>
         }
         else if (canShootBoss)
         {
+            RaycastHit hit;
+            Physics.Raycast(SoundDisplay.Instance.heart.transform.position, Vector3.forward * 1000, out hit, 1000, 1 << 19);
+            if (hit.collider != null)
+            {
+                laserHitRef.transform.position = hit.point;
+            }
+            else
+                Debug.Log("yo");
             switch (phaseNumber)
             {
                 case 0:
@@ -603,6 +621,7 @@ public class Main : Singleton<Main>
         //instantiate the mini boss in the middle of the scene
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
+        laserHitRef = Instantiate(laserHit, Vector3.back*1000, Quaternion.identity);
         yield return new WaitUntil(() => canShootMiniBoss == true);
         currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
         for (int i = 0; i < positionEnd.Length; i++)
@@ -626,6 +645,7 @@ public class Main : Singleton<Main>
         //instantiate the mini boss in the middle of the scene
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
+        laserHitRef = Instantiate(laserHit, Vector3.back*10000, Quaternion.identity);
         yield return new WaitUntil(() => canShootBoss == true);
         currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
         canShootBoss = true;

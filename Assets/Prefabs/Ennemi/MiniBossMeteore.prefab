@@ -9639,7 +9639,8 @@ GameObject:
   - component: {fileID: 7737784013107998900}
   - component: {fileID: 8098279034364891518}
   - component: {fileID: 2605512316952397209}
-  m_Layer: 0
+  - component: {fileID: 1419337967142510340}
+  m_Layer: 19
   m_Name: MiniBossMeteore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9741,3 +9742,17 @@ MonoBehaviour:
   direction: {x: 0, y: 0, z: -1}
   speed: 200
   smallExplosion: {fileID: 47111484976083092, guid: 53ebb8047daef0641bf8c51cdafe5fb9, type: 3}
+--- !u!64 &1419337967142510340
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8098279034364891489}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 289301614986012343, guid: 9740547baffcc0d46ae960402be3a25a, type: 3}

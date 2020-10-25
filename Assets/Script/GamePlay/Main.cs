@@ -66,12 +66,17 @@ public class Main : Singleton<Main>
     public float miniBossTime;
     public float miniBossMaxScore;
     public int miniBossMinScore;
+    private int miniBossLife;
+
 
     [Header("Boss")]
     [HideInInspector] public bool canShootBoss;
     private int phaseNumber;
     public GameObject boss;
     public GameObject victory;
+    public GameObject[] laserBeams = new GameObject[3];
+    private int bossLife;
+    private GameObject currentBeam;
 
     private void Start()
     {
@@ -169,20 +174,25 @@ public class Main : Singleton<Main>
         else if (canShootMiniBoss)
         {
             if(Input.GetKeyDown(KeyCode.E) )
-            {
-                lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
+            {                
                 StartCoroutine(RowFade(rowOn[2]));
-                StartCoroutine(LaserFade(0,20));
                 miniBossDamage++;
             }
             else if (Input.GetKeyDown(KeyCode.R))
             {
-                lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
                 StartCoroutine(RowFade(rowOn[3]));
-                StartCoroutine(LaserFade(1,20));
                 miniBossDamage++;
             }
-           
+           if( miniBossDamage> miniBossLife / 3)
+            {
+                Destroy(currentBeam);
+                currentBeam = Instantiate(laserBeams[1], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z +3), Quaternion.identity);
+            }
+           else if (miniBossDamage > miniBossLife / 3 * 2)
+            {
+                Destroy(currentBeam);
+                currentBeam = Instantiate(laserBeams[2], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
+            }
         }
         else if (canShootBoss)
         {
@@ -191,54 +201,52 @@ public class Main : Singleton<Main>
                 case 0:
                     if (Input.GetKeyDown(KeyCode.E))
                     {
-                        lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
                         StartCoroutine(RowFade(rowOn[2]));
-                        StartCoroutine(LaserFade(0, 20));
                         miniBossDamage++;
                     }
                     else if (Input.GetKeyDown(KeyCode.R))
                     {
-                        lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
                         StartCoroutine(RowFade(rowOn[3]));
-                        StartCoroutine(LaserFade(1, 20));
                         miniBossDamage++;
                     }
                     break;
                 case 1:
                     if (Input.GetKeyDown(KeyCode.Z))
                     {
-                        lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
                         StartCoroutine(RowFade(rowOn[2]));
-                        StartCoroutine(LaserFade(0, 20));
                         miniBossDamage++;
                     }
                     else if (Input.GetKeyDown(KeyCode.T))
                     {
-                        lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
                         StartCoroutine(RowFade(rowOn[3]));
-                        StartCoroutine(LaserFade(1, 20));
                         miniBossDamage++;
                     }
                     break;
                 case 2:
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
-                        lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
                         StartCoroutine(RowFade(rowOn[2]));
-                        StartCoroutine(LaserFade(0, 20));
                         miniBossDamage++;
                     }
                     else if (Input.GetKeyDown(KeyCode.H))
                     {
-                        lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
                         StartCoroutine(RowFade(rowOn[3]));
-                        StartCoroutine(LaserFade(1, 20));
                         miniBossDamage++;
                     }
                     break;
 
                 default:
                     break;
+            }
+            if (miniBossDamage > bossLife / 3 && miniBossDamage<bossLife/3*2)
+            {
+                Destroy(currentBeam);
+                currentBeam = Instantiate(laserBeams[1], new Vector3(transform.position.x+0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
+            }
+            else if (miniBossDamage > bossLife / 3 * 2)
+            {
+                Destroy(currentBeam);
+                currentBeam = Instantiate(laserBeams[2], new Vector3(transform.position.x + 0.2f, transform.position.y - 0.5f, transform.position.z + 3), Quaternion.identity);
             }
         }
         else if (Input.anyKeyDown)
@@ -592,8 +600,9 @@ public class Main : Singleton<Main>
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
+        miniBossLife = _miniBoss.GetComponent<Move>().life;
         yield return new WaitUntil(() => canShootMiniBoss == true);
-
+        currentBeam = Instantiate(laserBeams[0], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
         for (int i = 0; i < positionEnd.Length; i++)
         {
             if(i == 2|| i == 3)
@@ -614,7 +623,9 @@ public class Main : Singleton<Main>
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
+        bossLife = _Boss.GetComponent<BossMovemenet>().life;
         yield return new WaitUntil(() => canShootBoss == true);
+        currentBeam = Instantiate(laserBeams[0], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
         canShootBoss = true;
         for (int i = 0; i < positionEnd.Length; i++)
         {
@@ -673,6 +684,7 @@ public class Main : Singleton<Main>
             canShootMiniBoss = false;
             Score.Instance.ScoreUp(miniBossDamage * 100);
             canShootMiniBoss = false;
+            Destroy(currentBeam);
             Destroy(miniBoss);
             if(phaseNumber <=1)
                 StartCoroutine(StartAfterMiniBoss());

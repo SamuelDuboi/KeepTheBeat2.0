@@ -14,13 +14,15 @@ public class Move : MonoBehaviour
         transform.Translate(direction * Time.deltaTime * speed);   
         if(transform.position.z <=30 && !doOnce)
         {
+            Main.Instance.canShootMiniBoss = true;
+
             doOnce = true;
-            speed = 2;
+            speed = 1.8f;
 
         }
-        if(transform.position.z <= -150)
+        if(transform.position.z <= 10)
         {
-            Main.Instance.MiniBossOverTest(life, gameObject);
+            Main.Instance.BossOverTest(life, gameObject);
         }
     }
 }

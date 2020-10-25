@@ -14,6 +14,8 @@ public class Spawner : MonoBehaviour
     private double waitForSpawn;
     private Vector3 distanceToMove;
     public Vector3[] positions = new Vector3[6];
+
+    public GameObject[] tiles = new GameObject[6];
     private Color currentColor;
     // Start is called before the first frame update
     void Start()
@@ -101,6 +103,28 @@ public class Spawner : MonoBehaviour
             SoundDisplay.Instance.AddEnnemy(_ennemy);
             _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
 
+        }
+    }
+
+
+    public void TilesDesapear(int number)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            if (tiles[i].activeSelf)
+            {
+                tiles[i].SetActive(false);
+            }
+        }
+    }
+    public void TilesApear()
+    {
+        for (int i = 0; i < tiles.Length; i++)
+        {
+            if (!tiles[i].activeSelf)
+            {
+                tiles[i].SetActive(true);
+            }
         }
     }
 

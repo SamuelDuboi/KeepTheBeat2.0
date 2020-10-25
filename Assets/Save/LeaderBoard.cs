@@ -7,9 +7,13 @@ using UnityEngine;
 public class LeaderBoard : ScriptableObject
 {
     public float[] scores = new float[10] ;
-
+    public string[] names = new string[10] ;
+    public int placeInLeaderBoard;
+    public bool canEnterName;
     public void CountScore(int value)
-    {        
+    {
+        placeInLeaderBoard = 1000;
+        canEnterName = false;
         for (int i = 0; i < scores.Length; i++)
         {
             if(value < scores[i] )
@@ -20,11 +24,15 @@ public class LeaderBoard : ScriptableObject
                 else
                 {
                     scores[0] = scores[1];
+                    names[0] = names[1];
                     for (int x = 1; x < i-1; x++)
                     {
                         scores[x] = scores[x + 1];
+                        names[x] = names[x + 1];
                     }
+                    placeInLeaderBoard = i - 1;
                     scores[i - 1] = value;
+                    canEnterName = true;
                     break;
                 }
             }
@@ -32,11 +40,17 @@ public class LeaderBoard : ScriptableObject
             if(i == scores.Length - 1)
             {
                 scores[0] = scores[1];
+                names[0] = names[1];
                 for (int x = 1; x < i - 1; x++)
                 {
                     scores[x] = scores[x + 1];
+                    names[x] = names[x + 1];
+
                 }
+                placeInLeaderBoard = i;
                 scores[i] = value;
+                canEnterName = true;
+
             }
         }
     }

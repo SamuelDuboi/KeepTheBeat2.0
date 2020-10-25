@@ -59,14 +59,19 @@ public class Main : Singleton<Main>
 
 
     [Header("MiniBoss")]
-    private bool isMiniBoss;
-    private bool canShootMiniBoss;
+    private bool isBoss;
+    [HideInInspector] public bool canShootMiniBoss;
     public GameObject miniBoss;
     private int miniBossDamage;
     public float miniBossTime;
     public float miniBossMaxScore;
     public int miniBossMinScore;
 
+    [Header("Boss")]
+    [HideInInspector] public bool canShootBoss;
+    private int phaseNumber;
+    public GameObject boss;
+    public GameObject victory;
 
     private void Start()
     {
@@ -178,6 +183,63 @@ public class Main : Singleton<Main>
                 miniBossDamage++;
             }
            
+        }
+        else if (canShootBoss)
+        {
+            switch (phaseNumber)
+            {
+                case 0:
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
+                        StartCoroutine(RowFade(rowOn[2]));
+                        StartCoroutine(LaserFade(0, 20));
+                        miniBossDamage++;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
+                        StartCoroutine(RowFade(rowOn[3]));
+                        StartCoroutine(LaserFade(1, 20));
+                        miniBossDamage++;
+                    }
+                    break;
+                case 1:
+                    if (Input.GetKeyDown(KeyCode.Z))
+                    {
+                        lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
+                        StartCoroutine(RowFade(rowOn[2]));
+                        StartCoroutine(LaserFade(0, 20));
+                        miniBossDamage++;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.T))
+                    {
+                        lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
+                        StartCoroutine(RowFade(rowOn[3]));
+                        StartCoroutine(LaserFade(1, 20));
+                        miniBossDamage++;
+                    }
+                    break;
+                case 2:
+                    if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        lineRenderer[0].SetPosition(1, specialSpawner.transform.position);
+                        StartCoroutine(RowFade(rowOn[2]));
+                        StartCoroutine(LaserFade(0, 20));
+                        miniBossDamage++;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.H))
+                    {
+                        lineRenderer[1].SetPosition(1, specialSpawner.transform.position);
+                        StartCoroutine(RowFade(rowOn[3]));
+                        StartCoroutine(LaserFade(1, 20));
+                        miniBossDamage++;
+                    }
+                    break;
+
+                default:
+                    break;
+            }
         }
         else if (Input.anyKeyDown)
         {
@@ -306,7 +368,7 @@ public class Main : Singleton<Main>
     private bool breakSpawn;
     public void Spawn()
     {
-        if (!isMiniBoss) 
+        if (!isBoss) 
         {
 
             breakSpawn = false;
@@ -344,6 +406,10 @@ public class Main : Singleton<Main>
                 if (patternNumber == 9)
                 {
                     StartCoroutine(MiniBoss());
+                }
+                else if( patternNumber == 1)
+                {
+                    StartCoroutine(Boss());
                 }
 
                 previousNumberPattern.Add(currentPattern);
@@ -520,34 +586,100 @@ public class Main : Singleton<Main>
 
     IEnumerator MiniBoss()
     {
-        isMiniBoss = true;
+        isBoss = true;
         miniBossDamage = 0;
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
-        canShootMiniBoss = true;
         //instantiate the mini boss in the middle of the scene
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
+        yield return new WaitUntil(() => canShootMiniBoss == true);
+
+        for (int i = 0; i < positionEnd.Length; i++)
+        {
+            if(i == 2|| i == 3)
+            {
+                positionEnd[i].GetComponent<Spawner>().TilesDesapear(5);
+            }
+            else
+                positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
+
+        }
 
     }
+    IEnumerator Boss()
+    {
+        isBoss = true;
+        miniBossDamage = 0;
+        yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
+        yield return new WaitForSeconds(2f);
+        //instantiate the mini boss in the middle of the scene
+        var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
+        yield return new WaitUntil(() => canShootBoss == true);
+        canShootBoss = true;
+        for (int i = 0; i < positionEnd.Length; i++)
+        {
+            if (i == 2 || i == 3)
+            {
+                positionEnd[i].GetComponent<Spawner>().TilesDesapear(5);
+            }
+            else
+                positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
 
+        }
+
+    }
+    public void BossPhaseUp()
+    {
+        phaseNumber++;
+        if (phaseNumber == 1)
+        {
+            positionEnd[1].GetComponent<Spawner>().TilesApear();
+            positionEnd[4].GetComponent<Spawner>().TilesApear();
+            positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
+            positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
+            positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
+            positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
+
+        }
+        else 
+        {
+
+            positionEnd[0].GetComponent<Spawner>().TilesApear();
+            positionEnd[5].GetComponent<Spawner>().TilesApear();
+            positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
+            positionEnd[5].GetComponent<Spawner>().TilesDesapear(5);
+            positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
+            positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
+        }
+    }
     IEnumerator StartAfterMiniBoss()
     {
         // wait for the player to calm down
         yield return new WaitForSeconds(5f);
-        isMiniBoss = false;
+        isBoss = false;
+        for (int i = 0; i < positionEnd.Length; i++)
+        {
+            positionEnd[i].GetComponent<Spawner>().TilesApear();
+
+        }
     }
 
 
-    public void MiniBossOverTest( int life, GameObject miniBoss)
+    public void BossOverTest( int life, GameObject miniBoss)
     {
-        
+        Debug.Log(miniBossDamage);
         if (miniBossDamage >= life)
         {
             canShootMiniBoss = false;
             Score.Instance.ScoreUp(miniBossDamage * 100);
             canShootMiniBoss = false;
             Destroy(miniBoss);
-            StartCoroutine(StartAfterMiniBoss());
+            if(phaseNumber <=1)
+                StartCoroutine(StartAfterMiniBoss());
+            else
+            {
+                victory.SetActive(true);
+            }
         }
         else
         {

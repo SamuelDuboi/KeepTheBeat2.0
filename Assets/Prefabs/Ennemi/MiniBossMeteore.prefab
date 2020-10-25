@@ -9638,9 +9638,9 @@ GameObject:
   - component: {fileID: 5514331024813671550}
   - component: {fileID: 7737784013107998900}
   - component: {fileID: 8098279034364891518}
-  - component: {fileID: 2742915195286966095}
+  - component: {fileID: 8098279034364891519}
   m_Layer: 0
-  m_Name: BossMeteore
+  m_Name: MiniBossMeteore
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9725,7 +9725,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotation: {x: 0, y: 0, z: 20}
   vectorSpeed: 1
---- !u!114 &2742915195286966095
+--- !u!114 &8098279034364891519
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9734,9 +9734,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 8098279034364891489}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 685541f2494fca6418da5e97f2d974b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 120
+  life: 100
   direction: {x: 0, y: 0, z: -1}
   speed: 200

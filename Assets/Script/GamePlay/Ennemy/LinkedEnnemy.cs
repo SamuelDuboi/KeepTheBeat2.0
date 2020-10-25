@@ -8,17 +8,10 @@ public class LinkedEnnemy :MonoBehaviour
     public GameObject[] hitBox = new GameObject[2];
     public GameObject explosion;
     [HideInInspector] public int hitCpt;
-    private LineRenderer trail;
     private bool cantReset;
 
-    private void Start()
-    {
-        trail =GetComponent<LineRenderer>();
-    }
     void Update()
     {
-        trail.SetPosition(0, hitBox[0].transform.position);
-        trail.SetPosition(1, hitBox[1].transform.position);
         if(hitCpt == 1 && !cantReset) 
         {
             cantReset = true;

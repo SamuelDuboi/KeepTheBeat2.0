@@ -414,7 +414,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &146376192 stripped
@@ -605,6 +604,10 @@ PrefabInstance:
       propertyPath: laserBeams.Array.data[2]
       value: 
       objectReference: {fileID: 5764378462773749137, guid: 784691d517480734fa7c9729667a839f, type: 3}
+    - target: {fileID: 8812904904658119740, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: bigExplosion
+      value: 
+      objectReference: {fileID: 968063466963690113, guid: 49b01baea9ade09428c62f6eac03a558, type: 3}
     - target: {fileID: 8812904904810947231, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: tiles.Array.data[5]
       value: 
@@ -2250,7 +2253,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &1121225037 stripped
@@ -2954,7 +2956,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &1489937545 stripped
@@ -3490,7 +3491,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &1840469895 stripped
@@ -6365,7 +6365,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!114 &8790651030324516900

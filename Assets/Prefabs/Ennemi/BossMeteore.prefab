@@ -9740,3 +9740,4 @@ MonoBehaviour:
   life: 120
   direction: {x: 0, y: 0, z: -1}
   speed: 200
+  smallExplosion: {fileID: 47111484976083092, guid: 53ebb8047daef0641bf8c51cdafe5fb9, type: 3}

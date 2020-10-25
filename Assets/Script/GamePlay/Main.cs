@@ -75,6 +75,7 @@ public class Main : Singleton<Main>
     public GameObject boss;
     public GameObject victory;
     public GameObject[] laserBeams = new GameObject[3];
+    public GameObject bigExplosion;
     private int bossLife;
     private GameObject currentBeam;
 
@@ -186,12 +187,12 @@ public class Main : Singleton<Main>
            if( miniBossDamage> miniBossLife / 3)
             {
                 Destroy(currentBeam);
-                currentBeam = Instantiate(laserBeams[1], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z +3), Quaternion.identity);
+                currentBeam = Instantiate(laserBeams[1], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
            else if (miniBossDamage > miniBossLife / 3 * 2)
             {
                 Destroy(currentBeam);
-                currentBeam = Instantiate(laserBeams[2], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
+                currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
         }
         else if (canShootBoss)
@@ -241,12 +242,12 @@ public class Main : Singleton<Main>
             if (miniBossDamage > bossLife / 3 && miniBossDamage<bossLife/3*2)
             {
                 Destroy(currentBeam);
-                currentBeam = Instantiate(laserBeams[1], new Vector3(transform.position.x+0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
+                currentBeam = Instantiate(laserBeams[1], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
             else if (miniBossDamage > bossLife / 3 * 2)
             {
                 Destroy(currentBeam);
-                currentBeam = Instantiate(laserBeams[2], new Vector3(transform.position.x + 0.2f, transform.position.y - 0.5f, transform.position.z + 3), Quaternion.identity);
+                currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
         }
         else if (Input.anyKeyDown)
@@ -410,11 +411,12 @@ public class Main : Singleton<Main>
                     return;
 
                 #endregion
-
+                // number of pattern befor miniBoss
                 if (patternNumber == 9)
                 {
                     StartCoroutine(MiniBoss());
                 }
+                //number of pattern befor boss
                 else if( patternNumber == 1)
                 {
                     StartCoroutine(Boss());
@@ -600,9 +602,9 @@ public class Main : Singleton<Main>
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
-        miniBossLife = _miniBoss.GetComponent<Move>().life;
+        miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
         yield return new WaitUntil(() => canShootMiniBoss == true);
-        currentBeam = Instantiate(laserBeams[0], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
+        currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
         for (int i = 0; i < positionEnd.Length; i++)
         {
             if(i == 2|| i == 3)
@@ -625,7 +627,7 @@ public class Main : Singleton<Main>
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
         yield return new WaitUntil(() => canShootBoss == true);
-        currentBeam = Instantiate(laserBeams[0], new Vector3(transform.position.x + 0.2f, transform.position.y-0.5f, transform.position.z + 3), Quaternion.identity);
+        currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
         canShootBoss = true;
         for (int i = 0; i < positionEnd.Length; i++)
         {
@@ -685,6 +687,7 @@ public class Main : Singleton<Main>
             Score.Instance.ScoreUp(miniBossDamage * 100);
             canShootMiniBoss = false;
             Destroy(currentBeam);
+            Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
             Destroy(miniBoss);
             if(phaseNumber <=1)
                 StartCoroutine(StartAfterMiniBoss());

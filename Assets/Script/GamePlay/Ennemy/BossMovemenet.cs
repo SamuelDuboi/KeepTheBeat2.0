@@ -11,9 +11,22 @@ public class BossMovemenet : MonoBehaviour
     private bool doOnce2;
     private bool doOnce3;
 
+    public GameObject smallExplosion;
+    private float timer;
     private void FixedUpdate()
     {
         transform.Translate(direction * Time.deltaTime * speed);
+        if (doOnce)
+        {
+            timer += Time.deltaTime;
+            if(timer >= 0.2f)
+            {
+                timer = 0;
+                var _x = Random.Range(-1f, 1f);
+                var _y = Random.Range(-1f, 1f);
+                Instantiate(smallExplosion, new Vector3(transform.position.x+ _x, transform.position.y-2+_y, transform.position.z - 18),Quaternion.identity, transform);
+            }
+        }
         if (transform.position.z <= 40 && !doOnce)
         {
             Main.Instance.canShootBoss = true;

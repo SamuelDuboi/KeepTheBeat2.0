@@ -33,8 +33,27 @@ public class LeaderBoard : ScriptableObject
                     break;
                 }
             }
+            if (value == scores[i])
+            {
+                // if the player is to bad, dont put it in this glorious leader board. We dont like filthy pawns.
+                if (i == 0)
+                    break;
+                else
+                {
+                    scores[0] = scores[1];
+                    names[0] = names[1];
+                    for (int x = 1; x < i - 1; x++)
+                    {
+                        scores[x] = scores[x + 1];
+                        names[x] = names[x + 1];
+                    }
+                    placeInLeaderBoard = i - 1;
+                    scores[i - 1] = value;
+                    break;
+                }
+            }
             //if the player is the best of the world;
-            if(i == scores.Length - 1)
+            if (i == scores.Length - 1)
             {
                 scores[0] = scores[1];
                 names[0] = names[1];

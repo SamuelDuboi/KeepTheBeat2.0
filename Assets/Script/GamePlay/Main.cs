@@ -253,9 +253,65 @@ public class Main : Singleton<Main>
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
                     }
+                    else if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        positionEnd[2].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[3]));
+                        miniBossDamage++;
+                    }
+                    break;
+                case 3:
+                    if (Input.GetKeyDown(KeyCode.Z))
+                    {
+                        positionEnd[1].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[2]));
+                        miniBossDamage++;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        positionEnd[3].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[3]));
+                        miniBossDamage++;
+                    }
+                    break;
+                case 4:
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        positionEnd[2].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[2]));
+                        miniBossDamage++;
+                    }
                     else if (Input.GetKeyDown(KeyCode.H))
                     {
                         positionEnd[5].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[3]));
+                        miniBossDamage++;
+                    }
+                    break;
+                case 5:
+                    if (Input.GetKeyDown(KeyCode.Q))
+                    {
+                        positionEnd[0].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[2]));
+                        miniBossDamage++;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.T))
+                    {
+                        positionEnd[4].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[3]));
+                        miniBossDamage++;
+                    }
+                    break;
+                case 6:
+                    if (Input.GetKeyDown(KeyCode.E))
+                    {
+                        positionEnd[2].GetComponent<Spawner>().Shoot();
+                        StartCoroutine(RowFade(rowOn[2]));
+                        miniBossDamage++;
+                    }
+                    else if (Input.GetKeyDown(KeyCode.R))
+                    {
+                        positionEnd[3].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
                     }
@@ -274,6 +330,8 @@ public class Main : Singleton<Main>
                 Destroy(currentBeam);
                 currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
+
+            Debug.Log(miniBossDamage);
         }
         else if (Input.anyKeyDown)
         {
@@ -672,26 +730,60 @@ public class Main : Singleton<Main>
     public void BossPhaseUp()
     {
         phaseNumber++;
-        if (phaseNumber == 1)
-        {
-            positionEnd[1].GetComponent<Spawner>().TilesApear();
-            positionEnd[4].GetComponent<Spawner>().TilesApear();
-            positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
-            positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
-            positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
-            positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
-
+        switch (phaseNumber)
+        {      
+            case 1:
+                positionEnd[1].GetComponent<Spawner>().TilesApear();
+                positionEnd[4].GetComponent<Spawner>().TilesApear();
+                positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
+                break;
+            case 2:
+                positionEnd[0].GetComponent<Spawner>().TilesApear();
+                positionEnd[2].GetComponent<Spawner>().TilesApear();
+                positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
+                break;
+            case 3:
+                positionEnd[1].GetComponent<Spawner>().TilesApear();
+                positionEnd[3].GetComponent<Spawner>().TilesApear();
+                positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[3].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[0].GetComponent<Spawner>().TilesDesapear(6);
+                break;
+            case 4:
+                positionEnd[2].GetComponent<Spawner>().TilesApear();
+                positionEnd[5].GetComponent<Spawner>().TilesApear();
+                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[5].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
+                break;
+            case 5:
+                positionEnd[0].GetComponent<Spawner>().TilesApear();
+                positionEnd[4].GetComponent<Spawner>().TilesApear();
+                positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[5].GetComponent<Spawner>().TilesDesapear(6);
+                break;
+            case 6:
+                positionEnd[2].GetComponent<Spawner>().TilesApear();
+                positionEnd[3].GetComponent<Spawner>().TilesApear();
+                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[3].GetComponent<Spawner>().TilesDesapear(5);
+                positionEnd[0].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
+                break;
+            default:
+                break;
         }
-        else 
-        {
-
-            positionEnd[0].GetComponent<Spawner>().TilesApear();
-            positionEnd[5].GetComponent<Spawner>().TilesApear();
-            positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
-            positionEnd[5].GetComponent<Spawner>().TilesDesapear(5);
-            positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
-            positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
-        }
+        
     }
     IEnumerator StartAfterMiniBoss()
     {

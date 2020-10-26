@@ -588,6 +588,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8790651030324516901}
+    - target: {fileID: 8812904904658119740, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: patterns.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: d2527f4a676d7ca4382db34a84d4dff7, type: 2}
     - target: {fileID: 8812904904810947231, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: tiles.Array.data[0]
       value: 

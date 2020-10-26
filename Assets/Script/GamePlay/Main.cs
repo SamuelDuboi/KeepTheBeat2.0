@@ -307,7 +307,7 @@ public class Main : Singleton<Main>
         StartCoroutine(RowFade(rowOn));
         if (hit.collider != null )
         {
-            if(hit.collider.gameObject.tag == "Ennemy")
+            if(hit.collider.gameObject.tag == "Ennemy" || hit.collider.gameObject.tag == "TPEnnemy")
             {
                 lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();

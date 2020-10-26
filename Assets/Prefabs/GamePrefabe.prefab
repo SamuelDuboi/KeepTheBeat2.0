@@ -5160,7 +5160,7 @@ MonoBehaviour:
   - {fileID: 8812904904810947228}
   - {fileID: 8812904904881868759}
   patterns:
-  - {fileID: 11400000, guid: dd7c7fce30d3f41459c50081ff17a015, type: 2}
+  - {fileID: 11400000, guid: 9ad77cce40902394ea4d046eb6ee9317, type: 2}
   - {fileID: 11400000, guid: 072e1229965b12d4cb5f6c7a9297cc3b, type: 2}
   - {fileID: 11400000, guid: 8b77cf9ecac0c8140871b4c15121d035, type: 2}
   - {fileID: 11400000, guid: 71a41471277e67c48af2d2333ea33982, type: 2}
@@ -5231,7 +5231,6 @@ MonoBehaviour:
   miniBossMinScore: 100
   canShootBoss: 0
   boss: {fileID: 8098279034364891489, guid: 44d26fea5d5aff7468189014f6ad3c2b, type: 3}
-  victory: {fileID: 0}
   laserBeams:
   - {fileID: 788940113971350808, guid: 33e1a53b6645f8940befa086ef88c988, type: 3}
   - {fileID: 3792823342043020707, guid: 57e6acf519e9a2d43be9e814c8717734, type: 3}

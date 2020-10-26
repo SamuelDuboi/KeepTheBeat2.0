@@ -60,9 +60,10 @@ public class Score : Singleton<Score>
 
     }
 
-    public void EndScene()
+    public void EndScene(bool victory)
     {
-        leaderBoard.CountScore(score);
+        leaderBoard.CountScore(score, victory);
+        
         SceneManager.LoadScene("LeaderBoard");
     }
 }

@@ -18,17 +18,34 @@ public class LeaderBoardDisplay : MonoBehaviour
     public GameObject restart;
     public GameObject Panel;
 
-    
-    void Start()
+    public TextMeshProUGUI fate;
+    IEnumerator Start()
     {
         scores = GetComponent<TextMeshProUGUI>();
         for (int i = leaderBoard.scores.Length-1; i >= 0; i--)
         {
             scores.text += leaderBoard.names[i] + "  " + leaderBoard.scores[i].ToString() + "\n";
         }
-
+        yield return new WaitForSeconds(0.1f);
+       
         if (leaderBoard.placeInLeaderBoard < 1000)
         {
+            if (leaderBoard.victory)
+            {
+                fate.transform.parent.gameObject.SetActive(true);
+                fate.text = "VICTORY  \n" + leaderBoard.scores[leaderBoard.placeInLeaderBoard].ToString();
+                yield return new WaitForSeconds(3f);
+                fate.text = string.Empty;
+                fate.transform.parent.gameObject.SetActive(false);
+            }
+            else if (leaderBoard.gameOver)
+            {
+                fate.transform.parent.gameObject.SetActive(true);
+                fate.text = "GAMEOVER  \n" + leaderBoard.scores[leaderBoard.placeInLeaderBoard].ToString();
+                yield return new WaitForSeconds(3f);
+                fate.text = string.Empty;
+                fate.transform.parent.gameObject.SetActive(false);
+            }
             for (int i = 0; i < 3 ; i++)
             {
                 names1[i].gameObject.SetActive(true);                
@@ -42,6 +59,8 @@ public class LeaderBoardDisplay : MonoBehaviour
             Panel.SetActive(false);
             restart.SetActive(true);
         }
+
+
     }
 
     private void Update()

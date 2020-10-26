@@ -15,9 +15,7 @@ MonoBehaviour:
   ennemiesPositionForEditor:
   - {x: 100, y: 600, z: 2}
   - {x: 300, y: 550, z: 2}
-  - {x: 100, y: 500, z: 2}
   ennemiesPosition:
   - {x: 0, y: 11, z: 2}
   - {x: 2, y: 10, z: 2}
-  - {x: 0, y: 9, z: 2}
   difficulty: 1

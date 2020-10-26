@@ -119,8 +119,6 @@ public class SoundDisplay : Singleton<SoundDisplay>
     }
 
 
-
-
     public void AddEnnemy(GameObject ennemy)
     {
         if (ennemys == null)
@@ -142,7 +140,8 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public void TakeDamage(int loopNUmber)
     {
         LifeManager.Instance.TakeDamage(mixer);
-        int _ennemyNumber = ennemys.Count - 1;
+        //j'ai change ca c'était ennemy count -1 avant je sais pas pourquoi si ca bug c'est ici
+        int _ennemyNumber = ennemys.Count;
         fail.Play();
         for (int i = 0; i < _ennemyNumber; i++)
         {
@@ -156,7 +155,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
                     ennemys[0].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
 
                 Destroy(ennemys[0]);
-            ennemys.RemoveAt(0);
+                ennemys.RemoveAt(0);
 
             }
         }

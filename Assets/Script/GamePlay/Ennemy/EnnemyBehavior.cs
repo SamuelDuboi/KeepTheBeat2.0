@@ -31,8 +31,17 @@ public class EnnemyBehavior : MonoBehaviour
 
     private void Update()
     {
-        if(!cantMove)
-        transform.position = Vector3.MoveTowards(transform.position, positions[0], speed*AudioHelmClock.GetGlobalBpm());
+        if (!cantMove)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, positions[0], speed*AudioHelmClock.GetGlobalBpm());
+            RaycastHit hit;
+            Physics.Raycast(transform.position, Vector3.down, out hit);
+            if (hit.collider != null && hit.collider.GetComponent<TilesBehavior>() != null)
+            {
+                tile = hit.collider.gameObject;
+                tile.GetComponent<TilesBehavior>().On();
+            }
+        }
         if (gameObject.tag == "TPEnnemy" && cpt % 2 == 0)
         {
             light1.color = row2;
@@ -48,6 +57,8 @@ public class EnnemyBehavior : MonoBehaviour
             cantMove = true;
             if(!turnOnTrail)
             child.SetActive(false);
+
+
         }
         if (cpt < 5)
         {
@@ -99,11 +110,15 @@ public class EnnemyBehavior : MonoBehaviour
 
     public virtual void Destroyed()
     {
+        if(gameObject.tag != "LinkedEnnemy")
+        {
         Score.Instance.ScoreUp(scoreValue);
-        SoundDisplay.Instance.RemoveEnnemy(gameObject);
-        Instantiate(explosion, transform.position, Quaternion.identity);
         GameObject poptext =  Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
         poptext.GetComponent<TextMeshPro>().text = scoreValue.ToString();
+
+        }
+        SoundDisplay.Instance.RemoveEnnemy(gameObject);
+        Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }
 

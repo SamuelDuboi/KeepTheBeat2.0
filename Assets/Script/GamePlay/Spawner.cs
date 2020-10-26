@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     private Vector3 distanceToMove;
     public Vector3[] positions = new Vector3[6];
 
+
     public GameObject[] tiles = new GameObject[6];
    [HideInInspector] public Color currentColor;
     // Start is called before the first frame update
@@ -51,6 +52,12 @@ public class Spawner : MonoBehaviour
         _ennemy.GetComponent<EnnemyBehavior>().popTextScore = popScore;
         
     }
+    /// <summary>
+    /// spawn tp Ennemy
+    /// </summary>
+    /// <param name="ennemy"></param>
+    /// <param name="positions"></param>
+    /// <param name="secondColor"></param>
     public void Spwan(GameObject ennemy, Vector3[] positions, Color secondColor)
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
@@ -71,6 +78,12 @@ public class Spawner : MonoBehaviour
 
         }
     }
+    /// <summary>
+    /// Spawn Linked ennemy
+    /// </summary>
+    /// <param name="ennemy"></param>
+    /// <param name="firstSpawner"></param>
+    /// <param name="secondSpawner"></param>
     public void Spwan(GameObject ennemy, Spawner firstSpawner, Spawner secondSpawner)
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
@@ -116,6 +129,18 @@ public class Spawner : MonoBehaviour
                 tiles[i].SetActive(false);
             }
         }
+    }
+
+    public void Shoot()
+    {
+        tiles[5].GetComponent<MeshRenderer>().material = tiles[5].GetComponent<TilesBehavior>().on;
+        StartCoroutine(ShootFade());
+    }
+
+    IEnumerator ShootFade()
+    {
+        yield return new WaitForSeconds(0.1f);
+        tiles[5].GetComponent<MeshRenderer>().material = tiles[5].GetComponent<TilesBehavior>().off;
     }
     public void TilesApear()
     {

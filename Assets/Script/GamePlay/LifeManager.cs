@@ -29,6 +29,11 @@ public class LifeManager : Singleton<LifeManager>
         TriggerAnim();
 
         life--;
+
+        if (life <= 0)
+        {
+            Score.Instance.EndScene(false);
+        }
         mixer.SetFloat("MainVolume", -5);
         
         StartCoroutine(Fade(mixer));

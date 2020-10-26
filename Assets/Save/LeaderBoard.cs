@@ -38,17 +38,19 @@ public class LeaderBoard : ScriptableObject
                 // if the player is to bad, dont put it in this glorious leader board. We dont like filthy pawns.
                 if (i == 0)
                     break;
+                else if (i == 1)
+                    break;
                 else
                 {
                     scores[0] = scores[1];
                     names[0] = names[1];
                     for (int x = 1; x < i - 1; x++)
                     {
-                        scores[x] = scores[x + 1];
-                        names[x] = names[x + 1];
+                        scores[x] = scores[x ];
+                        names[x] = names[x];
                     }
-                    placeInLeaderBoard = i - 1;
-                    scores[i - 1] = value;
+                    placeInLeaderBoard = i - 2;
+                    scores[i - 2] = value;
                     break;
                 }
             }

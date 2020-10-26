@@ -22,7 +22,7 @@ public class LeaderBoardDisplay : MonoBehaviour
     void Start()
     {
         scores = GetComponent<TextMeshProUGUI>();
-        for (int i = 0; i < leaderBoard.scores.Length; i++)
+        for (int i = leaderBoard.scores.Length-1; i >= 0; i--)
         {
             scores.text += leaderBoard.names[i] + "  " + leaderBoard.scores[i].ToString() + "\n";
         }
@@ -128,7 +128,7 @@ public class LeaderBoardDisplay : MonoBehaviour
                         leaderBoard.names[leaderBoard.placeInLeaderBoard] += names3[1].text;
                         scores.text = string.Empty;
 
-                        for (int i = 0; i < leaderBoard.scores.Length; i++)
+                        for (int i = leaderBoard.scores.Length - 1; i >= 0; i--)
                         {
                             scores.text += leaderBoard.names[i] + "  " + leaderBoard.scores[i].ToString() + "\n";
                         }

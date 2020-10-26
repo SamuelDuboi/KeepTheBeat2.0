@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
     public Vector3[] positions = new Vector3[6];
 
     public GameObject[] tiles = new GameObject[6];
-    private Color currentColor;
+   [HideInInspector] public Color currentColor;
     // Start is called before the first frame update
     void Start()
     {
@@ -51,16 +51,16 @@ public class Spawner : MonoBehaviour
         _ennemy.GetComponent<EnnemyBehavior>().popTextScore = popScore;
         
     }
-    public void Spwan(GameObject ennemy, Vector3[] positions)
+    public void Spwan(GameObject ennemy, Vector3[] positions, Color secondColor)
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
         _ennemy.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * 100);
         SoundDisplay.Instance.AddEnnemy(_ennemy);
         _ennemy.GetComponent<EnnemyBehavior>().turnOnTrail = true;
-        _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().explosion = explosion;
         _ennemy.GetComponent<EnnemyBehavior>().popTextScore = popScore;
-
+        _ennemy.GetComponent<EnnemyBehavior>().row1 = currentColor;
+        _ennemy.GetComponent<EnnemyBehavior>().row2 = secondColor;
         for (int i = 0; i < positions.Length; i++)
         {
             if(i%2 == 0)

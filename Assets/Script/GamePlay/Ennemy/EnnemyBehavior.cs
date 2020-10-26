@@ -24,10 +24,20 @@ public class EnnemyBehavior : MonoBehaviour
     [HideInInspector] public bool turnOnTrail;
     int type;
 
+    [HideInInspector] public Color row1;
+    [HideInInspector] public Color row2;
+    public Light light1;
+    public Light light2;
+
     private void Update()
     {
         if(!cantMove)
         transform.position = Vector3.MoveTowards(transform.position, positions[0], speed*AudioHelmClock.GetGlobalBpm());
+        if (gameObject.tag == "TPEnnemy" && cpt % 2 == 0)
+        {
+            light1.color = row2;
+            light2.color = row1;
+        }
     }
 
 
@@ -45,6 +55,16 @@ public class EnnemyBehavior : MonoBehaviour
             if (tile != null)
                 tile.GetComponent<TilesBehavior>().Off();
             transform.position = positions[cpt];
+            if (gameObject.tag == "TPEnnemy" && cpt%2 ==0)
+            {
+                light1.color = row2;
+                light2.color = row1;
+            }
+            else if (gameObject.tag == "TPEnnemy" && cpt % 2 != 0)
+            {
+                light1.color = row1;
+                light2.color = row2;
+            }
             RaycastHit hit;
             Physics.Raycast(transform.position, Vector3.down, out hit);
             if (hit.collider != null && hit.collider.GetComponent<TilesBehavior>() != null)
@@ -63,6 +83,7 @@ public class EnnemyBehavior : MonoBehaviour
             {
                 if (tile != null)
                     tile.GetComponent<TilesBehavior>().Off();
+
                 SoundDisplay.Instance.RemoveEnnemy(gameObject);
                 Score.Instance.ModifierDown();
                 Destroy(gameObject);

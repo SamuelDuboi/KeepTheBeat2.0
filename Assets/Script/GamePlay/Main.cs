@@ -556,11 +556,12 @@ public class Main : Singleton<Main>
     {
         if (x == 0 || x == 3)
         {
-            positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy + 2].GetComponent<Spawner>().positions);
+
+            positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy + 2].GetComponent<Spawner>().positions, positionEnd[listEnnemy + 2].GetComponent<Spawner>().currentColor);
         }
         else if (x == 2 || x == 5)
         {
-            positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy - 2].GetComponent<Spawner>().positions);
+            positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy - 2].GetComponent<Spawner>().positions, positionEnd[listEnnemy - 2].GetComponent<Spawner>().currentColor);
         }
         else 
             Debug.Log(x);

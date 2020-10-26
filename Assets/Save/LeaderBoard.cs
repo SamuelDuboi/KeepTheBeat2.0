@@ -9,11 +9,9 @@ public class LeaderBoard : ScriptableObject
     public float[] scores = new float[10] ;
     public string[] names = new string[10] ;
     public int placeInLeaderBoard;
-    public bool canEnterName;
     public void CountScore(int value)
     {
         placeInLeaderBoard = 1000;
-        canEnterName = false;
         for (int i = 0; i < scores.Length; i++)
         {
             if(value < scores[i] )
@@ -32,7 +30,6 @@ public class LeaderBoard : ScriptableObject
                     }
                     placeInLeaderBoard = i - 1;
                     scores[i - 1] = value;
-                    canEnterName = true;
                     break;
                 }
             }
@@ -49,8 +46,6 @@ public class LeaderBoard : ScriptableObject
                 }
                 placeInLeaderBoard = i;
                 scores[i] = value;
-                canEnterName = true;
-
             }
         }
     }

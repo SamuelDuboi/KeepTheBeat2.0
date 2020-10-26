@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: LeaderBoard
   m_EditorClassIdentifier: 
   scores:
+  - 100
   - 0
   - 0
   - 0
@@ -22,4 +23,15 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 0
+  names:
+  - azz
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  placeInLeaderBoard: 0

@@ -54,7 +54,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                 StartCoroutine(WaiForCounting());
             bpm.text = cpt.ToString();
 
-            if (timerFloat >= 0)
+            if (timerFloat >= 0 && canCount)
                 timerFloat -= Time.deltaTime;
             //Visuel de la Barre
             timerText.text = Mathf.Floor(timerFloat).ToString();

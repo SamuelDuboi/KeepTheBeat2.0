@@ -73,7 +73,6 @@ public class Main : Singleton<Main>
     [HideInInspector] public bool canShootBoss;
     private int phaseNumber;
     public GameObject boss;
-    public GameObject victory;
     public GameObject[] laserBeams = new GameObject[3];
     public GameObject bigExplosion;
     private int bossLife;
@@ -187,11 +186,13 @@ public class Main : Singleton<Main>
             if(Input.GetKeyDown(KeyCode.E) )
             {                
                 StartCoroutine(RowFade(rowOn[2]));
+                positionEnd[2].GetComponent<Spawner>().Shoot();
                 miniBossDamage++;
             }
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(RowFade(rowOn[3]));
+                positionEnd[3].GetComponent<Spawner>().Shoot();
                 miniBossDamage++;
             }
            if( miniBossDamage> miniBossLife / 3)
@@ -220,11 +221,13 @@ public class Main : Singleton<Main>
                 case 0:
                     if (Input.GetKeyDown(KeyCode.E))
                     {
+                        positionEnd[2].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
                     }
                     else if (Input.GetKeyDown(KeyCode.R))
                     {
+                        positionEnd[3].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
                     }
@@ -232,11 +235,13 @@ public class Main : Singleton<Main>
                 case 1:
                     if (Input.GetKeyDown(KeyCode.Z))
                     {
+                        positionEnd[1].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
                     }
                     else if (Input.GetKeyDown(KeyCode.T))
                     {
+                        positionEnd[4].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
                     }
@@ -244,11 +249,13 @@ public class Main : Singleton<Main>
                 case 2:
                     if (Input.GetKeyDown(KeyCode.Q))
                     {
+                        positionEnd[0].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
                     }
                     else if (Input.GetKeyDown(KeyCode.H))
                     {
+                        positionEnd[5].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
                     }
@@ -701,7 +708,6 @@ public class Main : Singleton<Main>
 
     public void BossOverTest( int life, GameObject miniBoss)
     {
-        Debug.Log(miniBossDamage);
         if (miniBossDamage >= life)
         {
             canShootMiniBoss = false;
@@ -714,12 +720,12 @@ public class Main : Singleton<Main>
                 StartCoroutine(StartAfterMiniBoss());
             else
             {
-                victory.SetActive(true);
+                Score.Instance.EndScene(true);
             }
         }
         else
         {
-            Score.Instance.EndScene();
+            Score.Instance.EndScene(false);
         }
     }
 }

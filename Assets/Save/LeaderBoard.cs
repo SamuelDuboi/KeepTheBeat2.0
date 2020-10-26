@@ -9,8 +9,17 @@ public class LeaderBoard : ScriptableObject
     public float[] scores = new float[10] ;
     public string[] names = new string[10] ;
     public int placeInLeaderBoard;
-    public void CountScore(int value)
+
+    public bool victory;
+    public bool gameOver;
+    public void CountScore(int value, bool isVictory)
     {
+        victory = false;
+        gameOver = false;
+        if (isVictory)
+            victory = true;
+        else
+            gameOver = true;
         placeInLeaderBoard = 1000;
         for (int i = 0; i < scores.Length; i++)
         {

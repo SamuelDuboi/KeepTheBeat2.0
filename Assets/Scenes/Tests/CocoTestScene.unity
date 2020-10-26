@@ -478,7 +478,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &146376192 stripped
@@ -2452,6 +2451,10 @@ PrefabInstance:
       propertyPath: heart
       value: 
       objectReference: {fileID: 8790651030324516901}
+    - target: {fileID: 8812904904658119740, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 8790651030324516901}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
 --- !u!1 &1064992583
@@ -2693,7 +2696,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &1121225037 stripped
@@ -3648,7 +3650,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &1489937545 stripped
@@ -4705,7 +4706,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!4 &1840469895 stripped
@@ -6792,63 +6792,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8790651030324516901}
   m_Mesh: {fileID: 289301614986012343, guid: 11b05b5db0a9cd94da6a792212cd9cb9, type: 3}
---- !u!1001 &5155938166648106879
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1346007592542670714, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_Name
-      value: LaserBeamImpact
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3791139534431331379, guid: ca222818e7404a34296266a31e407e2a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: ca222818e7404a34296266a31e407e2a, type: 3}
 --- !u!1 &5233112404808600608
 GameObject:
   m_ObjectHideFlags: 0
@@ -8258,7 +8201,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58d33f5e9f759a742aee1ef7c51625a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 0
   direction: {x: 0, y: 0, z: -10}
   speed: 5
 --- !u!114 &8790651030324516900

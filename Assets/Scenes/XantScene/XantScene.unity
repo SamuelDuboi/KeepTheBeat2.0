@@ -2676,185 +2676,110 @@ MonoBehaviour:
   - notes: []
   - notes: []
   - notes: []
-  - notes:
-    - note_: 43
-      start_: 4
-      end_: 5
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes:
-    - note_: 44
-      start_: 1.375
-      end_: 2
-      velocity_: 1
-      parent: {fileID: 1454785455}
   - notes: []
   - notes: []
-  - notes:
-    - note_: 47
-      start_: 5
-      end_: 6
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes: []
-  - notes:
-    - note_: 49
-      start_: 7.5833335
-      end_: 8
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes:
-    - note_: 50
-      start_: 0
-      end_: 0.375
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
   - notes: []
   - notes: []
-  - notes:
-    - note_: 53
-      start_: 9.333333
-      end_: 10
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes:
-    - note_: 54
-      start_: 3
-      end_: 4
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes:
-    - note_: 55
-      start_: 8
-      end_: 8.541667
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes:
-    - note_: 56
-      start_: 11
-      end_: 12
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes:
-    - note_: 57
-      start_: 6
-      end_: 7
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-    - note_: 57
-      start_: 13.291667
-      end_: 14
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-    - note_: 57
-      start_: 14
-      end_: 14.541667
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
+  - notes: []
   - notes: []
   - notes: []
   - notes:
     - note_: 60
       start_: 0
-      end_: 0.52404183
+      end_: 1
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 1
-      end_: 1.4940766
+      end_: 2
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 2
-      end_: 2.4641116
+      end_: 3
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 3
-      end_: 3.512195
+      end_: 4
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 4
-      end_: 4.5045295
+      end_: 5
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 5
-      end_: 5.4968643
+      end_: 6
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 6
-      end_: 6.4891987
+      end_: 7
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 7
-      end_: 7.503833
+      end_: 8
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 8
-      end_: 8.529616
+      end_: 9
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 9
-      end_: 9.510801
+      end_: 10
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 10
-      end_: 10.491986
+      end_: 11
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 11
-      end_: 11.52892
+      end_: 12
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 12
-      end_: 12.465506
+      end_: 13
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 13
-      end_: 13.48014
+      end_: 14
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 14
-      end_: 14.505923
+      end_: 15
       velocity_: 0.8
       parent: {fileID: 1454785455}
     - note_: 60
       start_: 15
-      end_: 15.542857
+      end_: 16
       velocity_: 0.8
       parent: {fileID: 1454785455}
   - notes: []
   - notes: []
-  - notes:
-    - note_: 63
-      start_: 15
-      end_: 16
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
-  - notes:
-    - note_: 64
-      start_: 10
-      end_: 10.583333
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
   - notes: []
-  - notes:
-    - note_: 66
-      start_: 2
-      end_: 2.2916667
-      velocity_: 0.78740156
-      parent: {fileID: 1454785455}
+  - notes: []
+  - notes: []
+  - notes: []
   - notes: []
   - notes: []
   - notes: []
@@ -2933,7 +2858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyzones:
-  - audioClip: {fileID: 8300000, guid: f4e3ae550a95f044c81ed469986752e9, type: 3}
+  - audioClip: {fileID: 8300000, guid: c9f918e9de8634c4dac71c3237838bc8, type: 3}
     mixer: {fileID: 0}
     rootKey: 60
     minKey: 58
@@ -2955,7 +2880,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 24300002, guid: 01ce9b1c07429184d9f4d7f385313b02, type: 2}
-  m_audioClip: {fileID: 8300000, guid: f4e3ae550a95f044c81ed469986752e9, type: 3}
+  m_audioClip: {fileID: 8300000, guid: c9f918e9de8634c4dac71c3237838bc8, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.1
   m_Pitch: -0.547

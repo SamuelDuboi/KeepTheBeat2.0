@@ -163,7 +163,7 @@ MonoBehaviour:
   beatEvent:
     m_PersistentCalls:
       m_Calls: []
-  length: 16
+  length: 24
   currentIndex: 20
   loop: 1
   allNotes:
@@ -289,8 +289,8 @@ MonoBehaviour:
   - notes: []
   - notes:
     - note_: 60
-      start_: 6
-      end_: 10
+      start_: 7
+      end_: 11
       velocity_: 0.8
       parent: {fileID: 111296548}
   - notes: []
@@ -746,7 +746,7 @@ MonoBehaviour:
   beatEvent:
     m_PersistentCalls:
       m_Calls: []
-  length: 16
+  length: 24
   currentIndex: 20
   loop: 1
   allNotes:
@@ -872,8 +872,8 @@ MonoBehaviour:
   - notes: []
   - notes:
     - note_: 60
-      start_: 3
-      end_: 4
+      start_: 4
+      end_: 5
       velocity_: 0.8
       parent: {fileID: 309695227}
   - notes: []
@@ -1254,7 +1254,7 @@ MonoBehaviour:
   beatEvent:
     m_PersistentCalls:
       m_Calls: []
-  length: 16
+  length: 24
   currentIndex: 20
   loop: 1
   allNotes:
@@ -1380,8 +1380,8 @@ MonoBehaviour:
   - notes: []
   - notes:
     - note_: 60
-      start_: 14
-      end_: 15
+      start_: 15
+      end_: 16
       velocity_: 0.8
       parent: {fileID: 406489447}
   - notes: []
@@ -2014,7 +2014,7 @@ MonoBehaviour:
   beatEvent:
     m_PersistentCalls:
       m_Calls: []
-  length: 16
+  length: 24
   currentIndex: 20
   loop: 1
   allNotes:
@@ -2140,18 +2140,18 @@ MonoBehaviour:
   - notes: []
   - notes:
     - note_: 60
-      start_: 2
-      end_: 3
+      start_: 3
+      end_: 4
       velocity_: 0.8
       parent: {fileID: 897218931}
     - note_: 60
-      start_: 6
-      end_: 7
+      start_: 7
+      end_: 8
       velocity_: 0.8
       parent: {fileID: 897218931}
     - note_: 60
-      start_: 10
-      end_: 11
+      start_: 11
+      end_: 12
       velocity_: 0.8
       parent: {fileID: 897218931}
   - notes: []
@@ -2629,7 +2629,7 @@ MonoBehaviour:
   beatEvent:
     m_PersistentCalls:
       m_Calls: []
-  length: 16
+  length: 24
   currentIndex: 20
   loop: 1
   allNotes:
@@ -2772,6 +2772,46 @@ MonoBehaviour:
     - note_: 60
       start_: 15
       end_: 16
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 16
+      end_: 17
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 17
+      end_: 18
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 18
+      end_: 19
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 19
+      end_: 20
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 20
+      end_: 21
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 21
+      end_: 22
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 22
+      end_: 23
+      velocity_: 0.8
+      parent: {fileID: 1454785455}
+    - note_: 60
+      start_: 23
+      end_: 24
       velocity_: 0.8
       parent: {fileID: 1454785455}
   - notes: []
@@ -4223,7 +4263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: length
-      value: 16
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: scrollPosition.y
@@ -4303,7 +4343,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[0].end_
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[0].velocity_
@@ -4319,11 +4359,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[1].start_
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[1].end_
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[1].velocity_
@@ -4339,11 +4379,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[2].start_
-      value: 8
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[2].end_
-      value: 9
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[2].velocity_
@@ -4359,11 +4399,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[3].start_
-      value: 12
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[3].end_
-      value: 13
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: allNotes.Array.data[72].notes.Array.data[3].velocity_
@@ -4373,6 +4413,30 @@ PrefabInstance:
       propertyPath: allNotes.Array.data[72].notes.Array.data[3].parent
       value: 
       objectReference: {fileID: 1513110804}
+    - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
+      propertyPath: allNotes.Array.data[72].notes.Array.data[4].note_
+      value: 72
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
+      propertyPath: allNotes.Array.data[72].notes.Array.data[4].start_
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
+      propertyPath: allNotes.Array.data[72].notes.Array.data[4].end_
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
+      propertyPath: allNotes.Array.data[72].notes.Array.data[4].velocity_
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
+      propertyPath: allNotes.Array.data[72].notes.Array.data[4].parent
+      value: 
+      objectReference: {fileID: 1513110804}
+    - target: {fileID: 7165752197671410294, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
+      propertyPath: allNotes.Array.data[72].notes.Array.data[0].start_
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7165752197671410295, guid: 251cf659dc87e0040a041cfea8e877f2, type: 3}
       propertyPath: keyzones.Array.size
       value: 1

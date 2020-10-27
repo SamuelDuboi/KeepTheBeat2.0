@@ -80,6 +80,14 @@ public class Main : Singleton<Main>
     public GameObject laserHit;
     private GameObject laserHitRef;
 
+    //textBoss
+    public TextMeshProUGUI bossHit;
+
+
+    public GameObject firstSphere;
+    public GameObject SecondSphere;
+    private GameObject[] spheres = new GameObject[2];
+
     private void Start()
     {
         
@@ -133,6 +141,8 @@ public class Main : Singleton<Main>
     {
         specialBarD.value = specialBarG.value;
         specialBarD.maxValue = specialBarG.maxValue;
+
+
 
         if (isBulletTime)
         {
@@ -188,23 +198,31 @@ public class Main : Singleton<Main>
                 StartCoroutine(RowFade(rowOn[2]));
                 positionEnd[2].GetComponent<Spawner>().Shoot();
                 miniBossDamage++;
+                bossHit.text = miniBossDamage.ToString();
+                bossHit.fontSize = 150+miniBossDamage*0.5f ;
             }
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(RowFade(rowOn[3]));
                 positionEnd[3].GetComponent<Spawner>().Shoot();
                 miniBossDamage++;
+                bossHit.text = miniBossDamage.ToString();
+                bossHit.fontSize = 150 + miniBossDamage * 0.5f;
             }
            if( miniBossDamage> miniBossLife / 3)
             {
                 Destroy(currentBeam);
+                spheres[0].transform.localScale = new Vector3(0.035f,0.035f,0.035f);
                 currentBeam = Instantiate(laserBeams[1], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
            else if (miniBossDamage > miniBossLife / 3 * 2)
             {
                 Destroy(currentBeam);
+                spheres[0].transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
+                spheres[1] = Instantiate(SecondSphere, SoundDisplay.Instance.heart.transform);
                 currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
+
         }
         else if (canShootBoss)
         {
@@ -224,12 +242,16 @@ public class Main : Singleton<Main>
                         positionEnd[2].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.R))
                     {
                         positionEnd[3].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
                 case 1:
@@ -238,12 +260,16 @@ public class Main : Singleton<Main>
                         positionEnd[1].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.T))
                     {
                         positionEnd[4].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
                 case 2:
@@ -252,12 +278,16 @@ public class Main : Singleton<Main>
                         positionEnd[0].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.E))
                     {
                         positionEnd[2].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
                 case 3:
@@ -266,12 +296,16 @@ public class Main : Singleton<Main>
                         positionEnd[1].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.R))
                     {
                         positionEnd[3].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
                 case 4:
@@ -280,12 +314,16 @@ public class Main : Singleton<Main>
                         positionEnd[2].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.H))
                     {
                         positionEnd[5].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
                 case 5:
@@ -294,12 +332,16 @@ public class Main : Singleton<Main>
                         positionEnd[0].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.T))
                     {
                         positionEnd[4].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
+                        bossHit.text = miniBossDamage.ToString();
+                        bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
                 case 6:
@@ -323,11 +365,14 @@ public class Main : Singleton<Main>
             if (miniBossDamage > bossLife / 3 && miniBossDamage<bossLife/3*2)
             {
                 Destroy(currentBeam);
+                spheres[0].transform.localScale = new Vector3(0.035f,0.035f,0.035f);
                 currentBeam = Instantiate(laserBeams[1], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
             else if (miniBossDamage > bossLife / 3 * 2)
             {
                 Destroy(currentBeam);
+                spheres[1] = Instantiate(SecondSphere, SoundDisplay.Instance.heart.transform);
+                spheres[0].transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
                 currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
 
@@ -495,12 +540,12 @@ public class Main : Singleton<Main>
 
                 #endregion
                 // number of pattern befor miniBoss
-                if (patternNumber == 9)
+                if (patternNumber == 1)
                 {
                     StartCoroutine(MiniBoss());
                 }
                 //number of pattern befor boss
-                else if( patternNumber == 1)
+                else if( patternNumber == 29)
                 {
                     StartCoroutine(Boss());
                 }
@@ -689,6 +734,9 @@ public class Main : Singleton<Main>
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*1000, Quaternion.identity);
         yield return new WaitUntil(() => canShootMiniBoss == true);
+        bossHit.enabled = true;
+        spheres[0] = Instantiate(firstSphere, SoundDisplay.Instance.heart.transform);
+        SoundDisplay.Instance.isBoss = true;
         currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
         for (int i = 0; i < positionEnd.Length; i++)
         {
@@ -713,7 +761,10 @@ public class Main : Singleton<Main>
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*10000, Quaternion.identity);
         yield return new WaitUntil(() => canShootBoss == true);
+        bossHit.enabled = true;
+        SoundDisplay.Instance.isBoss = true;
         currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
+        spheres[0] = Instantiate(firstSphere, SoundDisplay.Instance.heart.transform);
         canShootBoss = true;
         for (int i = 0; i < positionEnd.Length; i++)
         {
@@ -788,6 +839,7 @@ public class Main : Singleton<Main>
     IEnumerator StartAfterMiniBoss()
     {
         // wait for the player to calm down
+        SoundDisplay.Instance.isBoss = false;
         yield return new WaitForSeconds(5f);
         isBoss = false;
         for (int i = 0; i < positionEnd.Length; i++)
@@ -806,7 +858,15 @@ public class Main : Singleton<Main>
             Score.Instance.ScoreUp(miniBossDamage * 100);
             canShootMiniBoss = false;
             Destroy(currentBeam);
+            Destroy(laserHitRef);
+            foreach (GameObject sphere in spheres)
+            {
+                Destroy(sphere);
+            }
             Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
+            bossHit.text = string.Empty;
+            bossHit.fontSize = 150;
+            bossHit.enabled = true;
             Destroy(miniBoss);
             if(phaseNumber <=1)
                 StartCoroutine(StartAfterMiniBoss());

@@ -35,6 +35,8 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public Image bpmVisuelG;
     public Image bpmVisuelD;
 
+    [HideInInspector] public bool isBoss;
+    private float timerBossPuls;
     // Start is called before the first frame update
     void Start()
     {
@@ -46,8 +48,18 @@ public class SoundDisplay : Singleton<SoundDisplay>
     {
         pourcentageCalculated = pourcentageAllow / 100f * (60f / clock.bpm);
 
-        timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
-
+        if(!isBoss)
+            timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
+        else
+        {
+            timerBossPuls += Time.deltaTime;
+            timer = timerBossPuls * 5;
+            if (timerBossPuls > 0.1f)
+            {
+                timerBossPuls = 0;
+                
+            }
+        }
         //Main.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
         if (!cantMove)
         {

@@ -62,11 +62,11 @@ public class Main : Singleton<Main>
     private bool isBoss;
     [HideInInspector] public bool canShootMiniBoss;
     public GameObject miniBoss;
-    private int miniBossDamage;
+    private float miniBossDamage;
     public float miniBossTime;
     public float miniBossMaxScore;
     public int miniBossMinScore;
-    private int miniBossLife;
+    private float miniBossLife;
 
 
     [Header("Boss")]
@@ -75,14 +75,14 @@ public class Main : Singleton<Main>
     public GameObject boss;
     public GameObject[] laserBeams = new GameObject[3];
     public GameObject bigExplosion;
-    private int bossLife;
+    private float bossLife;
     private GameObject currentBeam;
     public GameObject laserHit;
     private GameObject laserHitRef;
 
     //textBoss
     public TextMeshProUGUI bossHit;
-
+    private float textTimer;
 
     public GameObject firstSphere;
     public GameObject SecondSphere;
@@ -141,7 +141,20 @@ public class Main : Singleton<Main>
     {
         specialBarD.value = specialBarG.value;
         specialBarD.maxValue = specialBarG.maxValue;
-
+         if(canShootBoss || canShootMiniBoss)
+        {
+            
+            textTimer += Time.deltaTime;
+            if (textTimer >= 0.05f && textTimer<=0.01f)
+            {
+                bossHit.fontSize = bossHit.fontSize * 1.2f;
+            }
+            else if(textTimer>= 0.01f)
+            {
+                textTimer = 0;
+                bossHit.fontSize = bossHit.fontSize * 0.8f;
+            }
+        }
 
 
         if (isBulletTime)
@@ -185,6 +198,8 @@ public class Main : Singleton<Main>
         }
         else if (canShootMiniBoss)
         {
+            bossHit.color = new Color(miniBossDamage / miniBossLife, 0, 0,1);
+ 
             RaycastHit hit;
             Physics.Raycast(SoundDisplay.Instance.heart.transform.position, Vector3.forward * 1000, out hit ,1000,1 <<19);
             if (hit.collider != null)
@@ -226,6 +241,7 @@ public class Main : Singleton<Main>
         }
         else if (canShootBoss)
         {
+            bossHit.color = new Color(miniBossDamage / bossLife, 0, 1);
             RaycastHit hit;
             Physics.Raycast(SoundDisplay.Instance.heart.transform.position, Vector3.forward * 1000, out hit, 1000, 1 << 19);
             if (hit.collider != null)
@@ -734,6 +750,7 @@ public class Main : Singleton<Main>
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*1000, Quaternion.identity);
         yield return new WaitUntil(() => canShootMiniBoss == true);
+        textTimer = 0;
         bossHit.enabled = true;
         spheres[0] = Instantiate(firstSphere, SoundDisplay.Instance.heart.transform);
         SoundDisplay.Instance.isBoss = true;
@@ -761,6 +778,7 @@ public class Main : Singleton<Main>
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*10000, Quaternion.identity);
         yield return new WaitUntil(() => canShootBoss == true);
+        textTimer = 0;
         bossHit.enabled = true;
         SoundDisplay.Instance.isBoss = true;
         currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
@@ -841,6 +859,9 @@ public class Main : Singleton<Main>
         // wait for the player to calm down
         SoundDisplay.Instance.isBoss = false;
         yield return new WaitForSeconds(5f);
+        bossHit.text = string.Empty;
+        bossHit.fontSize = 150;
+        bossHit.enabled = false;
         isBoss = false;
         for (int i = 0; i < positionEnd.Length; i++)
         {
@@ -855,7 +876,7 @@ public class Main : Singleton<Main>
         if (miniBossDamage >= life)
         {
             canShootMiniBoss = false;
-            Score.Instance.ScoreUp(miniBossDamage * 100);
+            Score.Instance.ScoreUp((int)miniBossDamage * 100);
             canShootMiniBoss = false;
             Destroy(currentBeam);
             Destroy(laserHitRef);
@@ -864,9 +885,7 @@ public class Main : Singleton<Main>
                 Destroy(sphere);
             }
             Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
-            bossHit.text = string.Empty;
-            bossHit.fontSize = 150;
-            bossHit.enabled = true;
+
             Destroy(miniBoss);
             if(phaseNumber <=1)
                 StartCoroutine(StartAfterMiniBoss());

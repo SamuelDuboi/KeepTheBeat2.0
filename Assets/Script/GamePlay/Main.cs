@@ -376,7 +376,7 @@ public class Main : Singleton<Main>
             {
                 lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();
-                hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed();
+                hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed(2-doOnceCPT);
                 StartCoroutine(LaserFade(_cpt - 1,100));
             }
             else if(hit.collider.gameObject.tag == "LinkedEnnemy")

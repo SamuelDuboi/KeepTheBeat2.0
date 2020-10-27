@@ -39,8 +39,8 @@ public class LinkedEnnemy :MonoBehaviour
             hitBox[0].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
             hitBox[1].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
         }
-        hitBox[0].GetComponent<EnnemyBehavior>().Destroyed();
-        hitBox[1].GetComponent<EnnemyBehavior>().Destroyed();
+        hitBox[0].GetComponent<EnnemyBehavior>().Destroyed(1);
+        hitBox[1].GetComponent<EnnemyBehavior>().Destroyed(1);
         SoundDisplay.Instance.RemoveEnnemy(gameObject);
         Destroy(gameObject);
     }

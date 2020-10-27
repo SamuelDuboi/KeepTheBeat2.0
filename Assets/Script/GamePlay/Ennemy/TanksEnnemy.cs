@@ -7,7 +7,7 @@ public class TanksEnnemy : EnnemyBehavior
 {
     private bool canReset;
     private int cptDead;
-    public Light light1, light2;
+    public Light light1Tank, light2Tank;
     public Light lightParent;
 
     private void Start()
@@ -24,12 +24,12 @@ public class TanksEnnemy : EnnemyBehavior
             StartCoroutine(Reset());
         }
     }
-    public override void Destroyed()
+    public override void Destroyed(int value)
     {
         cptDead++;
         if (cptDead >= 2)
         {
-            Score.Instance.ScoreUp(scoreValue);
+            Score.Instance.ScoreUp(scoreValue*(value+1));
             SoundDisplay.Instance.RemoveEnnemy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);

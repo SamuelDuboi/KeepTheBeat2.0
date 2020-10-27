@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 52478912}
   - component: {fileID: 52478913}
   m_Layer: 0
-  m_Name: Track7 - Boss
+  m_Name: Track8 - Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 191594679}
   - component: {fileID: 191594680}
   m_Layer: 0
-  m_Name: Track4
+  m_Name: Track5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,7 +734,7 @@ GameObject:
   - component: {fileID: 878437339}
   - component: {fileID: 878437340}
   m_Layer: 0
-  m_Name: Track6
+  m_Name: Track7 - Boss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -879,7 +879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045e068a7f5e98b4d9ed97de401bb997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm_: 60
+  bpm_: 130
   pause_: 0
 --- !u!4 &1013479556
 Transform:
@@ -906,7 +906,7 @@ GameObject:
   - component: {fileID: 1013697459}
   - component: {fileID: 1013697460}
   m_Layer: 0
-  m_Name: Track5
+  m_Name: Track6
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1052,6 +1052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audioClock: {fileID: 1013479554}
+  multiplicateur: 0
   tracks: []
   audioClipsSelected:
   - {fileID: 0}
@@ -1350,7 +1351,7 @@ GameObject:
   - component: {fileID: 2114807376}
   - component: {fileID: 2114807377}
   m_Layer: 0
-  m_Name: Track3 - Boss
+  m_Name: Track4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

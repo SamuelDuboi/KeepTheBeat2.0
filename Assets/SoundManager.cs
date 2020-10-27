@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
     [SerializeField] private GameObject audioClock;
 
     [SerializeField] private int multiplicateur = 0;
+    [SerializeField] private bool isBoss = false;
 
     [Header("Tracks")] //Les audioSources
     [SerializeField] private List<GameObject> tracks = new List<GameObject>();
@@ -140,36 +141,38 @@ public class SoundManager : MonoBehaviour
 
     private void UpdateVolume()
     {
+        //Kick
         if(multiplicateur == 0)
         {
             tracks[0].GetComponent<AudioSource>().volume = 1;
             tracks[1].GetComponent<AudioSource>().volume = 0;
         }
-        else if (multiplicateur == 1)
+        else if (multiplicateur == 1) //Clap
         {
             tracks[1].GetComponent<AudioSource>().volume = 1;
             tracks[2].GetComponent<AudioSource>().volume = 0;
         }
-        else if (multiplicateur == 2)
+        else if (multiplicateur == 2) //HitHat
         {
             tracks[2].GetComponent<AudioSource>().volume = 1;
             tracks[3].GetComponent<AudioSource>().volume = 0;
         }
-        else if (multiplicateur == 3)
+        else if (multiplicateur == 3) //Bells
         {
             tracks[3].GetComponent<AudioSource>().volume = 1;
             tracks[4].GetComponent<AudioSource>().volume = 0;
         }
-        if (multiplicateur == 4)
+        if (multiplicateur == 4) //Synth
         {
             tracks[4].GetComponent<AudioSource>().volume = 1;
             tracks[5].GetComponent<AudioSource>().volume = 0;
         }
-        if (multiplicateur == 5)
+        if (multiplicateur == 5) //Bells 2
         {
             tracks[5].GetComponent<AudioSource>().volume = 1;
             tracks[6].GetComponent<AudioSource>().volume = 0;
         }
-       
+        
+
     }
 }

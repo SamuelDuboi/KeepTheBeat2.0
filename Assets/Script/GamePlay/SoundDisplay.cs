@@ -141,6 +141,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     {
         if (ennemy.GetComponent<EnnemyBehavior>() != null&& ennemy.GetComponent<EnnemyBehavior>().tile != null)
             ennemy.GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
+        ParticuleManager.Instance.ActivateEffects();
         ennemys.Remove(ennemy);
     }
 
@@ -184,6 +185,12 @@ public class SoundDisplay : Singleton<SoundDisplay>
         // 80=> 100;
         float scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) * 20;
         heart.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+    }
+
+    public void ScaleObject(GameObject obj,float scale,float mult)
+    {
+        float scaleFactor =scale + (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) * mult;
+       obj.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
     }
 
     public void ScaleUI()

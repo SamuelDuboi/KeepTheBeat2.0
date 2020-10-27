@@ -144,35 +144,56 @@ public class SoundManager : MonoBehaviour
         //Kick
         if(multiplicateur == 0)
         {
-            tracks[0].GetComponent<AudioSource>().volume = 1;
+            tracks[0].GetComponent<AudioSource>().volume = 1f;
             tracks[1].GetComponent<AudioSource>().volume = 0;
         }
-        else if (multiplicateur == 1) //Clap
+        if (multiplicateur == 1) //Clap
         {
-            tracks[1].GetComponent<AudioSource>().volume = 1;
+            tracks[1].GetComponent<AudioSource>().volume = 0.7f;
             tracks[2].GetComponent<AudioSource>().volume = 0;
         }
-        else if (multiplicateur == 2) //HitHat
+        if (multiplicateur == 2) //HitHat
         {
-            tracks[2].GetComponent<AudioSource>().volume = 1;
+            tracks[2].GetComponent<AudioSource>().volume = 0.7f;
             tracks[3].GetComponent<AudioSource>().volume = 0;
         }
-        else if (multiplicateur == 3) //Bells
+        if (multiplicateur == 3) //Bells
         {
-            tracks[3].GetComponent<AudioSource>().volume = 1;
+            tracks[3].GetComponent<AudioSource>().volume = 0.7f;
             tracks[4].GetComponent<AudioSource>().volume = 0;
         }
         if (multiplicateur == 4) //Synth
         {
-            tracks[4].GetComponent<AudioSource>().volume = 1;
+            tracks[4].GetComponent<AudioSource>().volume = 0.7f;
             tracks[5].GetComponent<AudioSource>().volume = 0;
         }
         if (multiplicateur == 5) //Bells 2
         {
-            tracks[5].GetComponent<AudioSource>().volume = 1;
+            tracks[5].GetComponent<AudioSource>().volume = 0.7f;
             tracks[6].GetComponent<AudioSource>().volume = 0;
         }
-        
+
+        if (isBoss)
+        {
+            tracks[7].GetComponent<AudioSource>().volume = 0.7f;
+            tracks[8].GetComponent<AudioSource>().volume = 0.7f;
+            tracks[4].GetComponent<AudioSource>().volume = 0;
+        }
+        else
+        {
+            tracks[7].GetComponent<AudioSource>().volume = 0;
+            tracks[8].GetComponent<AudioSource>().volume = 0;
+
+            if (multiplicateur >= 4)
+            {
+                tracks[4].GetComponent<AudioSource>().volume = 0.7f;
+            }
+            else
+            {
+                tracks[4].GetComponent<AudioSource>().volume = 0;
+            }
+        }
+
 
     }
 }

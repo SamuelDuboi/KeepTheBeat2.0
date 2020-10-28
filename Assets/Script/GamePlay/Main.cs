@@ -483,7 +483,7 @@ public class Main : Singleton<Main>
 
     IEnumerator LaserFade(int cpt, int timer)
     {
-        for (int i = 0; i < timer * 60/AudioHelmClock.GetGlobalBpm(); i++)
+        for (int i = 0; i < timer * 60/AudioHelmClock.Instance.bpm; i++)
         {
             lineRenderer[cpt].startColor -= new Color(0, 0, 0, 0.01f);
             lineRenderer[cpt].endColor -= new Color(0, 0, 0, 0.01f);
@@ -558,12 +558,12 @@ public class Main : Singleton<Main>
 
                 #endregion
                 // number of pattern befor miniBoss
-                if (patternNumber == 1)
+                if (patternNumber == 5)
                 {
                     StartCoroutine(MiniBoss());
                 }
                 //number of pattern befor boss
-                else if( patternNumber == 29)
+                else if( patternNumber == 19)
                 {
                     StartCoroutine(Boss());
                 }
@@ -748,6 +748,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
+        SoundManager.Instance.BossEntry();
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*1000, Quaternion.identity);
@@ -776,6 +777,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
+        SoundManager.Instance.BossEntry();
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*10000, Quaternion.identity);
@@ -887,7 +889,7 @@ public class Main : Singleton<Main>
                 Destroy(sphere);
             }
             Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
-
+            SoundManager.Instance.UpdateVolume(Score.Instance.scorMultiplier);
             Destroy(miniBoss);
             if(phaseNumber <=1)
                 StartCoroutine(StartAfterMiniBoss());

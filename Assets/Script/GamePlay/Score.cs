@@ -30,14 +30,14 @@ public class Score : Singleton<Score>
         cptStreak++;
         
         scorText.text =  score.ToString();
-        if(cptStreak >= 1)
+        if(cptStreak >= 6)
         {
             SoundDisplay.Instance.Unmute(scorMultiplier-1);
             if(scorMultiplier<8)
             scorMultiplier++;
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
             cptStreak = 0;
-            SoundManager.Instance.UpdateVolume();
+            SoundManager.Instance.UpdateVolume(scorMultiplier);
         }
     }
 
@@ -56,10 +56,10 @@ public class Score : Singleton<Score>
         if (scorMultiplier > 1)
         {
             scorMultiplier --;
+            SoundManager.Instance.UpdateVolume(scorMultiplier);
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
         }
         SoundDisplay.Instance.TakeDamage(scorMultiplier-1);
-        SoundManager.Instance.UpdateVolume();
 
     }
 

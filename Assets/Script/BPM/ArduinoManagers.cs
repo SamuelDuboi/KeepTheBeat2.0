@@ -44,8 +44,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
       
         if (SceneManager.GetActiveScene().name == "MainScene")
         {
-            AudioHelmClock.GetInstance().bpm = cpt;
-            AudioHelmClock.GetInstance().SetGlobalBpm();
+            AudioHelmClock.Instance.bpm = cpt;
             Destroy(this);
         }
         else
@@ -59,7 +58,6 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             //Visuel de la Barre
             timerText.text = Mathf.Floor(timerFloat).ToString();
             gameObject.GetComponent<AudioHelmClock>().bpm = cpt;
-            gameObject.GetComponent<AudioHelmClock>().SetGlobalBpm();
         }
     }
 

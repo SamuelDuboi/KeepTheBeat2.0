@@ -19,16 +19,15 @@ public class Heart : MonoBehaviour
         HeartRate();
         if (doOnce)
         {
-        float playRate = 60 / AudioHelmClock.GetGlobalBpm();
+        float playRate = 60 / AudioHelmClock.Instance.bpm;
         animator.speed = 1 / playRate;
         Debug.Log("animator speed =" + animator.speed);
-        Debug.Log("Bpm = " + AudioHelmClock.GetGlobalBpm());
         }
     }
 
     void HeartRate()
     {
-        if (AudioHelmClock.GetGlobalBpm() > 0 && !doOnce)
+        if (AudioHelmClock.Instance.bpm > 0 && !doOnce)
         {
             animator.enabled = true;
             doOnce = true;

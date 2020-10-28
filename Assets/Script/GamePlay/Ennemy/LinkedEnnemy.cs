@@ -47,7 +47,7 @@ public class LinkedEnnemy :MonoBehaviour
     private IEnumerator Reset()
     {
 
-        yield return new WaitForSeconds ((60 / AudioHelmClock.GetGlobalBpm()) *0.5f);
+        yield return new WaitForSeconds ((60 / AudioHelmClock.Instance.bpm) *0.5f);
         hitCpt = 0;
         cantReset = false;
     }

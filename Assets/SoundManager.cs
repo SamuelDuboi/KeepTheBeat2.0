@@ -25,7 +25,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         audioClock = gameObject;
 
-        getBpm = AudioHelmClock.GetGlobalBpm();
+        getBpm = AudioHelmClock.Instance.bpm;
 
         foreach (Transform child in transform)
         {
@@ -49,7 +49,6 @@ public class SoundManager : Singleton<SoundManager>
        {
             //Load les 60 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM60");
-            Debug.Log("La");
             
        }
        else if(getBpm >= 63 && getBpm <= 67)
@@ -84,7 +83,8 @@ public class SoundManager : Singleton<SoundManager>
         }
         else if (getBpm >= 88 && getBpm <= 92)
         {
-            //Load les 90 Bpm
+            Debug.Log("La");
+            //Load les 90 Bpms
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM90");
            
         }
@@ -133,15 +133,15 @@ public class SoundManager : Singleton<SoundManager>
         {
             tracks[i].GetComponent<AudioSource>().clip = audioClipsSelected[i];
             tracks[i].GetComponent<AudioSource>().volume = 0f;
+            tracks[i].GetComponent<AudioSource>().Play();
+            
         }
-        StartCoroutine("StartDelay");
-    }
-
-    IEnumerator StartDelay()
-    {
         tracks[0].GetComponent<AudioSource>().volume = 1f;
-        yield return new WaitForSecondsRealtime(1f);
-       
+    }
+   
+    public void StartDelay()
+    {
+        tracks[0].GetComponent<AudioSource>().volume = 1f;       
 
         for (int i = 0; i < audioClipsSelected.Length; i++)
         {
@@ -149,50 +149,40 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public void UpdateVolume()
+    public void UpdateVolume( int multiplier)
     {
-        //Kick
-        if(multiplicateur == 1)
+        switch (multiplier)
         {
-            StartCoroutine("FadeInSound", tracks[0]);
-            StartCoroutine("FadeOutSound", tracks[1]);
-        }
-        if (multiplicateur == 2) //Clap
-        {
-            StartCoroutine("FadeInSound", tracks[1]);
-            StartCoroutine("FadeOutSound", tracks[2]);
-        }
-        if (multiplicateur == 3) //HitHat
-        {
-            StartCoroutine("FadeInSound", tracks[2]);
-            StartCoroutine("FadeOutSound", tracks[3]);
-        }
-        if (multiplicateur == 4) //Bells
-        {
-            StartCoroutine("FadeInSound", tracks[3]);
-            StartCoroutine("FadeOutSound", tracks[4]);
-        }
-        if (multiplicateur == 5) //Synth
-        {
-            StartCoroutine("FadeInSound", tracks[4]);
-            StartCoroutine("FadeOutSound", tracks[5]);
-        }
-        if (multiplicateur == 6) //Bells 2
-        {
-            StartCoroutine("FadeInSound", tracks[5]);
-            StartCoroutine("FadeOutSound", tracks[6]);
-        }
+            case 1://Kick
+                StartCoroutine("FadeInSound", tracks[0]);
+                StartCoroutine("FadeOutSound", tracks[1]);
+                break;
+            case 2://Clap
+                StartCoroutine("FadeInSound", tracks[1]);
+                StartCoroutine("FadeOutSound", tracks[2]);
+                break;
+            case 3://HitHat
+                StartCoroutine("FadeInSound", tracks[2]);
+                StartCoroutine("FadeOutSound", tracks[3]);
+                break;
+            case 4://Bells
+                StartCoroutine("FadeInSound", tracks[3]);
+                StartCoroutine("FadeOutSound", tracks[4]);
+                break;
+            case 5://Synth
+                StartCoroutine("FadeInSound", tracks[4]);
+                StartCoroutine("FadeOutSound", tracks[5]);
+                break;
+            case 6://Bells 2
+                StartCoroutine("FadeInSound", tracks[5]);
+                StartCoroutine("FadeOutSound", tracks[6]);
+                break;
 
-        if (isBoss)
-        {
-            StartCoroutine("FadeInSound", tracks[7]);
-            StartCoroutine("FadeInSound", tracks[8]);
-            StartCoroutine("FadeOutSound", tracks[4]);
-
-            
-        }
-        else
-        {
+            default:
+                break;
+        }       
+          
+        
             StartCoroutine("FadeOutSound", tracks[7]);
             StartCoroutine("FadeOutSound", tracks[8]);
 
@@ -204,9 +194,16 @@ public class SoundManager : Singleton<SoundManager>
             {
                 StartCoroutine("FadeOutSound", tracks[4]);
             }
-        }
+        
 
 
+    }
+
+    public void BossEntry()
+    {
+        StartCoroutine("FadeInSound", tracks[7]);
+        StartCoroutine("FadeInSound", tracks[8]);
+        StartCoroutine("FadeOutSound", tracks[4]);
     }
 
     IEnumerator FadeOutSound(GameObject track)

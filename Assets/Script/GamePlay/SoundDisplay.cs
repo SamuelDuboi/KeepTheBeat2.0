@@ -49,7 +49,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
         pourcentageCalculated = pourcentageAllow / 100f * (60f / clock.bpm);
 
         if(!isBoss)
-            timer = AudioHelmClock.GetGlobalBeatTime() - timePreviousBeat;
+            timer = AudioSettings.dspTime - AudioHelmClock.Instance.startTime - timePreviousBeat;
         else
         {
             timerBossPuls += Time.deltaTime;
@@ -68,66 +68,26 @@ public class SoundDisplay : Singleton<SoundDisplay>
         }
     }
     public bool cantMove;
-    public void BeatEvent()
+    public void MoveEnnemy()
     {
-        if (AudioHelmClock.GetGlobalBeatTime() < 0 )
-            return;
-
-        if(cantMove)
+        timePreviousBeat = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
+        for (int i = 0; i < ennemys.Count; i++)
         {
-            beat = 0;
-            return;
-        }
-        beat++;
-
-        if (beat == 0)
-        {
-            /* if (beat == 8)
-             {
-                 timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
-             }*/
-
-        }
-        else if (beat == 8)
-        {
-            Main.Instance.CantShoot();
-        }
-        else if (beat == 12)
-        {
-            cptForMovement++;
-
-            beat = 0;
-            Main.Instance.CanShoot();
-        }
-        if (cptForMovement == 1 && beat == 4 )
-        {
-            timePreviousBeat = AudioHelmClock.GetGlobalBeatTime();
-            cptForMovement = 0;
-            for (int i = 0; i < ennemys.Count; i++)
+            if (ennemys.Count > 0)
             {
-                if (ennemys.Count > 0)
+                if (ennemys[i].tag == "LinkedEnnemy")
                 {
-                    if (ennemys[i].tag == "LinkedEnnemy")
+                    foreach (var item in ennemys[i].GetComponent<LinkedEnnemy>().hitBox)
                     {
-                        foreach (var item in ennemys[i].GetComponent<LinkedEnnemy>().hitBox)
-                        {
-                            item.GetComponent<EnnemyBehavior>().Move();
-                        }
+                        item.GetComponent<EnnemyBehavior>().Move();
                     }
-                    else
-                        ennemys[i].GetComponent<EnnemyBehavior>().Move();
-
                 }
+                else
+                    ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
             }
-
-            Main.Instance.Spawn();
-
         }
-
-
-
-
+            Main.Instance.Spawn();
     }
 
 
@@ -183,13 +143,13 @@ public class SoundDisplay : Singleton<SoundDisplay>
         // BPM = [0;1]
         // MAX = 100
         // 80=> 100;
-        float scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) * 20;
+        float scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.Instance.bpm) * 20;
         heart.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
     }
 
     public void ScaleObject(GameObject obj,float scale,float mult)
     {
-        float scaleFactor =scale + (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) * mult;
+        float scaleFactor =scale + (float)timer / (60 / AudioHelmClock.Instance.bpm) * mult;
        obj.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
     }
 
@@ -197,7 +157,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     {
         float intervale = Main.Instance.specialMaxValue - Main.Instance.specialCount;
 
-        float scaleFactorVisuel = (float)timer / (60 / AudioHelmClock.GetGlobalBpm()) /2;
+        float scaleFactorVisuel = (float)timer / (60 / AudioHelmClock.Instance.bpm) /2;
         
         bpmVisuelG.fillAmount = 1 - scaleFactorVisuel - intervale/100 - 0.1f;
 

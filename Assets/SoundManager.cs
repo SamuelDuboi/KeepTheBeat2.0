@@ -25,7 +25,7 @@ public class SoundManager : Singleton<SoundManager>
     {
         audioClock = gameObject;
 
-        getBpm = audioClock.GetComponent<AudioHelmClock>().bpm;
+        getBpm = AudioHelmClock.GetGlobalBpm();
 
         foreach (Transform child in transform)
         {
@@ -152,32 +152,32 @@ public class SoundManager : Singleton<SoundManager>
     public void UpdateVolume()
     {
         //Kick
-        if(multiplicateur == 0)
+        if(multiplicateur == 1)
         {
             StartCoroutine("FadeInSound", tracks[0]);
             StartCoroutine("FadeOutSound", tracks[1]);
         }
-        if (multiplicateur == 1) //Clap
+        if (multiplicateur == 2) //Clap
         {
             StartCoroutine("FadeInSound", tracks[1]);
             StartCoroutine("FadeOutSound", tracks[2]);
         }
-        if (multiplicateur == 2) //HitHat
+        if (multiplicateur == 3) //HitHat
         {
             StartCoroutine("FadeInSound", tracks[2]);
             StartCoroutine("FadeOutSound", tracks[3]);
         }
-        if (multiplicateur == 3) //Bells
+        if (multiplicateur == 4) //Bells
         {
             StartCoroutine("FadeInSound", tracks[3]);
             StartCoroutine("FadeOutSound", tracks[4]);
         }
-        if (multiplicateur == 4) //Synth
+        if (multiplicateur == 5) //Synth
         {
             StartCoroutine("FadeInSound", tracks[4]);
             StartCoroutine("FadeOutSound", tracks[5]);
         }
-        if (multiplicateur == 5) //Bells 2
+        if (multiplicateur == 6) //Bells 2
         {
             StartCoroutine("FadeInSound", tracks[5]);
             StartCoroutine("FadeOutSound", tracks[6]);

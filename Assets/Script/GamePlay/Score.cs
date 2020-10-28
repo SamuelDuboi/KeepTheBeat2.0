@@ -37,6 +37,7 @@ public class Score : Singleton<Score>
             scorMultiplier++;
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
             cptStreak = 0;
+            SoundManager.Instance.UpdateVolume();
         }
     }
 
@@ -58,6 +59,7 @@ public class Score : Singleton<Score>
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
         }
         SoundDisplay.Instance.TakeDamage(scorMultiplier-1);
+        SoundManager.Instance.UpdateVolume();
 
     }
 

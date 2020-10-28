@@ -5,6 +5,8 @@ using AudioHelm;
 
 public class SoundManager : MonoBehaviour
 {
+    [SerializeField] private bool changing = false;
+
     [SerializeField] private GameObject audioClock;
 
     [SerializeField] private int multiplicateur = 0;
@@ -29,7 +31,13 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        UpdateVolume();
+        //A changer, faire en sorte d'appeler UpdateVolume a chaque monté ou perte de Modifieur.
+
+        if (changing)
+        {
+            changing = false;
+            UpdateVolume();
+        }
     }
 
    
@@ -144,56 +152,78 @@ public class SoundManager : MonoBehaviour
         //Kick
         if(multiplicateur == 0)
         {
-            tracks[0].GetComponent<AudioSource>().volume = 1f;
-            tracks[1].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeInSound", tracks[0]);
+            StartCoroutine("FadeOutSound", tracks[1]);
         }
         if (multiplicateur == 1) //Clap
         {
-            tracks[1].GetComponent<AudioSource>().volume = 0.7f;
-            tracks[2].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeInSound", tracks[1]);
+            StartCoroutine("FadeOutSound", tracks[2]);
         }
         if (multiplicateur == 2) //HitHat
         {
-            tracks[2].GetComponent<AudioSource>().volume = 0.7f;
-            tracks[3].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeInSound", tracks[2]);
+            StartCoroutine("FadeOutSound", tracks[3]);
         }
         if (multiplicateur == 3) //Bells
         {
-            tracks[3].GetComponent<AudioSource>().volume = 0.7f;
-            tracks[4].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeInSound", tracks[3]);
+            StartCoroutine("FadeOutSound", tracks[4]);
         }
         if (multiplicateur == 4) //Synth
         {
-            tracks[4].GetComponent<AudioSource>().volume = 0.7f;
-            tracks[5].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeInSound", tracks[4]);
+            StartCoroutine("FadeOutSound", tracks[5]);
         }
         if (multiplicateur == 5) //Bells 2
         {
-            tracks[5].GetComponent<AudioSource>().volume = 0.7f;
-            tracks[6].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeInSound", tracks[5]);
+            StartCoroutine("FadeOutSound", tracks[6]);
         }
 
         if (isBoss)
         {
-            tracks[7].GetComponent<AudioSource>().volume = 0.7f;
-            tracks[8].GetComponent<AudioSource>().volume = 0.7f;
-            tracks[4].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeInSound", tracks[7]);
+            StartCoroutine("FadeInSound", tracks[8]);
+            StartCoroutine("FadeOutSound", tracks[4]);
+
+            
         }
         else
         {
-            tracks[7].GetComponent<AudioSource>().volume = 0;
-            tracks[8].GetComponent<AudioSource>().volume = 0;
+            StartCoroutine("FadeOutSound", tracks[7]);
+            StartCoroutine("FadeOutSound", tracks[8]);
 
             if (multiplicateur >= 4)
             {
-                tracks[4].GetComponent<AudioSource>().volume = 0.7f;
+                StartCoroutine("FadeInSound", tracks[4]);
             }
             else
             {
-                tracks[4].GetComponent<AudioSource>().volume = 0;
+                StartCoroutine("FadeOutSound", tracks[4]);
             }
         }
 
 
+    }
+
+    IEnumerator FadeOutSound(GameObject track)
+    {
+        if(track.GetComponent<AudioSource>().volume != 0)
+        {
+            track.GetComponent<AudioSource>().volume -= 0.1f;
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine("FadeOutSound",track);
+        }
+    }
+
+    IEnumerator FadeInSound(GameObject track)
+    {
+        if (track.GetComponent<AudioSource>().volume < 0.7f)
+        {
+            track.GetComponent<AudioSource>().volume += 0.1f;
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine("FadeInSound", track);
+        }
     }
 }

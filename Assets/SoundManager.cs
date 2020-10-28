@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using AudioHelm;
 
-public class SoundManager : MonoBehaviour
+public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private bool changing = false;
 
     [SerializeField] private GameObject audioClock;
 
     [SerializeField] private int multiplicateur = 0;
-    [SerializeField] private bool isBoss = false;
+    [SerializeField] private bool isBoss;
 
     [Header("Tracks")] //Les audioSources
     [SerializeField] private List<GameObject> tracks = new List<GameObject>();
@@ -18,9 +18,15 @@ public class SoundManager : MonoBehaviour
     // Path : Resources.LoadAll(Assets/Resources/Sounds/BPM_) avec _ = BPM selected
     [SerializeField] private AudioClip[] audioClipsSelected;
 
+    public float getBpm = 0;
+
     // Start is called before the first frame update
     void Start()
     {
+        audioClock = gameObject;
+
+        getBpm = audioClock.GetComponent<AudioHelmClock>().bpm;
+
         foreach (Transform child in transform)
         {
             tracks.Add(child.gameObject);
@@ -31,92 +37,88 @@ public class SoundManager : MonoBehaviour
 
     private void Update()
     {
-        //A changer, faire en sorte d'appeler UpdateVolume a chaque monté ou perte de Modifieur.
+        isBoss = SoundDisplay.Instance.isBoss;
 
-        if (changing)
-        {
-            changing = false;
-            UpdateVolume();
-        }
+        multiplicateur = Score.Instance.scorMultiplier;
     }
 
    
     public void SelectTracks()
     {
-       if(audioClock.GetComponent<AudioHelmClock>().bpm  <= 62)
+       if(getBpm <= 62)
        {
             //Load les 60 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM60");
             Debug.Log("La");
             
        }
-       else if(audioClock.GetComponent<AudioHelmClock>().bpm >= 63 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 67)
+       else if(getBpm >= 63 && getBpm <= 67)
        {
             //Load les 65 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM65");
            
        }
-        else if (audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm >= 68 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 72)
+        else if (getBpm >= 68 && getBpm <= 72)
         {
             //Load les 70 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM70");
             
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 73 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 77)
+        else if (getBpm >= 73 && getBpm <= 77)
         {
             //Load les 75 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM75");
             
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 78 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 82)
+        else if (getBpm >= 78 && getBpm <= 82)
         {
             //Load les 80 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM80");
             
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 83 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 87)
+        else if (getBpm >= 83 && getBpm <= 87)
         {
             //Load les 85 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM85");
            
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 88 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 92)
+        else if (getBpm >= 88 && getBpm <= 92)
         {
             //Load les 90 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM90");
            
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 93 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 97)
+        else if (getBpm >= 93 && getBpm <= 97)
         {
             //Load les 95 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM95");
             
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 98 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 102)
+        else if (getBpm >= 98 && getBpm <= 102)
         {
             //Load les 100 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM100");
            
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 103 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 107)
+        else if (getBpm >= 103 && getBpm <= 107)
         {
             //Load les 105 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM105");
             
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 108 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 112)
+        else if (getBpm >= 108 && getBpm <= 112)
         {
             //Load les 110 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM110");
          
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 113 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 117)
+        else if (getBpm >= 113 && getBpm <= 117)
         {
             //Load les 115 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM115");
       
         }
-        else if (audioClock.GetComponent<AudioHelmClock>().bpm >= 118 && audioClock.GetComponent<AudioHelm.AudioHelmClock>().bpm <= 150)
+        else if (getBpm >= 118 && getBpm <= 150)
         {
             //Load les 120 Bpm
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM120");
@@ -147,7 +149,7 @@ public class SoundManager : MonoBehaviour
         }
     }
 
-    private void UpdateVolume()
+    public void UpdateVolume()
     {
         //Kick
         if(multiplicateur == 0)

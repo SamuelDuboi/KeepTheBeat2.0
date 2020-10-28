@@ -105,6 +105,7 @@ GameObject:
   - component: {fileID: 5964608165141742483}
   - component: {fileID: 2754553803709944039}
   - component: {fileID: 8789876906166523061}
+  - component: {fileID: 2073714109437186980}
   m_Layer: 0
   m_Name: HexCircle
   m_TagString: Untagged
@@ -204,3 +205,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   direction: {x: 0, y: 0, z: -10}
   speed: 5
+--- !u!114 &2073714109437186980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8030086449663091260}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b0d8bc4caf7f3b4892991632a870de8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Scale: 1200
+  Multi: 500

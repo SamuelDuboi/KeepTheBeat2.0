@@ -2,29 +2,31 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnvironnementManager : MonoBehaviour
+public class EnvironnementManager : Singleton<EnvironnementManager>
 {
     public int step;
     public List<GameObject> Phase1, Phase2, Phase3;
-    bool key = true;
+   
     void Start()
     {
-        
+        LunchPhase();
     }
 
-    void Update()
+
+    public void LunchPhase()
     {
-        if(step == 1 && key == true)
+        step++;
+        if (step == 1)
         {
             ResetFx();
             ActivatePhase1();
         }
-        if (step == 2 && key == true)
+        if (step == 2 )
         {
             ResetFx();
             ActivatePhase1();
         }
-        if (step == 3 && key == true)
+        if (step == 3 )
         {
             ResetFx();
             ActivatePhase1();
@@ -33,7 +35,7 @@ public class EnvironnementManager : MonoBehaviour
 
     void ActivatePhase1()
     {
-        key = false;
+        
         foreach (GameObject envi in Phase1)
         {
             if(envi.GetComponent<EnvironnementObjectBehaviour>() != null)

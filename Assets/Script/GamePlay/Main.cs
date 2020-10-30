@@ -872,6 +872,7 @@ public class Main : Singleton<Main>
             positionEnd[i].GetComponent<Spawner>().TilesApear();
 
         }
+        EnvironnementManager.Instance.LunchPhase();
     }
 
 

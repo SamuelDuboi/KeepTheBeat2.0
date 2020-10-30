@@ -45,7 +45,7 @@ public class Score : Singleton<Score>
     {
         score -= upNumber ;
         if(cptStreak!=0)
-            cptStreak--;
+            cptStreak = 0;
         scorText.text = score.ToString();
         
     }

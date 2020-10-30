@@ -13,9 +13,12 @@ public class EnvironnementObjectBehaviour : MonoBehaviour
 
     [Header("Particule")]
     public bool isParticuleEffect;
+
     void Start()
     {
         CamPos = Camera.main.transform;
+        if (isParticuleEffect == true)
+            gameObject.GetComponent<ParticleSystem>().Stop();
     }
 
     void Update()
@@ -28,11 +31,15 @@ public class EnvironnementObjectBehaviour : MonoBehaviour
                 Destroy(gameObject);
             }
         }
+    }
 
-        if (isParticuleEffect)
-        {
+    public void PlayParticule()
+    {
+        gameObject.GetComponent<ParticleSystem>().Play();
+    }
 
-        }
- 
+    public void StopParticule()
+    {
+        gameObject.GetComponent<ParticleSystem>().Stop();
     }
 }

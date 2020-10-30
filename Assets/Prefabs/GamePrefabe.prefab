@@ -2202,8 +2202,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7088160309239716173}
   - component: {fileID: 7088160309239716172}
-  - component: {fileID: 7088160309239716171}
-  - component: {fileID: 7088160309239716170}
   - component: {fileID: 7088160309239716169}
   m_Layer: 0
   m_Name: MainSound
@@ -2238,7 +2236,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 63227fff890a7524187d6131dcc76d40, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -2322,205 +2320,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7088160309239716171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088160309239716168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f67c212c580e428dafebf997b07b8f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyzones:
-  - audioClip: {fileID: 8300000, guid: 63227fff890a7524187d6131dcc76d40, type: 3}
-    mixer: {fileID: 0}
-    rootKey: 60
-    minKey: 0
-    maxKey: 127
-    minVelocity: 0
-    maxVelocity: 1
-    lastScheduled: 20500.181333333334
-  keyzonePlayMode: 0
-  velocityTracking: 1
-  numVoices: 8
-  useNoteOff_: 0
---- !u!114 &7088160309239716170
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088160309239716168}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f6faed88bb01468fb8fd49178ba50fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noteOnEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  noteOffEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  beatEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8812904904323742694}
-        m_TargetAssemblyTypeName: SoundDisplay, Assembly-CSharp
-        m_MethodName: BeatEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  length: 6
-  currentIndex: -1
-  loop: 1
-  allNotes:
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes:
-    - note_: 60
-      start_: 2
-      end_: 3
-      velocity_: 0.8
-      parent: {fileID: 7088160309239716170}
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  scrollPosition: {x: 0, y: 773}
-  autoScroll: 0
-  division: 1
-  zoom: 0.163
 --- !u!114 &7088160309239716169
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2533,8 +2332,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045e068a7f5e98b4d9ed97de401bb997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm_: 90
-  pause_: 0
+  bpm: 70
+  startTime: 0
 --- !u!1 &7088160309412794080
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,8 +2464,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7088160310124752546}
   - component: {fileID: 7088160310124752545}
-  - component: {fileID: 7088160310124752544}
-  - component: {fileID: 7088160310124752559}
   m_Layer: 0
   m_Name: Loop1
   m_TagString: Untagged
@@ -2784,200 +2581,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7088160310124752544
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088160310124752558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f67c212c580e428dafebf997b07b8f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyzones:
-  - audioClip: {fileID: 8300000, guid: 913eb2d3406694a81b8d50353f6e8f62, type: 3}
-    mixer: {fileID: 0}
-    rootKey: 60
-    minKey: 0
-    maxKey: 127
-    minVelocity: 0
-    maxVelocity: 1
-    lastScheduled: 1772.352
-  keyzonePlayMode: 0
-  velocityTracking: 1
-  numVoices: 8
-  useNoteOff_: 0
---- !u!114 &7088160310124752559
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7088160310124752558}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1f6faed88bb01468fb8fd49178ba50fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noteOnEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  noteOffEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  beatEvent:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 8812904904323742694}
-        m_TargetAssemblyTypeName: SoundDisplay, Assembly-CSharp
-        m_MethodName: BeatEvent
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  length: 16
-  currentIndex: -1
-  loop: 1
-  allNotes:
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  - notes: []
-  scrollPosition: {x: 0, y: 240}
-  autoScroll: 0
-  division: 1
-  zoom: 0.3
 --- !u!1 &8812904903037681749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4456,7 +4059,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
-  m_Color: {r: 1, g: 0.014492754, b: 0, a: 1}
+  m_Color: {r: 1, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -5382,7 +4985,7 @@ MonoBehaviour:
   - {fileID: 1914145647590298216, guid: 097b59932c4f40748b873e669461e57e, type: 3}
   - {fileID: 1604807694688777876, guid: b5bd2ec97f6827641a3f2514390fbe27, type: 3}
   - {fileID: 0}
-  numberOfPatternPerDifficulty: 3
+  numberOfPatternPerDifficulty: 5
   rowOn:
   - {fileID: 8812904904180467417}
   - {fileID: 8812904904036422336}

@@ -436,14 +436,6 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7088160309239716169, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: bpm
-      value: 70
-      objectReference: {fileID: 0}
-    - target: {fileID: 7088160309239716172, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: m_Volume
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8812904903196298493, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: tiles.Array.data[0]
       value: 
@@ -516,10 +508,6 @@ PrefabInstance:
       propertyPath: tiles.Array.data[5]
       value: 
       objectReference: {fileID: 5233112404808600608}
-    - target: {fileID: 8812904903943457549, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: m_Color.g
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 8812904903943457551, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: tiles.Array.data[0]
       value: 
@@ -600,10 +588,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 8790651030324516901}
-    - target: {fileID: 8812904904658119740, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-      propertyPath: numberOfPatternPerDifficulty
-      value: 5
-      objectReference: {fileID: 0}
     - target: {fileID: 8812904904810947231, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: tiles.Array.data[0]
       value: 
@@ -652,11 +636,7 @@ PrefabInstance:
       propertyPath: tiles.Array.data[5]
       value: 
       objectReference: {fileID: 23343688}
-    m_RemovedComponents:
-    - {fileID: 7088160309239716170, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-    - {fileID: 7088160309239716171, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-    - {fileID: 7088160310124752559, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
-    - {fileID: 7088160310124752544, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
 --- !u!1 &244981553
 GameObject:

@@ -16,6 +16,17 @@ public class EnvironnementManager : MonoBehaviour
     {
         if(step == 1 && key == true)
         {
+            ResetFx();
+            ActivatePhase1();
+        }
+        if (step == 2 && key == true)
+        {
+            ResetFx();
+            ActivatePhase1();
+        }
+        if (step == 3 && key == true)
+        {
+            ResetFx();
             ActivatePhase1();
         }
     }
@@ -40,7 +51,7 @@ public class EnvironnementManager : MonoBehaviour
         }
     }
 
-    public void Reset()
+    public void ResetFx()
     {
         foreach (GameObject envi in Phase1)
         {

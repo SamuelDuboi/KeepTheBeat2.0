@@ -423,7 +423,7 @@ public class Main : Singleton<Main>
     {
         doOnceCPT++;
         var _cpt = doOnceCPT;
-        if(doOnceCPT ==2)
+        if(doOnceCPT >=2)
         {
             doOnceCPT = 0;
             canShoot = false;
@@ -717,6 +717,8 @@ public class Main : Singleton<Main>
         specialCount = 0;
         specialBarG.value = 0;
         SoundDisplay.Instance.speedModifier = 0;
+        SoundDisplay.Instance.bpmVisuelD.fillAmount = 0;
+        SoundDisplay.Instance.bpmVisuelG.fillAmount = 0;
         SoundDisplay.Instance.cantMove = true;
         yield return new WaitWhile(() => isBulletTime == true);
         SoundDisplay.Instance.speedModifier = 1;

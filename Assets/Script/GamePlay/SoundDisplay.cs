@@ -10,7 +10,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
 {
 
     public float beat;
-    private double timePreviousBeat;
+   [HideInInspector] public double timePreviousBeat;
     [Range(0, 100)]
     public float pourcentageAllow;
     private double pourcentageCalculated;
@@ -65,28 +65,35 @@ public class SoundDisplay : Singleton<SoundDisplay>
             ScaleHeart();
             ScaleUI();
         }
+        else
+        {
+            timePreviousBeat = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
+        }
     }
     public bool cantMove;
     public void MoveEnnemy()
     {
-        timePreviousBeat = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
-        for (int i = 0; i < ennemys.Count; i++)
+        if (!cantMove)
         {
-            if (ennemys.Count > 0)
+            timePreviousBeat = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
+            for (int i = 0; i < ennemys.Count; i++)
             {
-                if (ennemys[i].tag == "LinkedEnnemy")
+                if (ennemys.Count > 0)
                 {
-                    foreach (var item in ennemys[i].GetComponent<LinkedEnnemy>().hitBox)
+                    if (ennemys[i].tag == "LinkedEnnemy")
                     {
-                        item.GetComponent<EnnemyBehavior>().Move();
+                        foreach (var item in ennemys[i].GetComponent<LinkedEnnemy>().hitBox)
+                        {
+                            item.GetComponent<EnnemyBehavior>().Move();
+                        }
                     }
-                }
-                else
-                    ennemys[i].GetComponent<EnnemyBehavior>().Move();
+                    else
+                        ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
+                }
             }
+                Main.Instance.Spawn();
         }
-            Main.Instance.Spawn();
     }
 
 

@@ -65,7 +65,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: 0}
   cpt: 0
   scoreValue: 10000
-  speed: 0.1
+  speed: 0.2
   cantMove: 0
   turnOnTrail: 0
   row1: {r: 0, g: 0, b: 0, a: 0}

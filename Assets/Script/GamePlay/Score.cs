@@ -32,8 +32,7 @@ public class Score : Singleton<Score>
         
         scorText.text =  score.ToString();
         if(cptStreak >= 6)
-        {
-            SoundDisplay.Instance.Unmute(scorMultiplier-1);
+        {            
             if(scorMultiplier<8)
             scorMultiplier++;
             scorMultiplierText.text = "X" + scorMultiplier.ToString();

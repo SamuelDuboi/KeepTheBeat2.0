@@ -21,7 +21,6 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public int speedModifier = 1;
 
     private bool doOnceBeat;
-    public AudioSource[] loops = new AudioSource[2];
     public AudioSource fail;
 
     public bool cantAct;
@@ -105,11 +104,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
         ennemys.Remove(ennemy);
     }
 
-    public void Unmute(int loopNUmber)
-    {
-        if (loopNUmber >= 0 && loopNUmber < loops.Length)
-            loops[loopNUmber].mute = false;
-    }
+
     public void TakeDamage(int loopNUmber)
     {
         LifeManager.Instance.TakeDamage(mixer);
@@ -133,8 +128,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
             }
         }
         cantAct = true;
-        if (loopNUmber >= 0 && loopNUmber < loops.Length)
-            loops[loopNUmber].mute = true;
+
     }
 
     public void ScaleHeart()

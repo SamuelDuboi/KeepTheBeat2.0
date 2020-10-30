@@ -25,7 +25,8 @@ public class Score : Singleton<Score>
     }
 
    public void ScoreUp(int upNumber)
-    {
+   {
+        scorText.GetComponent<Animation>().Play();
         score += upNumber*scorMultiplier;
         cptStreak++;
         
@@ -39,7 +40,7 @@ public class Score : Singleton<Score>
             cptStreak = 0;
             SoundManager.Instance.UpdateVolume(scorMultiplier);
         }
-    }
+   }
 
     public void ScoreDown(int upNumber)
     {

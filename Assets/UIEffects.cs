@@ -9,7 +9,7 @@ public class UIEffects : MonoBehaviour
 
     [SerializeField] private int success = 0;
 
-    [SerializeField] private bool needToReset = false;
+ 
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +25,7 @@ public class UIEffects : MonoBehaviour
     {
         //lancer l'update que quand necessaire après
         UpdateVisuel();
+        success = Score.Instance.cptStreak;
     }
 
     public void UpdateVisuel()
@@ -34,15 +35,9 @@ public class UIEffects : MonoBehaviour
             arrows[i].SetActive(true);
         }
 
-        if (needToReset)
+        for (int i = 0; i < success; i++)
         {
-            needToReset = false;
-            success = 0;
-
-            for (int i = 0; i < arrows.Count; i++)
-            {
-                arrows[i].SetActive(false);
-            }
+            arrows[i].SetActive(true);
         }
     }
 }

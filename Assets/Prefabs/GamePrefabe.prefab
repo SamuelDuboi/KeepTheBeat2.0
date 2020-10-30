@@ -8363,7 +8363,6 @@ GameObject:
   - component: {fileID: 3300805184042419178}
   - component: {fileID: 3300805184042419183}
   - component: {fileID: 3300805184042419176}
-  - component: {fileID: 815990962}
   m_Layer: 5
   m_Name: TEXT_Score
   m_TagString: Untagged
@@ -8487,21 +8486,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!111 &815990962
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3300805184042419179}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400000, guid: 722637f057c73964c9cff8b582442211, type: 2}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &3300805184064418635
 GameObject:
   m_ObjectHideFlags: 0
@@ -11034,7 +11018,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrows: []
   success: 0
-  needToReset: 0
 --- !u!1 &5837523472041430584
 GameObject:
   m_ObjectHideFlags: 0

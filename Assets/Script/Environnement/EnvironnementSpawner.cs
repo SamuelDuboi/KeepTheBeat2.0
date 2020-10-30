@@ -19,8 +19,8 @@ public class EnvironnementSpawner : MonoBehaviour
     IEnumerator Spawn()
     {
         key = false;
-        Instantiate(objectToSpawn[Random.Range(0,objectToSpawn.Count)], transform.position, Quaternion.identity);
-        yield return new WaitForSeconds(Random.Range(3f, 7f));
+        Instantiate(objectToSpawn[Random.Range(0,objectToSpawn.Count)], transform.position + new Vector3(Random.Range(-10,10),Random.Range(2,10),0), Quaternion.identity);
+        yield return new WaitForSeconds(Random.Range(2f, 4f));
         key = true;
     }
 }

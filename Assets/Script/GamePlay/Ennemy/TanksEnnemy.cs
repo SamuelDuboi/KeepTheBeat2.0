@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class TanksEnnemy : EnnemyBehavior
 {
     private bool canReset;
@@ -30,7 +30,10 @@ public class TanksEnnemy : EnnemyBehavior
         if (cptDead >= 2)
         {
             Score.Instance.ScoreUp(scoreValue*(value+1));
-            SoundDisplay.Instance.RemoveEnnemy(gameObject);
+            if (SceneManager.GetActiveScene().name != "Tuto")
+                SoundDisplay.Instance.RemoveEnnemy(gameObject);
+            else
+                SoundDisplqyTuto.Instance.RemoveEnnemy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }

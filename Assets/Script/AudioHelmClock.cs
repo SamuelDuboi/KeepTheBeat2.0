@@ -1,5 +1,5 @@
-﻿// Copyright 2017 Matt Tytel
-
+﻿
+using UnityEngine.SceneManagement;
 using UnityEngine;
 
 namespace AudioHelm
@@ -24,18 +24,27 @@ namespace AudioHelm
             if(timer <= (60 / bpm)/4 )
             {
                 //On Peut
+                if(SceneManager.GetActiveScene().name != "Tuto")
                 Main.Instance.CanShoot();
+                else
+                MainTuto.Instance.CanShoot();
             }
             else if(timer >= (60 / bpm) / 4 && timer<= (60/bpm)*3/4)
             {
                 //On peut pas
-                Main.Instance.CantShoot();
+                if (SceneManager.GetActiveScene().name != "Tuto")
+                    Main.Instance.CantShoot();
+                else
+                    MainTuto.Instance.CantShoot();
 
             }
             else if (timer >= (60 / bpm) * 3 / 4 && timer < 60/bpm )
             {
                 //On peu
-                Main.Instance.CanShoot();
+                if (SceneManager.GetActiveScene().name != "Tuto")
+                    Main.Instance.CanShoot();
+                else
+                    MainTuto.Instance.CanShoot();
             }           
             
            else if( timer>= 60 / bpm)
@@ -45,8 +54,12 @@ namespace AudioHelm
                     doOnce = true;
                     SoundManager.Instance.StartDelay();
                 }
-               SoundDisplay.Instance.MoveEnnemy();
-              loopTimer = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
+                if (SceneManager.GetActiveScene().name != "Tuto")
+                    SoundDisplay.Instance.MoveEnnemy();
+                else
+                    SoundDisplqyTuto.Instance.MoveEnnemy();
+
+                loopTimer = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
             }
 
         }

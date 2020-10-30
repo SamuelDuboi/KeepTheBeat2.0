@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class EnnemyBehavior : MonoBehaviour
 {
     [Header("GameObject Ref")]
@@ -94,8 +94,10 @@ public class EnnemyBehavior : MonoBehaviour
             {
                 if (tile != null)
                     tile.GetComponent<TilesBehavior>().Off();
-
-                SoundDisplay.Instance.RemoveEnnemy(gameObject);
+                if (SceneManager.GetActiveScene().name != "Tuto")
+                    SoundDisplay.Instance.RemoveEnnemy(gameObject);
+                else
+                    SoundDisplqyTuto.Instance.RemoveEnnemy(gameObject);
                 Score.Instance.ModifierDown();
                 Destroy(gameObject);
 
@@ -112,12 +114,16 @@ public class EnnemyBehavior : MonoBehaviour
     {
         if(gameObject.tag != "LinkedEnnemy")
         {
-        Score.Instance.ScoreUp(scoreValue *time);
-        GameObject poptext =  Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
-        poptext.GetComponent<TextMeshPro>().text = (scoreValue* time ).ToString();
+            Score.Instance.ScoreUp(scoreValue *time);
+            GameObject poptext =  Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
+            poptext.GetComponent<TextMeshPro>().text = (scoreValue* time ).ToString();
 
         }
-        SoundDisplay.Instance.RemoveEnnemy(gameObject);
+        if (SceneManager.GetActiveScene().name != "Tuto")
+            SoundDisplay.Instance.RemoveEnnemy(gameObject);
+        else
+            SoundDisplqyTuto.Instance.RemoveEnnemy(gameObject);
+
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

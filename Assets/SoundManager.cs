@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using AudioHelm;
-
+using UnityEngine.SceneManagement;
 public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private bool changing = false;
@@ -37,8 +37,10 @@ public class SoundManager : Singleton<SoundManager>
 
     private void Update()
     {
-        isBoss = SoundDisplay.Instance.isBoss;
-
+        if(SceneManager.GetActiveScene().name != "Tuto")
+            isBoss = SoundDisplay.Instance.isBoss;
+        else
+            isBoss = SoundDisplqyTuto.Instance.isBoss;
         multiplicateur = Score.Instance.scorMultiplier;
     }
 

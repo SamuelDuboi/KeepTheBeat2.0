@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class LinkedEnnemy :MonoBehaviour
 {
     public GameObject[] hitBox = new GameObject[2];
@@ -41,7 +41,10 @@ public class LinkedEnnemy :MonoBehaviour
         }
         hitBox[0].GetComponent<EnnemyBehavior>().Destroyed(1);
         hitBox[1].GetComponent<EnnemyBehavior>().Destroyed(1);
-        SoundDisplay.Instance.RemoveEnnemy(gameObject);
+        if (SceneManager.GetActiveScene().name != "Tuto")
+            SoundDisplay.Instance.RemoveEnnemy(gameObject);
+        else 
+            SoundDisplqyTuto.Instance.RemoveEnnemy(gameObject);
         Destroy(gameObject);
     }
     private IEnumerator Reset()

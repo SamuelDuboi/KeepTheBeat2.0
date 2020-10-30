@@ -5,7 +5,7 @@ using TMPro;
 using AudioHelm;
 using UnityEngine.UI;
 
-public class MainTuto : MonoBehaviour
+public class MainTuto : Singleton<MainTuto>
 {
     [Header("GameObject References")]
     public GameObject player;
@@ -17,13 +17,8 @@ public class MainTuto : MonoBehaviour
     [Header("Spawn")]
     public GameObject[] positionEnd = new GameObject[6];
     public Patterns[] patterns = new Patterns[1];
-    [HideInInspector] public List<Patterns> patterns1 = new List<Patterns>();
-    [HideInInspector] public List<Patterns> patterns2 = new List<Patterns>();
-    [HideInInspector] public List<Patterns> patterns3 = new List<Patterns>();
-    [HideInInspector] private List<int> previousNumberPattern = new List<int>();
 
     public GameObject[] ennemysArray = new GameObject[5];
-    public int numberOfPatternPerDifficulty = 5;
 
     private Vector3 previousEnnemy;
     private List<Vector3> previousEnnemyList;
@@ -90,7 +85,6 @@ public class MainTuto : MonoBehaviour
 
     private void Start()
     {
-
         sprite = GetComponent<SpriteRenderer>();
 
         lineRenderer[0].SetPosition(0, transform.position);
@@ -100,43 +94,13 @@ public class MainTuto : MonoBehaviour
         specialBarG.maxValue = specialMaxValue;
 
         previousEnnemyList = new List<Vector3>();
-        SetPatternsArray();
-
-        foreach (Vector3 vector in patterns1[0].ennemiesPosition)
-        {
-            previousEnnemyList.Add(vector);
-        }
-
-        //debug to know wich pattern is playing
-        currentPatternName.text = "current pattern : " + patterns1[0].name;
+        
 
         previousEnnemy = Vector2.one * 12;
     }
 
 
 
-    private void SetPatternsArray()
-    {
-        foreach (var pattern in patterns)
-        {
-            int _difficulty = pattern.difficulty;
-            switch (_difficulty)
-            {
-                case 1:
-                    patterns1.Add(pattern);
-                    break;
-                case 2:
-                    patterns2.Add(pattern);
-                    break;
-
-                case 3:
-                    patterns3.Add(pattern);
-                    break;
-                default:
-                    break;
-            }
-        }
-    }
     private void Update()
     {
         specialBarD.value = specialBarG.value;
@@ -165,10 +129,10 @@ public class MainTuto : MonoBehaviour
                 isBulletTime = false;
                 bulletTimeTimer = 0;
             }
-            if (Input.anyKeyDown && SoundDisplay.Instance.ennemys.Count > 0)
+            if (Input.anyKeyDown && SoundDisplqyTuto.Instance.ennemys.Count > 0)
             {
 
-                GameObject _ennemy = SoundDisplay.Instance.ennemys[SoundDisplay.Instance.ennemys.Count - 1];
+                GameObject _ennemy = SoundDisplqyTuto.Instance.ennemys[SoundDisplqyTuto.Instance.ennemys.Count - 1];
                 int _ennemyParent = 0;
                 for (int i = 0; i < positionEnd.Length; i++)
                 {
@@ -181,17 +145,17 @@ public class MainTuto : MonoBehaviour
                 lineRenderer[0].SetPosition(1, _ennemy.transform.position);
                 clap.Play();
                 StartCoroutine(LaserFade(0, 100));
-                SoundDisplay.Instance.RemoveEnnemy(_ennemy);
+                SoundDisplqyTuto.Instance.RemoveEnnemy(_ennemy);
                 Destroy(_ennemy);
                 Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));
-                if (SoundDisplay.Instance.ennemys.Count == 0)
+                if (SoundDisplqyTuto.Instance.ennemys.Count == 0)
                 {
 
                     isBulletTime = false;
                 }
             }
-            else if (SoundDisplay.Instance.ennemys.Count == 0)
+            else if (SoundDisplqyTuto.Instance.ennemys.Count == 0)
             {
                 isBulletTime = false;
             }
@@ -201,7 +165,7 @@ public class MainTuto : MonoBehaviour
             bossHit.color = new Color(miniBossDamage / miniBossLife, 0, 0, 1);
 
             RaycastHit hit;
-            Physics.Raycast(SoundDisplay.Instance.heart.transform.position, Vector3.forward * 1000, out hit, 1000, 1 << 19);
+            Physics.Raycast(SoundDisplqyTuto.Instance.heart.transform.position, Vector3.forward * 1000, out hit, 1000, 1 << 19);
             if (hit.collider != null)
             {
                 laserHitRef.transform.position = hit.point;
@@ -228,14 +192,14 @@ public class MainTuto : MonoBehaviour
             {
                 Destroy(currentBeam);
                 spheres[0].transform.localScale = new Vector3(0.035f, 0.035f, 0.035f);
-                currentBeam = Instantiate(laserBeams[1], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
+                currentBeam = Instantiate(laserBeams[1], SoundDisplqyTuto.Instance.heart.transform.position, Quaternion.identity);
             }
             else if (miniBossDamage > miniBossLife / 3 * 2)
             {
                 Destroy(currentBeam);
                 spheres[0].transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
-                spheres[1] = Instantiate(SecondSphere, SoundDisplay.Instance.heart.transform);
-                currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
+                spheres[1] = Instantiate(SecondSphere, SoundDisplqyTuto.Instance.heart.transform);
+                currentBeam = Instantiate(laserBeams[2], SoundDisplqyTuto.Instance.heart.transform.position, Quaternion.identity);
             }
 
         }
@@ -243,7 +207,7 @@ public class MainTuto : MonoBehaviour
         {
             bossHit.color = new Color(miniBossDamage / bossLife, 0, 1);
             RaycastHit hit;
-            Physics.Raycast(SoundDisplay.Instance.heart.transform.position, Vector3.forward * 1000, out hit, 1000, 1 << 19);
+            Physics.Raycast(SoundDisplqyTuto.Instance.heart.transform.position, Vector3.forward * 1000, out hit, 1000, 1 << 19);
             if (hit.collider != null)
             {
                 laserHitRef.transform.position = hit.point;
@@ -382,14 +346,14 @@ public class MainTuto : MonoBehaviour
             {
                 Destroy(currentBeam);
                 spheres[0].transform.localScale = new Vector3(0.035f, 0.035f, 0.035f);
-                currentBeam = Instantiate(laserBeams[1], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
+                currentBeam = Instantiate(laserBeams[1], SoundDisplqyTuto.Instance.heart.transform.position, Quaternion.identity);
             }
             else if (miniBossDamage > bossLife / 3 * 2)
             {
                 Destroy(currentBeam);
-                spheres[1] = Instantiate(SecondSphere, SoundDisplay.Instance.heart.transform);
+                spheres[1] = Instantiate(SecondSphere, SoundDisplqyTuto.Instance.heart.transform);
                 spheres[0].transform.localScale = new Vector3(0.04f, 0.04f, 0.04f);
-                currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
+                currentBeam = Instantiate(laserBeams[2], SoundDisplqyTuto.Instance.heart.transform.position, Quaternion.identity);
             }
 
             Debug.Log(miniBossDamage);
@@ -476,7 +440,7 @@ public class MainTuto : MonoBehaviour
             Instantiate(powerSupplies, hit.collider.transform.position, Quaternion.identity);
             StartCoroutine(LaserFade(0, 100));
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
-            SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
+            SoundDisplqyTuto.Instance.RemoveEnnemy(hit.collider.gameObject);
             Destroy(hit.collider.gameObject);
         }
     }
@@ -521,164 +485,18 @@ public class MainTuto : MonoBehaviour
     #endregion
 
     private bool breakSpawn;
+    [HideInInspector] public int cptPhase;
     public void Spawn()
     {
-        if (!isBoss)
+        
+        if(cptPhase == 0)
         {
-
-            breakSpawn = false;
-            float biggest = 0;
-            List<int> numberForEnnemy = new List<int>();
-
-            //go to the next pattern if not already done
-
-            if (nodeNumber == 12)
-            {
-                nodeNumber = 0;
-                #region patternDifficulty
-                var _currentPattern = new List<Patterns>();
-                if (patternNumber >= patterns.Length - 1)
-                    return;
-                else if (patternNumber < numberOfPatternPerDifficulty - 1)
-                    _currentPattern = patterns1;
-                else if (patternNumber >= numberOfPatternPerDifficulty - 1 && patternNumber < (numberOfPatternPerDifficulty - 1) * 2)
-                {
-                    _currentPattern = patterns2;
-                }
-                else if (patternNumber < patterns.Length - 1)
-                    _currentPattern = patterns3;
-                else
-                {
-                    Debug.Log("c'est fini");
-                    return;
-                }
-
-                if (_currentPattern.Count == 0)
-                    return;
-
-                #endregion
-                // number of pattern befor miniBoss
-                if (patternNumber == 5)
-                {
-                    StartCoroutine(MiniBoss());
-                }
-                //number of pattern befor boss
-                else if (patternNumber == 19)
-                {
-                    StartCoroutine(Boss());
-                }
-
-                previousNumberPattern.Add(currentPattern);
-                currentPattern = Random.Range(0, _currentPattern.Count);
-                foreach (var number in previousNumberPattern)
-                {
-                    while (currentPattern == number)
-                        currentPattern = Random.Range(0, _currentPattern.Count);
-
-                }
-
-                patternNumber++;
-                if (patternNumber == numberOfPatternPerDifficulty - 1 || patternNumber == (numberOfPatternPerDifficulty - 1) * 2)
-                {
-                    previousNumberPattern.Clear();
-                }
-                foreach (var vecor in _currentPattern[currentPattern].ennemiesPosition)
-                {
-                    previousEnnemyList.Add(vecor);
-                }
-
-                //debug to know wich pattern is playing
-                currentPatternName.text = "current pattern : " + _currentPattern[currentPattern].name;
-
-
-                for (int i = 0; i < previousEnnemyList.Count; i++)
-                {
-                    if (previousEnnemyList[i].y > biggest)
-                    {
-                        biggest = previousEnnemyList[i].y;
-                    }
-
-                }
-
-                previousEnnemy.y = 12;
-            }
-
-            for (int i = 0; i < previousEnnemyList.Count; i++)
-            {
-                if (previousEnnemyList[i].y > biggest)
-                {
-                    biggest = previousEnnemyList[i].y;
-                }
-
-            }
-            for (int i = 0; i < previousEnnemyList.Count; i++)
-            {
-                if (previousEnnemyList[i].y == biggest)
-                {
-                    numberForEnnemy.Add(i);
-                }
-
-            }
-
-            if (biggest + emptyNode == previousEnnemy.y - 1)
-            {
-                emptyNode = 0;
-                if (numberForEnnemy.Count < 6)
-                {
-                    for (int i = 0; i < numberForEnnemy.Count; i++)
-                    {
-                        var _ennemy = previousEnnemyList[numberForEnnemy[i]].z;
-
-                        switch (_ennemy)
-                        {
-                            case 1:
-                                positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[0]);
-                                break;
-                            case 2:
-                                TpSpawn(previousEnnemyList[numberForEnnemy[i]].x, (int)previousEnnemyList[numberForEnnemy[i]].x);
-                                break;
-                            case 3:
-                                positionEnd[(int)previousEnnemyList[numberForEnnemy[i]].x].GetComponent<Spawner>().Spwan(ennemysArray[3]);
-                                break;
-                            case 4:
-                                LinkedSpawn(previousEnnemyList[numberForEnnemy[i]].x, numberForEnnemy, previousEnnemyList[numberForEnnemy[i]], (int)previousEnnemyList[numberForEnnemy[i]].x);
-                                break;
-
-                            default:
-                                Debug.Log(_ennemy);
-                                break;
-                        }
-                        if (breakSpawn)
-                            break;
-                        previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
-                    }
-                }
-                else
-                {
-                    for (int i = 0; i < numberForEnnemy.Count; i++)
-                    {
-                        previousEnnemy = previousEnnemyList[numberForEnnemy[i]];
-                    }
-                    SpecialSpawn();
-                }
-                for (int i = 0; i < numberForEnnemy.Count; i++)
-                {
-
-                    previousEnnemyList.RemoveAt(numberForEnnemy[i] - i);
-                }
-            }
-            else
-                emptyNode++;
-
-            nodeNumber++;
+            positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+            cptPhase++;
         }
+        
     }
 
-    public void SpecialSpawn()
-    {
-        specialSpawner.GetComponent<Spawner>().Spwan(true);
-
-    }
 
     private void TpSpawn(float x, int listEnnemy)
     {
@@ -716,17 +534,17 @@ public class MainTuto : MonoBehaviour
         isBulletTime = true;
         specialCount = 0;
         specialBarG.value = 0;
-        SoundDisplay.Instance.speedModifier = 0;
-        SoundDisplay.Instance.cantMove = true;
+        SoundDisplqyTuto.Instance.speedModifier = 0;
+        SoundDisplqyTuto.Instance.cantMove = true;
         yield return new WaitWhile(() => isBulletTime == true);
-        SoundDisplay.Instance.speedModifier = 1;
-        SoundDisplay.Instance.cantMove = false;
+        SoundDisplqyTuto.Instance.speedModifier = 1;
+        SoundDisplqyTuto.Instance.cantMove = false;
 
     }
 
     public void CanShoot()
     {
-        if (SoundDisplay.Instance.doOnce)
+        if (SoundDisplqyTuto.Instance.doOnce)
         {
             canShoot = true;
         }
@@ -737,170 +555,6 @@ public class MainTuto : MonoBehaviour
     {
         canShoot = false;
         doOnceCPT = 0;
-        SoundDisplay.Instance.doOnce = true;
-    }
-
-
-    IEnumerator MiniBoss()
-    {
-        isBoss = true;
-        miniBossDamage = 0;
-        yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
-        yield return new WaitForSeconds(2f);
-        //instantiate the mini boss in the middle of the scene
-        SoundManager.Instance.BossEntry();
-        var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
-        miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
-        laserHitRef = Instantiate(laserHit, Vector3.back * 1000, Quaternion.identity);
-        yield return new WaitUntil(() => canShootMiniBoss == true);
-        textTimer = 0;
-        bossHit.enabled = true;
-        spheres[0] = Instantiate(firstSphere, SoundDisplay.Instance.heart.transform);
-        SoundDisplay.Instance.isBoss = true;
-        currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
-        for (int i = 0; i < positionEnd.Length; i++)
-        {
-            if (i == 2 || i == 3)
-            {
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(5);
-            }
-            else
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
-
-        }
-
-    }
-    IEnumerator Boss()
-    {
-        isBoss = true;
-        miniBossDamage = 0;
-        yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
-        yield return new WaitForSeconds(2f);
-        //instantiate the mini boss in the middle of the scene
-        SoundManager.Instance.BossEntry();
-        var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
-        bossLife = _Boss.GetComponent<BossMovemenet>().life;
-        laserHitRef = Instantiate(laserHit, Vector3.back * 10000, Quaternion.identity);
-        yield return new WaitUntil(() => canShootBoss == true);
-        textTimer = 0;
-        bossHit.enabled = true;
-        SoundDisplay.Instance.isBoss = true;
-        currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
-        spheres[0] = Instantiate(firstSphere, SoundDisplay.Instance.heart.transform);
-        canShootBoss = true;
-        for (int i = 0; i < positionEnd.Length; i++)
-        {
-            if (i == 2 || i == 3)
-            {
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(5);
-            }
-            else
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
-
-        }
-
-    }
-    public void BossPhaseUp()
-    {
-        phaseNumber++;
-        switch (phaseNumber)
-        {
-            case 1:
-                positionEnd[1].GetComponent<Spawner>().TilesApear();
-                positionEnd[4].GetComponent<Spawner>().TilesApear();
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
-                break;
-            case 2:
-                positionEnd[0].GetComponent<Spawner>().TilesApear();
-                positionEnd[2].GetComponent<Spawner>().TilesApear();
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
-                break;
-            case 3:
-                positionEnd[1].GetComponent<Spawner>().TilesApear();
-                positionEnd[3].GetComponent<Spawner>().TilesApear();
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(6);
-                break;
-            case 4:
-                positionEnd[2].GetComponent<Spawner>().TilesApear();
-                positionEnd[5].GetComponent<Spawner>().TilesApear();
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[5].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
-                break;
-            case 5:
-                positionEnd[0].GetComponent<Spawner>().TilesApear();
-                positionEnd[4].GetComponent<Spawner>().TilesApear();
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[5].GetComponent<Spawner>().TilesDesapear(6);
-                break;
-            case 6:
-                positionEnd[2].GetComponent<Spawner>().TilesApear();
-                positionEnd[3].GetComponent<Spawner>().TilesApear();
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
-                break;
-            default:
-                break;
-        }
-
-    }
-    IEnumerator StartAfterMiniBoss()
-    {
-        // wait for the player to calm down
-        SoundDisplay.Instance.isBoss = false;
-        yield return new WaitForSeconds(5f);
-        bossHit.text = string.Empty;
-        bossHit.fontSize = 150;
-        bossHit.enabled = false;
-        isBoss = false;
-        for (int i = 0; i < positionEnd.Length; i++)
-        {
-            positionEnd[i].GetComponent<Spawner>().TilesApear();
-
-        }
-    }
-
-
-    public void BossOverTest(int life, GameObject miniBoss)
-    {
-        if (miniBossDamage >= life)
-        {
-            canShootMiniBoss = false;
-            Score.Instance.ScoreUp((int)miniBossDamage * 100);
-            canShootMiniBoss = false;
-            Destroy(currentBeam);
-            Destroy(laserHitRef);
-            foreach (GameObject sphere in spheres)
-            {
-                Destroy(sphere);
-            }
-            Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
-            SoundManager.Instance.UpdateVolume(Score.Instance.scorMultiplier);
-            Destroy(miniBoss);
-            if (phaseNumber <= 1)
-                StartCoroutine(StartAfterMiniBoss());
-            else
-            {
-                Score.Instance.EndScene(true);
-            }
-        }
-        else
-        {
-            Score.Instance.EndScene(false);
-        }
+        SoundDisplqyTuto.Instance.doOnce = true;
     }
 }

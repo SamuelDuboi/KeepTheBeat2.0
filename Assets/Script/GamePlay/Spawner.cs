@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.SceneManagement;
 public class Spawner : MonoBehaviour
 {
     public GameObject popScore;
@@ -23,6 +23,7 @@ public class Spawner : MonoBehaviour
     {
         currentColor = GetComponent<SpriteRenderer>().color;
         StartSpawn();
+
     }
 
 
@@ -43,7 +44,12 @@ public class Spawner : MonoBehaviour
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
         _ennemy.transform.position = new Vector3(transform.position.x,transform.position.y,transform.position.z * 100);
-        SoundDisplay.Instance.AddEnnemy(_ennemy);
+
+        if (SceneManager.GetActiveScene().name != "Tuto")
+            SoundDisplay.Instance.AddEnnemy(_ennemy);
+        else
+            SoundDisplqyTuto.Instance.AddEnnemy(_ennemy);
+
 
         _ennemy.GetComponentInChildren<Light>().color = currentColor;
         _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
@@ -62,7 +68,10 @@ public class Spawner : MonoBehaviour
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
         _ennemy.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * 100);
-        SoundDisplay.Instance.AddEnnemy(_ennemy);
+        if (SceneManager.GetActiveScene().name != "Tuto")
+            SoundDisplay.Instance.AddEnnemy(_ennemy);
+        else
+            SoundDisplqyTuto.Instance.AddEnnemy(_ennemy); ;
         _ennemy.GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponent<EnnemyBehavior>().explosion = explosion;
         _ennemy.GetComponent<EnnemyBehavior>().popTextScore = popScore;
@@ -89,7 +98,10 @@ public class Spawner : MonoBehaviour
         GameObject _ennemy = Instantiate(ennemy, transform);
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].transform.position = new Vector3(firstSpawner.transform.position.x, firstSpawner.transform.position.y, firstSpawner.transform.position.z * 100);
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].transform.position = new Vector3(secondSpawner.transform.position.x, secondSpawner.transform.position.y, secondSpawner.transform.position.z * 100);
-        SoundDisplay.Instance.AddEnnemy(_ennemy);
+        if (SceneManager.GetActiveScene().name != "Tuto")
+            SoundDisplay.Instance.AddEnnemy(_ennemy);
+        else
+            SoundDisplqyTuto.Instance.AddEnnemy(_ennemy);
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().turnOnTrail = true;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().explosion = firstSpawner.explosion;
@@ -113,7 +125,10 @@ public class Spawner : MonoBehaviour
         GameObject _ennemy = Instantiate(ennemy, transform);
         if(isSPecial)
         {
-            SoundDisplay.Instance.AddEnnemy(_ennemy);
+            if (SceneManager.GetActiveScene().name != "Tuto")
+                SoundDisplay.Instance.AddEnnemy(_ennemy);
+            else
+                SoundDisplqyTuto.Instance.AddEnnemy(_ennemy);
             _ennemy.GetComponent<EnnemyBehavior>().positions = this.positions;
 
         }

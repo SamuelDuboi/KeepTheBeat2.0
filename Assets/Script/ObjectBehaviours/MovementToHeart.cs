@@ -1,7 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 
 
 public class MovementToHeart : MonoBehaviour
@@ -21,7 +21,10 @@ public class MovementToHeart : MonoBehaviour
     void Start()
     {
         target = gameObject.transform;
-        target = Main.Instance.player.transform;
+        if (SceneManager.GetActiveScene().name != "Tuto")
+            target = Main.Instance.player.transform;
+        else
+            target = MainTuto.Instance.player.transform;
     }
 
    
@@ -33,8 +36,16 @@ public class MovementToHeart : MonoBehaviour
 
         if (Vector3.Distance(target.position, transform.position) <= 0.3f)
         {
-            Main.Instance.specialCount++;
-            Main.Instance.specialBarG.value = Main.Instance.specialCount;
+            if (SceneManager.GetActiveScene().name != "Tuto")
+            {
+                Main.Instance.specialCount++;
+                Main.Instance.specialBarG.value = Main.Instance.specialCount;
+            }
+            else
+            {
+                MainTuto.Instance.specialBarG.value = MainTuto.Instance.specialCount;
+                MainTuto.Instance.specialCount++;
+            }
             Destroy(gameObject);
         }
     }

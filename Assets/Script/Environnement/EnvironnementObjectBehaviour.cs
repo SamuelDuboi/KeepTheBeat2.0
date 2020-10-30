@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UIElements;
+using UnityEngine.SceneManagement;
 
 public class EnvironnementObjectBehaviour : MonoBehaviour
 {
@@ -25,7 +26,10 @@ public class EnvironnementObjectBehaviour : MonoBehaviour
     {
         if (isObject)
         {
-            SoundDisplay.Instance.ScaleObject(gameObject, Scale, Multi);
+            if (SceneManager.GetActiveScene().name != "Tuto")
+                SoundDisplay.Instance.ScaleObject(gameObject, Scale, Multi);
+            else
+                SoundDisplqyTuto.Instance.ScaleObject(gameObject, Scale, Multi);
             if (transform.position.z < CamPos.transform.position.z - 20)
             {
                 Destroy(gameObject);

@@ -1,45 +1,34 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 using UnityEngine.SceneManagement;
 
 public class Score : Singleton<Score>
 {
     public static int score;
     public LeaderBoard leaderBoard;
-    [HideInInspector] public int scorMultiplier =1;
+    [HideInInspector] public int scorMultiplier = 1;
     [HideInInspector] public int cptStreak;
     public TextMeshProUGUI scorText;
     public TextMeshProUGUI scorMultiplierText;
-    // Start is called before the first frame update
-    void Start()
-    {
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
-   public void ScoreUp(int upNumber)
-   {
-        scorText.GetComponent<Animation>().Play();
-        score += upNumber*scorMultiplier;
+    public void ScoreUp(int upNumber)
+    {
+
+        score += upNumber * scorMultiplier;
         cptStreak++;
-        
-        scorText.text =  score.ToString();
-        if(cptStreak >= 6)
-        {            
-            if(scorMultiplier<8)
-            scorMultiplier++;
+        scorText.text = score.ToString();
+        scorText.GetComponent<Animation>().Play();
+
+        if (cptStreak >= 10)
+        {
+            if (scorMultiplier < 7)
+                scorMultiplier++;
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
             cptStreak = 0;
             SoundManager.Instance.UpdateVolume(scorMultiplier);
         }
-   }
+    }
 
     public void ScoreDown(int upNumber)
     {
@@ -47,7 +36,7 @@ public class Score : Singleton<Score>
         if(cptStreak!=0)
             cptStreak = 0;
         scorText.text = score.ToString();
-        
+
     }
 
     public void ModifierDown()
@@ -55,18 +44,20 @@ public class Score : Singleton<Score>
         cptStreak = 0;
         if (scorMultiplier > 1)
         {
-            scorMultiplier --;
+            scorMultiplier--;
             SoundManager.Instance.UpdateVolume(scorMultiplier);
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
         }
-        SoundDisplay.Instance.TakeDamage(scorMultiplier-1);
+        SoundDisplay.Instance.TakeDamage(scorMultiplier - 1);
 
     }
 
     public void EndScene(bool victory)
     {
         leaderBoard.CountScore(score, victory);
-        
+
         SceneManager.LoadScene("LeaderBoard");
     }
+
+
 }

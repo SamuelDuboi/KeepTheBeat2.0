@@ -115,15 +115,14 @@ public class EnnemyBehavior : MonoBehaviour
         if(gameObject.tag != "LinkedEnnemy")
         {
             Score.Instance.ScoreUp(scoreValue *time);
-            GameObject poptext =  Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
-            poptext.GetComponent<TextMeshPro>().text = (scoreValue* time ).ToString();
-
+            GameObject poptext = Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
+            poptext.GetComponent<TextMeshPro>().text = (scoreValue * time).ToString();
         }
         if (SceneManager.GetActiveScene().name != "Tuto")
             SoundDisplay.Instance.RemoveEnnemy(gameObject);
         else
             SoundDisplqyTuto.Instance.RemoveEnnemy(gameObject);
-
+       
         Instantiate(explosion, transform.position, Quaternion.identity);
         Destroy(gameObject);
     }

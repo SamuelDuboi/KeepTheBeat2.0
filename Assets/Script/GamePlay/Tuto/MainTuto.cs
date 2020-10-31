@@ -146,8 +146,8 @@ public class MainTuto : Singleton<MainTuto>
                 clap.Play();
                 StartCoroutine(LaserFade(0, 100));
                 SoundDisplqyTuto.Instance.RemoveEnnemy(_ennemy);
-                Destroy(_ennemy);
                 Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
+                Destroy(_ennemy);
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));
                 if (SoundDisplqyTuto.Instance.ennemys.Count == 0)
                 {
@@ -428,7 +428,7 @@ public class MainTuto : Singleton<MainTuto>
         RaycastHit hit;
         Physics.Raycast(transform.position, new Vector3(position.x - transform.position.x, position.y - transform.position.y, position.z - transform.position.z), out hit);
         StartCoroutine(RowFade(isSpecial));
-        if (specialCount >= specialMaxValue)
+        if (specialCount >= specialMaxValue && canShootSpecial)
         {
             StartCoroutine(BulletTime());
         }
@@ -485,9 +485,10 @@ public class MainTuto : Singleton<MainTuto>
     #endregion
 
     private bool breakSpawn;
-    [HideInInspector] public int cptPhase;
+     public int cptPhase;
     [HideInInspector] public bool cantSpwan;
     [HideInInspector] public float waveNumber;
+    [HideInInspector] public bool canShootSpecial;
     public void Spawn()
     {
         if (!cantSpwan)
@@ -520,6 +521,7 @@ public class MainTuto : Singleton<MainTuto>
                         break;
                     case 5:
                         cptPhase++;
+                        waveNumber = -1;
                         positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         cantSpwan = true;
                         break;
@@ -529,13 +531,14 @@ public class MainTuto : Singleton<MainTuto>
                 }
                 waveNumber++;
             }
+            // linked ennemy, 2 rows, time is freez until the ennemy is destroy
             else if (cptPhase == 4)
             {
                 LinkedSpawn(2, 3);
                 cptPhase++;
                 cantSpwan = true;
             }
-            //tp multipleEnnemyS
+            //linked ennemy + normal, every rows
             else if (cptPhase == 6)
             {
                 foreach (var spawn in positionEnd)
@@ -545,16 +548,16 @@ public class MainTuto : Singleton<MainTuto>
                 switch (waveNumber)
                 {
                     case 0:
-                        positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        LinkedSpawn(2, 4);
                         break;
-                    case 2:
+                    case 3:
                         positionEnd[2].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         break;
                     case 5:
                         positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         break;
                     case 7:
-                            LinkedSpawn(2, 4);
+                         LinkedSpawn(2, 4);
                         break;
                     case 9:
                         positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[0]);
@@ -579,9 +582,145 @@ public class MainTuto : Singleton<MainTuto>
                 }
                 waveNumber++;
             }
+            //tank, every rows , time is freez until the ennemy is destroy
+            else if (cptPhase == 8)
+            {
+                positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                cptPhase++;
+                cantSpwan = true;
+            }
+            //tank, linked ennemy, normals
+            else if( cptPhase == 10)
+            {
+                switch (waveNumber)
+                {
+                    case 0:
+                        positionEnd[2].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        break;
+                    case 5:
+                        positionEnd[5].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        break;
+                    case 9:
+                        positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 10:
+                        LinkedSpawn(2, 4);
+                        break;
+                    case 13:
+                        positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 15:
+                        positionEnd[5].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+
+                    case 18:
+                        positionEnd[4].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        break;
+                    case 20:
+                        LinkedSpawn(0, 1);
+                        break;
+                    case 23:
+                        positionEnd[2].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        cantSpwan = true;
+                        cptPhase++;
+                        waveNumber = -1;
+                        break;
+                    default:
+                        break;
+                }
+                waveNumber++;
+            }
+            //wave, time is freez until the wave is destroy
+            else if ( cptPhase == 12)
+            {
+                specialSpawner.GetComponent<Spawner>().Spwan(true);
+                cptPhase++;
+                cantSpwan = true;
+            }
+            //multiple waves to charges the special 
+            else if (cptPhase == 14)
+            {
+                switch (waveNumber)
+                {
+                    case 0:
+                        specialSpawner.GetComponent<Spawner>().Spwan(true);
+                        break;
+                    case 2:
+                        specialSpawner.GetComponent<Spawner>().Spwan(true);
+                        break;
+                    case 4:
+                        specialSpawner.GetComponent<Spawner>().Spwan(true);
+                        break;
+                    case 6:
+                        specialSpawner.GetComponent<Spawner>().Spwan(true);
+                        break;
+                    case 8:
+                        specialSpawner.GetComponent<Spawner>().Spwan(true);
+                        break;
+                    case 10:
+                        specialSpawner.GetComponent<Spawner>().Spwan(true);
+                        cantSpwan = true;
+                        cptPhase++;
+                        waveNumber = -1;
+
+                        break;
+                    default:
+                        break;
+                }
+                waveNumber++;
+            }
+            // full of ennemy to use special
+            else if(cptPhase == 16)
+            {
+                switch (waveNumber)
+                {
+                    case 0:
+                        positionEnd[2].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[4].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        positionEnd[5].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        LinkedSpawn(1, 3);
+                        break;
+                    case 1:
+                        positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[4].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        positionEnd[5].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        LinkedSpawn(2, 3);
+                        break;
+                    case 2:
+                        positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        positionEnd[4].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        LinkedSpawn(2, 5);
+                        break;
+                    case 3:
+                        positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        positionEnd[4].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        LinkedSpawn(2, 5);
+                        break;
+                    case 4:
+                        positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        positionEnd[4].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                        LinkedSpawn(2, 5);
+                        LinkedSpawn(0, 3);
+                        cantSpwan = true;
+                        cptPhase++;
+                        waveNumber = -1;
+
+                        break;                   
+
+                    default:
+                        break;
+                }
+                waveNumber++;
+            }
         }
-        
-        
+
+
     }
 
 

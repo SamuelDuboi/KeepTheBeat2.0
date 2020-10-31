@@ -53,6 +53,9 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
             cantMove = false;
             currentEnnemyMovment = 0;
             MainTuto.Instance.cantSpwan = false;
+            text.ClearText();
+            if (MainTuto.Instance.cptPhase == 14)
+                text.NextText();
 
         }
         else if (ennemys.Count == 0)
@@ -82,14 +85,23 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
     public bool cantMove;
 
     private int currentEnnemyMovment;
+
+    public TutoText text;
     public void MoveEnnemy()
     {
-        if(currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 1 || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 5)
+        if(currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 1 
+            || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 5 
+            || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 9 
+            || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 13 
+            || currentEnnemyMovment >= 5 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 17)
         {
+            text.NextText();
+            if(MainTuto.Instance.cptPhase == 17)
+                MainTuto.Instance.canShootSpecial = true;
             MainTuto.Instance.cptPhase++;
             cantMove = true;
         }
-        if(ennemys.Count != 0 && MainTuto.Instance.cptPhase ==3)
+        if(ennemys.Count == 0 && MainTuto.Instance.cptPhase%2 !=0)
         {
             MainTuto.Instance.cptPhase++;
 
@@ -160,7 +172,9 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
 
             }
         }
+        if(MainTuto.Instance.cptPhase %2 !=0)
         MainTuto.Instance.cptPhase--;
+        currentEnnemyMovment = 0;
         MainTuto.Instance.waveNumber = -0;
     }
 

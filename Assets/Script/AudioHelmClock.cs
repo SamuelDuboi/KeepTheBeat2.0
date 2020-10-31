@@ -49,17 +49,20 @@ namespace AudioHelm
             
            else if( timer>= 60 / bpm)
             {
+                loopTimer = AudioSettings.dspTime - startTime;
+                timer = AudioSettings.dspTime - startTime - loopTimer;
                 if (!doOnce)
                 {
                     doOnce = true;
                     SoundManager.Instance.StartDelay();
                 }
+
                 if (SceneManager.GetActiveScene().name != "Tuto")
                     SoundDisplay.Instance.MoveEnnemy();
-                else
+               else
                     SoundDisplqyTuto.Instance.MoveEnnemy();
+                
 
-                loopTimer = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
             }
 
         }

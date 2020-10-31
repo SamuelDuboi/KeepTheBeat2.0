@@ -182,8 +182,8 @@ public class Main : Singleton<Main>
                 clap.Play();
                 StartCoroutine(LaserFade(0,100));
                 SoundDisplay.Instance.RemoveEnnemy(_ennemy);
-                Destroy(_ennemy);
                 Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
+                Destroy(_ennemy);
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));
                 if (SoundDisplay.Instance.ennemys.Count == 0)
                 {

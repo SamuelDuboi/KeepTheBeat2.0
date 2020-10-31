@@ -3,12 +3,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class LinkedEnnemy :MonoBehaviour
 {
     public GameObject[] hitBox = new GameObject[2];
     public GameObject explosion;
     [HideInInspector] public int hitCpt;
     private bool cantReset;
+
+    [SerializeField] private GameObject enemy0;
+    [SerializeField] private GameObject enemy1;
+
+    public int scoreValue;
+    public GameObject popTextScore;
+    public GameObject poptextPosition0;
+    public GameObject poptextPosition1;
 
     void Update()
     {
@@ -34,6 +43,12 @@ public class LinkedEnnemy :MonoBehaviour
 
     public void DestroyAll()
     {
+        Score.Instance.ScoreUp(scoreValue);
+        GameObject poptext0 = Instantiate(enemy0.GetComponent<EnnemyBehavior>().popTextScore, poptextPosition0.transform.position, Quaternion.identity);
+        poptext0.GetComponent<TextMeshPro>().text = (scoreValue).ToString();
+        GameObject poptext1 = Instantiate(enemy1.GetComponent<EnnemyBehavior>().popTextScore, poptextPosition1.transform.position, Quaternion.identity);
+        poptext1.GetComponent<TextMeshPro>().text = (scoreValue).ToString();
+
         if (hitBox[0].GetComponent<EnnemyBehavior>().tile != null)
         {
             hitBox[0].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();

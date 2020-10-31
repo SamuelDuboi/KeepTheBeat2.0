@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3526845074128397063}
   - component: {fileID: 1609151930}
   m_Layer: 0
-  m_Name: Text Yellow
+  m_Name: Text Yellow 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,8 +109,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281896136
-  m_fontColor: {r: 0.7830189, g: 0.55069864, b: 0.21791564, a: 1}
+    rgba: 4281896394
+  m_fontColor: {r: 0.7924528, g: 0.5541563, b: 0.22054112, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

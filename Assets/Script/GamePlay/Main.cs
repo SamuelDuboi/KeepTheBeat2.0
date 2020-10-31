@@ -476,6 +476,8 @@ public class Main : Singleton<Main>
             Instantiate(powerSupplies, hit.collider.transform.position, Quaternion.identity);
             StartCoroutine(LaserFade(0,100));
             Score.Instance.ScoreUp(hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue);
+            GameObject poptext = Instantiate(hit.collider.gameObject.GetComponent<EnnemyBehavior>().popTextScore, hit.collider.gameObject.GetComponent<EnnemyBehavior>().poptextPosition.transform.position, Quaternion.identity);
+            poptext.GetComponent<TextMeshPro>().text = hit.collider.gameObject.GetComponent<EnnemyBehavior>().scoreValue.ToString();
             SoundDisplay.Instance.RemoveEnnemy(hit.collider.gameObject);
             Destroy(hit.collider.gameObject);
         }

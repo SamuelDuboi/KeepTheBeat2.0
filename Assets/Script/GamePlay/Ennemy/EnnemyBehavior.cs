@@ -112,12 +112,10 @@ public class EnnemyBehavior : MonoBehaviour
 
     public virtual void Destroyed(int time)
     {
-        if(gameObject.tag != "LinkedEnnemy")
-        {
-            Score.Instance.ScoreUp(scoreValue *time);
+            Score.Instance.ScoreUp(scoreValue * time);
             GameObject poptext = Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
             poptext.GetComponent<TextMeshPro>().text = (scoreValue * time).ToString();
-        }
+       
         if (SceneManager.GetActiveScene().name != "Tuto")
             SoundDisplay.Instance.RemoveEnnemy(gameObject);
         else

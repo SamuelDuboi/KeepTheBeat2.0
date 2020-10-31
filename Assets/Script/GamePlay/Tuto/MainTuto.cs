@@ -486,14 +486,101 @@ public class MainTuto : Singleton<MainTuto>
 
     private bool breakSpawn;
     [HideInInspector] public int cptPhase;
+    [HideInInspector] public bool cantSpwan;
+    [HideInInspector] public float waveNumber;
     public void Spawn()
     {
-        
-        if(cptPhase == 0)
+        if (!cantSpwan)
         {
-            positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
-            cptPhase++;
+            // one simple ennemmy, 2 rows, time is freez until the ennemy is destroy
+            if(cptPhase == 0)
+            {
+                for (int i = 0; i < positionEnd.Length; i++)
+                {
+                    if(i != 2 && i != 3)
+                    {
+                        positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
+                    }
+             
+                }
+                positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                cptPhase++;
+                cantSpwan = true;
+            }
+            // 3 ennemys, 2 rows
+            else if(cptPhase == 2)
+            {
+                switch (waveNumber)
+                {
+                    case 0:
+                        positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 2:
+                        positionEnd[2].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 5:
+                        cptPhase++;
+                        positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        cantSpwan = true;
+                        break;
+
+                    default:
+                        break;
+                }
+                waveNumber++;
+            }
+            else if (cptPhase == 4)
+            {
+                LinkedSpawn(2, 3);
+                cptPhase++;
+                cantSpwan = true;
+            }
+            //tp multipleEnnemyS
+            else if (cptPhase == 6)
+            {
+                foreach (var spawn in positionEnd)
+                {
+                    spawn.GetComponent<Spawner>().TilesApear();
+                }
+                switch (waveNumber)
+                {
+                    case 0:
+                        positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 2:
+                        positionEnd[2].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 5:
+                        positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 7:
+                            LinkedSpawn(2, 4);
+                        break;
+                    case 9:
+                        positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                    case 11:
+                        positionEnd[5].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        break;
+                   
+                    case 13:
+                        LinkedSpawn(1, 3);
+                        break;
+                    case 15:
+                        LinkedSpawn(0, 1);
+                        break;
+                    case 16:
+                        positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                        cantSpwan = true;
+                        cptPhase++;
+                        break;
+                    default:
+                        break;
+                }
+                waveNumber++;
+            }
         }
+        
         
     }
 
@@ -512,22 +599,11 @@ public class MainTuto : Singleton<MainTuto>
         else
             Debug.Log(x);
     }
-    private void LinkedSpawn(float x, List<int> listEnnemy, Vector3 current, int currentInt)
+    private void LinkedSpawn(  int spwan1, int spwan2)
     {
-        int secondSpawn = 1000;
-        for (int i = 0; i < listEnnemy.Count; i++)
-        {
-            if (previousEnnemyList[listEnnemy[i]].z == 4 && previousEnnemyList[listEnnemy[i]].y == current.y)
-            {
-                secondSpawn = i;
-            }
-
-        }
-        if (secondSpawn != 1000)
-        {
-            specialSpawner.GetComponent<Spawner>().Spwan(ennemysArray[2], positionEnd[currentInt].GetComponent<Spawner>(), positionEnd[(int)previousEnnemyList[listEnnemy[secondSpawn]].x].GetComponent<Spawner>());
-            breakSpawn = true;
-        }
+        specialSpawner.GetComponent<Spawner>().Spwan(ennemysArray[2], positionEnd[spwan1].GetComponent<Spawner>(), positionEnd[spwan2].GetComponent<Spawner>());
+         
+        
     }
     IEnumerator BulletTime()
     {

@@ -48,9 +48,16 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
     {
         pourcentageCalculated = pourcentageAllow / 100f * (60f / clock.bpm);
 
-        if (ennemys.Count == 0 && cantMove)
+        if (ennemys.Count == 0 && cantMove )
         {
             cantMove = false;
+            currentEnnemyMovment = 0;
+            MainTuto.Instance.cantSpwan = false;
+
+        }
+        else if (ennemys.Count == 0)
+        {
+            MainTuto.Instance.cantSpwan = false;
             currentEnnemyMovment = 0;
         }
 
@@ -67,20 +74,25 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
             }
         }
         //MainTuto.Instance.sprite.color = new Color(255, 0, 0, (float)(timer / (60 / clock.bpm)));
-        if (!cantMove)
-        {
+        
             ScaleHeart();
             ScaleUI();
-        }
+        
     }
     public bool cantMove;
 
     private int currentEnnemyMovment;
     public void MoveEnnemy()
     {
-        if(currentEnnemyMovment == 3 && ennemys.Count != 0)
+        if(currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 1 || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 5)
         {
+            MainTuto.Instance.cptPhase++;
             cantMove = true;
+        }
+        if(ennemys.Count != 0 && MainTuto.Instance.cptPhase ==3)
+        {
+            MainTuto.Instance.cptPhase++;
+
         }
         currentEnnemyMovment++;
         timePreviousBeat = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
@@ -148,9 +160,8 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
 
             }
         }
-        cantAct = true;
         MainTuto.Instance.cptPhase--;
-
+        MainTuto.Instance.waveNumber = -0;
     }
 
     public void ScaleHeart()

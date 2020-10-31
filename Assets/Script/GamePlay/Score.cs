@@ -48,7 +48,10 @@ public class Score : Singleton<Score>
             SoundManager.Instance.UpdateVolume(scorMultiplier);
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
         }
-        SoundDisplay.Instance.TakeDamage(scorMultiplier - 1);
+        if (SceneManager.GetActiveScene().name != "Tuto")
+            SoundDisplay.Instance.TakeDamage(scorMultiplier - 1);
+        else
+            SoundDisplqyTuto.Instance.TakeDamage(scorMultiplier - 1);
 
     }
 

@@ -24,7 +24,7 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
         if (step == 2 )
         {
             ResetFx();
-            ActivatePhase1();
+            ActivatePhase2();
         }
         if (step == 3 )
         {
@@ -37,6 +37,25 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
     {
         
         foreach (GameObject envi in Phase1)
+        {
+            if(envi.GetComponent<EnvironnementObjectBehaviour>() != null)
+            {
+                if (envi.GetComponent<EnvironnementObjectBehaviour>().isParticuleEffect == true)
+                {
+                    envi.GetComponent<EnvironnementObjectBehaviour>().PlayParticule();
+                }
+            }
+
+            if(envi.GetComponent<EnvironnementSpawner>()!= null)
+            {
+                envi.GetComponent<EnvironnementSpawner>().canSpawn = true;
+            }
+        }
+
+    }void ActivatePhase2()
+    {
+        
+        foreach (GameObject envi in Phase2)
         {
             if(envi.GetComponent<EnvironnementObjectBehaviour>() != null)
             {

@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -32,6 +33,7 @@ public class MovementToHeart : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 sinPos = new Vector3(transform.position.x, Mathf.Sin(transform.position.x), transform.position.z); 
         transform.position = Vector3.Lerp(transform.position, target.transform.position,Random.Range(minSpeed, maxSpeed));
 
         if (Vector3.Distance(target.position, transform.position) <= 0.3f)

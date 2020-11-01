@@ -18,7 +18,8 @@ public class Score : Singleton<Score>
         score += upNumber * scorMultiplier;
         cptStreak++;
         scorText.text = score.ToString();
-        scorText.GetComponent<Animation>().Play();
+        //scorText.GetComponent<Animator>().Play();
+
 
         if (cptStreak >= 10)
         {

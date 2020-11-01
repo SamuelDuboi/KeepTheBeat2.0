@@ -233,7 +233,7 @@ MonoBehaviour:
   - {x: 0, y: 0, z: NaN}
   - {x: 0, y: 0, z: 0}
   cpt: 0
-  scoreValue: 10000
+  scoreValue: 3000
   speed: 0.1
   cantMove: 0
   turnOnTrail: 0

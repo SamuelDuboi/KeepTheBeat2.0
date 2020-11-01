@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 public class TanksEnnemy : EnnemyBehavior
 {
     private bool canReset;
@@ -35,6 +36,10 @@ public class TanksEnnemy : EnnemyBehavior
             else
                 SoundDisplqyTuto.Instance.RemoveEnnemy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
+
+            Score.Instance.ScoreUp(scoreValue * value);
+            GameObject poptext = Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
+            poptext.GetComponent<TextMeshPro>().text = (scoreValue * value).ToString();
             Destroy(gameObject);
         }
     }

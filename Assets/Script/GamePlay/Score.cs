@@ -10,15 +10,20 @@ public class Score : Singleton<Score>
     [HideInInspector] public int cptStreak;
     public TextMeshProUGUI scorText;
     public TextMeshProUGUI scorMultiplierText;
+    private Animator animator;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
 
     public void ScoreUp(int upNumber)
     {
-
         score += upNumber * scorMultiplier;
         cptStreak++;
         scorText.text = score.ToString();
-        //scorText.GetComponent<Animator>().Play();
+        animator.SetTrigger("Score");
 
 
         if (cptStreak >= 10)
@@ -63,5 +68,9 @@ public class Score : Singleton<Score>
         SceneManager.LoadScene("LeaderBoard");
     }
 
+    public void EndAnim()
+    {
+        animator.SetBool("Score", false);
+    }
 
 }

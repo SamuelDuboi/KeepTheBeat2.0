@@ -23,7 +23,7 @@ public class Spawner : MonoBehaviour
     {
         currentColor = GetComponent<SpriteRenderer>().color;
         StartSpawn();
-
+       
     }
 
 
@@ -168,6 +168,12 @@ public class Spawner : MonoBehaviour
         }
     }
 
+
+    public void ApppearAll()
+    {
+        var _animator = tiles[0].GetComponentInParent<Animator>();
+       _animator.SetBool("AppearBool", true);
+    }
 }
 
 

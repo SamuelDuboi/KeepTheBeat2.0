@@ -5,7 +5,7 @@ using AudioHelm;
 using System;
 using UnityEngine.UI;
 using UnityEngine.Audio;
-
+using UnityEngine.SceneManagement;
 public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
 {
 
@@ -37,6 +37,7 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
 
     [HideInInspector] public bool isBoss;
     private float timerBossPuls;
+    private bool goNext;
     // Start is called before the first frame update
     void Start()
     {
@@ -54,8 +55,11 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
             currentEnnemyMovment = 0;
             MainTuto.Instance.cantSpwan = false;
             text.ClearText();
-            if (MainTuto.Instance.cptPhase == 14)
-                text.NextText();
+            if (MainTuto.Instance.cptPhase > 16)
+            {
+                text.NextText(text.texts.Length - 1);
+                goNext = true;
+            }
 
         }
         else if (ennemys.Count == 0)
@@ -63,6 +67,9 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
             MainTuto.Instance.cantSpwan = false;
             currentEnnemyMovment = 0;
         }
+
+        if (goNext && Input.anyKeyDown)
+            SceneManager.LoadScene("Main");
 
         if (!isBoss)
             timer = AudioSettings.dspTime - AudioHelmClock.Instance.startTime - timePreviousBeat;
@@ -95,9 +102,13 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
             || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 13 
             || currentEnnemyMovment >= 5 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 17)
         {
-            text.NextText();
+            
             if(MainTuto.Instance.cptPhase == 17)
+            {
                 MainTuto.Instance.canShootSpecial = true;
+                MainTuto.Instance.canShoot = false;
+
+            }
             MainTuto.Instance.cptPhase++;
             cantMove = true;
         }
@@ -206,6 +217,8 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
 
         //Debug.Log(scaleFactorVisuel);
     }
+
+    
 }
 
 

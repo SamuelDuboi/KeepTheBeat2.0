@@ -181,7 +181,12 @@ public class Main : Singleton<Main>
                 lineRenderer[0].SetPosition(1, _ennemy.transform.position);
                 clap.Play();
                 StartCoroutine(LaserFade(0,100));
-                SoundDisplay.Instance.RemoveEnnemy(_ennemy);
+                if (_ennemy.tag == "LinkedEnnemy")
+                {
+                    _ennemy.GetComponent<LinkedEnnemy>().DestroyAll();
+                }
+                else
+                    SoundDisplay.Instance.RemoveEnnemy(_ennemy);
                 Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
                 Destroy(_ennemy);
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));

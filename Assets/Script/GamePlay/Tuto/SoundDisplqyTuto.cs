@@ -152,6 +152,7 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
     {
         if (ennemy.GetComponent<EnnemyBehavior>() != null && ennemy.GetComponent<EnnemyBehavior>().tile != null)
             ennemy.GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
+        
         ParticuleManager.Instance.ActivateEffects();
         ennemys.Remove(ennemy);
     }

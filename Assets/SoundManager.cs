@@ -158,46 +158,46 @@ public class SoundManager : Singleton<SoundManager>
         switch (multiplier)
         {
             case 1://Kick
-                StartCoroutine("FadeInSound", tracks[0]);
-                StartCoroutine("FadeOutSound", tracks[1]);
+                StartCoroutine(FadeInSound(0.1f, tracks[0]));
+                StartCoroutine(FadeOutSound(0.1f, tracks[1]));
                 break;
             case 2://Clap
-                StartCoroutine("FadeInSound", tracks[1]);
-                StartCoroutine("FadeOutSound", tracks[2]);
+                StartCoroutine(FadeInSound(0.1f, tracks[1]));
+                StartCoroutine(FadeOutSound(0.1f, tracks[2]));
                 break;
             case 3://HitHat
-                StartCoroutine("FadeInSound", tracks[2]);
-                StartCoroutine("FadeOutSound", tracks[3]);
+                StartCoroutine(FadeInSound(0.1f, tracks[2]));
+                StartCoroutine(FadeOutSound(0.1f, tracks[3]));
                 break;
             case 4://Bells
-                StartCoroutine("FadeInSound", tracks[3]);
-                StartCoroutine("FadeOutSound", tracks[4]);
+                StartCoroutine(FadeInSound(0.1f, tracks[3]));
+                StartCoroutine(FadeOutSound(0.1f, tracks[4]));
                 break;
             case 5://Synth
-                StartCoroutine("FadeInSound", tracks[4]);
-                StartCoroutine("FadeOutSound", tracks[5]);
+                StartCoroutine(FadeInSound(0.1f, tracks[4]));
+                StartCoroutine(FadeOutSound(0.1f, tracks[5]));
                 break;
             case 6://Bells 2
-                StartCoroutine("FadeInSound", tracks[5]);
-                StartCoroutine("FadeOutSound", tracks[6]);
+                StartCoroutine(FadeInSound(0.1f, tracks[5]));
+                StartCoroutine(FadeOutSound(0.1f, tracks[6]));
                 break;
 
             default:
                 break;
-        }       
-          
+        }
         
-            StartCoroutine("FadeOutSound", tracks[7]);
-            StartCoroutine("FadeOutSound", tracks[8]);
-            StartCoroutine("FadeOutSound", laserAudio);
+        StartCoroutine(FadeOutSound(0.1f, tracks[7]));
+        StartCoroutine(FadeOutSound(0.1f, tracks[8]));
+        StartCoroutine(FadeOutSound(0.1f, laserAudio));
+       
 
-        if (multiplicateur >= 4)
+            if (multiplicateur >= 4)
             {
-                StartCoroutine("FadeInSound", tracks[4]);
-            }
+            StartCoroutine(FadeInSound(0.1f, tracks[4]));
+        }
             else
             {
-                StartCoroutine("FadeOutSound", tracks[4]);
+                StartCoroutine(FadeOutSound(0.1f, tracks[4]));
             }
         
 
@@ -212,21 +212,21 @@ public class SoundManager : Singleton<SoundManager>
         StartCoroutine("FadeOutSound", tracks[4]);
     }
 
-    IEnumerator FadeOutSound(GameObject track)
+    IEnumerator FadeOutSound(float variant, GameObject track)
     {
         if(track.GetComponent<AudioSource>().volume != 0)
         {
-            track.GetComponent<AudioSource>().volume -= 0.1f;
+            track.GetComponent<AudioSource>().volume -= variant;
             yield return new WaitForSeconds(0.2f);
             StartCoroutine("FadeOutSound",track);
         }
     }
 
-    IEnumerator FadeInSound(GameObject track)
+    IEnumerator FadeInSound(float variant, GameObject track)
     {
         if (track.GetComponent<AudioSource>().volume < 0.7f)
         {
-            track.GetComponent<AudioSource>().volume += 0.1f;
+            track.GetComponent<AudioSource>().volume += variant;
             yield return new WaitForSeconds(0.2f);
             StartCoroutine("FadeInSound", track);
         }

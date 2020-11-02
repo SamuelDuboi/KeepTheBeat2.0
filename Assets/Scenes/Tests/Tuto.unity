@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 23343692}
   - component: {fileID: 23343693}
   m_Layer: 14
-  m_Name: Circle.012
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -151,7 +151,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 23343688}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.46, y: 0, z: -0.0026760101}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -0.0026760101}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 2055464577}
@@ -243,6 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 78019590}
+  - component: {fileID: 78019591}
   m_Layer: 14
   m_Name: Ligne1
   m_TagString: Untagged
@@ -270,6 +271,25 @@ Transform:
   m_Father: {fileID: 543450653130798363}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &78019591
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 78019589}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2d5c5a7ec317ac4193b0783074cecd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!4 &94957522 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3598261684521925735, guid: 5b572ef232f130642a546357c84ea6fe, type: 3}
@@ -539,7 +559,7 @@ GameObject:
   - component: {fileID: 258405046}
   - component: {fileID: 258405047}
   m_Layer: 14
-  m_Name: Circle.011
+  m_Name: Circle.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -553,7 +573,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 258405042}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -8.008336}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -8.89447}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1648312146}
@@ -1256,6 +1276,10 @@ PrefabInstance:
       propertyPath: audioClock
       value: 
       objectReference: {fileID: 7088160309018059306}
+    - target: {fileID: 7953890710349605387, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
+      propertyPath: laserAudio
+      value: 
+      objectReference: {fileID: 1259909672}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
 --- !u!1 &704650903
@@ -1272,7 +1296,7 @@ GameObject:
   - component: {fileID: 704650907}
   - component: {fileID: 704650908}
   m_Layer: 14
-  m_Name: Circle.013
+  m_Name: Circle.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1286,7 +1310,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 704650903}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.46, y: 0, z: -1.7827568}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -1.7827568}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 2055464577}
@@ -1383,7 +1407,7 @@ GameObject:
   - component: {fileID: 711700385}
   - component: {fileID: 711700386}
   m_Layer: 14
-  m_Name: Circle.014
+  m_Name: Circle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1397,7 +1421,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 711700381}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.46, y: 0, z: -3.5599189}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -3.5599189}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 2055464577}
@@ -1494,7 +1518,7 @@ GameObject:
   - component: {fileID: 769269186}
   - component: {fileID: 769269187}
   m_Layer: 14
-  m_Name: Circle.016
+  m_Name: Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1508,7 +1532,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 769269182}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.46, y: 0, z: -7.1143885}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -7.1143885}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 2055464577}
@@ -1605,7 +1629,7 @@ GameObject:
   - component: {fileID: 888256338}
   - component: {fileID: 888256339}
   m_Layer: 14
-  m_Name: Circle.008
+  m_Name: Circle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1619,7 +1643,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 888256334}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -2.673785}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -3.5599189}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1648312146}
@@ -1952,7 +1976,7 @@ GameObject:
   - component: {fileID: 1108585706}
   - component: {fileID: 1108585707}
   m_Layer: 14
-  m_Name: Circle.017
+  m_Name: Circle.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1966,7 +1990,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108585702}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.46, y: 0, z: -8.89447}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -8.89447}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 2055464577}
@@ -2087,7 +2111,7 @@ GameObject:
   - component: {fileID: 1131273875}
   - component: {fileID: 1131273876}
   m_Layer: 14
-  m_Name: Circle.009
+  m_Name: Circle.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2101,7 +2125,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131273871}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -4.453866}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -5.34}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1648312146}
@@ -2215,6 +2239,133 @@ Transform:
   - {fileID: 543450653130798363}
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1259909672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1259909674}
+  - component: {fileID: 1259909673}
+  m_Layer: 0
+  m_Name: LaserAudio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &1259909673
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259909672}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: fd78fedcd831baa4387393c6635adbc8, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 60
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!4 &1259909674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1259909672}
+  m_LocalRotation: {x: -0.111295454, y: -0, z: -0, w: 0.99378735}
+  m_LocalPosition: {x: -0.26999998, y: -2.5380347, z: 0.15208793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1260364088
 GameObject:
@@ -2544,7 +2695,7 @@ GameObject:
   - component: {fileID: 1345044221}
   - component: {fileID: 1345044222}
   m_Layer: 14
-  m_Name: Circle.007
+  m_Name: Circle.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2558,7 +2709,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1345044217}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -0.89662266}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -1.7827568}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1648312146}
@@ -2655,7 +2806,7 @@ GameObject:
   - component: {fileID: 1470198310}
   - component: {fileID: 1470198311}
   m_Layer: 14
-  m_Name: Circle.010
+  m_Name: Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2669,7 +2820,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1470198306}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -6.2282543}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -7.1143885}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1648312146}
@@ -2893,7 +3044,7 @@ GameObject:
   - component: {fileID: 1556726474}
   - component: {fileID: 1556726475}
   m_Layer: 14
-  m_Name: Circle.015
+  m_Name: Circle.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2907,7 +3058,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1556726470}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: -1.46, y: 0, z: -5.34}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -5.34}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 2055464577}
@@ -2999,6 +3150,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1623381563}
+  - component: {fileID: 1623381564}
   m_Layer: 14
   m_Name: Ligne2
   m_TagString: Untagged
@@ -3014,7 +3166,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1623381562}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -1.55, y: 0, z: 0.89}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 249185189014995954}
@@ -3026,6 +3178,25 @@ Transform:
   m_Father: {fileID: 543450653130798363}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1623381564
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1623381562}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2d5c5a7ec317ac4193b0783074cecd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1648312145
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,6 +3206,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1648312146}
+  - component: {fileID: 1648312147}
   m_Layer: 14
   m_Name: Ligne5
   m_TagString: Untagged
@@ -3050,7 +3222,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1648312145}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: -8.56, y: 0, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1845722903}
@@ -3062,6 +3234,25 @@ Transform:
   m_Father: {fileID: 543450653130798363}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1648312147
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1648312145}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2d5c5a7ec317ac4193b0783074cecd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1765003584
 GameObject:
   m_ObjectHideFlags: 0
@@ -3444,13 +3635,13 @@ MonoBehaviour:
   - Destroy the ennemy by hitting the correct pad in rythme
   - Destroy linked ennemies by hitting them in a single beat. You may want to use
     both hands.
+  - Now with all the pads
   - Destroy the tank ennemy by hitting him twice in a single beat.
   - Destroy the waves by htting the golden buzzer
   - Each waves charge your super power energy
   - When your super power bar is full, you can press the golden buzzer to freez time
     and then hit any of the pad to destroy ennemies.
-  - 
-  - 
+  - Congrats you are ready to play at KeepTheBeat \n Press any key to continu
 --- !u!1 &1840469890 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8030086449663091260, guid: 5a111c8c4cd3f594a8d4531fe62644c1, type: 3}
@@ -3581,7 +3772,7 @@ GameObject:
   - component: {fileID: 1845722906}
   - component: {fileID: 1845722907}
   m_Layer: 14
-  m_Name: Circle.006
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3595,7 +3786,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1845722902}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: 0.88345826}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -0.0026760101}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1648312146}
@@ -3723,6 +3914,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2055464577}
+  - component: {fileID: 2055464578}
   m_Layer: 14
   m_Name: Ligne6
   m_TagString: Untagged
@@ -3738,7 +3930,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2055464576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: -10.17, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 23343689}
@@ -3750,6 +3942,25 @@ Transform:
   m_Father: {fileID: 543450653130798363}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &2055464578
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2055464576}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e2d5c5a7ec317ac4193b0783074cecd5, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2140742603
 GameObject:
   m_ObjectHideFlags: 0
@@ -3935,7 +4146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 492440804075694153}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: 0.88345826}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -0.0026760101}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1623381563}
@@ -3990,7 +4201,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6806708168796136464}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -8.008336}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -8.89447}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1623381563}
@@ -4051,7 +4262,7 @@ GameObject:
   - component: {fileID: 492440804075694154}
   - component: {fileID: 492440804075694155}
   m_Layer: 14
-  m_Name: Circle.006
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4264,7 +4475,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3684386514579842700}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -6.2282543}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -7.1143885}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1623381563}
@@ -4494,7 +4705,7 @@ GameObject:
   - component: {fileID: 2664315667661827803}
   - component: {fileID: 2664315667661827804}
   m_Layer: 14
-  m_Name: Circle.013
+  m_Name: Circle.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5194,6 +5405,7 @@ GameObject:
   - component: {fileID: 3300805184230733965}
   - component: {fileID: 3300805184230733962}
   - component: {fileID: 3300805184230733963}
+  - component: {fileID: 3300805184230733964}
   m_Layer: 5
   m_Name: TEXT_Score
   m_TagString: Untagged
@@ -5290,21 +5502,42 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
---- !u!111 &3300805184230733963
-Animation:
+--- !u!114 &3300805184230733963
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3300805184230733961}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e6a79e514c1f51478649cd1dd399f39, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  leaderBoard: {fileID: 11400000, guid: 4e0f3aba290e40f40b3fd5e1611af935, type: 2}
+  scorMultiplier: 1
+  cptStreak: 0
+  scorText: {fileID: 3300805184230733962}
+  scorMultiplierText: {fileID: 3300805184458595079}
+--- !u!95 &3300805184230733964
+Animator:
   serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3300805184230733961}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6ff8dcb929f69445b074582cd5cdb10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!222 &3300805184230733965
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -6734,7 +6967,7 @@ GameObject:
   - component: {fileID: 3684386514579842701}
   - component: {fileID: 3684386514579842702}
   m_Layer: 14
-  m_Name: Circle.010
+  m_Name: Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7005,7 +7238,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5837523472041430584}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -0.89662266}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -1.7827568}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1623381563}
@@ -7137,7 +7370,7 @@ GameObject:
   - component: {fileID: 5532695552401245342}
   - component: {fileID: 5532695552401245343}
   m_Layer: 14
-  m_Name: Circle.012
+  m_Name: Circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7226,7 +7459,7 @@ GameObject:
   - component: {fileID: 5666858511007874378}
   - component: {fileID: 5666858511007874379}
   m_Layer: 14
-  m_Name: Circle.015
+  m_Name: Circle.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7274,7 +7507,7 @@ GameObject:
   - component: {fileID: 5837523472041430585}
   - component: {fileID: 5837523472041430586}
   m_Layer: 14
-  m_Name: Circle.007
+  m_Name: Circle.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7430,7 +7663,7 @@ GameObject:
   - component: {fileID: 6510112151163136204}
   - component: {fileID: 6510112151163136205}
   m_Layer: 14
-  m_Name: Circle.017
+  m_Name: Circle.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7527,7 +7760,7 @@ GameObject:
   - component: {fileID: 6806708168796136465}
   - component: {fileID: 6806708168796136466}
   m_Layer: 14
-  m_Name: Circle.011
+  m_Name: Circle.005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7575,7 +7808,7 @@ GameObject:
   - component: {fileID: 6838713200729035897}
   - component: {fileID: 6838713200729035898}
   m_Layer: 14
-  m_Name: Circle.014
+  m_Name: Circle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8383,7 +8616,7 @@ GameObject:
   - component: {fileID: 7959026431545541443}
   - component: {fileID: 7959026431545541444}
   m_Layer: 14
-  m_Name: Circle.008
+  m_Name: Circle.002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8431,7 +8664,7 @@ GameObject:
   - component: {fileID: 7964157544013257957}
   - component: {fileID: 7964157544013257958}
   m_Layer: 14
-  m_Name: Circle.016
+  m_Name: Circle.004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8473,7 +8706,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8224663808465466782}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -4.453866}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -5.34}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1623381563}
@@ -8582,7 +8815,7 @@ GameObject:
   - component: {fileID: 8224663808465466783}
   - component: {fileID: 8224663808465466784}
   m_Layer: 14
-  m_Name: Circle.009
+  m_Name: Circle.003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12280,7 +12513,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7959026431545541442}
   m_LocalRotation: {x: -0.50000006, y: 0.4999999, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0.118697405, y: 0, z: -2.673785}
+  m_LocalPosition: {x: 1.700094, y: 0, z: -3.5599189}
   m_LocalScale: {x: 100, y: 100, z: 100}
   m_Children: []
   m_Father: {fileID: 1623381563}

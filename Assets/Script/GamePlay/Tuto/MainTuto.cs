@@ -5,6 +5,7 @@ using TMPro;
 using AudioHelm;
 using UnityEngine.UI;
 
+
 public class MainTuto : Singleton<MainTuto>
 {
     [Header("GameObject References")]
@@ -94,7 +95,7 @@ public class MainTuto : Singleton<MainTuto>
         specialBarG.maxValue = specialMaxValue;
 
         previousEnnemyList = new List<Vector3>();
-        
+
 
         previousEnnemy = Vector2.one * 12;
     }
@@ -145,6 +146,11 @@ public class MainTuto : Singleton<MainTuto>
                 lineRenderer[0].SetPosition(1, _ennemy.transform.position);
                 clap.Play();
                 StartCoroutine(LaserFade(0, 100));
+                if (_ennemy.tag == "LinkedEnnemy")
+                {
+                    _ennemy.GetComponent<LinkedEnnemy>().DestroyAll();
+                }
+                else
                 SoundDisplqyTuto.Instance.RemoveEnnemy(_ennemy);
                 Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
                 Destroy(_ennemy);
@@ -485,7 +491,7 @@ public class MainTuto : Singleton<MainTuto>
     #endregion
 
     private bool breakSpawn;
-     public int cptPhase;
+    public int cptPhase;
     [HideInInspector] public bool cantSpwan;
     [HideInInspector] public float waveNumber;
     [HideInInspector] public bool canShootSpecial;
@@ -494,23 +500,19 @@ public class MainTuto : Singleton<MainTuto>
         if (!cantSpwan)
         {
             // one simple ennemmy, 2 rows, time is freez until the ennemy is destroy
-            if(cptPhase == 0)
+            if (cptPhase == 0)
             {
-                for (int i = 0; i < positionEnd.Length; i++)
-                {
-                    if(i != 2 && i != 3)
-                    {
-                        positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
-                    }
-             
-                }
+               
                 positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
+                SoundDisplqyTuto.Instance.text.NextText(0);
                 cptPhase++;
                 cantSpwan = true;
             }
             // 3 ennemys, 2 rows
-            else if(cptPhase == 2)
+            else if (cptPhase == 2)
             {
+                   
+
                 switch (waveNumber)
                 {
                     case 0:
@@ -536,43 +538,54 @@ public class MainTuto : Singleton<MainTuto>
             {
                 LinkedSpawn(2, 3);
                 cptPhase++;
+                SoundDisplqyTuto.Instance.text.NextText(1);
                 cantSpwan = true;
             }
             //linked ennemy + normal, every rows
             else if (cptPhase == 6)
             {
-                foreach (var spawn in positionEnd)
+                if (waveNumber == 0)
                 {
-                    spawn.GetComponent<Spawner>().TilesApear();
+                    SoundDisplqyTuto.Instance.text.NextText(2);
+
+                    for (int i = 0; i < positionEnd.Length; i++)
+                    {
+                        if (i != 2 && i != 3)
+                        {
+                            positionEnd[i].GetComponent<Spawner>().ApppearAll();
+                        }
+
+                    }
                 }
+
                 switch (waveNumber)
                 {
-                    case 0:
+                    case 3:
                         LinkedSpawn(2, 4);
                         break;
-                    case 3:
+                    case 6:
                         positionEnd[2].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         break;
-                    case 5:
+                    case 8:
                         positionEnd[0].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         break;
-                    case 7:
-                         LinkedSpawn(2, 4);
+                    case 10:
+                        LinkedSpawn(2, 4);
                         break;
-                    case 9:
+                    case 12:
                         positionEnd[1].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         break;
-                    case 11:
+                    case 14:
                         positionEnd[5].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         break;
-                   
-                    case 13:
+
+                    case 16:
                         LinkedSpawn(1, 3);
                         break;
-                    case 15:
+                    case 18:
                         LinkedSpawn(0, 1);
                         break;
-                    case 16:
+                    case 19:
                         positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[0]);
                         cantSpwan = true;
                         cptPhase++;
@@ -586,12 +599,14 @@ public class MainTuto : Singleton<MainTuto>
             else if (cptPhase == 8)
             {
                 positionEnd[3].GetComponent<Spawner>().Spwan(ennemysArray[3]);
+                SoundDisplqyTuto.Instance.text.NextText(3);
                 cptPhase++;
                 cantSpwan = true;
             }
             //tank, linked ennemy, normals
-            else if( cptPhase == 10)
+            else if (cptPhase == 10)
             {
+                SoundDisplqyTuto.Instance.text.ClearText();
                 switch (waveNumber)
                 {
                     case 0:
@@ -631,15 +646,18 @@ public class MainTuto : Singleton<MainTuto>
                 waveNumber++;
             }
             //wave, time is freez until the wave is destroy
-            else if ( cptPhase == 12)
+            else if (cptPhase == 12)
             {
                 specialSpawner.GetComponent<Spawner>().Spwan(true);
+                SoundDisplqyTuto.Instance.text.NextText(4);
                 cptPhase++;
                 cantSpwan = true;
             }
             //multiple waves to charges the special 
             else if (cptPhase == 14)
             {
+                if(waveNumber ==0)
+                    SoundDisplqyTuto.Instance.text.NextText(5);
                 switch (waveNumber)
                 {
                     case 0:
@@ -650,14 +668,8 @@ public class MainTuto : Singleton<MainTuto>
                         break;
                     case 4:
                         specialSpawner.GetComponent<Spawner>().Spwan(true);
-                        break;
+                        break;                    
                     case 6:
-                        specialSpawner.GetComponent<Spawner>().Spwan(true);
-                        break;
-                    case 8:
-                        specialSpawner.GetComponent<Spawner>().Spwan(true);
-                        break;
-                    case 10:
                         specialSpawner.GetComponent<Spawner>().Spwan(true);
                         cantSpwan = true;
                         cptPhase++;
@@ -668,10 +680,14 @@ public class MainTuto : Singleton<MainTuto>
                         break;
                 }
                 waveNumber++;
+               
+
             }
             // full of ennemy to use special
-            else if(cptPhase == 16)
+            else if (cptPhase == 16)
             {
+                if (waveNumber == 0)
+                    SoundDisplqyTuto.Instance.text.NextText(6);
                 switch (waveNumber)
                 {
                     case 0:
@@ -711,12 +727,13 @@ public class MainTuto : Singleton<MainTuto>
                         cptPhase++;
                         waveNumber = -1;
 
-                        break;                   
+                        break;
 
                     default:
                         break;
                 }
                 waveNumber++;
+
             }
         }
 
@@ -738,11 +755,11 @@ public class MainTuto : Singleton<MainTuto>
         else
             Debug.Log(x);
     }
-    private void LinkedSpawn(  int spwan1, int spwan2)
+    private void LinkedSpawn(int spwan1, int spwan2)
     {
         specialSpawner.GetComponent<Spawner>().Spwan(ennemysArray[2], positionEnd[spwan1].GetComponent<Spawner>(), positionEnd[spwan2].GetComponent<Spawner>());
-         
-        
+
+
     }
     IEnumerator BulletTime()
     {
@@ -753,7 +770,6 @@ public class MainTuto : Singleton<MainTuto>
         SoundDisplqyTuto.Instance.cantMove = true;
         yield return new WaitWhile(() => isBulletTime == true);
         SoundDisplqyTuto.Instance.speedModifier = 1;
-        SoundDisplqyTuto.Instance.cantMove = false;
 
     }
 

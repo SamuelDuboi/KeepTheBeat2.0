@@ -36,14 +36,14 @@ public class LifeManager : Singleton<LifeManager>
         }
         mixer.SetFloat("MainVolume", -5);
         
-        StartCoroutine(Fade(mixer));
+        StartCoroutine(Glitch(mixer));
         
 
     }
 
-    IEnumerator Fade(AudioMixer mixer)
+    IEnumerator Glitch(AudioMixer mixer)
     {
-        for (int i = 0; i < 100; i++)
+        /*for (int i = 0; i < 100; i++)
         {
             fade.color += new Color(0, 0, 0, 0.01f);
             yield return new WaitForSeconds(0.005f);
@@ -52,9 +52,13 @@ public class LifeManager : Singleton<LifeManager>
         {
             fade.color -= new Color(0, 0, 0, 0.01f);
             yield return new WaitForSeconds(0.002f);
-        }
+        }*/
+
+        PostProcessManager.post.ActivatePostProcess(0);
 
         mixer.SetFloat("MainVolume", 0);
+        yield return new WaitForSeconds(0.15f);
+        PostProcessManager.post.DeactivatePostProcess();
     }
 
 

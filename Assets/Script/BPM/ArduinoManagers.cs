@@ -25,7 +25,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     private bool canCount;
     private int cpt;
 
-
+    public GameObject morpheus;
 
 
 
@@ -42,7 +42,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     private void Update()
     {
       
-        if (SceneManager.GetActiveScene().name == "MainScene")
+        if (SceneManager.GetActiveScene().name == "Main")
         {
             AudioHelmClock.Instance.bpm = cpt;
             Destroy(this);
@@ -58,12 +58,22 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             //Visuel de la Barre
             timerText.text = Mathf.Floor(timerFloat).ToString();
             gameObject.GetComponent<AudioHelmClock>().bpm = cpt;
+            if(morpheus.activeSelf)
+            {
+                if(Input.GetKeyDown(KeyCode.E))
+                    SceneManager.LoadScene("Tuto");
+                else if (Input.GetKeyDown(KeyCode.R))
+                    SceneManager.LoadScene("Main");
+            }    
         }
+
     }
 
 
     void DataReceived(string data, UduinoDevice board)
     {
+        //xant tu peux ecrire ici
+        Debug.Log("Yo");
         if (!started && !doOnce && data.Length != 19)
         {
             cpt = int.Parse(data);
@@ -122,7 +132,9 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         yield return new WaitForSeconds(20);
         canCount = false;
         GetComponent<AudioSource>().Stop();
-        SceneManager.LoadScene("MainScene");
+
+        morpheus.SetActive(true);
+       
     }
 
     private IEnumerator CircleSpawning()

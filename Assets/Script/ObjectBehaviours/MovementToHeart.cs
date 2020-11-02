@@ -9,11 +9,12 @@ public class MovementToHeart : MonoBehaviour
 {
     public Transform target;
     public Vector3 velocity = Vector3.zero;
-    [Range(0f,5f)]
-    public float minSpeed;
-    [Range(0f, 5f)]
-    public float maxSpeed;
     
+    private float speed;
+    private float direction, directionStart;
+  
+
+   
 
     public bool isFollowing = false;
 
@@ -26,15 +27,28 @@ public class MovementToHeart : MonoBehaviour
             target = Main.Instance.player.transform;
         else
             target = MainTuto.Instance.player.transform;
+
+        directionStart = transform.position.x;
+        direction = transform.position.y +3;
+        speed = 0.1f;
     }
 
-   
+
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 sinPos = new Vector3(transform.position.x, Mathf.Sin(transform.position.x), transform.position.z); 
-        transform.position = Vector3.Lerp(transform.position, target.transform.position,Random.Range(minSpeed, maxSpeed));
+        //Vector3 sinPos = new Vector3(transform.position.x, Mathf.Sin(transform.position.x), transform.position.z); 
+        transform.position = Vector3.MoveTowards(transform.position,new Vector3(directionStart, target.transform.position.y + direction, target.transform.position.z),speed);
+
+        if (transform.position.y >= direction - 2.5f)
+        {
+            speed = 0.05f;
+            direction = 0;
+            directionStart = target.transform.position.x;
+        }
+
+
 
         if (Vector3.Distance(target.position, transform.position) <= 0.3f)
         {

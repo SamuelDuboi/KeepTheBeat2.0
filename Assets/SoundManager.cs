@@ -218,7 +218,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             track.GetComponent<AudioSource>().volume -= variant;
             yield return new WaitForSeconds(0.2f);
-            StartCoroutine("FadeOutSound",track);
+            StartCoroutine(FadeOutSound(0.1f, track));
         }
     }
 
@@ -228,7 +228,7 @@ public class SoundManager : Singleton<SoundManager>
         {
             track.GetComponent<AudioSource>().volume += variant;
             yield return new WaitForSeconds(0.2f);
-            StartCoroutine("FadeInSound", track);
+            StartCoroutine(FadeInSound(0.1f, track));
         }
     }
 }

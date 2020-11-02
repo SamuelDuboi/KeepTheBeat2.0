@@ -12,6 +12,8 @@ public class Score : Singleton<Score>
     public TextMeshProUGUI scorMultiplierText;
     private Animator animator;
 
+    [SerializeField] GameObject UiEffects;
+
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -20,18 +22,25 @@ public class Score : Singleton<Score>
 
     public void ScoreUp(int upNumber)
     {
+        if(scorMultiplier < 7)
+        {
+            cptStreak++;
+        }
+
         score += upNumber * scorMultiplier;
-        cptStreak++;
         scorText.text = score.ToString();
         animator.SetTrigger("Score");
 
 
-        if (cptStreak >= 10)
+        if (cptStreak >= 5)
         {
             if (scorMultiplier < 7)
-                scorMultiplier++;
+                scorMultiplierText.GetComponent<Animator>().SetTrigger("Multiplicateur");
+
+            scorMultiplier++;
             scorMultiplierText.text = "X" + scorMultiplier.ToString();
             cptStreak = 0;
+            UiEffects.GetComponent<UIEffects>().Reset();
             SoundManager.Instance.UpdateVolume(scorMultiplier);
         }
     }
@@ -40,7 +49,7 @@ public class Score : Singleton<Score>
     {
         score -= upNumber ;
         if(cptStreak!=0)
-            cptStreak = 0;
+            cptStreak--;
         scorText.text = score.ToString();
 
     }

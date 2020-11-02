@@ -435,6 +435,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8646067879177928388, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 4115637e449698e488049410412785d2, type: 2}
     - target: {fileID: 8812904904163480881, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: m_Name
       value: GamePrefabe

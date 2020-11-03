@@ -8600,6 +8600,7 @@ MonoBehaviour:
   cptStreak: 0
   scorText: {fileID: 3300805184042419176}
   scorMultiplierText: {fileID: 3300805184269508709}
+  UiEffects: {fileID: 5675297062695911576}
 --- !u!95 &1319539368
 Animator:
   serializedVersion: 3
@@ -8619,24 +8620,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8850501537056277424
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3300805184042419179}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e6a79e514c1f51478649cd1dd399f39, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaderBoard: {fileID: 11400000, guid: 4e0f3aba290e40f40b3fd5e1611af935, type: 2}
-  scorMultiplier: 1
-  cptStreak: 0
-  scorText: {fileID: 3300805184042419176}
-  scorMultiplierText: {fileID: 3300805184269508709}
-  UiEffects: {fileID: 5675297062695911576}
 --- !u!1 &3300805184064418635
 GameObject:
   m_ObjectHideFlags: 0
@@ -9081,7 +9064,7 @@ Animator:
   m_GameObject: {fileID: 3300805184269508704}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4115637e449698e488049410412785d2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -16219,11 +16202,6 @@ PrefabInstance:
       objectReference: {fileID: 247039916518444881}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
---- !u!4 &7953890710695452756 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7953890710349605386, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
-  m_PrefabInstance: {fileID: 501402206}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &9112153951030104365 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9112153950532967283, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
@@ -16235,3 +16213,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 045e068a7f5e98b4d9ed97de401bb997, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &7953890710695452756 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7953890710349605386, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
+  m_PrefabInstance: {fileID: 501402206}
+  m_PrefabAsset: {fileID: 0}

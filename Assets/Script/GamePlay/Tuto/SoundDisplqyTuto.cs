@@ -25,6 +25,7 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
     public AudioSource fail;
 
     public bool cantAct;
+    public bool canStart;
     public List<GameObject> ennemys = new List<GameObject>();
 
     public int cptForMovement;
@@ -95,7 +96,7 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
 
     public TutoText text;
     public void MoveEnnemy()
-    {
+    {        
         if(currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 1 
             || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 5 
             || currentEnnemyMovment >= 3 && ennemys.Count != 0 && MainTuto.Instance.cptPhase == 9 

@@ -15,6 +15,7 @@ public class Spawner : MonoBehaviour
     private Vector3 distanceToMove;
     public Vector3[] positions = new Vector3[6];
 
+    private Animator animator;
 
     public GameObject[] tiles = new GameObject[6];
    [HideInInspector] public Color currentColor;
@@ -23,7 +24,7 @@ public class Spawner : MonoBehaviour
     {
         currentColor = GetComponent<SpriteRenderer>().color;
         StartSpawn();
-       
+        
     }
 
 
@@ -135,17 +136,6 @@ public class Spawner : MonoBehaviour
     }
 
 
-    public void TilesDesapear(int number)
-    {
-        for (int i = 0; i < number; i++)
-        {
-            if (tiles[i].activeSelf)
-            {
-                tiles[i].SetActive(false);
-            }
-        }
-    }
-
     public void Shoot()
     {
         tiles[5].GetComponent<MeshRenderer>().material = tiles[5].GetComponent<TilesBehavior>().on;
@@ -168,11 +158,26 @@ public class Spawner : MonoBehaviour
         }
     }
 
+    public void LeaveOne()
+    {
+        animator.SetTrigger("LeftOne");
+    }
 
+    public void DesaapppearAll()
+    {
+        animator.SetTrigger("LeaveAll");
+    }
+
+    public void AppeartOne()
+    {
+        animator.SetTrigger("AppearOne");
+
+    }
     public void ApppearAll()
     {
-        var _animator = tiles[0].GetComponentInParent<Animator>();
-       _animator.SetBool("AppearBool", true);
+        if(animator == null)
+        animator = tiles[0].GetComponentInParent<Animator>();
+        animator.SetTrigger("Appear");
     }
 }
 

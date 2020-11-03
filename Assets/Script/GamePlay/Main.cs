@@ -106,7 +106,8 @@ public class Main : Singleton<Main>
         {
             previousEnnemyList.Add(vector);
         }
-
+        
+        
         //debug to know wich pattern is playing
         currentPatternName.text = "current pattern : " +  patterns1[0].name;
 
@@ -761,22 +762,25 @@ public class Main : Singleton<Main>
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*1000, Quaternion.identity);
+
+        yield return new WaitForSeconds(4.5f);
+        for (int i = 0; i < positionEnd.Length; i++)
+        {
+            if (i == 2 || i == 3)
+            {
+                positionEnd[i].GetComponent<Spawner>().LeaveOne();
+            }
+            else
+                positionEnd[i].GetComponent<Spawner>().DesaapppearAll();
+
+        }
         yield return new WaitUntil(() => canShootMiniBoss == true);
         textTimer = 0;
         bossHit.enabled = true;
         spheres[0] = Instantiate(firstSphere, SoundDisplay.Instance.heart.transform);
         SoundDisplay.Instance.isBoss = true;
         currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
-        for (int i = 0; i < positionEnd.Length; i++)
-        {
-            if(i == 2|| i == 3)
-            {
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(5);
-            }
-            else
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
-
-        }
+        
 
     }
     IEnumerator Boss()
@@ -790,6 +794,17 @@ public class Main : Singleton<Main>
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*10000, Quaternion.identity);
+        yield return new WaitForSeconds(4f);
+        for (int i = 0; i < positionEnd.Length; i++)
+        {
+            if (i == 2 || i == 3)
+            {
+                positionEnd[i].GetComponent<Spawner>().LeaveOne();
+            }
+            else
+                positionEnd[i].GetComponent<Spawner>().DesaapppearAll();
+
+        }
         yield return new WaitUntil(() => canShootBoss == true);
         textTimer = 0;
         bossHit.enabled = true;
@@ -797,16 +812,7 @@ public class Main : Singleton<Main>
         currentBeam = Instantiate(laserBeams[0], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
         spheres[0] = Instantiate(firstSphere, SoundDisplay.Instance.heart.transform);
         canShootBoss = true;
-        for (int i = 0; i < positionEnd.Length; i++)
-        {
-            if (i == 2 || i == 3)
-            {
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(5);
-            }
-            else
-                positionEnd[i].GetComponent<Spawner>().TilesDesapear(6);
 
-        }
 
     }
     public void BossPhaseUp()
@@ -815,52 +821,40 @@ public class Main : Singleton<Main>
         switch (phaseNumber)
         {      
             case 1:
-                positionEnd[1].GetComponent<Spawner>().TilesApear();
-                positionEnd[4].GetComponent<Spawner>().TilesApear();
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[1].GetComponent<Spawner>().AppeartOne();
+                positionEnd[4].GetComponent<Spawner>().AppeartOne();
+                positionEnd[2].GetComponent<Spawner>().DesaapppearAll();
+                positionEnd[3].GetComponent<Spawner>().DesaapppearAll();
                 break;
             case 2:
-                positionEnd[0].GetComponent<Spawner>().TilesApear();
-                positionEnd[2].GetComponent<Spawner>().TilesApear();
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[0].GetComponent<Spawner>().AppeartOne();
+                positionEnd[2].GetComponent<Spawner>().AppeartOne();
+                positionEnd[1].GetComponent<Spawner>().DesaapppearAll();
+                positionEnd[4].GetComponent<Spawner>().DesaapppearAll();
                 break;
             case 3:
-                positionEnd[1].GetComponent<Spawner>().TilesApear();
-                positionEnd[3].GetComponent<Spawner>().TilesApear();
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[1].GetComponent<Spawner>().AppeartOne();
+                positionEnd[3].GetComponent<Spawner>().AppeartOne();
+                positionEnd[2].GetComponent<Spawner>().DesaapppearAll();
+                positionEnd[0].GetComponent<Spawner>().DesaapppearAll();
                 break;
             case 4:
-                positionEnd[2].GetComponent<Spawner>().TilesApear();
-                positionEnd[5].GetComponent<Spawner>().TilesApear();
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[5].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[1].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[2].GetComponent<Spawner>().AppeartOne();
+                positionEnd[5].GetComponent<Spawner>().AppeartOne();
+                positionEnd[1].GetComponent<Spawner>().DesaapppearAll();
+                positionEnd[3].GetComponent<Spawner>().DesaapppearAll();
                 break;
             case 5:
-                positionEnd[0].GetComponent<Spawner>().TilesApear();
-                positionEnd[4].GetComponent<Spawner>().TilesApear();
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[5].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[0].GetComponent<Spawner>().AppeartOne();
+                positionEnd[4].GetComponent<Spawner>().AppeartOne();
+                positionEnd[2].GetComponent<Spawner>().DesaapppearAll();
+                positionEnd[5].GetComponent<Spawner>().DesaapppearAll();
                 break;
             case 6:
-                positionEnd[2].GetComponent<Spawner>().TilesApear();
-                positionEnd[3].GetComponent<Spawner>().TilesApear();
-                positionEnd[2].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[3].GetComponent<Spawner>().TilesDesapear(5);
-                positionEnd[0].GetComponent<Spawner>().TilesDesapear(6);
-                positionEnd[4].GetComponent<Spawner>().TilesDesapear(6);
+                positionEnd[2].GetComponent<Spawner>().AppeartOne();
+                positionEnd[3].GetComponent<Spawner>().AppeartOne();
+                positionEnd[0].GetComponent<Spawner>().DesaapppearAll();
+                positionEnd[4].GetComponent<Spawner>().DesaapppearAll();
                 break;
             default:
                 break;
@@ -871,16 +865,18 @@ public class Main : Singleton<Main>
     {
         // wait for the player to calm down
         SoundDisplay.Instance.isBoss = false;
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(4f);
+        for (int i = 0; i < positionEnd.Length; i++)
+        {
+            positionEnd[i].GetComponent<Spawner>().ApppearAll();
+
+        }
+        yield return new WaitForSeconds(1f);
         bossHit.text = string.Empty;
         bossHit.fontSize = 150;
         bossHit.enabled = false;
         isBoss = false;
-        for (int i = 0; i < positionEnd.Length; i++)
-        {
-            positionEnd[i].GetComponent<Spawner>().TilesApear();
-
-        }
+        
         EnvironnementManager.Instance.LunchPhase();
     }
 

@@ -62,9 +62,9 @@ namespace AudioHelm
 
                     }
 
-                    if (SceneManager.GetActiveScene().name == "Main")
+                    if (SceneManager.GetActiveScene().name == "Main" && SoundDisplay.Instance.canStart)
                         SoundDisplay.Instance.MoveEnnemy();
-                    else if (SceneManager.GetActiveScene().name == "Tuto")
+                    else if (SceneManager.GetActiveScene().name == "Tuto" && SoundDisplqyTuto.Instance.canStart)
                         SoundDisplqyTuto.Instance.MoveEnnemy();
 
                 }

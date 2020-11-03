@@ -28,6 +28,8 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     public GameObject morpheus;
 
 
+    public Image fade;
+
 
     private void Start()
     {
@@ -60,10 +62,10 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             gameObject.GetComponent<AudioHelmClock>().bpm = cpt;
             if(morpheus.activeSelf)
             {
-                if(Input.GetKeyDown(KeyCode.E))
-                    SceneManager.LoadScene("Tuto");
+                if (Input.GetKeyDown(KeyCode.E))
+                    FadeOut(true);
                 else if (Input.GetKeyDown(KeyCode.R))
-                    SceneManager.LoadScene("Main");
+                    FadeOut(false);
             }    
         }
 
@@ -144,6 +146,18 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         StartCoroutine("CircleSpawning");
     }
 
-    
+    IEnumerator FadeOut( bool tuto)
+    {
+        for (float i = 255; i > 30; i--)
+        {
+            fade.color = new Color(0, 0, 0, i / 255);
+            yield return new WaitForSeconds(0.01f);
+        }
+        if (tuto)
+            SceneManager.LoadScene("Tuto");
+        else
+            SceneManager.LoadScene("Main");
+
+    }
 
 }

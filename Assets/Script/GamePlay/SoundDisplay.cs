@@ -24,6 +24,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public AudioSource fail;
 
     public bool cantAct;
+    public bool canStart;
      public List<GameObject> ennemys = new List<GameObject>();
 
     public int cptForMovement;

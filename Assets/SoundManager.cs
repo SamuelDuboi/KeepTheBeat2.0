@@ -44,6 +44,8 @@ public class SoundManager : Singleton<SoundManager>
         else
             isBoss = SoundDisplqyTuto.Instance.isBoss;
         multiplicateur = Score.Instance.scorMultiplier;
+
+
     }
 
    

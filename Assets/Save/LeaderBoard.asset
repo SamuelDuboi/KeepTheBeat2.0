@@ -20,7 +20,7 @@ MonoBehaviour:
   - 0
   - 0
   - 0
-  - 0
+  - 3500
   - 9000
   - 335000
   names:
@@ -31,7 +31,20 @@ MonoBehaviour:
   - 
   - 
   - 
-  - 
+  - aaa
   - aaa
   - baa
-  placeInLeaderBoard: 8
+  bpm:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 15
+  - 120
+  - 90
+  placeInLeaderBoard: 7
+  victory: 0
+  gameOver: 1

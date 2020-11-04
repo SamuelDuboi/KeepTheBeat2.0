@@ -572,7 +572,7 @@ public class Main : Singleton<Main>
                     StartCoroutine(MiniBoss());
                 }
                 //number of pattern befor boss
-                else if( patternNumber == 19)
+                else if( patternNumber == 0)
                 {
                     StartCoroutine(Boss());
                 }

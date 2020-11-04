@@ -1,6 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Collections;
 
 public class Score : Singleton<Score>
 {
@@ -72,11 +73,29 @@ public class Score : Singleton<Score>
 
     public void EndScene(bool victory)
     {
-        leaderBoard.CountScore(score, victory);
+        leaderBoard.CountScore(score,AudioHelm.AudioHelmClock.Instance.bpm, victory);
+        if(victory)
+            StartCoroutine(FadeEnd());
+        else
+        {
+            SoundDisplay.Instance.canStart = false;
+            SoundDisplay.Instance.cantAct = true;
+            SoundDisplay.Instance.cantMove = true;
+            SceneManager.LoadScene("LeaderBoard");
 
+        }
+    }
+    
+    IEnumerator FadeEnd()
+    {
+        yield return new WaitForSeconds(5f);
+            SoundDisplay.Instance.cantAct = true;
+            SoundDisplay.Instance.cantMove = true;
+        SoundDisplay.Instance.canStart = false;
         SceneManager.LoadScene("LeaderBoard");
     }
-
+   
+    
     public void EndAnim()
     {
         animator.SetBool("Score", false);

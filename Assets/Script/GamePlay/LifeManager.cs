@@ -64,6 +64,7 @@ public class LifeManager : Singleton<LifeManager>
 
     public void GameOver()
     {
+        GetComponent<AudioSource>().Play();
         gameOver.SetActive(true);
         //Application.Quit();
     }

@@ -27,13 +27,14 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     public GameObject morpheus;
 
+    public GameObject sound;
 
     public Image fade;
 
 
     private void Start()
     {
-        StartCoroutine("CircleSpawning");
+        
 
         timerFloat = 20;// to enable timer only when started = true
         UduinoManager.Instance.OnDataReceived += DataReceived;
@@ -52,6 +53,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         else
         {
             if (started)
+
                 StartCoroutine(WaiForCounting());
             bpm.text = cpt.ToString();
 
@@ -127,6 +129,8 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     private IEnumerator WaiForCounting()
     {
+        StartCoroutine("CircleSpawning");
+        StartCoroutine(FadeOutSound(sound));
         GetComponent<AudioSource>().Play();
         started = false;
         timerFloat = 20; // to start timer 
@@ -160,4 +164,13 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     }
 
+    IEnumerator FadeOutSound(GameObject track)
+    {
+        if (track.GetComponent<AudioSource>().volume <= 1f)
+        {
+            track.GetComponent<AudioSource>().volume -= 0.1f;
+            yield return new WaitForSeconds(0.2f);
+            StartCoroutine(FadeOutSound(track));
+        }
+    }
 }

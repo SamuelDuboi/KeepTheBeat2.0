@@ -13,6 +13,7 @@ public class Main : Singleton<Main>
 
     [Header("Sound")]
     public AudioSource clap;
+    public GameObject deathBossSound;
 
     [Header("Spawn")]
     public GameObject[] positionEnd = new GameObject[6];
@@ -863,6 +864,8 @@ public class Main : Singleton<Main>
     }
     IEnumerator StartAfterMiniBoss()
     {
+        GameObject DeadSound = Instantiate(deathBossSound, transform.position, Quaternion.identity);
+        Destroy(DeadSound, 8f);
         // wait for the player to calm down
         SoundDisplay.Instance.isBoss = false;
         yield return new WaitForSeconds(4f);
@@ -881,7 +884,7 @@ public class Main : Singleton<Main>
     }
 
 
-    public void BossOverTest( int life, GameObject miniBoss)
+    public void BossOverTest(int life, GameObject miniBoss)
     {
         if (miniBossDamage >= life)
         {
@@ -890,6 +893,7 @@ public class Main : Singleton<Main>
             canShootMiniBoss = false;
             Destroy(currentBeam);
             Destroy(laserHitRef);
+            
             foreach (GameObject sphere in spheres)
             {
                 Destroy(sphere);
@@ -897,12 +901,17 @@ public class Main : Singleton<Main>
             Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
             SoundManager.Instance.UpdateVolume(Score.Instance.scorMultiplier);
             Destroy(miniBoss);
-            if(phaseNumber <=1)
+           
+            if (phaseNumber <= 1)
+            {
                 StartCoroutine(StartAfterMiniBoss());
+            }
             else
             {
                 Score.Instance.EndScene(true);
             }
+
+            
         }
         else
         {

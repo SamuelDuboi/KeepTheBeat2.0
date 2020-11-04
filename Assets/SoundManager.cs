@@ -9,7 +9,7 @@ public class SoundManager : Singleton<SoundManager>
 
     [SerializeField] private GameObject audioClock;
 
-    [SerializeField] private GameObject laserAudio;
+    
 
     [SerializeField] private int multiplicateur = 0;
     [SerializeField] private bool isBoss;
@@ -188,7 +188,7 @@ public class SoundManager : Singleton<SoundManager>
         
         StartCoroutine(FadeOutSound(0.1f, tracks[7]));
         StartCoroutine(FadeOutSound(0.1f, tracks[8]));
-        StartCoroutine(FadeOutSound(0.1f, laserAudio));
+       
        
 
             if (multiplicateur >= 4)
@@ -206,10 +206,10 @@ public class SoundManager : Singleton<SoundManager>
 
     public void BossEntry()
     {
-        StartCoroutine("FadeInSound", tracks[7]);
-        StartCoroutine("FadeInSound", tracks[8]);
-        StartCoroutine("FadeInSound", laserAudio);
-        StartCoroutine("FadeOutSound", tracks[4]);
+        StartCoroutine(FadeInSound(0.1f, tracks[7]));
+        StartCoroutine(FadeInSound(0.1f, tracks[8]));
+    
+        StartCoroutine(FadeOutSound(0.1f, tracks[4]));
     }
 
     IEnumerator FadeOutSound(float variant, GameObject track)

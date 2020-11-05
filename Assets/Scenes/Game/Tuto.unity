@@ -2999,7 +2999,7 @@ MonoBehaviour:
   - Each waves charge your super power energy
   - When your super power bar is full, you can press the golden buzzer to freez time
     and then hit any of the pad to destroy ennemies.
-  - Congrats you are ready to play at KeepTheBeat \n Press any key to continu
+  - Congrats you are ready to play at KeepTheBeat.  Press any key to continu
 --- !u!1 &1845722902
 GameObject:
   m_ObjectHideFlags: 0

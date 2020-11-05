@@ -567,12 +567,12 @@ public class Main : Singleton<Main>
 
                 #endregion
                 // number of pattern befor miniBoss
-                if (patternNumber == 5)
+                if (patternNumber == 0)
                 {
                     StartCoroutine(MiniBoss());
                 }
                 //number of pattern befor boss
-                else if( patternNumber == 0)
+                else if( patternNumber == 1)
                 {
                     StartCoroutine(Boss());
                 }
@@ -725,11 +725,13 @@ public class Main : Singleton<Main>
         isBulletTime = true;
         specialCount = 0;
         specialBarG.value = 0;
+        PostProcessManager.post.ActivatePostProcess(2);
         SoundDisplay.Instance.speedModifier = 0;
         SoundDisplay.Instance.bpmVisuelD.fillAmount = 0;
         SoundDisplay.Instance.bpmVisuelG.fillAmount = 0;
         SoundDisplay.Instance.cantMove = true;
         yield return new WaitWhile(() => isBulletTime == true);
+        PostProcessManager.post.DeactivatePostProcess();
         SoundDisplay.Instance.speedModifier = 1;
         SoundDisplay.Instance.cantMove = false;
 
@@ -759,6 +761,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
+        PostProcessManager.post.ActivatePostProcess(1);
         SoundManager.Instance.BossEntry();
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
@@ -791,6 +794,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
+        PostProcessManager.post.ActivatePostProcess(1);
         SoundManager.Instance.BossEntry();
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
@@ -901,7 +905,7 @@ public class Main : Singleton<Main>
             Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
             SoundManager.Instance.UpdateVolume(Score.Instance.scorMultiplier);
             Destroy(miniBoss);
-           
+            PostProcessManager.post.DeactivatePostProcess();
             if (phaseNumber <= 1)
             {
                 StartCoroutine(StartAfterMiniBoss());

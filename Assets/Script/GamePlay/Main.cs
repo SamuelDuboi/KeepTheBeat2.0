@@ -185,11 +185,13 @@ public class Main : Singleton<Main>
                 StartCoroutine(LaserFade(0,100));
                 if (_ennemy.tag == "LinkedEnnemy")
                 {
-                    _ennemy.GetComponent<LinkedEnnemy>().DestroyAll();
+                    _ennemy.GetComponent<LinkedEnnemy>().DestroyAll(true);
                 }
                 else
+                {
                     SoundDisplay.Instance.RemoveEnnemy(_ennemy);
-                Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
+                    Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
+                }
                 Destroy(_ennemy);
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));
                 if (SoundDisplay.Instance.ennemys.Count == 0)
@@ -444,7 +446,7 @@ public class Main : Singleton<Main>
             {
                 lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();
-                hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed(2-doOnceCPT);
+                hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed(2-doOnceCPT, true);
                 StartCoroutine(LaserFade(_cpt - 1,100));
                //  LEDSManager.Instance.LightUp(_rowOn);
 
@@ -567,12 +569,12 @@ public class Main : Singleton<Main>
 
                 #endregion
                 // number of pattern befor miniBoss
-                if (patternNumber == 0)
+                if (patternNumber == 5)
                 {
                     StartCoroutine(MiniBoss());
                 }
                 //number of pattern befor boss
-                else if( patternNumber == 1)
+                else if( patternNumber == 19)
                 {
                     StartCoroutine(Boss());
                 }

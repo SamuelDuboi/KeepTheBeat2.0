@@ -35,15 +35,18 @@ public class LinkedEnnemy :MonoBehaviour
         {
             Score.Instance.ScoreUp(hitBox[1].GetComponent<EnnemyBehavior>().scoreValue);
             Score.Instance.ScoreUp(hitBox[0].GetComponent<EnnemyBehavior>().scoreValue);
-            DestroyAll();
+            DestroyAll(true);
             
         }
 
     }
 
-    public void DestroyAll()
+    public void DestroyAll(bool scoreUp)
     {
-        Score.Instance.ScoreUp(scoreValue);
+        if(scoreUp)
+        {
+            Score.Instance.ScoreUp(scoreValue);
+        }
         GameObject poptext0 = Instantiate(enemy0.GetComponent<EnnemyBehavior>().popTextScore, poptextPosition0.transform.position, Quaternion.identity);
         poptext0.GetComponent<TextMeshPro>().text = (scoreValue).ToString();
         GameObject poptext1 = Instantiate(enemy1.GetComponent<EnnemyBehavior>().popTextScore, poptextPosition1.transform.position, Quaternion.identity);
@@ -54,8 +57,8 @@ public class LinkedEnnemy :MonoBehaviour
             hitBox[0].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
             hitBox[1].GetComponent<EnnemyBehavior>().tile.GetComponent<TilesBehavior>().Off();
         }
-        hitBox[0].GetComponent<EnnemyBehavior>().Destroyed(1);
-        hitBox[1].GetComponent<EnnemyBehavior>().Destroyed(1);
+        hitBox[0].GetComponent<EnnemyBehavior>().Destroyed(1, scoreUp);
+        hitBox[1].GetComponent<EnnemyBehavior>().Destroyed(1, scoreUp);
         if (SceneManager.GetActiveScene().name != "Tuto")
             SoundDisplay.Instance.RemoveEnnemy(gameObject);
         else 

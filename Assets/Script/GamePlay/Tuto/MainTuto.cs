@@ -148,7 +148,7 @@ public class MainTuto : Singleton<MainTuto>
                 StartCoroutine(LaserFade(0, 100));
                 if (_ennemy.tag == "LinkedEnnemy")
                 {
-                    _ennemy.GetComponent<LinkedEnnemy>().DestroyAll();
+                    _ennemy.GetComponent<LinkedEnnemy>().DestroyAll(true);
                 }
                 else
                 SoundDisplqyTuto.Instance.RemoveEnnemy(_ennemy);
@@ -407,7 +407,7 @@ public class MainTuto : Singleton<MainTuto>
             {
                 lineRenderer[_cpt - 1].SetPosition(1, hit.transform.position);
                 clap.Play();
-                hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed(2 - doOnceCPT);
+                hit.collider.gameObject.GetComponent<EnnemyBehavior>().Destroyed(2 - doOnceCPT, true);
                 StartCoroutine(LaserFade(_cpt - 1, 100));
                 //  LEDSManager.Instance.LightUp(_rowOn);
 

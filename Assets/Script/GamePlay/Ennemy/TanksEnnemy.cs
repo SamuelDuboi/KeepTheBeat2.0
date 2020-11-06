@@ -25,7 +25,7 @@ public class TanksEnnemy : EnnemyBehavior
             StartCoroutine(Reset());
         }
     }
-    public override void Destroyed(int value)
+    public override void Destroyed(int value, bool scoreUp)
     {
         cptDead++;
         if (cptDead >= 2)
@@ -36,7 +36,7 @@ public class TanksEnnemy : EnnemyBehavior
             else
                 SoundDisplqyTuto.Instance.RemoveEnnemy(gameObject);
             Instantiate(explosion, transform.position, Quaternion.identity);
-
+            if(scoreUp)
             Score.Instance.ScoreUp(scoreValue * value);
             GameObject poptext = Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
             poptext.GetComponent<TextMeshPro>().text = (scoreValue * value).ToString();

@@ -105,13 +105,14 @@ public class EnnemyBehavior : MonoBehaviour
             else
             {
                 Score.Instance.ModifierDown();
-                GetComponentInParent<LinkedEnnemy>().DestroyAll();
+                GetComponentInParent<LinkedEnnemy>().DestroyAll(false);
             }
         }
     }
 
-    public virtual void Destroyed(int time)
+    public virtual void Destroyed(int time, bool scorUp)
     {
+        if(scorUp)
             Score.Instance.ScoreUp(scoreValue * time);
             GameObject poptext = Instantiate(popTextScore, poptextPosition.transform.position, Quaternion.identity);
             poptext.GetComponent<TextMeshPro>().text = (scoreValue * time).ToString();

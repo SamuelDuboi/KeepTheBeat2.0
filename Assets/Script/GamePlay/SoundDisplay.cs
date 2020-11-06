@@ -123,7 +123,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
         {
             if (ennemys[0].tag == "LinkedEnnemy")
             {
-                ennemys[0].GetComponent<LinkedEnnemy>().DestroyAll();
+                ennemys[0].GetComponent<LinkedEnnemy>().DestroyAll(false);
             }
             else
             {

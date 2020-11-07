@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 11400000, guid: 896da6403c35dc44f8bd7da97fe8b5b1, type: 2}
     - target: {fileID: 350777524, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: weight
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 350777528, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: FXprofile.Array.size
@@ -465,7 +465,7 @@ PrefabInstance:
       objectReference: {fileID: 5290941637935771345, guid: 7183d0ea24524ac47a58bf4ba369bb53, type: 3}
     - target: {fileID: 9112153951030104365, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: bpm
-      value: 90
+      value: 120
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}

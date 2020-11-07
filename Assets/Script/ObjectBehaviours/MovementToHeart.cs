@@ -12,8 +12,8 @@ public class MovementToHeart : MonoBehaviour
     
     private float speed;
     private float direction, directionStart;
-  
 
+    public GameObject fx;
    
 
     public bool isFollowing = false;
@@ -56,6 +56,8 @@ public class MovementToHeart : MonoBehaviour
             {
                 Main.Instance.specialCount++;
                 Main.Instance.specialBarG.value = Main.Instance.specialCount;
+                Instantiate(fx, target.transform.position,Quaternion.identity);
+
             }
             else
             {

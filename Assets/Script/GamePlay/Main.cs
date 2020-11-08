@@ -187,6 +187,12 @@ public class Main : Singleton<Main>
                 {
                     _ennemy.GetComponent<LinkedEnnemy>().DestroyAll(true);
                 }
+                else if (_ennemy.tag == "SpecialEnnemy")
+                {
+                    Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
+                    SoundDisplay.Instance.RemoveEnnemy(_ennemy);
+                    Destroy(_ennemy);
+                }
                 else
                 {
                     _ennemy.GetComponent<EnnemyBehavior>().Destroyed(1,true);

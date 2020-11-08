@@ -17,7 +17,6 @@ public class SpecialFullEffect : MonoBehaviour
     {
         if(Main.Instance.specialCount == Main.Instance.specialMaxValue && !doOnce)
         {
-            print("la");
             doOnce = true;
             StartCoroutine(SpawnEffect());
         }

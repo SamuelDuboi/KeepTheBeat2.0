@@ -56,12 +56,13 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
             currentEnnemyMovment = 0;
             MainTuto.Instance.cantSpwan = false;
             text.ClearText();
-            if (MainTuto.Instance.cptPhase > 16)
-            {
-                text.NextText(text.texts.Length - 1);
-                goNext = true;
-            }
+            
 
+        }
+        if (ennemys.Count == 0 && MainTuto.Instance.cptPhase > 16 && !goNext)
+        {
+            text.NextText(text.texts.Length - 1);
+            goNext = true;
         }
         else if (ennemys.Count == 0)
         {

@@ -150,10 +150,15 @@ public class MainTuto : Singleton<MainTuto>
                 {
                     _ennemy.GetComponent<LinkedEnnemy>().DestroyAll(true);
                 }
+                else if (_ennemy.tag == "SpecialEnnemy")
+                {
+                    Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
+                    SoundDisplqyTuto.Instance.RemoveEnnemy(_ennemy);
+                    Destroy(_ennemy);
+                }
                 else
-                SoundDisplqyTuto.Instance.RemoveEnnemy(_ennemy);
-                Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
-                Destroy(_ennemy);
+                    _ennemy.GetComponent<EnnemyBehavior>().Destroyed(1, true);
+
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));
                 if (SoundDisplqyTuto.Instance.ennemys.Count == 0)
                 {
@@ -763,13 +768,20 @@ public class MainTuto : Singleton<MainTuto>
     }
     IEnumerator BulletTime()
     {
+        
         isBulletTime = true;
         specialCount = 0;
         specialBarG.value = 0;
+        PostProcessManager.post.ActivatePostProcess(2);
         SoundDisplqyTuto.Instance.speedModifier = 0;
+        SoundDisplqyTuto.Instance.text.NextText(7);
+        SoundDisplqyTuto.Instance.bpmVisuelD.fillAmount = 0;
+        SoundDisplqyTuto.Instance.bpmVisuelG.fillAmount = 0;
         SoundDisplqyTuto.Instance.cantMove = true;
         yield return new WaitWhile(() => isBulletTime == true);
+        PostProcessManager.post.DeactivatePostProcess();
         SoundDisplqyTuto.Instance.speedModifier = 1;
+        SoundDisplqyTuto.Instance.cantMove = false;
 
     }
 

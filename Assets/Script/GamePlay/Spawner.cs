@@ -103,8 +103,8 @@ public class Spawner : MonoBehaviour
             SoundDisplay.Instance.AddEnnemy(_ennemy);
         else
             SoundDisplqyTuto.Instance.AddEnnemy(_ennemy);
-        _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().turnOnTrail = true;
-        _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().turnOnTrail = true;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().turnOnTrail = false;
+        _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().turnOnTrail = false;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().explosion = firstSpawner.explosion;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[1].GetComponent<EnnemyBehavior>().explosion = secondSpawner.explosion;
         _ennemy.GetComponent<LinkedEnnemy>().hitBox[0].GetComponent<EnnemyBehavior>().popTextScore = firstSpawner.popScore;
@@ -147,16 +147,7 @@ public class Spawner : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         tiles[5].GetComponent<MeshRenderer>().material = tiles[5].GetComponent<TilesBehavior>().off;
     }
-    public void TilesApear()
-    {
-        for (int i = 0; i < tiles.Length; i++)
-        {
-            if (!tiles[i].activeSelf)
-            {
-                tiles[i].SetActive(true);
-            }
-        }
-    }
+
 
     public void LeaveOne()
     {

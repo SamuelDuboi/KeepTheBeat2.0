@@ -63,6 +63,7 @@ public class MovementToHeart : MonoBehaviour
             {
                 MainTuto.Instance.specialBarG.value = MainTuto.Instance.specialCount;
                 MainTuto.Instance.specialCount++;
+                Instantiate(fx, target.transform.position, Quaternion.identity);
             }
             Destroy(gameObject);
         }

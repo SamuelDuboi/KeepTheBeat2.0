@@ -148,7 +148,10 @@ public class LeaderBoardDisplay : MonoBehaviour
 
                         for (int i = leaderBoard.scores.Length - 1; i >= 0; i--)
                         {
+                            if(leaderBoard.names[i] != string.Empty)
                             scores.text += leaderBoard.names[i] + "      " + leaderBoard.bpm[i].ToString() + "       " + leaderBoard.scores[i].ToString() + "\n";
+                            else
+                                scores.text += "AAA      " + leaderBoard.bpm[i].ToString() + "       " + leaderBoard.scores[i].ToString() + "\n";
 
                         }
                         Panel.SetActive(false);

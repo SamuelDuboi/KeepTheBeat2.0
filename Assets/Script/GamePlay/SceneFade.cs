@@ -18,10 +18,10 @@ public class SceneFade : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "Tuto")
         {
             SoundDisplqyTuto.Instance.canStart = true;
-            foreach (var spawn in MainTuto.Instance.positionEnd)
-            {
-                spawn.GetComponent<Spawner>().ApppearAll();
-            }
+            
+                MainTuto.Instance.positionEnd[2].GetComponent<Spawner>().ApppearAll();
+                MainTuto.Instance.positionEnd[3].GetComponent<Spawner>().ApppearAll();
+            
         }
         else if (SceneManager.GetActiveScene().name == "Main")
         {

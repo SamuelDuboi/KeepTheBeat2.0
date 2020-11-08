@@ -5,11 +5,9 @@ using UnityEngine;
 public class DestroyAfterASec : MonoBehaviour
 {
     // Start is called before the first frame update
-    IEnumerator Start()
-    {
-        yield return new WaitForSeconds(2f);
-        Destroy(gameObject);
-    }
+
+    public GameObject particuleG;
+    public GameObject particuleD;
 
 
 }

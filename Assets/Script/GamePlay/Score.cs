@@ -28,10 +28,9 @@ public class Score : Singleton<Score>
             cptStreak++;
         }
 
-        score += upNumber * scorMultiplier;
-        scorText.text = score.ToString();
         animator.SetTrigger("Score");
-
+        StartCoroutine("DelayScore", upNumber);
+        
 
         if (cptStreak >= 5)
         {
@@ -101,4 +100,14 @@ public class Score : Singleton<Score>
         animator.SetBool("Score", false);
     }
 
+    IEnumerator DelayScore(int scoreToAdd)
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            score += (scoreToAdd * scorMultiplier) / 6;
+            scorText.text = score.ToString();
+            yield return new WaitForSeconds(0.01f);
+        }
+        
+    }
 }

@@ -189,10 +189,9 @@ public class Main : Singleton<Main>
                 }
                 else
                 {
-                    SoundDisplay.Instance.RemoveEnnemy(_ennemy);
-                    Score.Instance.ScoreUp(_ennemy.GetComponent<EnnemyBehavior>().scoreValue);
+                    _ennemy.GetComponent<EnnemyBehavior>().Destroyed(1,true);
                 }
-                Destroy(_ennemy);
+                
                 StartCoroutine(RowFade(rowOn[_ennemyParent]));
                 if (SoundDisplay.Instance.ennemys.Count == 0)
                 {

@@ -23,11 +23,7 @@ public class SpecialFullEffect : MonoBehaviour
             doOnce = true;
             StartCoroutine(SpawnEffect());
         }
-        else
-        {
-            StopAllCoroutines();
-            doOnce = false;
-        }
+        
     }
 
     IEnumerator SpawnEffect()
@@ -41,7 +37,7 @@ public class SpecialFullEffect : MonoBehaviour
         effectSpawned.GetComponent<DestroyAfterASec>().particuleD.GetComponent<Image>().color = colorToChoose[ColorChoose];
         effectSpawned.GetComponent<DestroyAfterASec>().particuleG.GetComponent<Image>().color = colorToChoose[ColorChoose];
 
-       yield return new WaitForSeconds(Random.Range(0.1f,0.3f));
+        yield return new WaitForSeconds(0.05f);
         StartCoroutine("SpawnEffect");
     }
 

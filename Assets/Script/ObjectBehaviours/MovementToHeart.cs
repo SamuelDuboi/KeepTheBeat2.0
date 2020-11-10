@@ -57,6 +57,10 @@ public class MovementToHeart : MonoBehaviour
                 Main.Instance.specialCount++;
                 Main.Instance.specialBarG.value = Main.Instance.specialCount;
                 Instantiate(fx, target.transform.position,Quaternion.identity);
+                if(Main.Instance.specialCount < 40)
+                ParticuleManager.Instance.PlayEffectsOnce();
+                else if(Main.Instance.specialCount == 40)
+                    ParticuleManager.Instance.PlayEffectsLoop();
 
             }
             else
@@ -64,6 +68,7 @@ public class MovementToHeart : MonoBehaviour
                 MainTuto.Instance.specialBarG.value = MainTuto.Instance.specialCount;
                 MainTuto.Instance.specialCount++;
                 Instantiate(fx, target.transform.position, Quaternion.identity);
+                ParticuleManager.Instance.PlayEffectsOnce();
             }
             Destroy(gameObject);
         }

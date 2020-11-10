@@ -52,7 +52,8 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
             }
         }
 
-    }void ActivatePhase2()
+    }
+    void ActivatePhase2()
     {
         
         foreach (GameObject envi in Phase2)

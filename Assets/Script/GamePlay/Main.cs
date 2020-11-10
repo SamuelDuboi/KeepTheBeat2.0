@@ -737,6 +737,7 @@ public class Main : Singleton<Main>
         SoundDisplay.Instance.bpmVisuelD.fillAmount = 0;
         SoundDisplay.Instance.bpmVisuelG.fillAmount = 0;
         SoundDisplay.Instance.cantMove = true;
+        ParticuleManager.Instance.StopEffectsLoop();
         yield return new WaitWhile(() => isBulletTime == true);
         PostProcessManager.post.DeactivatePostProcess();
         SoundDisplay.Instance.speedModifier = 1;

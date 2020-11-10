@@ -735,7 +735,7 @@ public class Main : Singleton<Main>
         isBulletTime = true;
         specialCount = 0;
         specialBarG.value = 0;
-        PostProcessManager.post.ActivatePostProcess(2);
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.SpecialPower);
         SoundDisplay.Instance.speedModifier = 0;
         SoundDisplay.Instance.bpmVisuelD.fillAmount = 0;
         SoundDisplay.Instance.bpmVisuelG.fillAmount = 0;
@@ -773,7 +773,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
-        PostProcessManager.post.ActivatePostProcess(1);
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.BossInc);
         SoundManager.Instance.BossEntry();
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
@@ -807,7 +807,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
-        PostProcessManager.post.ActivatePostProcess(1);
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.BossInc);
         SoundManager.Instance.BossEntry();
         spam.SetActive(false);
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);

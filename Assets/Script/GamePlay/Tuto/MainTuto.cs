@@ -772,7 +772,7 @@ public class MainTuto : Singleton<MainTuto>
         isBulletTime = true;
         specialCount = 0;
         specialBarG.value = 0;
-        PostProcessManager.post.ActivatePostProcess(2);
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.SpecialPower);
         SoundDisplqyTuto.Instance.speedModifier = 0;
         SoundDisplqyTuto.Instance.text.NextText(7);
         SoundDisplqyTuto.Instance.bpmVisuelD.fillAmount = 0;

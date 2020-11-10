@@ -45,9 +45,72 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     private void Update()
     {
       
-        if (SceneManager.GetActiveScene().name == "Main")
-        {
+        if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tuto")
+        {           
+            if(cpt < 65)
+            {
+                cpt = 60;
+            }
+            else if (cpt >= 65 && cpt < 70)
+            {
+                cpt = 65;
+            } 
+            else if (cpt >= 70 && cpt < 75)
+            {
+                cpt = 70;
+            } 
+            else if (cpt >= 75 && cpt < 80)
+            {
+                cpt = 75;
+            } 
+            else if (cpt >= 80 && cpt < 85)
+            {
+                cpt = 80;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
+            } 
+            else if (cpt >= 85 && cpt < 90)
+            {
+                cpt = 85;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
+            } 
+            else if (cpt >= 90 && cpt < 95)
+            {
+                cpt = 90;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
+            } 
+            else if (cpt >= 95 && cpt < 100)
+            {
+                cpt = 95;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
+            } 
+            else if (cpt >= 100 && cpt < 105)
+            {
+                cpt = 100;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
+            } 
+            else if (cpt >= 105 && cpt < 110)
+            {
+                cpt = 105;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
+            }
+            else if (cpt >= 110 && cpt < 115)
+            {
+                cpt = 110;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
+            }
+            else if (cpt >= 115 && cpt < 120)
+            {
+                cpt = 115;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
+            }
+            else if (cpt >= 120)
+            {
+                cpt = 120;
+                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
+            }
+            
             AudioHelmClock.Instance.bpm = cpt;
+
             Destroy(this);
         }
         else

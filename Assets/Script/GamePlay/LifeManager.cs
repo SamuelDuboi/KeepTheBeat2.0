@@ -54,7 +54,7 @@ public class LifeManager : Singleton<LifeManager>
             yield return new WaitForSeconds(0.002f);
         }*/
 
-        PostProcessManager.post.ActivatePostProcess(0);
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.Damage);
 
         mixer.SetFloat("MainVolume", 0);
         yield return new WaitForSeconds(0.15f);

@@ -7,6 +7,7 @@ public class PostProcessManager : MonoBehaviour
 {
     public static PostProcessManager post;
     Animator animator;
+
     public List<VolumeProfile> FXprofile = new List<VolumeProfile>();
 
     void Start()
@@ -25,4 +26,11 @@ public class PostProcessManager : MonoBehaviour
     {
         animator.SetTrigger("Deactivate");
     }
+
+    public void ActivatePostProcessInChild(int index)
+    {
+        gameObject.transform.GetChild(0).GetComponent<Volume>().profile = FXprofile[index];
+    }
 }
+
+public enum postProcess { Damage, BossInc, SpecialPower, BPM_80, BPM_90, BPM_100 };

@@ -10,7 +10,7 @@ public class SceneFade : MonoBehaviour
     IEnumerator Start()
     {
         var _image = GetComponent<Image>();
-        for (float i = 255; i>100; i--)
+        for (float i = 255; i>200; i--)
         {
             _image.color = new Color(0, 0, 0, i / 255);
             yield return new WaitForSeconds(0.01f);
@@ -31,7 +31,7 @@ public class SceneFade : MonoBehaviour
                 spawn.GetComponent<Spawner>().ApppearAll();
             }
         }
-        for (float i = 100; i > 0; i--)
+        for (float i = 200; i > 0; i--)
         {
             _image.color = new Color(0, 0, 0, i / 255);
             yield return new WaitForSeconds(0.01f);

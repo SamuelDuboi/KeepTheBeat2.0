@@ -68,6 +68,8 @@ public class Main : Singleton<Main>
     public float miniBossMaxScore;
     public int miniBossMinScore;
     private float miniBossLife;
+    public GameObject spam;
+    private Vector3 spamStartPoisition;
 
 
     [Header("Boss")]
@@ -113,6 +115,7 @@ public class Main : Singleton<Main>
         currentPatternName.text = "current pattern : " +  patterns1[0].name;
 
         previousEnnemy = Vector2.one * 12;
+        spamStartPoisition = spam.transform.position;
     }
 
 
@@ -749,6 +752,7 @@ public class Main : Singleton<Main>
     {
         if (SoundDisplay.Instance.doOnce)
         {
+            SoundDisplay.Instance.doOnce = false;
             canShoot = true;
         }
       
@@ -774,6 +778,7 @@ public class Main : Singleton<Main>
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
         miniBossLife = _miniBoss.GetComponent<MiniBossMovement>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*1000, Quaternion.identity);
+        spam.SetActive(true);
 
         yield return new WaitForSeconds(4.5f);
         for (int i = 0; i < positionEnd.Length; i++)
@@ -804,6 +809,7 @@ public class Main : Singleton<Main>
         //instantiate the mini boss in the middle of the scene
         PostProcessManager.post.ActivatePostProcess(1);
         SoundManager.Instance.BossEntry();
+        spam.SetActive(false);
         var _Boss = Instantiate(boss, Vector3.forward * 1000, Quaternion.identity);
         bossLife = _Boss.GetComponent<BossMovemenet>().life;
         laserHitRef = Instantiate(laserHit, Vector3.back*10000, Quaternion.identity);
@@ -878,9 +884,10 @@ public class Main : Singleton<Main>
     {
         GameObject DeadSound = Instantiate(deathBossSound, transform.position, Quaternion.identity);
         Destroy(DeadSound, 8f);
+        phaseNumber++;
         // wait for the player to calm down
         SoundDisplay.Instance.isBoss = false;
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
         for (int i = 0; i < positionEnd.Length; i++)
         {
             positionEnd[i].GetComponent<Spawner>().ApppearAll();
@@ -913,6 +920,8 @@ public class Main : Singleton<Main>
             Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
             SoundManager.Instance.UpdateVolume(Score.Instance.scorMultiplier);
             Destroy(miniBoss);
+            spam.SetActive(false);
+            spam.transform.position = spamStartPoisition;
             PostProcessManager.post.DeactivatePostProcess();
             if (phaseNumber <= 1)
             {

@@ -23,12 +23,14 @@ namespace AudioHelm
             timer = AudioSettings.dspTime - startTime - loopTimer;
             if (SceneManager.GetActiveScene().name != "Intro")
             {
-                if (timer <= (60 / bpm) / 4)
+                if (timer <= (60 / bpm) / 4 && !Main.Instance.canShoot)
                 {
                     //On Peut
-                    if (SceneManager.GetActiveScene().name == "Main")
-
+                    if (SceneManager.GetActiveScene().name == "Main" )
+                    {
                         Main.Instance.CanShoot();
+                    }
+
                     else if (SceneManager.GetActiveScene().name == "Tuto")
                         MainTuto.Instance.CanShoot();
                 }
@@ -41,11 +43,13 @@ namespace AudioHelm
                         MainTuto.Instance.CantShoot();
 
                 }
-                else if (timer >= (60 / bpm) * 3 / 4 && timer < 60 / bpm)
+                else if (timer >= (60 / bpm) * 3 / 4 && timer < 60 / bpm && !Main.Instance.canShoot)
                 {
                     //On peu
                     if (SceneManager.GetActiveScene().name != "Tuto")
+                    {
                         Main.Instance.CanShoot();
+                    }
                     else
                         MainTuto.Instance.CanShoot();
                 }

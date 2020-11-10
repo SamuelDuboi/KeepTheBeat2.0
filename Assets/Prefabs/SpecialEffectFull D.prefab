@@ -190,7 +190,6 @@ GameObject:
   - component: {fileID: 7488976557520641073}
   - component: {fileID: 7488976557520641074}
   - component: {fileID: 7488976557520641075}
-  - component: {fileID: 105826092990833521}
   m_Layer: 5
   m_Name: SpecialEffectFull D
   m_TagString: Untagged
@@ -279,17 +278,3 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &105826092990833521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7488976557520641084}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88047c770498a2d4393be8b598d18575, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  particuleG: {fileID: 7488976557153964024}
-  particuleD: {fileID: 7182835569163782246}

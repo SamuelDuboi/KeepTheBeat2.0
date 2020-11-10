@@ -9,5 +9,10 @@ public class DestroyAfterASec : MonoBehaviour
     public GameObject particuleG;
     public GameObject particuleD;
 
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(2f);
+        Destroy(gameObject);
+    }
 
 }

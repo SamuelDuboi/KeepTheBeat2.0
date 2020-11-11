@@ -21,7 +21,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     public float timerFloat;
     private List<int> numbers;
     private bool started;
-    private bool doOnce;
+    [SerializeField] private bool doOnce;
     private bool canCount;
     private int cpt;
 
@@ -31,15 +31,13 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     public Image fade;
 
+    [SerializeField] private GameObject SoundClic;
 
     private void Start()
     {
-        
-
         timerFloat = 20;// to enable timer only when started = true
         UduinoManager.Instance.OnDataReceived += DataReceived;
         DontDestroyOnLoad(this);
-
     }
 
     private void Update()
@@ -215,6 +213,8 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     IEnumerator FadeOut( bool tuto)
     {
+        SoundClic.GetComponent<AudioSource>().Play();
+
         for (float i = 255; i > 30; i--)
         {
             fade.color = new Color(0, 0, 0, i / 255);

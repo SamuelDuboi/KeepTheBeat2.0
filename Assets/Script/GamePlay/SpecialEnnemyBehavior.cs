@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpecialEnnemyBehavior : EnnemyBehavior
 {
 
-    public override void Move()
+  /*  public override void Move()
     {
         cpt++;
         switch (cpt)
@@ -40,7 +40,7 @@ public class SpecialEnnemyBehavior : EnnemyBehavior
        
            
         
-    }
+    }*/
 
 
 

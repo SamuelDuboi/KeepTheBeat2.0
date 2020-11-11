@@ -360,7 +360,7 @@ MonoBehaviour:
   poptextPosition: {fileID: 5171678598244457481}
   explosion: {fileID: 0}
   popTextScore: {fileID: 3526845074128397064, guid: eea65e27a5df25c4ba38c950be18ed88, type: 3}
-  child: {fileID: 8176772893566802032}
+  child: {fileID: 1312442961111284372}
   tile: {fileID: 0}
   positions:
   - {x: 0, y: 0, z: 0}

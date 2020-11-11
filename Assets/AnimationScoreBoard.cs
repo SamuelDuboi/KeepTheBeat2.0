@@ -29,9 +29,7 @@ public class AnimationScoreBoard : MonoBehaviour
         yield return new WaitForSeconds(1f);
         Values.SetActive(true);
         yield return new WaitForSeconds(0.5f);
-        Top10.SetActive(true);
-        yield return new WaitForSeconds(1f);
-        PressButton.SetActive(true);
+
         
     }
 }

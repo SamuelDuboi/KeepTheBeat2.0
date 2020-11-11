@@ -124,7 +124,9 @@ public class Spawner : MonoBehaviour
     public void Spwan(bool isSPecial)
     {
         GameObject _ennemy = Instantiate(ennemy, transform);
-        if(isSPecial)
+        _ennemy.transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z * 100);
+
+        if (isSPecial)
         {
             if (SceneManager.GetActiveScene().name != "Tuto")
                 SoundDisplay.Instance.AddEnnemy(_ennemy);

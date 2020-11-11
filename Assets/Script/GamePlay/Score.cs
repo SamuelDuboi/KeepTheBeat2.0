@@ -80,6 +80,8 @@ public class Score : Singleton<Score>
     
     IEnumerator WaitEnd(bool victory)
     {
+       var _scen = SceneManager.LoadSceneAsync("LeaderBoard", LoadSceneMode.Single);
+        _scen.allowSceneActivation = false;
         SoundDisplay.Instance.cantAct = true;
         SoundDisplay.Instance.cantMove = true;
         SoundDisplay.Instance.canStart = false;
@@ -109,8 +111,9 @@ public class Score : Singleton<Score>
         {
             endState.text = "game over";
         }
-        yield return new WaitForSeconds(10f);
-        SceneManager.LoadScene("LeaderBoard");
+        yield return new WaitForSeconds(6f);
+
+        _scen.allowSceneActivation = true;
 
     }
 

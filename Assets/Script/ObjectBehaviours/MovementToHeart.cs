@@ -14,7 +14,8 @@ public class MovementToHeart : MonoBehaviour
     private float direction, directionStart;
 
     public GameObject fx;
-   
+
+    [SerializeField] private GameObject audiosource;
 
     public bool isFollowing = false;
 
@@ -22,6 +23,8 @@ public class MovementToHeart : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
+
         target = gameObject.transform;
         if (SceneManager.GetActiveScene().name != "Tuto")
             target = Main.Instance.player.transform;
@@ -54,6 +57,7 @@ public class MovementToHeart : MonoBehaviour
         {
             if (SceneManager.GetActiveScene().name != "Tuto")
             {
+                Instantiate(audiosource, transform.position, Quaternion.identity);
                 Main.Instance.specialCount++;
                 Main.Instance.specialBarG.value = Main.Instance.specialCount;
                 Instantiate(fx, target.transform.position,Quaternion.identity);
@@ -65,6 +69,7 @@ public class MovementToHeart : MonoBehaviour
             }
             else
             {
+                Instantiate(audiosource, transform.position, Quaternion.identity);
                 MainTuto.Instance.specialBarG.value = MainTuto.Instance.specialCount;
                 MainTuto.Instance.specialCount++;
                 Instantiate(fx, target.transform.position, Quaternion.identity);

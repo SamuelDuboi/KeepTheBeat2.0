@@ -6,6 +6,7 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
 {
     public int step;
     public List<GameObject> Phase1, Phase2, Phase3;
+    public List<Material> sky;
    
     void Start()
     {
@@ -35,10 +36,10 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
 
     void ActivatePhase1()
     {
-        
+
         foreach (GameObject envi in Phase1)
         {
-            if(envi.GetComponent<EnvironnementObjectBehaviour>() != null)
+            if (envi.GetComponent<EnvironnementObjectBehaviour>() != null)
             {
                 if (envi.GetComponent<EnvironnementObjectBehaviour>().isParticuleEffect == true)
                 {
@@ -46,11 +47,12 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
                 }
             }
 
-            if(envi.GetComponent<EnvironnementSpawner>()!= null)
+            if (envi.GetComponent<EnvironnementSpawner>() != null)
             {
                 envi.GetComponent<EnvironnementSpawner>().canSpawn = true;
             }
         }
+        RenderSettings.skybox = sky[0];
 
     }
     void ActivatePhase2()
@@ -71,6 +73,7 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
                 envi.GetComponent<EnvironnementSpawner>().canSpawn = true;
             }
         }
+        RenderSettings.skybox = sky[1];
     }
 
     public void ResetFx()

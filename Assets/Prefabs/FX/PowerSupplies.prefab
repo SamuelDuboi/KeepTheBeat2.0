@@ -47,6 +47,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &1060236054245475897
 GameObject:
@@ -95,6 +96,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &1139447202336142954
 GameObject:
@@ -143,6 +145,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &1235679675521452432
 GameObject:
@@ -191,6 +194,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &1597565233299781597
 GameObject:
@@ -239,6 +243,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &2073473621434943646
 GameObject:
@@ -287,6 +292,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &2905967324247713815
 GameObject:
@@ -5148,6 +5154,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &5072809050807332857
 GameObject:
@@ -24486,6 +24493,7 @@ MonoBehaviour:
   target: {fileID: 0}
   velocity: {x: 0, y: 0, z: 0}
   fx: {fileID: 8931991919918012597, guid: cd74724534148cd40a19740d4e08ddbf, type: 3}
+  audiosource: {fileID: 2363381120660514743, guid: 19c5d916ad5ff1e4993bfaf8e39df569, type: 3}
   isFollowing: 0
 --- !u!1 &8392657076337558383
 GameObject:

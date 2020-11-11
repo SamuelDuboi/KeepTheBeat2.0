@@ -4,11 +4,16 @@ using UnityEngine;
 
 public class DestroyParticule : MonoBehaviour
 {
-    IEnumerator Start()
+    void Start()
+    {
+        StartCoroutine(Destroy());
+    }
+
+    IEnumerator Destroy()
     {
 
         //transform.GetComponentInChildren<ParticleSystem>().startColor = 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
 }

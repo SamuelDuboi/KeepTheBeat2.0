@@ -32,7 +32,7 @@ public class Score : Singleton<Score>
         StartCoroutine("DelayScore", upNumber);
         
 
-        if (cptStreak >= 5)
+        if (cptStreak >= 6)
         {
             if (scorMultiplier < 7)
                 scorMultiplierText.GetComponent<Animator>().SetTrigger("Multiplicateur");

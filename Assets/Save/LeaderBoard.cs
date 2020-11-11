@@ -13,7 +13,7 @@ public class LeaderBoard : ScriptableObject
 
     public bool victory;
     public bool gameOver;
-    public void CountScore(int value, float _bpm, bool isVictory)
+    public void CountScore(float value, float _bpm, bool isVictory)
     {
         victory = false;
         gameOver = false;

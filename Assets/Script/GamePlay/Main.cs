@@ -144,6 +144,10 @@ public class Main : Singleton<Main>
     }
     private void Update()
     {
+        if (specialCount >= specialMaxValue && Input.GetKeyDown(KeyCode.Space) && !isBulletTime)
+        {
+            StartCoroutine(BulletTime());
+        }
         specialBarD.value = specialBarG.value;
         specialBarD.maxValue = specialBarG.maxValue;
          if(canShootBoss || canShootMiniBoss)
@@ -481,11 +485,8 @@ public class Main : Singleton<Main>
         RaycastHit hit;
         Physics.Raycast(transform.position, new Vector3(position.x - transform.position.x, position.y - transform.position.y, position.z - transform.position.z), out hit);
         StartCoroutine(RowFade(isSpecial));
-        if (specialCount >= specialMaxValue)
-        {
-            StartCoroutine(BulletTime());
-        }
-        else if (hit.collider != null && hit.collider.gameObject.tag == "SpecialEnnemy")
+        
+         if (hit.collider != null && hit.collider.gameObject.tag == "SpecialEnnemy")
         {
             lineRenderer[0].SetPosition(1, hit.transform.position);
             clap.Play();
@@ -695,6 +696,7 @@ public class Main : Singleton<Main>
 
     public void SpecialSpawn()
     {
+        if(specialCount < specialMaxValue)
         specialSpawner.GetComponent<Spawner>().Spwan(true);
 
     }
@@ -882,8 +884,7 @@ public class Main : Singleton<Main>
     }
     IEnumerator StartAfterMiniBoss()
     {
-        GameObject DeadSound = Instantiate(deathBossSound, transform.position, Quaternion.identity);
-        Destroy(DeadSound, 8f);
+
         phaseNumber++;
         // wait for the player to calm down
         SoundDisplay.Instance.isBoss = false;
@@ -919,6 +920,8 @@ public class Main : Singleton<Main>
             }
             Instantiate(bigExplosion, miniBoss.transform.position, Quaternion.identity);
             SoundManager.Instance.UpdateVolume(Score.Instance.scorMultiplier);
+            GameObject DeadSound = Instantiate(deathBossSound, transform.position, Quaternion.identity);
+            Destroy(DeadSound, 8f);
             Destroy(miniBoss);
             spam.SetActive(false);
             spam.transform.position = spamStartPoisition;

@@ -33,6 +33,7 @@ public class LifeManager : Singleton<LifeManager>
         if (life <= 0)
         {
             Score.Instance.EndScene(false);
+            return;
         }
         mixer.SetFloat("MainVolume", -5);
         

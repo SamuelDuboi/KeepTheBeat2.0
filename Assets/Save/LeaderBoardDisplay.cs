@@ -18,11 +18,11 @@ public class LeaderBoardDisplay : MonoBehaviour
     public GameObject restart;
     public GameObject Panel;
 
-    public TextMeshProUGUI fate;
+
     IEnumerator Start()
     {
         scores = GetComponent<TextMeshProUGUI>();
-        for (int i = leaderBoard.scores.Length-1; i >= 0; i--)
+        for (int i = 10; i >= 0; i--)
         {
             scores.text += leaderBoard.names[i] + "      " + leaderBoard.bpm[i].ToString() + "       " + leaderBoard.scores[i].ToString() + "\n";
 
@@ -30,21 +30,7 @@ public class LeaderBoardDisplay : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
        
         if (leaderBoard.placeInLeaderBoard < 1000)
-        {
-            if (leaderBoard.victory)
-            {
-                fate.text = "VICTORY  \n" + "SCORE :    " + leaderBoard.scores[leaderBoard.placeInLeaderBoard].ToString();
-                yield return new WaitForSeconds(3f);
-                fate.text = string.Empty;
-                fate.transform.parent.gameObject.SetActive(false);
-            }
-            else if (leaderBoard.gameOver)
-            {
-                fate.text = "GAMEOVER  \n" + "SCORE :   " + leaderBoard.scores[leaderBoard.placeInLeaderBoard].ToString();
-                yield return new WaitForSeconds(3f);
-                fate.text = string.Empty;
-                fate.transform.parent.gameObject.SetActive(false);
-            }
+        {            
             for (int i = 0; i < 3 ; i++)
             {
                 names1[i].gameObject.SetActive(true);                
@@ -146,12 +132,12 @@ public class LeaderBoardDisplay : MonoBehaviour
                         leaderBoard.names[leaderBoard.placeInLeaderBoard] += names3[1].text;
                         scores.text = string.Empty;
 
-                        for (int i = leaderBoard.scores.Length - 1; i >= 0; i--)
+                        for (int i = 10 - 1; i >= 0; i--)
                         {
                             if(leaderBoard.names[i] != string.Empty)
                             scores.text += leaderBoard.names[i] + "      " + leaderBoard.bpm[i].ToString() + "       " + leaderBoard.scores[i].ToString() + "\n";
                             else
-                                scores.text += "AAA      " + leaderBoard.bpm[i].ToString() + "       " + leaderBoard.scores[i].ToString() + "\n";
+                                scores.text += "aaa      " + leaderBoard.bpm[i].ToString() + "       " + leaderBoard.scores[i].ToString() + "\n";
 
                         }
                         Panel.SetActive(false);

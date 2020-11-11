@@ -5,7 +5,7 @@ using System.Collections;
 
 public class Score : Singleton<Score>
 {
-    public static int score;
+    public static float score;
     public LeaderBoard leaderBoard;
     [HideInInspector] public int scorMultiplier = 1;
     [HideInInspector] public int cptStreak;
@@ -15,6 +15,9 @@ public class Score : Singleton<Score>
 
     [SerializeField] GameObject UiEffects;
 
+    public GameObject endSceneCanvas;
+    public TextMeshProUGUI endState;
+    public GameObject explosion;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -72,29 +75,46 @@ public class Score : Singleton<Score>
 
     public void EndScene(bool victory)
     {
-        leaderBoard.CountScore(score,AudioHelm.AudioHelmClock.Instance.bpm, victory);
-        if(victory)
-            StartCoroutine(FadeEnd());
+        StartCoroutine(WaitEnd(victory));
+    }
+    
+    IEnumerator WaitEnd(bool victory)
+    {
+        SoundDisplay.Instance.cantAct = true;
+        SoundDisplay.Instance.cantMove = true;
+        SoundDisplay.Instance.canStart = false;
+        if (!victory)
+        {
+            GameObject DeadSound = Instantiate(Main.Instance.deathBossSound, transform.position, Quaternion.identity);
+            Destroy(DeadSound, 8f);
+            explosion.SetActive(true);
+            explosion.GetComponentInParent<MeshRenderer>().enabled = false;
+            yield return new WaitForSeconds(1f);
+        }
         else
         {
-            SoundDisplay.Instance.canStart = false;
-            SoundDisplay.Instance.cantAct = true;
-            SoundDisplay.Instance.cantMove = true;
-            SceneManager.LoadScene("LeaderBoard");
-
+            Main.Instance.positionEnd[2].GetComponent<Spawner>().DesaapppearAll();
+            Main.Instance.positionEnd[3].GetComponent<Spawner>().DesaapppearAll();
         }
-    }
-    
-    IEnumerator FadeEnd()
-    {
-        yield return new WaitForSeconds(5f);
-            SoundDisplay.Instance.cantAct = true;
-            SoundDisplay.Instance.cantMove = true;
-        SoundDisplay.Instance.canStart = false;
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.EndOfGame);
+        endSceneCanvas.SetActive(true);
+        leaderBoard.CountScore(score, AudioHelm.AudioHelmClock.Instance.bpm, victory);
+
+
+        if (victory)
+        {
+            endState.text = "victory";
+        }
+        else
+        {
+            endState.text = "game over";
+        }
+        yield return new WaitForSeconds(10f);
         SceneManager.LoadScene("LeaderBoard");
+
     }
-   
-    
+
+
     public void EndAnim()
     {
         animator.SetBool("Score", false);

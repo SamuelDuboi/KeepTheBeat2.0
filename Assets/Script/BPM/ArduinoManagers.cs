@@ -21,7 +21,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     public float timerFloat;
     private List<int> numbers;
     private bool started;
-    private bool doOnce;
+    [SerializeField] private bool doOnce;
     private bool canCount;
     private int cpt;
 

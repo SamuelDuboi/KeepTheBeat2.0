@@ -33,4 +33,4 @@ public class PostProcessManager : MonoBehaviour
     }
 }
 
-public enum postProcess { Damage, BossInc, SpecialPower, BPM_80, BPM_90, BPM_100, EndOfGame };
+public enum postProcess { Damage, BossInc, SpecialPower, BPM_80, BPM_90, BPM_100, EndOfGame,Transition };

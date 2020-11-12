@@ -777,6 +777,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
+        EnvironnementManager.Instance.ResetFx();
         PostProcessManager.post.ActivatePostProcess((int)postProcess.BossInc);
         SoundManager.Instance.BossEntry();
         var _miniBoss = Instantiate(miniBoss, Vector3.forward * 1000, Quaternion.identity);
@@ -811,6 +812,7 @@ public class Main : Singleton<Main>
         yield return new WaitUntil(() => SoundDisplay.Instance.ennemys.Count == 0f);
         yield return new WaitForSeconds(2f);
         //instantiate the mini boss in the middle of the scene
+        EnvironnementManager.Instance.ResetFx();
         PostProcessManager.post.ActivatePostProcess((int)postProcess.BossInc);
         SoundManager.Instance.BossEntry();
         spam.SetActive(false);
@@ -901,8 +903,10 @@ public class Main : Singleton<Main>
         bossHit.fontSize = 150;
         bossHit.enabled = false;
         isBoss = false;
-        
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.Transition);
         EnvironnementManager.Instance.LunchPhase();
+        yield return new WaitForSeconds(0.15f);
+        PostProcessManager.post.DeactivatePostProcess();
     }
 
 

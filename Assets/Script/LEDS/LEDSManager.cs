@@ -7,25 +7,25 @@ public class LEDSManager : Singleton<LEDSManager>
     // Start is called before the first frame update
     void Start()
     {
-        for (int i = 0; i < 36; i++)
+        for (int i = 0; i < 6; i++)
         {
-            if (i < 6)
+            if (i < 1)
             {
                 UduinoManager.Instance.sendCommand("turnOnPixel", i, 255, 255, 0, 100);
             }
-            else if (i>=6 && i < 12)
+            else if (i>=1 && i < 2)
             {
                 UduinoManager.Instance.sendCommand("turnOnPixel", i, 135, 255, 0, 100);
             }
-            else if (i >= 12 && i < 18)
+            else if (i >= 2 && i < 3)
             {
                 UduinoManager.Instance.sendCommand("turnOnPixel", i, 255, 0, 0, 100);
             }
-            else if (i >= 18 && i < 24)
+            else if (i >= 3 && i < 4)
             {
                 UduinoManager.Instance.sendCommand("turnOnPixel", i, 0, 255, 255, 100);
             }
-            else if (i >= 24 && i < 30)
+            else if (i >= 4 && i < 5)
             {
                 UduinoManager.Instance.sendCommand("turnOnPixel", i, 136, 0, 255, 100);
             }

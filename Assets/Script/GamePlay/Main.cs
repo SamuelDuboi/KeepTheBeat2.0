@@ -74,7 +74,7 @@ public class Main : Singleton<Main>
 
     [Header("Boss")]
     [HideInInspector] public bool canShootBoss;
-    private int phaseNumber;
+    private float phaseNumber;
     public GameObject boss;
     public GameObject[] laserBeams = new GameObject[3];
     public GameObject bigExplosion;
@@ -95,6 +95,8 @@ public class Main : Singleton<Main>
     {
         
         sprite = GetComponent<SpriteRenderer>();
+
+        phaseNumber = -1;
 
         lineRenderer[0].SetPosition(0, transform.position);
         lineRenderer[1].SetPosition(0, transform.position);
@@ -926,7 +928,7 @@ public class Main : Singleton<Main>
             spam.SetActive(false);
             spam.transform.position = spamStartPoisition;
             PostProcessManager.post.DeactivatePostProcess();
-            if (phaseNumber <= 1)
+            if (phaseNumber ==- 1)
             {
                 StartCoroutine(StartAfterMiniBoss());
             }

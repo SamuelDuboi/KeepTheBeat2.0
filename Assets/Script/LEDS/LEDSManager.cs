@@ -36,8 +36,15 @@ public class LEDSManager : Singleton<LEDSManager>
         }
         
     }
-        
-   public void LightUp(int row)
+
+
+    private void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Space))
+            LightUp(0);
+    }
+    public void LightUp(int row)
     {
         StartCoroutine(LightDown(row));
     }
@@ -48,7 +55,7 @@ public class LEDSManager : Singleton<LEDSManager>
         {
             UduinoManager.Instance.sendCommand("changeBrightnessPixel", i,200);
         }
-        yield return new WaitForSeconds(0.1f);// this time will be change
+        yield return new WaitForSeconds(0.5f);// this time will be change
         for (int i = row * 6; i < 6 + row * 6; i++)
         {
             UduinoManager.Instance.sendCommand("changeBrightnessPixel", i, 100);

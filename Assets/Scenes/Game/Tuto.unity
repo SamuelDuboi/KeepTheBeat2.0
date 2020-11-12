@@ -234,6 +234,63 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 7722797094005017668, guid: c1046e438f0aa4a49a70a574c25c1547, type: 3}
+--- !u!1001 &39361458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1169019389771402, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_Name
+      value: Uduino
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720884688345560, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
 --- !u!1 &78019589
 GameObject:
   m_ObjectHideFlags: 0
@@ -5442,6 +5499,9 @@ MonoBehaviour:
   scorText: {fileID: 3300805184230733962}
   scorMultiplierText: {fileID: 3300805184458595079}
   UiEffects: {fileID: 100382585}
+  endSceneCanvas: {fileID: 0}
+  endState: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!95 &3300805184230733964
 Animator:
   serializedVersion: 3
@@ -6118,6 +6178,9 @@ MonoBehaviour:
   scorText: {fileID: 3300805184230733962}
   scorMultiplierText: {fileID: 3300805184458595079}
   UiEffects: {fileID: 0}
+  endSceneCanvas: {fileID: 0}
+  endState: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!224 &3300805184825306416
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8342,6 +8405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectList: []
+  SpecialEffectsOnce: []
+  SpecialEffectsLoop: []
 --- !u!114 &7330844740975588665
 MonoBehaviour:
   m_ObjectHideFlags: 0

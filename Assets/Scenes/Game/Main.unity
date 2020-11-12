@@ -547,19 +547,23 @@ PrefabInstance:
     - target: {fileID: 350777524, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: sharedProfile
       value: 
-      objectReference: {fileID: 11400000, guid: 3d5d5e0ae431c0c4da1fee6cfc5fc476, type: 2}
+      objectReference: {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
     - target: {fileID: 350777524, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: isGlobal
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 350777528, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: FXprofile.Array.size
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 350777528, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: FXprofile.Array.data[6]
       value: 
       objectReference: {fileID: 11400000, guid: 3d5d5e0ae431c0c4da1fee6cfc5fc476, type: 2}
+    - target: {fileID: 350777528, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: FXprofile.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
     - target: {fileID: 3300805183924527120, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0
@@ -704,6 +708,10 @@ PrefabInstance:
       propertyPath: explosion
       value: 
       objectReference: {fileID: 2119354557}
+    - target: {fileID: 9112153951030104365, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: bpm
+      value: 90
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
 --- !u!1 &1134776870 stripped
@@ -758,10 +766,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   step: 0
   Phase1:
+  - {fileID: 488412791}
   - {fileID: 1463337899}
   - {fileID: 408295522}
   - {fileID: 1469771776}
-  - {fileID: 488412791}
   Phase2:
   - {fileID: 1134776870}
   - {fileID: 325039783}
@@ -1795,6 +1803,18 @@ PrefabInstance:
     - target: {fileID: 3005726985310398665, guid: 4eaba29fce0d05f44a2e97ff5d574775, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005726985310398666, guid: 4eaba29fce0d05f44a2e97ff5d574775, type: 3}
+      propertyPath: prewarm
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005726985310398666, guid: 4eaba29fce0d05f44a2e97ff5d574775, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3005726985310398666, guid: 4eaba29fce0d05f44a2e97ff5d574775, type: 3}
+      propertyPath: lengthInSec
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3005726985310398668, guid: 4eaba29fce0d05f44a2e97ff5d574775, type: 3}
       propertyPath: m_Name

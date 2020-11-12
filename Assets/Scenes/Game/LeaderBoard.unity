@@ -3391,6 +3391,55 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2738671796430235001, guid: 47cc28dc08f255340967c8e0543a389e, type: 3}
   m_PrefabInstance: {fileID: 1411170329}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1411170331 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5747879038462922689, guid: 47cc28dc08f255340967c8e0543a389e, type: 3}
+  m_PrefabInstance: {fileID: 1411170329}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1411170332 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3121694952120008900, guid: 47cc28dc08f255340967c8e0543a389e, type: 3}
+  m_PrefabInstance: {fileID: 1411170329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1411170333 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3121694952040585024, guid: 47cc28dc08f255340967c8e0543a389e, type: 3}
+  m_PrefabInstance: {fileID: 1411170329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1411170334 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3121694951663763696, guid: 47cc28dc08f255340967c8e0543a389e, type: 3}
+  m_PrefabInstance: {fileID: 1411170329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1411170335 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3121694951236290673, guid: 47cc28dc08f255340967c8e0543a389e, type: 3}
+  m_PrefabInstance: {fileID: 1411170329}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &1432385592
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -4608,11 +4657,11 @@ MonoBehaviour:
   cadre: {fileID: 856288037}
   title: {fileID: 1448387508}
   value: {fileID: 1240666928}
-  top10: {fileID: 0}
-  top10Rank: {fileID: 0}
-  top10Name: {fileID: 0}
-  top10Score: {fileID: 0}
-  top10Bpm: {fileID: 0}
+  top10: {fileID: 1411170331}
+  top10Rank: {fileID: 1411170335}
+  top10Name: {fileID: 1411170334}
+  top10Score: {fileID: 1411170332}
+  top10Bpm: {fileID: 1411170333}
 --- !u!1 &1642668923
 GameObject:
   m_ObjectHideFlags: 0

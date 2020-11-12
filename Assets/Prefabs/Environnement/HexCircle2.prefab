@@ -42,7 +42,7 @@ Light:
   serializedVersion: 10
   m_Type: 2
   m_Shape: 0
-  m_Color: {r: 0.30615875, g: 0.9433962, b: 0.5222936, a: 1}
+  m_Color: {r: 0.3339622, g: 0.8928217, b: 1, a: 1}
   m_Intensity: 20
   m_Range: 20
   m_SpotAngle: 30
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 8789876906166523061}
   - component: {fileID: 2073714109437186980}
   m_Layer: 22
-  m_Name: HexCircle
+  m_Name: HexCircle2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

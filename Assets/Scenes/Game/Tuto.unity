@@ -289,6 +289,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: baudRate
+      value: 115200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: interfaceType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: ManagerState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: shouldReconnect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: autoReconnect
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
 --- !u!1 &78019589
@@ -11598,6 +11618,7 @@ GameObject:
   - component: {fileID: 8812904904570640220}
   - component: {fileID: 8812904904570640212}
   - component: {fileID: 8812904904570640221}
+  - component: {fileID: 8812904904570640213}
   m_Layer: 0
   m_Name: Main
   m_TagString: Untagged
@@ -11679,10 +11700,23 @@ MonoBehaviour:
   bossHit: {fileID: 7330844740975588665}
   firstSphere: {fileID: 1562234081773648498, guid: 3549ffbb40e26fd479630c35f4f8248f, type: 3}
   SecondSphere: {fileID: 8084075636896741586, guid: 431d867a0e1dccb43ac615cc9058d62b, type: 3}
+  LEDSManager: {fileID: 8812904904570640213}
   cptPhase: 0
   cantSpwan: 0
   waveNumber: 0
   canShootSpecial: 0
+--- !u!114 &8812904904570640213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8812904904570640211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05fc21b17b7f2c48909536da3c07121, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &8812904904570640220
 LineRenderer:
   m_ObjectHideFlags: 0

@@ -584,7 +584,7 @@ public class Main : Singleton<Main>
 
                 #endregion
                 // number of pattern befor miniBoss
-                if (patternNumber == 0)
+                if (patternNumber == 5)
                 {
                     StartCoroutine(MiniBoss());
                 }

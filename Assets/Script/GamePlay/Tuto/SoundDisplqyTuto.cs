@@ -39,6 +39,7 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
     [HideInInspector] public bool isBoss;
     private float timerBossPuls;
     private bool goNext;
+    private float timerEnd;
     // Start is called before the first frame update
     void Start()
     {
@@ -62,6 +63,8 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
         if (ennemys.Count == 0 && MainTuto.Instance.cptPhase > 16 && !goNext)
         {
             text.NextText(text.texts.Length - 1);
+            timerEnd += Time.deltaTime;
+            if(timerEnd >=1f)
             goNext = true;
         }
         else if (ennemys.Count == 0)

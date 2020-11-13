@@ -11,7 +11,9 @@ public class SceneFade : MonoBehaviour
     {
 
         PostProcessManager.post.ActivatePostProcess((int)postProcess.Transition);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.5f);
+        PostProcessManager.post.DeactivatePostProcess();
+        yield return new WaitForSeconds(1f);
 
         if (SceneManager.GetActiveScene().name == "Tuto")
         {
@@ -29,7 +31,7 @@ public class SceneFade : MonoBehaviour
                 spawn.GetComponent<Spawner>().ApppearAll();
             }
         }
-        PostProcessManager.post.DeactivatePostProcess();
+
     }
        
 }

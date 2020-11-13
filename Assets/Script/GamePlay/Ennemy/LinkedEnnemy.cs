@@ -25,12 +25,14 @@ public class LinkedEnnemy :MonoBehaviour
         {
             cantReset = true;
             StartCoroutine(Reset());
+
         }
     }
 
     public void Hitted()
     {
-        hitCpt++; 
+         hitCpt++;
+        
         if (hitCpt >= 2)
         {
             Score.Instance.ScoreUp(hitBox[1].GetComponent<EnnemyBehavior>().scoreValue);
@@ -67,8 +69,9 @@ public class LinkedEnnemy :MonoBehaviour
     }
     private IEnumerator Reset()
     {
-
         yield return new WaitForSeconds ((60 / AudioHelmClock.Instance.bpm) *0.5f);
+        hitBox[0].GetComponent<EnnemyBehavior>().hitted = false;
+        hitBox[1].GetComponent<EnnemyBehavior>().hitted = false;
         hitCpt = 0;
         cantReset = false;
     }

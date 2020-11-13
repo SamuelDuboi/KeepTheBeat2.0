@@ -146,7 +146,7 @@ public class Main : Singleton<Main>
     }
     private void Update()
     {
-        if (specialCount >= specialMaxValue && Input.GetKeyDown(KeyCode.Space) && !isBulletTime)
+        if (specialCount >= specialMaxValue && Input.GetKeyDown(KeyCode.Space) && !isBulletTime && !canShootMiniBoss && !canShootBoss)
         {
             StartCoroutine(BulletTime());
         }
@@ -471,7 +471,11 @@ public class Main : Singleton<Main>
                 clap.Play();
                 StartCoroutine(LaserFade(_cpt - 1,100));
                 //LEDSManager.Instance.LightUp(_rowOn);
-                hit.collider.GetComponentInParent<LinkedEnnemy>().Hitted();
+                if (!hit.collider.gameObject.GetComponent<EnnemyBehavior>().hitted)
+                {
+                    hit.collider.gameObject.GetComponent<EnnemyBehavior>().hitted =true;
+                    hit.collider.GetComponentInParent<LinkedEnnemy>().Hitted();
+                }
              
             }
         }
@@ -580,7 +584,7 @@ public class Main : Singleton<Main>
 
                 #endregion
                 // number of pattern befor miniBoss
-                if (patternNumber == 5)
+                if (patternNumber == 0)
                 {
                     StartCoroutine(MiniBoss());
                 }

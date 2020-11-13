@@ -871,6 +871,8 @@ GameObject:
   - component: {fileID: 350777525}
   - component: {fileID: 350777524}
   - component: {fileID: 350777526}
+  - component: {fileID: 350777527}
+  - component: {fileID: 350777528}
   m_Layer: 0
   m_Name: PostProcess
   m_TagString: Untagged
@@ -893,8 +895,8 @@ MonoBehaviour:
   isGlobal: 1
   priority: 0
   blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 0}
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
 --- !u!4 &350777525
 Transform:
   m_ObjectHideFlags: 0
@@ -921,6 +923,46 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b7cbe482c9d8246aa6bffd33ca10f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &350777527
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350777523}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 7768d50ec387e32429c2d21bc19935eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &350777528
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 350777523}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b0938918bd9d024283ae7e949f6b915, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  FXprofile:
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+  - {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
 --- !u!1 &508703518
 GameObject:
   m_ObjectHideFlags: 0
@@ -6951,7 +6993,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3598261684521925753, guid: 5b572ef232f130642a546357c84ea6fe, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5b572ef232f130642a546357c84ea6fe, type: 3}

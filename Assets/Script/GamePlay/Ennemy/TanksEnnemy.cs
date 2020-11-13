@@ -16,15 +16,16 @@ public class TanksEnnemy : EnnemyBehavior
         light1.color = lightParent.color;
         light2.color = lightParent.color;
     }
-
-    private void Update()
+    public override void Update()
     {
+        base.Update();
         if (cptDead > 0 && !canReset)
         {
             canReset = true;
             StartCoroutine(Reset());
         }
     }
+
     public override void Destroyed(int value, bool scoreUp)
     {
         cptDead++;

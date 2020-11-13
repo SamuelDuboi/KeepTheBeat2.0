@@ -24,12 +24,14 @@ public class EnnemyBehavior : MonoBehaviour
     [HideInInspector] public bool turnOnTrail;
     int type;
 
+    public bool hitted;
+
     [HideInInspector] public Color row1;
     [HideInInspector] public Color row2;
     public Light light1;
     public Light light2;
 
-    private void Update()
+    public virtual void Update()
     {
         if (!cantMove)
         {

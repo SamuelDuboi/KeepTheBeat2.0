@@ -13,11 +13,25 @@ MonoBehaviour:
   m_Name: empty
   m_EditorClassIdentifier: 
   ennemiesPositionForEditor:
-  - {x: 500, y: 600, z: 3}
-  - {x: 300, y: 550, z: 3}
-  - {x: 200, y: 500, z: 3}
+  - {x: 500, y: 600, z: 4}
+  - {x: 600, y: 600, z: 4}
+  - {x: 300, y: 550, z: 4}
+  - {x: 400, y: 550, z: 4}
+  - {x: 200, y: 500, z: 4}
+  - {x: 100, y: 500, z: 4}
+  - {x: 300, y: 450, z: 4}
+  - {x: 200, y: 450, z: 4}
+  - {x: 500, y: 400, z: 4}
+  - {x: 400, y: 400, z: 4}
   ennemiesPosition:
-  - {x: 4, y: 11, z: 3}
-  - {x: 2, y: 10, z: 3}
-  - {x: 1, y: 9, z: 3}
+  - {x: 4, y: 11, z: 4}
+  - {x: 5, y: 11, z: 4}
+  - {x: 2, y: 10, z: 4}
+  - {x: 3, y: 10, z: 4}
+  - {x: 1, y: 9, z: 4}
+  - {x: 0, y: 9, z: 4}
+  - {x: 2, y: 8, z: 4}
+  - {x: 1, y: 8, z: 4}
+  - {x: 4, y: 7, z: 4}
+  - {x: 3, y: 7, z: 4}
   difficulty: 1

@@ -632,6 +632,10 @@ PrefabInstance:
       propertyPath: FXprofile.Array.data[7]
       value: 
       objectReference: {fileID: 11400000, guid: 2570f818a90db784d8191328224cf8a9, type: 2}
+    - target: {fileID: 2151367207884539375, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3300805183924527120, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

@@ -10,7 +10,7 @@ public class PostProcessManager : MonoBehaviour
 
     public List<VolumeProfile> FXprofile = new List<VolumeProfile>();
 
-    void Start()
+    void Awake()
     {
         post = this;
         animator = gameObject.GetComponent<Animator>();

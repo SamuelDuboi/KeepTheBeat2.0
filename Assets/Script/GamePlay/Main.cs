@@ -91,6 +91,8 @@ public class Main : Singleton<Main>
     public GameObject SecondSphere;
     private GameObject[] spheres = new GameObject[2];
 
+
+    public LEDSManager LEDSManager;
     private void Start()
     {
         
@@ -445,6 +447,7 @@ public class Main : Singleton<Main>
     void Shoot(Vector3 position, int _rowOn)
     {
         doOnceCPT++;
+        LEDSManager.LightUp(_rowOn);
         var _cpt = doOnceCPT;
         if(doOnceCPT >=2)
         {
@@ -489,6 +492,7 @@ public class Main : Singleton<Main>
     {
         canShoot = false;
         RaycastHit hit;
+        LEDSManager.LightUp(6);
         Physics.Raycast(transform.position, new Vector3(position.x - transform.position.x, position.y - transform.position.y, position.z - transform.position.z), out hit);
         StartCoroutine(RowFade(isSpecial));
         

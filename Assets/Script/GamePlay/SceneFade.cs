@@ -9,12 +9,10 @@ public class SceneFade : MonoBehaviour
 
     IEnumerator Start()
     {
-        var _image = GetComponent<Image>();
-        for (float i = 255; i>200; i--)
-        {
-            _image.color = new Color(0, 0, 0, i / 255);
-            yield return new WaitForSeconds(0.01f);
-        }
+
+        PostProcessManager.post.ActivatePostProcess((int)postProcess.Transition);
+        yield return new WaitForSeconds(1.5f);
+
         if (SceneManager.GetActiveScene().name == "Tuto")
         {
             SoundDisplqyTuto.Instance.canStart = true;
@@ -31,11 +29,7 @@ public class SceneFade : MonoBehaviour
                 spawn.GetComponent<Spawner>().ApppearAll();
             }
         }
-        for (float i = 200; i > 0; i--)
-        {
-            _image.color = new Color(0, 0, 0, i / 255);
-            yield return new WaitForSeconds(0.01f);
-        }
+        PostProcessManager.post.DeactivatePostProcess();
     }
        
 }

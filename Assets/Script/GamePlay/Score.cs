@@ -18,6 +18,7 @@ public class Score : Singleton<Score>
     public GameObject endSceneCanvas;
     public TextMeshProUGUI endState;
     public GameObject explosion;
+    private bool oneEnd;
     private void Start()
     {
         animator = GetComponent<Animator>();
@@ -75,7 +76,11 @@ public class Score : Singleton<Score>
 
     public void EndScene(bool victory)
     {
-        StartCoroutine(WaitEnd(victory));
+        if (!oneEnd)
+        {
+            StartCoroutine(WaitEnd(victory));
+            oneEnd = true;
+        }
     }
     
     IEnumerator WaitEnd(bool victory)

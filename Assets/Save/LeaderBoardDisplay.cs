@@ -66,7 +66,7 @@ public class LeaderBoardDisplay : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && restart.activeSelf)
         {
-            SceneManager.LoadScene("Main");
+            SceneManager.LoadScene("Intro");
         }
         if (leaderBoard.placeInLeaderBoard < 1000)
         {

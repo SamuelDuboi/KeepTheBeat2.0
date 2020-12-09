@@ -376,7 +376,7 @@ public class MainTuto : Singleton<MainTuto>
             if (canShoot)
             {
                 if (Input.GetKeyDown(KeyCode.Q))
-                    Shoot(positionEnd[0].transform.position, 5Z);
+                    Shoot(positionEnd[0].transform.position, 5);
                 else if (Input.GetKeyDown(KeyCode.Z))
                     Shoot(positionEnd[1].transform.position, 4);
                 else if (Input.GetKeyDown(KeyCode.E))

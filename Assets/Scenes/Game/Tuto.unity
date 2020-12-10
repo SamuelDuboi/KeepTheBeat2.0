@@ -1430,7 +1430,8 @@ PrefabInstance:
       propertyPath: laserAudio
       value: 
       objectReference: {fileID: 1259909672}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9112153950532967283, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
 --- !u!1 &704650903
 GameObject:
@@ -3245,17 +3246,6 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: -8172680918820081068, guid: c1046e438f0aa4a49a70a574c25c1547, type: 3}
---- !u!114 &1479059726 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9112153950532967283, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
-  m_PrefabInstance: {fileID: 690618783}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045e068a7f5e98b4d9ed97de401bb997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1516936135
 GameObject:
   m_ObjectHideFlags: 0
@@ -11218,7 +11208,6 @@ MonoBehaviour:
   beat: 0
   pourcentageAllow: 25
   timer: 0
-  clock: {fileID: 1479059726}
   mixer: {fileID: 24100000, guid: 60b666c66d0802c409eb2a1b4379ef86, type: 2}
   speedModifier: 1
   loops:

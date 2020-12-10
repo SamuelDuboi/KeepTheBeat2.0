@@ -193,73 +193,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: ManagerState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: baudRate
+      value: 115200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114023058375386772, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
+      propertyPath: interfaceType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
---- !u!1 &170986614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1169019389771402, guid: bb5e6aea88a650f4a8317e74940b0ea4, type: 3}
-  m_PrefabInstance: {fileID: 170986613}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &170986615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 170986614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2f5a4e52dfc3107499249fb2d34a1bae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pins: []
-  activeExtentionsMap:
-    keys:
-    - UduinoDevice_DesktopSerial
-    values: 01
-  presentExtentionsMap:
-    keys:
-    - UduinoDevice_DesktopSerial
-    values: 01
-  ManagerState: 0
-  debugLevel: 0
-  baudRate: 115200
-  limitSendRate: 0
-  readTimeout: 25
-  writeTimeout: 25
-  threadFrequency: 6
-  alwaysRead: 1
-  readAfterCommand: 1
-  skipMessageQueue: 0
-  messageQueueLength: 10
-  defaultArduinoBoardType: 0
-  useCuPort: 0
-  forcePinEditor: 0
-  sendRateSpeed: 20
-  discoverTries: 10
-  autoDiscover: 1
-  delayBeforeDiscover: 0.5
-  stopAllOnQuit: 1
-  stopAllOnPause: 0
-  autoReconnect: 0
-  autoReconnectDelay: 5
-  shouldReconnect: 1
-  blackListedPorts: []
-  OnDataReceivedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnBoardConnectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  OnBoardDisconnectedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  displayAndroidTextGUI: 0
-  autoConnectToLastDevice: 1
-  bleScanDuration: 3
-  interfaceType: 0
-  uduinoWiFiBoards: []
-  isApplicationQuiting: 0
 --- !u!4 &227384567 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8265646990916469407, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}

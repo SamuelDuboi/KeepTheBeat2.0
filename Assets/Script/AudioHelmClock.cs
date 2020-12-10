@@ -56,6 +56,7 @@ namespace AudioHelm
 
                 else if (timer >= 60 / bpm)
                 {
+                    Debug.Log("yo");
                     loopTimer = AudioSettings.dspTime - startTime;
                     timer = AudioSettings.dspTime - startTime - loopTimer;
                     if (!doOnce)

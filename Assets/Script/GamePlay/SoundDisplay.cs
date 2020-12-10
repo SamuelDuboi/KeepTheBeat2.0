@@ -15,7 +15,6 @@ public class SoundDisplay : Singleton<SoundDisplay>
     public float pourcentageAllow;
     private double pourcentageCalculated;
     [SerializeField] private double timer;
-    public AudioHelmClock clock;
     public AudioMixer mixer;
     [Range(1, 3)]
     public int speedModifier = 1;
@@ -40,13 +39,13 @@ public class SoundDisplay : Singleton<SoundDisplay>
     // Start is called before the first frame update
     void Start()
     {        
-        pourcentageCalculated = pourcentageAllow / 100 * (60 / clock.bpm);
+        pourcentageCalculated = pourcentageAllow / 100 * (60 / AudioHelmClock.Instance.bpm);
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        pourcentageCalculated = pourcentageAllow / 100f * (60f / clock.bpm);
+        pourcentageCalculated = pourcentageAllow / 100f * (60f / AudioHelmClock.Instance.bpm);
 
         if(!isBoss)
             timer = AudioSettings.dspTime - AudioHelmClock.Instance.startTime - timePreviousBeat;

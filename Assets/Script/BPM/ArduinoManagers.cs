@@ -126,9 +126,9 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             if(morpheus.activeSelf)
             {
                 if (Input.GetKeyDown(KeyCode.E))
-                    FadeOut(true);
+                   StartCoroutine( FadeOut(true));
                 else if (Input.GetKeyDown(KeyCode.R))
-                    FadeOut(false);
+                    StartCoroutine( FadeOut(false));
             }    
         }
 
@@ -155,9 +155,14 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             cpt = 0;
             numbers.Add(int.Parse(data));
 
-            foreach (int _bpm in numbers)
+            for (int i = 0; i < numbers.Count; i++)
             {
-                cpt += _bpm;
+                if (numbers[i] > 50 && numbers[i] < 150)
+                {
+                    cpt += numbers[i];
+                }
+                else
+                    cpt += 80;
             }
 
             if (numbers.Count > 0)

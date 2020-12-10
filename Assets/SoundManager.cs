@@ -7,7 +7,6 @@ public class SoundManager : Singleton<SoundManager>
 {
     [SerializeField] private bool changing = false;
 
-    [SerializeField] private GameObject audioClock;
 
     
 
@@ -25,14 +24,11 @@ public class SoundManager : Singleton<SoundManager>
     // Start is called before the first frame update
     void Start()
     {
-        audioClock = gameObject;
 
         getBpm = AudioHelmClock.Instance.bpm;
 
-        foreach (Transform child in transform)
-        {
-            tracks.Add(child.gameObject);
-        }
+        
+        
 
         SelectTracks();
     }

@@ -25,6 +25,9 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     private bool canCount;
     private int cpt;
 
+
+    private bool loadOnce;
+
     public GameObject morpheus;
 
     public GameObject sound;
@@ -125,10 +128,22 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             gameObject.GetComponent<AudioHelmClock>().bpm = cpt;
             if(morpheus.activeSelf)
             {
+                if (Input.GetKeyDown(KeyCode.V))
+                {
+                    cpt = 80;
+                }
+                else if(Input.GetKeyDown(KeyCode.B))
+                {
+                    cpt = 100;
+                }
+                else if (Input.GetKeyDown(KeyCode.N))
+                {
+                    cpt = 110;
+                }
                 if (Input.GetKeyDown(KeyCode.E))
-                   StartCoroutine( FadeOut(true));
+                   StartCoroutine( FadeIn(true));
                 else if (Input.GetKeyDown(KeyCode.R))
-                    StartCoroutine( FadeOut(false));
+                    StartCoroutine( FadeIn(false));
             }    
         }
 
@@ -157,12 +172,12 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
             for (int i = 0; i < numbers.Count; i++)
             {
-                if (numbers[i] > 50 && numbers[i] < 150)
+                if (numbers[i] > 50 && numbers[i] < 130)
                 {
                     cpt += numbers[i];
                 }
                 else
-                    cpt += 80;
+                    cpt += 60;
             }
 
             if (numbers.Count > 0)
@@ -172,9 +187,9 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                     cpt = cpt / (numbers.Count-1);
                 else
                     cpt = cpt / (numbers.Count );
-                if (numbers[numbers.Count - 1] > cpt + 50 || numbers[numbers.Count - 1] < cpt - 50)
+                /*if (numbers[numbers.Count - 1] > cpt + 50 || numbers[numbers.Count - 1] < cpt - 50)
                 {
-                   
+                 
                     numbers.Remove(int.Parse(data));
                     cpt = 0;
                     foreach (int _bpm in numbers)
@@ -183,8 +198,8 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                     }
                     if (numbers.Count - 1 != 0)
                         cpt = cpt / (numbers.Count - 1);
-
-                }
+                    
+                }*/
 
             }
 
@@ -195,7 +210,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     private IEnumerator WaiForCounting()
     {
-        StartCoroutine("CircleSpawning");
+        StartCoroutine(CircleSpawning());
         StartCoroutine(FadeOutSound(sound));
         GetComponent<AudioSource>().Play();
         started = false;
@@ -213,22 +228,37 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     {
         Instantiate(circleRef, heart.transform.position, Quaternion.identity);
         yield return new WaitForSecondsRealtime(1f);
-        StartCoroutine("CircleSpawning");
+        
+        StartCoroutine(CircleSpawning());
     }
 
-    IEnumerator FadeOut( bool tuto)
+    IEnumerator FadeIn(bool tuto)
     {
-        SoundClic.GetComponent<AudioSource>().Play();
-
-        for (float i = 255; i > 30; i--)
+        if (!loadOnce)
         {
-            fade.color = new Color(0, 0, 0, i / 255);
-            yield return new WaitForSeconds(0.01f);
+            loadOnce = true;
+            SoundClic.GetComponent<AudioSource>().Play();
+            AsyncOperation _scen = new AsyncOperation();
+            if (tuto)
+            {
+               _scen = SceneManager.LoadSceneAsync("Tuto");
+                _scen.allowSceneActivation = false;
+
+            }
+            else
+            {
+               _scen=  SceneManager.LoadSceneAsync("Main");
+                _scen.allowSceneActivation = false;
+
+            }
+
+            for (float i = 0; i < 250; i++)
+            {
+                fade.color = new Color(0, 0, 0, i / 255);
+                yield return new WaitForSeconds(0.01f);
+            }
+            _scen.allowSceneActivation = true;
         }
-        if (tuto)
-            SceneManager.LoadScene("Tuto");
-        else
-            SceneManager.LoadScene("Main");
 
     }
 

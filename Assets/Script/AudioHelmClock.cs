@@ -13,6 +13,10 @@ namespace AudioHelm
         private double loopTimer;
         private bool doOnce;
         [HideInInspector] public double startTime;
+        protected override void Awake()
+        {
+            base.Awake();
+        }
         private void Start()
         {
             startTime = AudioSettings.dspTime;

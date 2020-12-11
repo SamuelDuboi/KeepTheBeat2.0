@@ -8,7 +8,10 @@ public class ParticuleManager :Singleton<ParticuleManager>
 
     public List<GameObject> SpecialEffectsOnce = new List<GameObject>();
     public List<GameObject> SpecialEffectsLoop = new List<GameObject>();
-
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     public void Start()
     {
         foreach (GameObject effect in effectList)

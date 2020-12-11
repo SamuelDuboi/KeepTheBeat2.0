@@ -15,7 +15,10 @@ public class LifeManager : Singleton<LifeManager>
     public static int life;
     public GameObject gameOver;
     public Image fade;
-
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     private void Start()
     {
 

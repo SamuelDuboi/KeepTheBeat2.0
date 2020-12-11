@@ -7,7 +7,10 @@ public class EnvironnementManager : Singleton<EnvironnementManager>
     public int step;
     public List<GameObject> Phase1, Phase2, Phase3;
     public List<Material> sky;
-   
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     void Start()
     {
         LunchPhase();

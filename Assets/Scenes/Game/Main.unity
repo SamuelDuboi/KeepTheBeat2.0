@@ -914,7 +914,7 @@ PrefabInstance:
     - target: {fileID: 8812904904658119740, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: LEDSManager
       value: 
-      objectReference: {fileID: 1061364009}
+      objectReference: {fileID: 1061364008}
     - target: {fileID: 8850501537056277424, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: endSceneCanvas
       value: 
@@ -934,18 +934,12 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 9112153951030104365, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
---- !u!1 &1061364008 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8812904904658119729, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+--- !u!114 &1061364008 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1061364009, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
   m_PrefabInstance: {fileID: 1061364007}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1061364009
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1061364008}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e05fc21b17b7f2c48909536da3c07121, type: 3}

@@ -20,6 +20,10 @@ public class SoundManager : Singleton<SoundManager>
     [SerializeField] private AudioClip[] audioClipsSelected;
 
     public float getBpm = 0;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
 
     // Start is called before the first frame update
     void Start()

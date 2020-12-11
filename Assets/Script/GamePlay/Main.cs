@@ -93,6 +93,10 @@ public class Main : Singleton<Main>
 
 
     public LEDSManager LEDSManager;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     private void Start()
     {
         
@@ -991,7 +995,10 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
                     obj.name = typeof(T).Name;
                     instance = obj.AddComponent<T>();
                 }
+                
             }
+
+
             return instance;
         }
     }
@@ -1009,11 +1016,10 @@ public abstract class Singleton<T> : MonoBehaviour where T : Component
         {
             instance = this as T;
         }
-     /*   else
+       else
         {
-            Debug.Log("yo");
-            Destroy(gameObject);
-        }*/
+            Destroy(Instance.gameObject);
+        }
     }
 
     #endregion

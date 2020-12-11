@@ -35,12 +35,16 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     public Image fade;
 
     [SerializeField] private GameObject SoundClic;
-
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     private void Start()
     {
         timerFloat = 20;// to enable timer only when started = true
         UduinoManager.Instance.OnDataReceived += DataReceived;
         DontDestroyOnLoad(this);
+
     }
 
     private void Update()

@@ -19,6 +19,10 @@ public class Score : Singleton<Score>
     public TextMeshProUGUI endState;
     public GameObject explosion;
     private bool oneEnd;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     private void Start()
     {
         animator = GetComponent<Animator>();

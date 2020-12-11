@@ -36,6 +36,10 @@ public class SoundDisplay : Singleton<SoundDisplay>
 
     [HideInInspector] public bool isBoss;
     private float timerBossPuls;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     // Start is called before the first frame update
     void Start()
     {        

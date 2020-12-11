@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using Uduino;
 public class LeaderBoardDisplay : MonoBehaviour
 {
     enum Alphabet { a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}
@@ -26,7 +26,7 @@ public class LeaderBoardDisplay : MonoBehaviour
     public TextMeshProUGUI top10Score;
     public TextMeshProUGUI top10Bpm;
 
-    IEnumerator Start()
+  private  IEnumerator Start()
     {      
 
         yield return new WaitForSeconds(4f);
@@ -66,6 +66,10 @@ public class LeaderBoardDisplay : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Space) && restart.activeSelf)
         {
+            for (int i = 0; i < 41; i++)
+            {
+              UduinoManager.Instance.sendCommand("turnOn", i, 0, 0, 0, 150);
+            }
             SceneManager.LoadScene("Intro");
         }
         if (leaderBoard.placeInLeaderBoard < 1000)

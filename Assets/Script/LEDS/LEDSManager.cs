@@ -4,6 +4,10 @@ using UnityEngine;
 using Uduino;
 public class LEDSManager : Singleton<LEDSManager>
 {
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     // Start is called before the first frame update
     IEnumerator Start()
     {

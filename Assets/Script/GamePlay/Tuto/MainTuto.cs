@@ -86,6 +86,10 @@ public class MainTuto : Singleton<MainTuto>
 
 
     public LEDSManager LEDSManager;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     private void Start()
     {
         sprite = GetComponent<SpriteRenderer>();

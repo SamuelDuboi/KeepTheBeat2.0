@@ -39,6 +39,10 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
     private float timerBossPuls;
     private bool goNext;
     private float timerEnd;
+    protected override void Awake()
+    {
+        base.Awake();
+    }
     // Start is called before the first frame update
     void Start()
     {

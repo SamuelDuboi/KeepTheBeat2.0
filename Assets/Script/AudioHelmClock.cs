@@ -8,10 +8,11 @@ namespace AudioHelm
     public class AudioHelmClock : Singleton<AudioHelmClock>
     {
 
-        public float bpm;
-        private double timer;
+        public double bpm;
+        public double timer;
         private double loopTimer;
         private bool doOnce;
+        public double timeToReach;
         [HideInInspector] public double startTime;
         protected override void Awake()
         {
@@ -62,18 +63,19 @@ namespace AudioHelm
                     else if (SceneManager.GetActiveScene().name == "Tuto" && !MainTuto.Instance.canShoot)
                         MainTuto.Instance.CanShoot();
                 }
-                if (Math.Round( timer*100) == (60 / bpm*100) )
+                if (Math.Round( timer*100) >=  timeToReach)
                 {
-                    Debug.Log(Math.Round(timer * 100));
-                    loopTimer = AudioSettings.dspTime - startTime;
-                    timer = AudioSettings.dspTime - startTime - loopTimer;
+                    Debug.Log(timer);
+                    loopTimer = AudioSettings.dspTime -  startTime; 
                     if (!doOnce)
                     {
                         doOnce = true;
-
+                        timeToReach = timer*100;
                         SoundManager.Instance.StartDelay();
 
                     }
+                    timer = AudioSettings.dspTime - startTime - loopTimer;
+
 
                     if (SceneManager.GetActiveScene().name == "Main" && SoundDisplay.Instance.canStart)
                         SoundDisplay.Instance.MoveEnnemy();

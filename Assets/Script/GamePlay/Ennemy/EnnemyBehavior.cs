@@ -35,7 +35,7 @@ public class EnnemyBehavior : MonoBehaviour
     {
         if (!cantMove)
         {
-            transform.position = Vector3.MoveTowards(transform.position, positions[0], speed*AudioHelmClock.Instance.bpm);
+            transform.position = Vector3.MoveTowards(transform.position, positions[0], speed* (float)AudioHelmClock.Instance.bpm);
             RaycastHit hit;
             Physics.Raycast(transform.position, Vector3.down, out hit);
             if (hit.collider != null && hit.collider.GetComponent<TilesBehavior>() != null)

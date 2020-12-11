@@ -69,7 +69,7 @@ public class LinkedEnnemy :MonoBehaviour
     }
     private IEnumerator Reset()
     {
-        yield return new WaitForSeconds ((60 / AudioHelmClock.Instance.bpm) *0.5f);
+        yield return new WaitForSeconds ((60 / (float)AudioHelmClock.Instance.bpm) *0.5f);
         hitBox[0].GetComponent<EnnemyBehavior>().hitted = false;
         hitBox[1].GetComponent<EnnemyBehavior>().hitted = false;
         hitCpt = 0;

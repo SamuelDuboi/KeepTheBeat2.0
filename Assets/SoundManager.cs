@@ -19,7 +19,7 @@ public class SoundManager : Singleton<SoundManager>
     // Path : Resources.LoadAll(Assets/Resources/Sounds/BPM_) avec _ = BPM selected
     [SerializeField] private AudioClip[] audioClipsSelected;
 
-    public float getBpm = 0;
+    public double getBpm = 0;
     protected override void Awake()
     {
         base.Awake();
@@ -30,15 +30,17 @@ public class SoundManager : Singleton<SoundManager>
     {
 
         getBpm = AudioHelmClock.Instance.bpm;
+     
 
-        
-        
+
 
         SelectTracks();
+
     }
 
     private void Update()
     {
+      
         if(SceneManager.GetActiveScene().name != "Tuto")
             isBoss = SoundDisplay.Instance.isBoss;
         else

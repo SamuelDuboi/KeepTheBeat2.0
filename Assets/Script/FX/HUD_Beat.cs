@@ -18,8 +18,8 @@ public class HUD_Beat : MonoBehaviour
     void Update()
     {
        
-            float scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.Instance.bpm) * 20;
-            gameObject.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+            double scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.Instance.bpm) * 20;
+            gameObject.transform.localScale = new Vector3((float)scaleFactor, (float)scaleFactor, (float)scaleFactor);
         
     }
 }

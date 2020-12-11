@@ -109,7 +109,7 @@ public class Score : Singleton<Score>
         }
         PostProcessManager.post.ActivatePostProcess((int)postProcess.EndOfGame);
         endSceneCanvas.SetActive(true);
-        leaderBoard.CountScore(score, AudioHelm.AudioHelmClock.Instance.bpm, victory);
+        leaderBoard.CountScore(score, (float)AudioHelm.AudioHelmClock.Instance.bpm, victory);
 
 
         if (victory)

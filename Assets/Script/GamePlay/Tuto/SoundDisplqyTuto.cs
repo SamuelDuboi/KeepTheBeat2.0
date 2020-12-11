@@ -204,23 +204,23 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
         // BPM = [0;1]
         // MAX = 100
         // 80=> 100;
-        float scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.Instance.bpm) * 20;
-        heart.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        double scaleFactor = 80 + (float)timer / (60 / AudioHelmClock.Instance.bpm) * 20;
+        heart.transform.localScale = new Vector3((float)scaleFactor, (float)scaleFactor, (float)scaleFactor);
     }
 
     public void ScaleObject(GameObject obj, float scale, float mult)
     {
-        float scaleFactor = scale + (float)timer / (60 / AudioHelmClock.Instance.bpm) * mult;
-        obj.transform.localScale = new Vector3(scaleFactor, scaleFactor, scaleFactor);
+        double scaleFactor = scale + (float)timer / (60 / AudioHelmClock.Instance.bpm) * mult;
+        obj.transform.localScale = new Vector3((float)scaleFactor, (float)scaleFactor, (float)scaleFactor);
     }
 
     public void ScaleUI()
     {
         float intervale = MainTuto.Instance.specialMaxValue - MainTuto.Instance.specialCount;
 
-        float scaleFactorVisuel = (float)timer / (60 / AudioHelmClock.Instance.bpm) / 2;
+        double scaleFactorVisuel = (float)timer / (60 / AudioHelmClock.Instance.bpm) / 2;
 
-        bpmVisuelG.fillAmount = 1 - scaleFactorVisuel - intervale / 100 - 0.1f;
+        bpmVisuelG.fillAmount = 1 - (float)scaleFactorVisuel - intervale / 100 - 0.1f;
 
         bpmVisuelD.fillAmount = bpmVisuelG.fillAmount;
 

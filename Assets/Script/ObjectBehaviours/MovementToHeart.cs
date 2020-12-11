@@ -73,7 +73,10 @@ public class MovementToHeart : MonoBehaviour
                 MainTuto.Instance.specialBarG.value = MainTuto.Instance.specialCount;
                 MainTuto.Instance.specialCount++;
                 Instantiate(fx, target.transform.position, Quaternion.identity);
-                ParticuleManager.Instance.PlayEffectsOnce();
+                if (MainTuto.Instance.specialCount < 40)
+                    ParticuleManager.Instance.PlayEffectsOnce();
+                else if (MainTuto.Instance.specialCount == 40)
+                    ParticuleManager.Instance.PlayEffectsLoop();
             }
             Destroy(gameObject);
         }

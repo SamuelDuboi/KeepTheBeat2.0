@@ -1577,6 +1577,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bpm: 0
+  timer: 0
+  doOnce: 0
+  timeToReach: 0
   startTime: 0
 --- !u!1 &1681531108
 GameObject:

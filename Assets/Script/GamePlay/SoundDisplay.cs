@@ -82,7 +82,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
             timePreviousBeat = AudioSettings.dspTime - AudioHelmClock.Instance.startTime;
             for (int i = 0; i < ennemys.Count; i++)
             {
-                /*if (ennemys.Count > 0)
+                if (ennemys.Count > 0)
                 {
                     if (ennemys[i].tag == "LinkedEnnemy")
                     {
@@ -94,7 +94,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
                     else
                         ennemys[i].GetComponent<EnnemyBehavior>().Move();
 
-                }*/
+                }
             }
                 Main.Instance.Spawn();
         }

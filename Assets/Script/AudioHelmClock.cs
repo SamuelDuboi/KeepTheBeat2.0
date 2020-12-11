@@ -11,7 +11,7 @@ namespace AudioHelm
         public double bpm;
         public double timer;
         private double loopTimer;
-        private bool doOnce;
+        public bool doOnce;
         public double timeToReach;
         [HideInInspector] public double startTime;
         protected override void Awake()
@@ -44,7 +44,7 @@ namespace AudioHelm
                     else if (SceneManager.GetActiveScene().name == "Tuto" && !MainTuto.Instance.canShoot)
                         MainTuto.Instance.CanShoot();
                 }
-                else if (timer >= (60 / bpm) / 4 && timer <= (60 / bpm) * 3 / 4)
+                else if (timer >= (60 / bpm) / 3 && timer <= (60 / bpm) * 2 / 3)
                 {
                     //On peut pas
                     if (SceneManager.GetActiveScene().name != "Tuto")
@@ -53,7 +53,7 @@ namespace AudioHelm
                         MainTuto.Instance.CantShoot();
 
                 }
-                else if (timer >= (60 / bpm) * 3 / 4 && timer < 60 / bpm )
+                else if (timer >= (60 / bpm) * 2 /3 && timer < 60 / bpm )
                 {
                     //On peu
                     if (SceneManager.GetActiveScene().name != "Tuto" && !Main.Instance.canShoot)

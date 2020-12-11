@@ -911,6 +911,7 @@ public class Main : Singleton<Main>
 
         }
         yield return new WaitForSeconds(1f);
+        AudioHelmClock.Instance.doOnce = false;
         bossHit.text = string.Empty;
         bossHit.fontSize = 150;
         bossHit.enabled = false;

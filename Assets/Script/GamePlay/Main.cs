@@ -428,17 +428,17 @@ public class Main : Singleton<Main>
             if (canShoot)
             {
                 if (Input.GetKeyDown(KeyCode.Q))
-                    Shoot(positionEnd[0].transform.position, 0);
+                    Shoot(positionEnd[0].transform.position, 5);
                 else if (Input.GetKeyDown(KeyCode.Z))
-                    Shoot(positionEnd[1].transform.position, 1);
+                    Shoot(positionEnd[1].transform.position, 4);
                 else if (Input.GetKeyDown(KeyCode.E))
-                    Shoot(positionEnd[2].transform.position, 2);
+                    Shoot(positionEnd[2].transform.position, 3);
                 else if (Input.GetKeyDown(KeyCode.R))
-                    Shoot(positionEnd[3].transform.position, 3);
+                    Shoot(positionEnd[3].transform.position, 2);
                 else if (Input.GetKeyDown(KeyCode.T))
-                    Shoot(positionEnd[4].transform.position, 4);
+                    Shoot(positionEnd[4].transform.position, 1);
                 else if (Input.GetKeyDown(KeyCode.H))
-                    Shoot(positionEnd[5].transform.position, 5);
+                    Shoot(positionEnd[5].transform.position, 0);
                 else if (Input.GetKeyDown(KeyCode.Space))
                     Shoot(specialSpawner.transform.position, true);
             }

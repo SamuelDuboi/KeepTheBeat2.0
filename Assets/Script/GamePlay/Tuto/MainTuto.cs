@@ -392,7 +392,7 @@ public class MainTuto : Singleton<MainTuto>
                 else if (Input.GetKeyDown(KeyCode.H))
                     Shoot(positionEnd[5].transform.position, 0);
                 else if (Input.GetKeyDown(KeyCode.Space))
-                    Shoot(specialSpawner.transform.position, true);
+                Shoot(specialSpawner.transform.position, true);
             }
             else
                 Score.Instance.ScoreDown(1000);

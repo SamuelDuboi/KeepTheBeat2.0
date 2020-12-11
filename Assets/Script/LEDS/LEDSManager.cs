@@ -59,7 +59,7 @@ public class LEDSManager : Singleton<LEDSManager>
         switch (row)
         {
             case 0:
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 7; i++)
                 {
 
                     UduinoManager.Instance.sendCommand("turnOn", i, 248, 90, 205, 10);
@@ -67,34 +67,34 @@ public class LEDSManager : Singleton<LEDSManager>
                     yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.1f);
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 7; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 248, 90, 205, 150);
                     yield return new WaitForSeconds(0.05f);
                 }
                 break;
             case 1:
-                for (int i = 6; i < 12; i++)
+                for (int i = 7; i < 13; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 136, 0, 255, 10);
                     yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.1f);
-                for (int i = 6; i < 12; i++)
+                for (int i = 7; i < 13; i++)
                 {
                      UduinoManager.Instance.sendCommand("turnOn", i, 136, 0, 255, 150);
                     yield return new WaitForSeconds(0.05f);
                 }
                 break;
             case 2:
-                for (int i = 12; i < 18; i++)
+                for (int i = 13; i < 19; i++)
                 {
                     
                     UduinoManager.Instance.sendCommand("turnOn", i, 0, 255, 255, 10);
                     yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.1f);
-                for (int i = 12; i < 18; i++)
+                for (int i = 13; i < 19; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 0, 255, 255, 150);
                     yield return new WaitForSeconds(0.05f);
@@ -102,14 +102,14 @@ public class LEDSManager : Singleton<LEDSManager>
                 break;
 
             case 3:
-                for (int i = 22; i < 28; i++)
+                for (int i = 23; i < 29; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 255, 0, 0, 10);
 
                     yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.1f);
-                for (int i = 22; i < 28; i++)
+                for (int i = 23; i < 29; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 255, 0, 0, 150);
 
@@ -117,39 +117,39 @@ public class LEDSManager : Singleton<LEDSManager>
                 }
                 break;
             case 4:
-                for (int i = 28; i < 34; i++)
+                for (int i = 29; i < 35; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 135, 255, 0, 10);
                     yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.1f);
-                for (int i = 28; i < 34; i++)
+                for (int i = 29; i < 35; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 135, 255, 0, 150);
                     yield return new WaitForSeconds(0.05f);
                 }
                 break;
             case 5:
-                for (int i = 34; i < 40; i++)
+                for (int i = 35; i < 41; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 255, 255, 0, 10);
                     yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.1f);
-                for (int i = 34; i < 40; i++)
+                for (int i = 35; i < 41; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 255, 255, 0, 150);
                     yield return new WaitForSeconds(0.05f);
                 }
                 break;
             case 6:
-                for (int i = 18; i < 22; i++)
+                for (int i = 19; i < 23; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 255, 255, 255, 10);
                     yield return new WaitForSeconds(0.05f);
                 }
                 yield return new WaitForSeconds(0.1f);
-                for (int i = 18; i < 22; i++)
+                for (int i = 19; i < 23; i++)
                 {
                     UduinoManager.Instance.sendCommand("turnOn", i, 255, 255, 255, 150);
                     yield return new WaitForSeconds(0.05f);

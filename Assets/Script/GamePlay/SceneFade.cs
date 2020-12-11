@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class SceneFade : MonoBehaviour
 {
 
-    IEnumerator Start()
+  private  IEnumerator Start()
     {
 
         PostProcessManager.post.ActivatePostProcess((int)postProcess.Transition);

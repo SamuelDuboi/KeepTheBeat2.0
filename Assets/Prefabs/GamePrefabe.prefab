@@ -28310,6 +28310,9 @@ MonoBehaviour:
   scorText: {fileID: 3300805184042419176}
   scorMultiplierText: {fileID: 3300805184269508709}
   UiEffects: {fileID: 5675297062695911576}
+  endSceneCanvas: {fileID: 0}
+  endState: {fileID: 0}
+  explosion: {fileID: 0}
 --- !u!95 &1319539368
 Animator:
   serializedVersion: 3
@@ -44550,7 +44553,6 @@ MonoBehaviour:
   timePreviousBeat: 0
   pourcentageAllow: 25
   timer: 0
-  clock: {fileID: 9112153951030104365}
   mixer: {fileID: 24100000, guid: 60b666c66d0802c409eb2a1b4379ef86, type: 2}
   speedModifier: 1
   fail: {fileID: 8812904904340284304}
@@ -44964,6 +44966,7 @@ MonoBehaviour:
   bossHit: {fileID: 7330844741156277851}
   firstSphere: {fileID: 1562234081773648498, guid: 3549ffbb40e26fd479630c35f4f8248f, type: 3}
   SecondSphere: {fileID: 8084075636896741586, guid: 431d867a0e1dccb43ac615cc9058d62b, type: 3}
+  LEDSManager: {fileID: 0}
 --- !u!120 &8812904904658119742
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -45988,14 +45991,3 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7953890710349605386, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
   m_PrefabInstance: {fileID: 501402206}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &9112153951030104365 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 9112153950532967283, guid: 484ff7b14d8cd3d4bafa3c506af7b5cd, type: 3}
-  m_PrefabInstance: {fileID: 501402206}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 045e068a7f5e98b4d9ed97de401bb997, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

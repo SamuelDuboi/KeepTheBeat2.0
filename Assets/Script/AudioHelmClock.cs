@@ -1,7 +1,7 @@
 ﻿
 using UnityEngine.SceneManagement;
 using UnityEngine;
-
+using System;
 namespace AudioHelm
 {
 
@@ -21,10 +21,15 @@ namespace AudioHelm
         {
             startTime = AudioSettings.dspTime;
         }
-        private void FixedUpdate()
+        private void Update()
         {
+           timer = AudioSettings.dspTime - startTime - loopTimer;
 
-            timer = AudioSettings.dspTime - startTime - loopTimer;
+            if (timer > 1)
+            {
+                loopTimer = AudioSettings.dspTime - startTime;
+                timer = AudioSettings.dspTime - startTime - loopTimer;
+            }
             if (SceneManager.GetActiveScene().name != "Intro")
             {
                 if (timer <= (60 / bpm) / 4)
@@ -57,10 +62,9 @@ namespace AudioHelm
                     else if (SceneManager.GetActiveScene().name == "Tuto" && !MainTuto.Instance.canShoot)
                         MainTuto.Instance.CanShoot();
                 }
-
-                else if (timer >= 60 / bpm)
+                if (Math.Round( timer*100) == (60 / bpm*100) )
                 {
-                    Debug.Log("yo");
+                    Debug.Log(Math.Round(timer * 100));
                     loopTimer = AudioSettings.dspTime - startTime;
                     timer = AudioSettings.dspTime - startTime - loopTimer;
                     if (!doOnce)

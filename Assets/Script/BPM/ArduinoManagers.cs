@@ -44,6 +44,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         timerFloat = 20;// to enable timer only when started = true
         UduinoManager.Instance.OnDataReceived += DataReceived;
         DontDestroyOnLoad(this);
+        started = true;
 
     }
 
@@ -71,7 +72,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             else if (cpt >= 80 && cpt < 85)
             {
                 cpt = 80;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
+               // PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
             } 
             else if (cpt >= 85 && cpt < 90)
             {
@@ -122,7 +123,6 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         else
         {
             if (started)
-
                 StartCoroutine(WaiForCounting());
             bpm.text = cpt.ToString();
 
@@ -131,8 +131,8 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             //Visuel de la Barre
             timerText.text = Mathf.Floor(timerFloat).ToString();
             gameObject.GetComponent<AudioHelmClock>().bpm = cpt;
-            if(morpheus.activeSelf)
-            {
+            //if(morpheus.activeSelf)
+            //{
                 if (Input.GetKeyDown(KeyCode.V))
                 {
                     cpt = 80;
@@ -149,7 +149,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                    StartCoroutine( FadeIn(true));
                 else if (Input.GetKeyDown(KeyCode.R))
                     StartCoroutine( FadeIn(false));
-            }    
+            //}    
         }
 
     }
@@ -221,7 +221,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         started = false;
         timerFloat = 20; // to start timer 
         canCount = true;
-        yield return new WaitForSeconds(20);
+        yield return new WaitForSeconds(5);
         canCount = false;
         GetComponent<AudioSource>().Stop();
 

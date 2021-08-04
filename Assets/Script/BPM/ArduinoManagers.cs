@@ -116,7 +116,6 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             }
             
             AudioHelmClock.Instance.bpm = cpt;
-            AudioHelmClock.Instance.timeToReach = 60d / cpt * 100d;
 
             Destroy(this);
         }

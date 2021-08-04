@@ -11,6 +11,7 @@ namespace AudioHelm
         public double bpm;
         public double timer;
         private double loopTimer;
+        private double timerMissed;
         public bool doOnce;
         public double timeToReach;
         [HideInInspector] public double startTime;
@@ -21,6 +22,7 @@ namespace AudioHelm
         private void Start()
         {
             startTime = AudioSettings.dspTime;
+            timerMissed = 0;
         }
         private void Update()
         {
@@ -63,18 +65,19 @@ namespace AudioHelm
                     else if (SceneManager.GetActiveScene().name == "Tuto" && !MainTuto.Instance.canShoot)
                         MainTuto.Instance.CanShoot();
                 }
-                if (Math.Round( timer*100) >=  timeToReach)
+                if ( timer+ timerMissed >= 60 / bpm)
                 {
                     Debug.Log(timer);
                     loopTimer = AudioSettings.dspTime -  startTime; 
                     if (!doOnce)
                     {
                         doOnce = true;
-                        timeToReach = timer*100;
                         SoundManager.Instance.StartDelay();
 
                     }
+                    timerMissed = timer - (60 / bpm);
                     timer = AudioSettings.dspTime - startTime - loopTimer;
+                    Debug.Log("second "+timer);
 
 
                     if (SceneManager.GetActiveScene().name == "Main" && SoundDisplay.Instance.canStart)

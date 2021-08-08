@@ -235,8 +235,8 @@ public class Main : Singleton<Main>
             {
                 laserHitRef.transform.position = hit.point;
             }
-            else
-                Debug.Log("yo");
+            /*else
+                Debug.Log("yo");*/
             if(Input.GetKeyDown(KeyCode.E) )
             {                
                 StartCoroutine(RowFade(rowOn[2]));
@@ -277,8 +277,8 @@ public class Main : Singleton<Main>
             {
                 laserHitRef.transform.position = hit.point;
             }
-            else
-                Debug.Log("yo");
+            /*else
+                Debug.Log("yo");*/
             switch (phaseNumber)
             {
                 case 0:
@@ -421,7 +421,7 @@ public class Main : Singleton<Main>
                 currentBeam = Instantiate(laserBeams[2], SoundDisplay.Instance.heart.transform.position, Quaternion.identity);
             }
 
-            Debug.Log(miniBossDamage);
+            //Debug.Log(miniBossDamage);
         }
         else if (Input.anyKeyDown)
         {
@@ -583,7 +583,7 @@ public class Main : Singleton<Main>
                     _currentPattern = patterns3;
                 else
                 {
-                    Debug.Log("c'est fini");
+                    //Debug.Log("c'est fini");
                     return;
                 }
 
@@ -679,7 +679,7 @@ public class Main : Singleton<Main>
                                 break;
 
                             default:
-                                Debug.Log(_ennemy);
+                                //Debug.Log(_ennemy);
                                 break;
                         }
                         if (breakSpawn)
@@ -726,8 +726,8 @@ public class Main : Singleton<Main>
         {
             positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy - 2].GetComponent<Spawner>().positions, positionEnd[listEnnemy - 2].GetComponent<Spawner>().currentColor);
         }
-        else 
-            Debug.Log(x);
+        /*else 
+            Debug.Log(x);*/
     }
     private void LinkedSpawn(float x, List<int> listEnnemy, Vector3 current, int currentInt)
     {

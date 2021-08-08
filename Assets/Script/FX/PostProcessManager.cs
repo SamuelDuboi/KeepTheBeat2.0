@@ -18,7 +18,7 @@ public class PostProcessManager : MonoBehaviour
 
     public void ActivatePostProcess (int index)
     {
-        Debug.Log(FXprofile.Count);
+
         gameObject.GetComponent<Volume>().profile = FXprofile[index];
         animator.SetTrigger("Activate");
     }

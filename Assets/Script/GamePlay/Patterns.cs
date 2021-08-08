@@ -40,8 +40,8 @@ public class Patterns : ScriptableObject
             ennemiesPosition.Remove(new Vector3(i,x,position.z));
 
         }
-        else
-            Debug.Log(position);
+       /* else
+            Debug.Log(position);*/
     }
 
     public void RemoveAll()

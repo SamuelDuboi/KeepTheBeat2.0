@@ -21,7 +21,7 @@ public class Heart : MonoBehaviour
         {
         double playRate = 60 / AudioHelmClock.Instance.bpm;
         animator.speed = 1 / (float)playRate;
-        Debug.Log("animator speed =" + animator.speed);
+        //Debug.Log("animator speed =" + animator.speed);
         }
     }
 

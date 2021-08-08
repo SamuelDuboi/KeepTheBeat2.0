@@ -97,12 +97,12 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
             else if (cpt >= 105 && cpt < 110)
             {
                 cpt = 105;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
+               // PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
             }
             else if (cpt >= 110 && cpt < 115)
             {
                 cpt = 110;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
+             //   PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
             }
             else if (cpt >= 115 && cpt < 120)
             {
@@ -157,7 +157,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     void DataReceived(string data, UduinoDevice board)
     {
         //xant tu peux ecrire ici
-        Debug.Log("Yo");
+       // Debug.Log("Yo");
         if (!started && !doOnce && data.Length != 19)
         {
             cpt = int.Parse(data);
@@ -268,7 +268,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
 
     IEnumerator FadeOutSound(GameObject track)
     {
-        if (track.GetComponent<AudioSource>().volume <= 1f)
+        if (track &&track.GetComponent<AudioSource>().volume <= 1f)
         {
             track.GetComponent<AudioSource>().volume -= 0.1f;
             yield return new WaitForSeconds(0.2f);

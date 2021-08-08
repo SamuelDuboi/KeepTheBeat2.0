@@ -136,7 +136,7 @@ public class PaternEditorWIndow : EditorWindow
         OnMousCLick();
 
         EditorUtility.SetDirty(pattern);
-        Repaint();
+       // Repaint();
     }
 
     private void DrawGridCanevas()

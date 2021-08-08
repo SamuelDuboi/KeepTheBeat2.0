@@ -67,7 +67,7 @@ namespace AudioHelm
                 }
                 if ( timer+ timerMissed >= 60 / bpm)
                 {
-                    Debug.Log(timer);
+                   // Debug.Log(timer);
                     loopTimer = AudioSettings.dspTime -  startTime; 
                     if (!doOnce)
                     {
@@ -77,7 +77,7 @@ namespace AudioHelm
                     }
                     timerMissed = timer - (60 / bpm);
                     timer = AudioSettings.dspTime - startTime - loopTimer;
-                    Debug.Log("second "+timer);
+                  //  Debug.Log("second "+timer);
 
 
                     if (SceneManager.GetActiveScene().name == "Main" && SoundDisplay.Instance.canStart)

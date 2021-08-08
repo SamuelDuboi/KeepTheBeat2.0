@@ -187,8 +187,8 @@ public class MainTuto : Singleton<MainTuto>
             {
                 laserHitRef.transform.position = hit.point;
             }
-            else
-                Debug.Log("yo");
+            /*else
+                Debug.Log("yo");*/
             if (Input.GetKeyDown(KeyCode.E))
             {
                 StartCoroutine(RowFade(rowOn[2]));
@@ -229,8 +229,8 @@ public class MainTuto : Singleton<MainTuto>
             {
                 laserHitRef.transform.position = hit.point;
             }
-            else
-                Debug.Log("yo");
+           /* else
+                Debug.Log("yo");*/
             switch (phaseNumber)
             {
                 case 0:
@@ -373,7 +373,7 @@ public class MainTuto : Singleton<MainTuto>
                 currentBeam = Instantiate(laserBeams[2], SoundDisplqyTuto.Instance.heart.transform.position, Quaternion.identity);
             }
 
-            Debug.Log(miniBossDamage);
+           // Debug.Log(miniBossDamage);
         }
         else if (Input.anyKeyDown)
         {
@@ -765,8 +765,8 @@ public class MainTuto : Singleton<MainTuto>
         {
             positionEnd[listEnnemy].GetComponent<Spawner>().Spwan(ennemysArray[1], positionEnd[listEnnemy - 2].GetComponent<Spawner>().positions, positionEnd[listEnnemy - 2].GetComponent<Spawner>().currentColor);
         }
-        else
-            Debug.Log(x);
+        /*else
+            Debug.Log(x);*/
     }
     private void LinkedSpawn(int spwan1, int spwan2)
     {

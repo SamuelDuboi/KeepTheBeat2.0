@@ -85,8 +85,8 @@ public class EnnemyBehavior : MonoBehaviour
                 tile = hit.collider.gameObject;
                 tile.GetComponent<TilesBehavior>().On();
             }
-            else
-                Debug.Log(hit.collider);
+          /*  else
+                Debug.Log(hit.collider);*/
 
 
         }

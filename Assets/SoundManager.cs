@@ -91,7 +91,7 @@ public class SoundManager : Singleton<SoundManager>
         }
         else if (getBpm >= 88 && getBpm <= 92)
         {
-            Debug.Log("La");
+           // Debug.Log("La");
             //Load les 90 Bpms
             audioClipsSelected = Resources.LoadAll<AudioClip>("Sounds/BPM90");
            

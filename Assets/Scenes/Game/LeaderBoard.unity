@@ -4639,7 +4639,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e59a506d07c58424c8da01b44638ca54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderBoard: {fileID: 11400000, guid: 4e0f3aba290e40f40b3fd5e1611af935, type: 2}
   names1:
   - {fileID: 854421488}
   - {fileID: 66598624}

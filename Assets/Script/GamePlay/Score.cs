@@ -6,7 +6,6 @@ using System.Collections;
 public class Score : Singleton<Score>
 {
     public static float score;
-    public LeaderBoard leaderBoard;
     [HideInInspector] public int scorMultiplier = 1;
     [HideInInspector] public int cptStreak;
     public TextMeshProUGUI scorText;
@@ -89,6 +88,7 @@ public class Score : Singleton<Score>
     
     IEnumerator WaitEnd(bool victory)
     {
+       
        var _scen = SceneManager.LoadSceneAsync("LeaderBoard", LoadSceneMode.Single);
         _scen.allowSceneActivation = false;
         SoundDisplay.Instance.cantAct = true;
@@ -109,7 +109,7 @@ public class Score : Singleton<Score>
         }
         PostProcessManager.post.ActivatePostProcess((int)postProcess.EndOfGame);
         endSceneCanvas.SetActive(true);
-        leaderBoard.CountScore(score, (float)AudioHelm.AudioHelmClock.Instance.bpm, victory);
+        LeaderBoard.instance.CountScore(score, (int)AudioHelm.AudioHelmClock.Instance.bpm, victory);
 
 
         if (victory)
@@ -121,7 +121,7 @@ public class Score : Singleton<Score>
             endState.text = "game over";
         }
         yield return new WaitForSeconds(6f);
-
+        Destroy(AudioHelm.AudioHelmClock.Instance.gameObject);
         _scen.allowSceneActivation = true;
 
     }

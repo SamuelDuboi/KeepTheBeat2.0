@@ -5,8 +5,8 @@ using System.Collections;
 
 public class Score : Singleton<Score>
 {
-    public static float score;
-    [HideInInspector] public int scorMultiplier = 1;
+    public static int score;
+    [HideInInspector] public float scorMultiplier = 1;
     [HideInInspector] public int cptStreak;
     public TextMeshProUGUI scorText;
     public TextMeshProUGUI scorMultiplierText;
@@ -54,7 +54,10 @@ public class Score : Singleton<Score>
 
     public void ScoreDown(int upNumber)
     {
-        score -= upNumber ;
+        if (score - upNumber <= 0)
+            score = 0;
+        else
+            score -= upNumber ;
         if(cptStreak!=0)
             cptStreak--;
         scorText.text = score.ToString();
@@ -109,7 +112,7 @@ public class Score : Singleton<Score>
         }
         PostProcessManager.post.ActivatePostProcess((int)postProcess.EndOfGame);
         endSceneCanvas.SetActive(true);
-        LeaderBoard.instance.CountScore(score, (int)AudioHelm.AudioHelmClock.Instance.bpm, victory);
+        
 
 
         if (victory)
@@ -121,6 +124,7 @@ public class Score : Singleton<Score>
             endState.text = "game over";
         }
         yield return new WaitForSeconds(6f);
+        LeaderBoard.instance.CountScore(score, (int)AudioHelm.AudioHelmClock.Instance.bpm, victory);
         Destroy(AudioHelm.AudioHelmClock.Instance.gameObject);
         _scen.allowSceneActivation = true;
 
@@ -132,11 +136,11 @@ public class Score : Singleton<Score>
         animator.SetBool("Score", false);
     }
 
-    IEnumerator DelayScore(int scoreToAdd)
+    IEnumerator DelayScore(float scoreToAdd)
     {
         for (int i = 0; i < 6; i++)
         {
-            score += (scoreToAdd * scorMultiplier) / 6;
+            score +=  (int)(scoreToAdd * scorMultiplier / 6);
             scorText.text = score.ToString();
             yield return new WaitForSeconds(0.01f);
         }

@@ -11,20 +11,18 @@ using System.Linq.Expressions;
 public class ArduinoManagers : Singleton<ArduinoManagers>
 {
     [Header("UI")]
-    public TextMeshProUGUI timerText;
     public TextMeshProUGUI bpm;
     public TextMeshProUGUI instructions;
     public GameObject circleRef;
     public GameObject heart;
 
     [Header("Values")]
-    public float timerFloat;
     private List<int> numbers;
     private bool started;
     [SerializeField] private bool doOnce;
     private bool canCount;
     private double cpt;
-
+    private bool lunch;
 
     private bool loadOnce;
 
@@ -41,8 +39,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     }
     private void Start()
     {
-        timerFloat = 20;// to enable timer only when started = true
-        UduinoManager.Instance.OnDataReceived += DataReceived;
+       // UduinoManager.Instance.OnDataReceived += DataReceived;
         DontDestroyOnLoad(this);
         started = true;
 
@@ -53,70 +50,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
       
         if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tuto")
         {           
-            if(cpt < 65)
-            {
-                cpt = 60;
-            }
-            else if (cpt >= 65 && cpt < 70)
-            {
-                cpt = 65;
-            } 
-            else if (cpt >= 70 && cpt < 75)
-            {
-                cpt = 70;
-            } 
-            else if (cpt >= 75 && cpt < 80)
-            {
-                cpt = 75;
-            } 
-            else if (cpt >= 80 && cpt < 85)
-            {
-                cpt = 80;
-               // PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
-            } 
-            else if (cpt >= 85 && cpt < 90)
-            {
-                cpt = 85;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
-            } 
-            else if (cpt >= 90 && cpt < 95)
-            {
-                cpt = 90;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
-            } 
-            else if (cpt >= 95 && cpt < 100)
-            {
-                cpt = 95;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_90);
-            } 
-            else if (cpt >= 100 && cpt < 105)
-            {
-                cpt = 100;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
-            } 
-            else if (cpt >= 105 && cpt < 110)
-            {
-                cpt = 105;
-               // PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
-            }
-            else if (cpt >= 110 && cpt < 115)
-            {
-                cpt = 110;
-             //   PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
-            }
-            else if (cpt >= 115 && cpt < 120)
-            {
-                cpt = 115;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
-            }
-            else if (cpt >= 120)
-            {
-                cpt = 120;
-                PostProcessManager.post.ActivatePostProcessInChild((int)postProcess.BPM_100);
-            }
-            
             AudioHelmClock.Instance.bpm = cpt;
-
             Destroy(this);
         }
         else
@@ -125,36 +59,59 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                 StartCoroutine(WaiForCounting());
             bpm.text = cpt.ToString();
 
-            if (timerFloat >= 0 && canCount)
-                timerFloat -= Time.deltaTime;
+
             //Visuel de la Barre
-            timerText.text = Mathf.Floor(timerFloat).ToString();
             gameObject.GetComponent<AudioHelmClock>().bpm = cpt;
             //if(morpheus.activeSelf)
             //{
-                if (Input.GetKeyDown(KeyCode.V))
+            if (!lunch)
+            {
+               
+                if (Input.GetKeyDown(KeyCode.Q))
+                {
+                    cpt = 65;
+                    lunch = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.Z))
+                {
+                    cpt = 70;
+                    lunch = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.E))
                 {
                     cpt = 80;
+                    lunch = true;
                 }
-                else if(Input.GetKeyDown(KeyCode.B))
+                else if (Input.GetKeyDown(KeyCode.R))
+                {
+                    cpt = 90;
+                    lunch = true;
+                }
+                else if (Input.GetKeyDown(KeyCode.T))
                 {
                     cpt = 100;
+                    lunch = true;
                 }
-                else if (Input.GetKeyDown(KeyCode.N))
+                else if (Input.GetKeyDown(KeyCode.H))
                 {
                     cpt = 110;
+                    lunch = true;
                 }
+            }
+            else
+            {
                 if (Input.GetKeyDown(KeyCode.E))
                    StartCoroutine( FadeIn(true));
                 else if (Input.GetKeyDown(KeyCode.R))
                     StartCoroutine( FadeIn(false));
+            }
             //}    
         }
 
     }
 
 
-    void DataReceived(string data, UduinoDevice board)
+  /*  void DataReceived(string data, UduinoDevice board)
     {
         //xant tu peux ecrire ici
        // Debug.Log("Yo");
@@ -191,26 +148,13 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                     cpt = cpt / (numbers.Count-1);
                 else
                     cpt = cpt / (numbers.Count );
-                /*if (numbers[numbers.Count - 1] > cpt + 50 || numbers[numbers.Count - 1] < cpt - 50)
-                {
-                 
-                    numbers.Remove(int.Parse(data));
-                    cpt = 0;
-                    foreach (int _bpm in numbers)
-                    {
-                        cpt += _bpm;
-                    }
-                    if (numbers.Count - 1 != 0)
-                        cpt = cpt / (numbers.Count - 1);
-                    
-                }*/
 
             }
 
 
         }
 
-    }
+    }*/
 
     private IEnumerator WaiForCounting()
     {
@@ -218,9 +162,8 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
         StartCoroutine(FadeOutSound(sound));
         GetComponent<AudioSource>().Play();
         started = false;
-        timerFloat = 20; // to start timer 
         canCount = true;
-        yield return new WaitForSeconds(5);
+        yield return new WaitUntil(()=>lunch);
         canCount = false;
         GetComponent<AudioSource>().Stop();
 

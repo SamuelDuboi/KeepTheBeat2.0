@@ -170,7 +170,7 @@ public class SoundDisplqyTuto : Singleton<SoundDisplqyTuto>
         if (loopNUmber >= 0 && loopNUmber < loops.Length)
             loops[loopNUmber].mute = false;
     }
-    public void TakeDamage(int loopNUmber)
+    public void TakeDamage(float loopNUmber)
     {
         
         //j'ai change ca c'était ennemy count -1 avant je sais pas pourquoi si ca bug c'est ici

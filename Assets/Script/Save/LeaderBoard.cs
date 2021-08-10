@@ -143,18 +143,18 @@ public class LeaderBoard : MonoBehaviour
                     break;
                 else
                 {
-                    scores.Insert(i, value);
-                    bpm.Insert(i, _bpm);
+                    scores.Insert(i-1, value);
+                    bpm.Insert(i-1, _bpm);
                     scores.RemoveAt(10);
                     bpm.RemoveAt(10);
-                    placeInLeaderBoard = i;
+                    placeInLeaderBoard = i-1;
                     break;
                 }
             }
             if (i == 0)
             {
                 scores.Insert(0, value);
-                names.Insert(0, name);
+                names.Insert(0, "aaa");
                 bpm.Insert(0, _bpm);
                 scores.RemoveAt(10);
                 names.RemoveAt(10);

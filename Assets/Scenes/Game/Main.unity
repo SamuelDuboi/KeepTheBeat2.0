@@ -743,6 +743,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 21
       objectReference: {fileID: 0}
+    - target: {fileID: 3300805184269508709, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3300805184269508711, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 188
+      objectReference: {fileID: 0}
     - target: {fileID: 3300805184614135046, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0

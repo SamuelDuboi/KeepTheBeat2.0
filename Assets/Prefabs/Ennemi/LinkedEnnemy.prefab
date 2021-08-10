@@ -134,7 +134,7 @@ MonoBehaviour:
   hitCpt: 0
   enemy0: {fileID: 5603661425634736665}
   enemy1: {fileID: 5050722809743891527}
-  scoreValue: 1500
+  scoreValue: 15
   popTextScore: {fileID: 0}
   poptextPosition0: {fileID: 2330891292609372878}
   poptextPosition1: {fileID: 3137615334173000848}

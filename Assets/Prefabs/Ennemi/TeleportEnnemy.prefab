@@ -233,10 +233,11 @@ MonoBehaviour:
   - {x: 0, y: 0, z: NaN}
   - {x: 0, y: 0, z: 0}
   cpt: 0
-  scoreValue: 3000
+  scoreValue: 30
   speed: 0.1
   cantMove: 0
   turnOnTrail: 0
+  hitted: 0
   row1: {r: 0, g: 0, b: 0, a: 0}
   row2: {r: 0, g: 0, b: 0, a: 0}
   light1: {fileID: 3436562829728838649}

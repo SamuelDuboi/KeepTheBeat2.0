@@ -45,7 +45,7 @@ public class SoundManager : Singleton<SoundManager>
             isBoss = SoundDisplay.Instance.isBoss;
         else
             isBoss = SoundDisplqyTuto.Instance.isBoss;
-        multiplicateur = Score.Instance.scorMultiplier;
+        multiplicateur = (int)Score.Instance.scorMultiplier;
 
 
     }
@@ -157,7 +157,7 @@ public class SoundManager : Singleton<SoundManager>
         }
     }
 
-    public void UpdateVolume(int multiplier)
+    public void UpdateVolume(float multiplier)
     {
         switch (multiplier)
         {

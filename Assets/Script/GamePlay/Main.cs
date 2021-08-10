@@ -443,7 +443,7 @@ public class Main : Singleton<Main>
                     Shoot(specialSpawner.transform.position, true);
             }
             else
-                Score.Instance.ScoreDown(1000);
+                Score.Instance.ScoreDown(10);
         }
     }
 

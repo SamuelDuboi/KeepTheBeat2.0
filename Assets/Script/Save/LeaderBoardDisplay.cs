@@ -31,7 +31,7 @@ public class LeaderBoardDisplay : MonoBehaviour
         
         yield return new WaitForSeconds(4f);
         scores = GetComponent<TextMeshProUGUI>();
-        for (int i = 9; i >= 0; i--)
+        for (int i = 0; i <10; i++)
         {
             if (LeaderBoard.instance.names[i] != string.Empty)
                 scores.text += LeaderBoard.instance.names[i] + "      " + LeaderBoard.instance.bpm[i].ToString() + "       " + LeaderBoard.instance.scores[i].ToString() + "\n";
@@ -64,7 +64,7 @@ public class LeaderBoardDisplay : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && restart.activeSelf)
+        if(Input.anyKeyDown && restart.activeSelf)
         {
             for (int i = 0; i < 41; i++)
             {
@@ -143,7 +143,7 @@ public class LeaderBoardDisplay : MonoBehaviour
                         if (!doOnce)
                         {
                             doOnce = true;
-                            LeaderBoard.instance.names.Insert(LeaderBoard.instance.placeInLeaderBoard, names1[1].text + names2[1].text + names3[1].text);
+                            LeaderBoard.instance.names[LeaderBoard.instance.placeInLeaderBoard]= names1[1].text + names2[1].text + names3[1].text;
                             LeaderBoard.instance.SaveByXML();
                         }
                         names3[0].gameObject.SetActive(false);
@@ -154,7 +154,7 @@ public class LeaderBoardDisplay : MonoBehaviour
 
                         scores.text = string.Empty;
 
-                        for (int i = 10 - 1; i >= 0; i--)
+                        for (int i = 0; i<10; i++)
                         {
                             if(LeaderBoard.instance.names[i] != string.Empty)
                             scores.text += LeaderBoard.instance.names[i] + "      " + LeaderBoard.instance.bpm[i].ToString() + "       " + LeaderBoard.instance.scores[i].ToString() + "\n";

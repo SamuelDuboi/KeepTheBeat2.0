@@ -15,7 +15,7 @@ public class AddBpmBonus : MonoBehaviour
     {
         score.text = "score : " + Score.score.ToString();
 
-        bpmBonus.text = "bpm bonnus : " + (AudioHelmClock.Instance.bpm * 100000).ToString();
+        bpmBonus.text = "bpm bonus : " + (AudioHelmClock.Instance.bpm * 10).ToString();
         yield return new WaitForSeconds(3f);
         canMove = true;
     }
@@ -29,7 +29,8 @@ public class AddBpmBonus : MonoBehaviour
         }
         else if(canMove && bpmBonus.transform.localPosition.y >= -33)
         {
-            score.text = "score : " + (Score.score + AudioHelmClock.Instance.bpm * 100000).ToString();
+            score.text = "score : " + (Score.score + AudioHelmClock.Instance.bpm * 10).ToString();
+            Score.score += (int)AudioHelmClock.Instance.bpm*10;
             canMove = false;
         }
     }

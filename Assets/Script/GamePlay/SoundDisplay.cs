@@ -116,7 +116,7 @@ public class SoundDisplay : Singleton<SoundDisplay>
     }
 
 
-    public void TakeDamage(int loopNUmber)
+    public void TakeDamage(float loopNUmber)
     {
         LifeManager.Instance.TakeDamage(mixer);
         //j'ai change ca c'était ennemy count -1 avant je sais pas pourquoi si ca bug c'est ici

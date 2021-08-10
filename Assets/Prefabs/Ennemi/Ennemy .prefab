@@ -64,10 +64,11 @@ MonoBehaviour:
   - {x: 0, y: 0, z: NaN}
   - {x: 0, y: 0, z: 0}
   cpt: 0
-  scoreValue: 1000
+  scoreValue: 10
   speed: 0.2
   cantMove: 0
   turnOnTrail: 0
+  hitted: 0
   row1: {r: 0, g: 0, b: 0, a: 0}
   row2: {r: 0, g: 0, b: 0, a: 0}
   light1: {fileID: 0}

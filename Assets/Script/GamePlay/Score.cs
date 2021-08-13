@@ -138,9 +138,9 @@ public class Score : Singleton<Score>
 
     IEnumerator DelayScore(float scoreToAdd)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < 10; i++)
         {
-            score +=  (int)(scoreToAdd * scorMultiplier / 6);
+            score +=  (int)(scoreToAdd * scorMultiplier / 10);
             scorText.text = score.ToString();
             yield return new WaitForSeconds(0.01f);
         }

@@ -229,7 +229,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -58743012435122162, guid: 0710a1263bce801449ee02ae23ca1b7f, type: 3}
       propertyPath: scoreValue
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1604807694688777876, guid: 0710a1263bce801449ee02ae23ca1b7f, type: 3}
       propertyPath: m_Name
@@ -313,7 +313,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -58743012435122162, guid: 0710a1263bce801449ee02ae23ca1b7f, type: 3}
       propertyPath: scoreValue
-      value: 1000
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1604807694688777876, guid: 0710a1263bce801449ee02ae23ca1b7f, type: 3}
       propertyPath: m_Name

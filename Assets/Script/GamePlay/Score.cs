@@ -60,6 +60,7 @@ public class Score : Singleton<Score>
             score -= upNumber ;
         if(cptStreak!=0)
             cptStreak--;
+        if(scorText)
         scorText.text = score.ToString();
 
     }

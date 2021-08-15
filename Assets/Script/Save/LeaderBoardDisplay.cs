@@ -8,7 +8,9 @@ public class LeaderBoardDisplay : MonoBehaviour
 {
     enum Alphabet { a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z}
     private Alphabet currentLetter;
-    private TextMeshProUGUI scores;
+    public TextMeshProUGUI names;
+    public TextMeshProUGUI bpms;
+    public TextMeshProUGUI scores;
     private int cpt;
     private int letterNumber;
     public TextMeshProUGUI[]names1 = new TextMeshProUGUI[3];
@@ -30,13 +32,20 @@ public class LeaderBoardDisplay : MonoBehaviour
     {
         
         yield return new WaitForSeconds(4f);
-        scores = GetComponent<TextMeshProUGUI>();
         for (int i = 0; i <10; i++)
         {
             if (LeaderBoard.instance.names[i] != string.Empty)
-                scores.text += LeaderBoard.instance.names[i] + "      " + LeaderBoard.instance.bpm[i].ToString() + "       " + LeaderBoard.instance.scores[i].ToString() + "\n";
+            {
+                names.text += LeaderBoard.instance.names[i] + "\n";
+                bpms.text = LeaderBoard.instance.bpm[i].ToString() + "\n";
+                scores.text += LeaderBoard.instance.scores[i].ToString() + "\n";
+            }
             else
-                scores.text += "aaa      " + LeaderBoard.instance.bpm[i].ToString() + "       " + LeaderBoard.instance.scores[i].ToString() + "\n";
+            {
+                names.text += "aaa" + "\n";
+                bpms.text = LeaderBoard.instance.bpm[i].ToString() + "\n";
+                scores.text += LeaderBoard.instance.scores[i].ToString() + "\n";
+            }
 
         }
         yield return new WaitForSeconds(2f);
@@ -70,6 +79,7 @@ public class LeaderBoardDisplay : MonoBehaviour
             {
               UduinoManager.Instance.sendCommand("turnOn", i, 0, 0, 0, 150);
             }
+            Score.Instance.ScoreDown(100000000);
             SceneManager.LoadScene("Intro");
         }
         if (LeaderBoard.instance.placeInLeaderBoard < 1000)
@@ -153,23 +163,26 @@ public class LeaderBoardDisplay : MonoBehaviour
                         names2[1].gameObject.SetActive(false);
 
                         scores.text = string.Empty;
-
+                        names.text = string.Empty;
+                        bpms.text = string.Empty;
                         for (int i = 0; i<10; i++)
                         {
-                            if(LeaderBoard.instance.names[i] != string.Empty)
-                            scores.text += LeaderBoard.instance.names[i] + "      " + LeaderBoard.instance.bpm[i].ToString() + "       " + LeaderBoard.instance.scores[i].ToString() + "\n";
+                            if (LeaderBoard.instance.names[i] != string.Empty)
+                            {
+                                names.text += LeaderBoard.instance.names[i] + "\n";
+                                bpms.text = LeaderBoard.instance.bpm[i].ToString() + "\n";
+                                scores.text += LeaderBoard.instance.scores[i].ToString() + "\n";
+                            }
                             else
-                                scores.text += "aaa      " + LeaderBoard.instance.bpm[i].ToString() + "       " + LeaderBoard.instance.scores[i].ToString() + "\n";
+                            {
+                                names.text += "aaa" + "\n";
+                                bpms.text = LeaderBoard.instance.bpm[i].ToString() + "\n";
+                                scores.text += LeaderBoard.instance.scores[i].ToString() + "\n";
+                            }
 
                         }
 
-                        if(LeaderBoard.instance.placeInLeaderBoard > 10)
-                        {
-                            top10.SetActive(true);
-                            top10Rank.text = LeaderBoard.instance.placeInLeaderBoard.ToString();
-                            top10Score.text = LeaderBoard.instance.scores[ LeaderBoard.instance.placeInLeaderBoard].ToString();
-                            top10Bpm.text = LeaderBoard.instance.bpm[ LeaderBoard.instance.placeInLeaderBoard].ToString();
-                        }
+
                         Panel.SetActive(false);
                         restart.SetActive(true);
                         break;

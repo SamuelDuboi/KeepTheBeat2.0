@@ -37,13 +37,13 @@ public class LeaderBoardDisplay : MonoBehaviour
             if (LeaderBoard.instance.names[i] != string.Empty)
             {
                 names.text += LeaderBoard.instance.names[i] + "\n";
-                bpms.text = LeaderBoard.instance.bpm[i].ToString() + "\n";
+                bpms.text += LeaderBoard.instance.bpm[i].ToString() + "\n";
                 scores.text += LeaderBoard.instance.scores[i].ToString() + "\n";
             }
             else
             {
                 names.text += "aaa" + "\n";
-                bpms.text = LeaderBoard.instance.bpm[i].ToString() + "\n";
+                bpms.text += LeaderBoard.instance.bpm[i].ToString() + "\n";
                 scores.text += LeaderBoard.instance.scores[i].ToString() + "\n";
             }
 
@@ -176,7 +176,7 @@ public class LeaderBoardDisplay : MonoBehaviour
                             else
                             {
                                 names.text += "aaa" + "\n";
-                                bpms.text = LeaderBoard.instance.bpm[i].ToString() + "\n";
+                                bpms.text += LeaderBoard.instance.bpm[i].ToString() + "\n";
                                 scores.text += LeaderBoard.instance.scores[i].ToString() + "\n";
                             }
 

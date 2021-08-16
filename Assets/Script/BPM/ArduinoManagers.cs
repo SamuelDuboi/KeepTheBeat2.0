@@ -204,6 +204,7 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
                 fade.color = new Color(0, 0, 0, i / 255);
                 yield return new WaitForSeconds(0.01f);
             }
+            yield return new WaitUntil(() => _scen.progress >= 0.9f);
             _scen.allowSceneActivation = true;
         }
 

@@ -143,11 +143,11 @@ public class LeaderBoard : MonoBehaviour
                     break;
                 else
                 {
-                    scores.Insert(i-1, value);
-                    bpm.Insert(i-1, _bpm);
+                    scores.Insert(i+1, value);
+                    bpm.Insert(i+1, _bpm);
                     scores.RemoveAt(10);
                     bpm.RemoveAt(10);
-                    placeInLeaderBoard = i-1;
+                    placeInLeaderBoard = i+1;
                     break;
                 }
             }

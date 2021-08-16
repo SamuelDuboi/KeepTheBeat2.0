@@ -41,9 +41,12 @@ public class SoundDisplay : Singleton<SoundDisplay>
         base.Awake();
     }
     // Start is called before the first frame update
-    void Start()
+    IEnumerator Start()
     {        
+        cantMove = true;
+        yield return new WaitForEndOfFrame();
         pourcentageCalculated = pourcentageAllow / 100 * (60 / AudioHelmClock.Instance.bpm);
+        cantMove = false;
     }
 
     // Update is called once per frame

@@ -1,6 +1,7 @@
 ﻿
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using System.Collections;
 using System;
 namespace AudioHelm
 {
@@ -19,14 +20,16 @@ namespace AudioHelm
         {
             base.Awake();
         }
-        private void Start()
+        private IEnumerator Start()
         {
+            yield return new WaitForEndOfFrame();
             startTime = AudioSettings.dspTime;
             timerMissed = 0;
         }
         private void Update()
         {
-           timer = AudioSettings.dspTime - startTime - loopTimer;
+            if(startTime != 0)
+                timer = AudioSettings.dspTime - startTime - loopTimer;
 
             if (timer > 1)
             {
@@ -67,7 +70,8 @@ namespace AudioHelm
                 }
                 if ( timer+ timerMissed >= 60 / bpm)
                 {
-                   // Debug.Log(timer);
+                    //Debug.Log("timer " +timer);
+                    //Debug.Log("timer missed" + timerMissed);
                     loopTimer = AudioSettings.dspTime -  startTime; 
                     if (!doOnce)
                     {
@@ -76,6 +80,8 @@ namespace AudioHelm
 
                     }
                     timerMissed = timer - (60 / bpm);
+                    if (Mathf.Abs((float)timerMissed )> 0.3)
+                        timerMissed = 0;
                     timer = AudioSettings.dspTime - startTime - loopTimer;
                   //  Debug.Log("second "+timer);
 

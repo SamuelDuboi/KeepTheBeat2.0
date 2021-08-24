@@ -9,7 +9,6 @@ public class Main : Singleton<Main>
 {
     [Header("GameObject References")]
     public GameObject player;
-    public TextMeshProUGUI currentPatternName;
 
     [Header("Sound")]
     public AudioSource clap;
@@ -119,8 +118,6 @@ public class Main : Singleton<Main>
         }
         
         
-        //debug to know wich pattern is playing
-        currentPatternName.text = "current pattern : " +  patterns1[0].name;
 
         previousEnnemy = Vector2.one * 12;
         spamStartPoisition = spam.transform.position;
@@ -621,8 +618,6 @@ public class Main : Singleton<Main>
                     previousEnnemyList.Add(vecor);
                 }
 
-                //debug to know wich pattern is playing
-                currentPatternName.text = "current pattern : " + _currentPattern[currentPattern].name;
 
 
                 for (int i = 0; i < previousEnnemyList.Count; i++)
@@ -928,7 +923,7 @@ public class Main : Singleton<Main>
         if (miniBossDamage >= life)
         {
             canShootMiniBoss = false;
-            Score.Instance.ScoreUp((int)miniBossDamage * 100);
+            Score.Instance.ScoreUp((int)miniBossDamage);
             canShootMiniBoss = false;
             Destroy(currentBeam);
             Destroy(laserHitRef);

@@ -13,9 +13,10 @@ public class LeaderBoardDisplay : MonoBehaviour
     public TextMeshProUGUI scores;
     private int cpt;
     private int letterNumber;
-    public TextMeshProUGUI[]names1 = new TextMeshProUGUI[3];
-    public TextMeshProUGUI[]names2 = new TextMeshProUGUI[3];
-    public TextMeshProUGUI[]names3 = new TextMeshProUGUI[3];
+    public GameObject[]names1 = new GameObject[3];
+    public GameObject[]names2 = new GameObject[3];
+    public GameObject[]names3 = new GameObject[3];
+    public GameObject white;
     public GameObject restart;
     public GameObject Panel;
     public GameObject cadre;
@@ -58,9 +59,10 @@ public class LeaderBoardDisplay : MonoBehaviour
             {
                 names1[i].gameObject.SetActive(true);                
             }
-            names1[0].text = "b";
-            names1[1].text = "a";
-            names1[2].text = "z";
+            white.SetActive(true);
+            names1[0].GetComponentInChildren<TextMeshProUGUI>().text = "b";
+            names1[1].GetComponentInChildren<TextMeshProUGUI>().text = "a";
+            names1[2].GetComponentInChildren<TextMeshProUGUI>().text = "z";
         }
         else
         {
@@ -135,9 +137,9 @@ public class LeaderBoardDisplay : MonoBehaviour
                         names2[0].gameObject.SetActive(true);
                         names2[1].gameObject.SetActive(true);
                         names2[2].gameObject.SetActive(true);
-                        names2[0].text = "b";
-                        names2[1].text = "a";
-                        names2[2].text = "z";
+                        names2[0].GetComponentInChildren<TextMeshProUGUI>().text = "b";
+                        names2[1].GetComponentInChildren<TextMeshProUGUI>().text = "a";
+                        names2[2].GetComponentInChildren<TextMeshProUGUI>().text = "z";
                         break;
                     case 1:
                         names2[0].gameObject.SetActive(false);
@@ -145,15 +147,15 @@ public class LeaderBoardDisplay : MonoBehaviour
                         names3[0].gameObject.SetActive(true);
                         names3[1].gameObject.SetActive(true);
                         names3[2].gameObject.SetActive(true);
-                        names3[0].text = "b";
-                        names3[1].text = "a";
-                        names3[2].text = "z";
+                        names3[0].GetComponentInChildren<TextMeshProUGUI>().text = "b";
+                        names3[1].GetComponentInChildren<TextMeshProUGUI>().text = "a";
+                        names3[2].GetComponentInChildren<TextMeshProUGUI>().text = "z";
                         break;
                     case 2:
                         if (!doOnce)
                         {
                             doOnce = true;
-                            LeaderBoard.instance.names[LeaderBoard.instance.placeInLeaderBoard]= names1[1].text + names2[1].text + names3[1].text;
+                            LeaderBoard.instance.names[LeaderBoard.instance.placeInLeaderBoard]= names1[1].GetComponentInChildren<TextMeshProUGUI>().text + names2[1].GetComponentInChildren<TextMeshProUGUI>().text + names3[1].GetComponentInChildren<TextMeshProUGUI>().text;
                             LeaderBoard.instance.SaveByXML();
                         }
                         names3[0].gameObject.SetActive(false);
@@ -161,7 +163,7 @@ public class LeaderBoardDisplay : MonoBehaviour
                         names3[2].gameObject.SetActive(false);
                         names1[1].gameObject.SetActive(false);
                         names2[1].gameObject.SetActive(false);
-
+                        white.SetActive(false);
                         scores.text = string.Empty;
                         names.text = string.Empty;
                         bpms.text = string.Empty;
@@ -196,26 +198,26 @@ public class LeaderBoardDisplay : MonoBehaviour
         }
     }
 
-    private void ChangeLetter(TextMeshProUGUI[] currentList)
+    private void ChangeLetter(GameObject[] currentList)
     {
         if(cpt == 25)
         {
-            currentList[0].text = (currentLetter +cpt-25).ToString();
-            currentList[1].text = (currentLetter + cpt).ToString();
-            currentList[2].text = (currentLetter + cpt - 1).ToString();
+            currentList[0].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter +cpt-25).ToString();
+            currentList[1].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter + cpt).ToString();
+            currentList[2].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter + cpt - 1).ToString();
 
         }
         else if(cpt == 0)
         {
-            currentList[0].text = (currentLetter +cpt +1).ToString();
-            currentList[1].text = (currentLetter + cpt).ToString();
-            currentList[2].text = (currentLetter + 25).ToString();
+            currentList[0].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter +cpt +1).ToString();
+            currentList[1].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter + cpt).ToString();
+            currentList[2].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter + 25).ToString();
         }
       else
         {
-            currentList[0].text = (currentLetter + cpt + 1).ToString();
-            currentList[1].text = (currentLetter + cpt ).ToString();
-            currentList[2].text = (currentLetter + cpt -1).ToString();
+            currentList[0].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter + cpt + 1).ToString();
+            currentList[1].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter + cpt ).ToString();
+            currentList[2].GetComponentInChildren<TextMeshProUGUI>().text = (currentLetter + cpt -1).ToString();
 
         }
     }

@@ -79,7 +79,7 @@ namespace AudioHelm
                         SoundManager.Instance.StartDelay();
 
                     }
-                    timerMissed = timer - (60 / bpm);
+                    timerMissed = timer +timerMissed- (60 / bpm);
                     if (Mathf.Abs((float)timerMissed )> 0.3)
                         timerMissed = 0;
                     timer = AudioSettings.dspTime - startTime - loopTimer;

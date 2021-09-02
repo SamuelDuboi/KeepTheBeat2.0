@@ -815,6 +815,26 @@ PrefabInstance:
       propertyPath: m_AnchorMax.x
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4459208811986501454, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689579123046379982, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_text
+      value: APPUIE VITE
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689579123046379982, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_margin.x
+      value: -16.27711
+      objectReference: {fileID: 0}
+    - target: {fileID: 5689579123046379982, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_HorizontalAlignment
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6435201335595173598, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7133234490205649392, guid: 68461eb4c45f1c544bad1b24c7271a0f, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -1369,7 +1389,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'score: 000000'
+  m_text: 'Score: 000000'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffb6c3089dd45364988e5dd4eab46984, type: 2}
   m_sharedMaterial: {fileID: -6877378304434617310, guid: ffb6c3089dd45364988e5dd4eab46984, type: 2}

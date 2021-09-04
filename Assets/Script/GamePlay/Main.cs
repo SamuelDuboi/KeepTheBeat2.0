@@ -166,7 +166,7 @@ public class Main : Singleton<Main>
             else if(textTimer>= 0.01f)
             {
                 textTimer = 0;
-                bossHit.fontSize = bossHit.fontSize * 0.8f;
+                bossHit.fontSize = bossHit.fontSize * 0.9f;
             }
         }
 
@@ -239,15 +239,22 @@ public class Main : Singleton<Main>
                 StartCoroutine(RowFade(rowOn[2]));
                 positionEnd[2].GetComponent<Spawner>().Shoot();
                 miniBossDamage++;
-                bossHit.text = miniBossDamage.ToString();
+                if(miniBossDamage < miniBossLife)
+                    bossHit.text = miniBossDamage.ToString() + "/100";
+                else
+                    bossHit.text = (miniBossDamage -100).ToString() + " BONUS";
+
                 bossHit.fontSize = 150+miniBossDamage*0.5f ;
             }
             else if (Input.GetKeyDown(KeyCode.R))
             {
                 StartCoroutine(RowFade(rowOn[3]));
                 positionEnd[3].GetComponent<Spawner>().Shoot();
-                miniBossDamage++;
-                bossHit.text = miniBossDamage.ToString();
+                miniBossDamage++; 
+                if (miniBossDamage < miniBossLife)
+                    bossHit.text = miniBossDamage.ToString() + "/100";
+                else
+                    bossHit.text = (miniBossDamage - 100).ToString() + " BONUS";
                 bossHit.fontSize = 150 + miniBossDamage * 0.5f;
             }
            if( miniBossDamage> miniBossLife / 3)
@@ -284,7 +291,10 @@ public class Main : Singleton<Main>
                         positionEnd[2].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.R))
@@ -292,7 +302,10 @@ public class Main : Singleton<Main>
                         positionEnd[3].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
@@ -302,7 +315,10 @@ public class Main : Singleton<Main>
                         positionEnd[1].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.T))
@@ -310,7 +326,10 @@ public class Main : Singleton<Main>
                         positionEnd[4].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
@@ -320,7 +339,10 @@ public class Main : Singleton<Main>
                         positionEnd[0].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.E))
@@ -328,7 +350,10 @@ public class Main : Singleton<Main>
                         positionEnd[2].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
@@ -338,7 +363,10 @@ public class Main : Singleton<Main>
                         positionEnd[1].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.R))
@@ -346,7 +374,10 @@ public class Main : Singleton<Main>
                         positionEnd[3].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
@@ -356,7 +387,10 @@ public class Main : Singleton<Main>
                         positionEnd[2].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS"; ;
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.H))
@@ -364,7 +398,10 @@ public class Main : Singleton<Main>
                         positionEnd[5].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;
@@ -374,7 +411,10 @@ public class Main : Singleton<Main>
                         positionEnd[0].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[2]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     else if (Input.GetKeyDown(KeyCode.T))
@@ -382,7 +422,10 @@ public class Main : Singleton<Main>
                         positionEnd[4].GetComponent<Spawner>().Shoot();
                         StartCoroutine(RowFade(rowOn[3]));
                         miniBossDamage++;
-                        bossHit.text = miniBossDamage.ToString();
+                        if (miniBossDamage < bossLife)
+                            bossHit.text = miniBossDamage.ToString() + "/240";
+                        else
+                            bossHit.text = (miniBossDamage - 240).ToString() + " BONUS";
                         bossHit.fontSize = 150 + miniBossDamage * 0.5f;
                     }
                     break;

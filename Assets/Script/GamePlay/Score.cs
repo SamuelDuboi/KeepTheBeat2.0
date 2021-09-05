@@ -6,8 +6,8 @@ using System.Collections;
 public class Score : Singleton<Score>
 {
     public static int score;
-    [HideInInspector] public float scorMultiplier = 1;
-    [HideInInspector] public int cptStreak;
+    /*[HideInInspector]*/ public float scorMultiplier = 1;
+    /*[HideInInspector]*/ public int cptStreak;
     public TextMeshProUGUI scorText;
     public TextMeshProUGUI scorMultiplierText;
     private Animator animator;
@@ -30,26 +30,34 @@ public class Score : Singleton<Score>
 
     public void ScoreUp(int upNumber)
     {
-        if(scorMultiplier < 7)
+       
+        if(scorMultiplier < 7) //augmente cptstreak
         {
             cptStreak++;
+            UiEffects.GetComponent<UIEffects>().Reset();
+            UiEffects.GetComponent<UIEffects>().UpdateVisuel();
+            animator.SetTrigger("Score");
+            StartCoroutine("DelayScore", upNumber);
+
+            if(cptStreak >= 6) // Si cptStreak suffisant.
+            {
+                MultiplicateurUp();
+            }
+
         }
 
-        animator.SetTrigger("Score");
-        StartCoroutine("DelayScore", upNumber);
-        
+    }
 
-        if (cptStreak >= 6)
-        {
-            if (scorMultiplier < 7)
-                scorMultiplierText.GetComponent<Animator>().SetTrigger("Multiplicateur");
-
-            scorMultiplier++;
-            scorMultiplierText.text = "X" + scorMultiplier.ToString();
+    public void MultiplicateurUp()
+    {
+      
             cptStreak = 0;
             UiEffects.GetComponent<UIEffects>().Reset();
+            scorMultiplierText.GetComponent<Animator>().SetTrigger("Multiplicateur");
+            scorMultiplier++;
+            scorMultiplierText.text = "X" + scorMultiplier.ToString();
             SoundManager.Instance.UpdateVolume(scorMultiplier);
-        }
+
     }
 
     public void ScoreDown(int upNumber)
@@ -62,6 +70,7 @@ public class Score : Singleton<Score>
             cptStreak--;
         if(scorText)
         scorText.text = score.ToString();
+        UiEffects.GetComponent<UIEffects>().UpdateVisuel();
 
     }
 
@@ -78,6 +87,7 @@ public class Score : Singleton<Score>
             SoundDisplay.Instance.TakeDamage(scorMultiplier - 1);
         else
             SoundDisplqyTuto.Instance.TakeDamage(scorMultiplier - 1);
+        UiEffects.GetComponent<UIEffects>().UpdateVisuel();
 
     }
 

@@ -5551,7 +5551,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e6a79e514c1f51478649cd1dd399f39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  leaderBoard: {fileID: 11400000, guid: 4e0f3aba290e40f40b3fd5e1611af935, type: 2}
   scorMultiplier: 1
   cptStreak: 0
   scorText: {fileID: 3300805184230733962}
@@ -11563,13 +11562,13 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7fd9b0cd3cfe59142ba9ee9e38ace82b, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 120
+  Priority: 60
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500

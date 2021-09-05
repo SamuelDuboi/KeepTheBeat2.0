@@ -58,34 +58,59 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
       
         if (SceneManager.GetActiveScene().name == "Main" || SceneManager.GetActiveScene().name == "Tuto")
         {           
-            if(cpt>=60 && cpt<70)
+            if(cpt>=60 && cpt<65)
             {
                 AudioHelmClock.Instance.bpm = 60;
             }
-            else if (cpt >= 70 && cpt < 80)
+            else if (cpt >= 65 && cpt < 70)
+            {
+                AudioHelmClock.Instance.bpm = 65;
+            }
+            else if (cpt >= 70 && cpt < 75)
             {
                 AudioHelmClock.Instance.bpm = 70;
             }
-            else if (cpt >= 80 && cpt < 90)
+            else if (cpt >= 75 && cpt < 80)
+            {
+                AudioHelmClock.Instance.bpm = 75;
+            }
+            else if (cpt >= 80 && cpt < 85)
             {
                 AudioHelmClock.Instance.bpm = 80;
             }
-            else if (cpt >= 90 && cpt < 100)
+            else if (cpt >= 85 && cpt < 90)
+            {
+                AudioHelmClock.Instance.bpm = 85;
+            }
+            else if (cpt >= 90 && cpt < 95)
             {
                 AudioHelmClock.Instance.bpm = 90;
             }
-            else if (cpt >= 100 && cpt < 110)
+            else if (cpt >= 95 && cpt < 100)
+            {
+                AudioHelmClock.Instance.bpm = 95;
+            }
+            else if (cpt >= 100 && cpt < 105)
             {
                 AudioHelmClock.Instance.bpm = 100;
             }
-            else if (cpt >= 110 && cpt < 120)
+            else if (cpt >= 105 && cpt < 110)
+            {
+                AudioHelmClock.Instance.bpm = 105;
+            }
+            else if (cpt >= 110 && cpt < 115)
             {
                 AudioHelmClock.Instance.bpm = 110;
+            }
+            else if (cpt >= 115 && cpt < 120)
+            {
+                AudioHelmClock.Instance.bpm = 115;
             }
             else if (cpt >= 120 && cpt < 130)
             {
                 AudioHelmClock.Instance.bpm = 120;
             }
+
 
             Destroy(this);
         }

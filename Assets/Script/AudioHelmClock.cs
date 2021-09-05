@@ -31,7 +31,7 @@ namespace AudioHelm
             if(startTime != 0)
                 timer = AudioSettings.dspTime - startTime - loopTimer;
 
-            if (timer > 1)
+            if (timer > 1.2)
             {
                 loopTimer = AudioSettings.dspTime - startTime;
                 timer = AudioSettings.dspTime - startTime - loopTimer;

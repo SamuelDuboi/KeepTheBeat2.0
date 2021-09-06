@@ -515,7 +515,6 @@ public class ArduinoManagers : Singleton<ArduinoManagers>
     {
         if (track &&track.GetComponent<AudioSource>().volume <= 1f)
         {
-            track.GetComponent<AudioSource>().volume -= 0.1f;
             yield return new WaitForSeconds(0.2f);
             StartCoroutine(FadeOutSound(track));
         }

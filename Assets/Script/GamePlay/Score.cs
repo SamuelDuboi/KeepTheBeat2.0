@@ -59,7 +59,10 @@ public class Score : Singleton<Score>
             SoundManager.Instance.UpdateVolume(scorMultiplier);
 
     }
-
+    public void ScoreReset()
+    {
+        score = 0;
+    }
     public void ScoreDown(int upNumber)
     {
         if (score - upNumber <= 0)

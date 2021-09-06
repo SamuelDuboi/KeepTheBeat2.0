@@ -77,11 +77,7 @@ public class LeaderBoardDisplay : MonoBehaviour
     {
         if(Input.anyKeyDown && restart.activeSelf)
         {
-            for (int i = 0; i < 41; i++)
-            {
-              UduinoManager.Instance.sendCommand("turnOn", i, 0, 0, 0, 150);
-            }
-            Score.Instance.ScoreDown(100000000);
+            Score.Instance.ScoreReset();
             SceneManager.LoadScene("Intro");
         }
         if (LeaderBoard.instance.placeInLeaderBoard < 1000)

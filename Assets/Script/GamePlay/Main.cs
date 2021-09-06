@@ -240,9 +240,9 @@ public class Main : Singleton<Main>
                 positionEnd[2].GetComponent<Spawner>().Shoot();
                 miniBossDamage++;
                 if(miniBossDamage < miniBossLife)
-                    bossHit.text = miniBossDamage.ToString() + "/100";
+                    bossHit.text = miniBossDamage.ToString() + "/70";
                 else
-                    bossHit.text = (miniBossDamage -100).ToString() + " BONUS";
+                    bossHit.text = (miniBossDamage -70).ToString() + " BONUS";
 
                 bossHit.fontSize = 150+miniBossDamage*0.5f ;
             }
@@ -252,9 +252,9 @@ public class Main : Singleton<Main>
                 positionEnd[3].GetComponent<Spawner>().Shoot();
                 miniBossDamage++; 
                 if (miniBossDamage < miniBossLife)
-                    bossHit.text = miniBossDamage.ToString() + "/100";
+                    bossHit.text = miniBossDamage.ToString() + "/70";
                 else
-                    bossHit.text = (miniBossDamage - 100).ToString() + " BONUS";
+                    bossHit.text = (miniBossDamage - 70).ToString() + " BONUS";
                 bossHit.fontSize = 150 + miniBossDamage * 0.5f;
             }
            if( miniBossDamage> miniBossLife / 3)

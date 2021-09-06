@@ -4012,17 +4012,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   texts:
-  - Destroy the enemy by hitting the correct pad in rythm
-  - Destroy linked ennemies by hitting them in a single beat. (You may want to use
-    both hands with a little desyncro).
-  - Now with all the pads.
-  - Destroy the tank enemy by hitting him quickly twice in a single beat.
-  - Destroy the wave by htting the white pad.
-  - Each waves charge your super power energy.
-  - When your super power bar is full, you can hit the white buzzer to freeze time
-    .
-  - Now hit any pad to destroy an enemy.
-  - Congrats you are ready to play at KeepTheBeat.  Hit any pad to continue.
+  - Detruis les ennemis en tapant sur le bon pad en rythme.
+  - "Detruis les ennemis li\xE9s en tapant sur les deux pads dans le meme beat."
+  - Maintenant avec tous les pads.
+  - "Detruis les tanks en tapant deux fois sur le m\xEAme pad en un beat."
+  - Detruit les vagues en tapant sur le pad blanc.
+  - Chaque vague charge votre super pouvoir.
+  - 'Quand la barre de super pouvoir est pleine, appuis sur le pad blanc pour arreter
+    le temps. '
+  - Appuie sur nimporte quel pad pour detruire un ennemi.
+  - Bravo tu es maintenant pret a jouer a KeepTheBeat. Appuis sur n'importe quel
+    pad pour jouer.
 --- !u!1 &1845722902
 GameObject:
   m_ObjectHideFlags: 0

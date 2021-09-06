@@ -1098,7 +1098,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 18.5, y: -5.5}
+  m_AnchoredPosition: {x: -244, y: -195}
   m_SizeDelta: {x: 999.91504, y: 563.1538}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &807983590
@@ -2998,7 +2998,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Choisi ton rythme.
+  m_text: Choisis ton rythme
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffb6c3089dd45364988e5dd4eab46984, type: 2}
   m_sharedMaterial: {fileID: -6877378304434617310, guid: ffb6c3089dd45364988e5dd4eab46984, type: 2}
@@ -4413,7 +4413,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: pour valider
+  m_text: Valider
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ffb6c3089dd45364988e5dd4eab46984, type: 2}
   m_sharedMaterial: {fileID: -6877378304434617310, guid: ffb6c3089dd45364988e5dd4eab46984, type: 2}

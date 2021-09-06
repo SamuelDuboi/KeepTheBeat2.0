@@ -9738,7 +9738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb312afe7ff0f4840b210131c50a1d98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  life: 100
+  life: 70
   direction: {x: 0, y: 0, z: -1}
   speed: 200
   smallExplosion: {fileID: 47111484976083092, guid: 53ebb8047daef0641bf8c51cdafe5fb9, type: 3}

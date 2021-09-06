@@ -644,6 +644,7 @@ public class Main : Singleton<Main>
 
                 previousNumberPattern.Add(currentPattern);
                 currentPattern = Random.Range(0, _currentPattern.Count-1);
+                
                 foreach (var number in previousNumberPattern)
                 {
                     while (currentPattern == number)
@@ -741,7 +742,8 @@ public class Main : Singleton<Main>
             }
             else
                 emptyNode++;
-
+            if (emptyNode > 4)
+                emptyNode = 0;
             nodeNumber++;
         }
     }

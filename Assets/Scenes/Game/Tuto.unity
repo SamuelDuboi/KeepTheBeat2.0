@@ -4013,14 +4013,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   texts:
   - Detruis les ennemis en tapant sur le bon pad en rythme.
-  - "Detruis les ennemis li\xE9s en tapant sur les deux pads dans le meme beat."
+  - Detruis les ennemis lies en tapant sur les deux pads dans le meme beat.
   - Maintenant avec tous les pads.
-  - "Detruis les tanks en tapant deux fois sur le m\xEAme pad en un beat."
+  - Detruis les tanks en tapant deux fois sur le meme pad en un beat.
   - Detruit les vagues en tapant sur le pad blanc.
   - Chaque vague charge votre super pouvoir.
   - 'Quand la barre de super pouvoir est pleine, appuis sur le pad blanc pour arreter
     le temps. '
-  - Appuie sur nimporte quel pad pour detruire un ennemi.
+  - Appuies sur nimporte quel pad pour detruire un ennemi.
   - Bravo tu es maintenant pret a jouer a KeepTheBeat. Appuis sur n'importe quel
     pad pour jouer.
 --- !u!1 &1845722902

@@ -475,7 +475,7 @@ namespace Uduino
 
         public void DiscoverWithDelay(float delay = -1)
         {
-           //StartCoroutine("DelayedDiscover", delay);
+           StartCoroutine("DelayedDiscover", delay);
         }
 
         IEnumerator DelayedDiscover(float delay = -1)

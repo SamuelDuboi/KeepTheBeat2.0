@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using System.Xml;
 using System.IO;
 using UnityEngine;
-
+using TMPro;
+using UnityEngine.SceneManagement;
 public class LeaderBoard : MonoBehaviour
 {
     public List<float> scores = new List<float>();
@@ -11,7 +12,9 @@ public class LeaderBoard : MonoBehaviour
     public List<int> bpm =  new List<int>();
     public int placeInLeaderBoard;
     public static LeaderBoard instance;
-
+    public GameObject canvas;
+    public TextMeshProUGUI textReset; private float timerReset;
+    private bool doOnceReset;
     public bool victory;
     public bool gameOver;
     public string path;
@@ -30,6 +33,50 @@ public class LeaderBoard : MonoBehaviour
     private void Start()
     {
         LoadByXML();
+    }
+
+    private void Update()
+    {
+        timerReset += Time.deltaTime;
+        if (timerReset > 30)
+        {
+            if (SceneManager.GetActiveScene().name != "Intro")
+            {
+                if (!doOnceReset)
+                {
+                    canvas.SetActive(true);
+                    doOnceReset = true;
+                }
+
+            }
+            else if (!ArduinoManagers.Instance.morpheus.activeSelf)
+            {
+                timerReset = 0;
+            }
+            else
+            {
+                if (!doOnceReset)
+                {
+                    canvas.SetActive(true);
+                    doOnceReset = true;
+                }
+            }
+
+            textReset.text = " retour au menu dans " + (45 - (int)timerReset).ToString();
+        }
+        if (timerReset > 45)
+        {
+            doOnceReset = false;
+            Score.Instance.ScoreReset();
+            canvas.SetActive(false);
+            SceneManager.LoadScene("Intro");
+        }
+        if (Input.anyKeyDown)
+        {
+            timerReset = 0;
+            doOnceReset = false;
+            canvas.SetActive(false);
+        }
     }
     public void SaveByXML()
     {

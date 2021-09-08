@@ -2,7 +2,7 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
 using System.Collections;
-using System;
+using TMPro;
 namespace AudioHelm
 {
 
@@ -15,7 +15,9 @@ namespace AudioHelm
         private double timerMissed;
         public bool doOnce;
         public double timeToReach;
+        
         [HideInInspector] public double startTime;
+
         protected override void Awake()
         {
             base.Awake();
@@ -28,6 +30,7 @@ namespace AudioHelm
         }
         private void Update()
         {
+            
             if(startTime != 0)
                 timer = AudioSettings.dspTime - startTime - loopTimer;
 
